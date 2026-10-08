@@ -15,7 +15,7 @@ interface Props {
 const { anio, modulo, titulo, descripcion = SITIO.descripcion, indice = [] } = Astro.props;
 const tituloCompleto = modulo === '' ? `${SITIO.nombre} ${anio} | ${SITIO.entidad}` : `${titulo} · ${SITIO.nombre} ${anio} | ${SITIO.entidad}`;
 const canonical = new URL(Astro.url.pathname, Astro.site).href;
-const og = new URL(url(`og-asis-${anio}.png`), Astro.site).href;
+const og = new URL(url(`og-asis-${anio}.png?v=2`), Astro.site).href;
 const fecha = new Date().toISOString().slice(0, 10);
 ---
 <!doctype html>
