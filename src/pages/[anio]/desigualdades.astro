@@ -56,7 +56,7 @@ const indice = [{ id: 'metodo', t: 'Cómo leer los gradientes' }, { id: 'gradien
   <Seccion id="resumen" kicker="Síntesis" titulo="Resumen por indicador" intro="Determinante analizado, unidad y lectura que hace el documento de cada gradiente.">
     <div class="grid gap-3 md:grid-cols-2">
       {G.map(g => (
-        <article class="tarjeta p-4" data-buscar={`${g.nombre} vs ${g.determinante}|${g.ref}|desigualdad gradiente`}>
+        <article id={`g-${g.id}`} class="tarjeta p-4" data-buscar={`${g.nombre} vs ${g.determinante}|${g.ref}|desigualdad gradiente`}>
           <p class="kicker">{g.ref} · pág. {g.pag}</p>
           <h3 class="mt-1 font-semibold text-ink">{g.nombre}</h3>
           <p class="meta">Determinante: {g.determinante} · Unidad: {g.unidad} · Años: {Object.keys(g.valores).join(', ')}</p>
