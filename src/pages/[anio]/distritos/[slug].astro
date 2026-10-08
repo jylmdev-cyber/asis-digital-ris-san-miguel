@@ -1,0 +1,110 @@
+---
+import Base from '../../../layouts/Base.astro';
+import Seccion from '../../../components/Seccion.astro';
+import Kpi from '../../../components/Kpi.astro';
+import TablaDatos from '../../../components/TablaDatos.astro';
+import VizCard from '../../../components/islas/VizCard.vue';
+import MapaTerritorial from '../../../components/islas/MapaTerritorial.vue';
+import { edicion, mostrar, num } from '../../../lib/datos';
+import { indicadoresDistritales, indicadoresMapa, posicion, propsMapa } from '../../../lib/distritos';
+import { EDICIONES } from '../../../config/sitio';
+import { urlEd } from '../../../lib/rutas';
+import type { ChartSpec, Variante } from '../../../lib/tipos';
+
+export function getStaticPaths() {
+  return EDICIONES.flatMap(e => edicion(e.anio).distritos.map(d => ({ params: { anio: e.anio, slug: d.slug }, props: { nombre: d.nombre } })));
+}
+const { anio, slug } = Astro.params as { anio: string; slug: string };
+const { nombre } = Astro.props as { nombre: string };
+const ed = edicion(anio);
+const d = ed.distritos.find(x => x.slug === slug)!;
+const i = ed.distritos.indexOf(d);
+const prev = ed.distritos[(i + ed.distritos.length - 1) % ed.distritos.length], next = ed.distritos[(i + 1) % ed.distritos.length];
+const IND = indicadoresDistritales(ed);
+const I = Object.fromEntries(IND.map(x => [x.id, x]));
+const val = (id: string) => I[id]?.valores[nombre] ?? '';
+const u = (x: typeof IND[number]) => x.unidad === '%' ? ' %' : '';
+
+const filas = IND.map(x => { const p = posicion(x, nombre); return [x.grupo, x.nombre, mostrar(x.valores[nombre]) + (x.valores[nombre] ? u(x) : ''), x.provincial ? mostrar(x.provincial) + u(x) : '–', p ? `${p.pos} de ${p.de}` : '–', `${x.ref}, pág. ${x.pag}`]; });
+const EE = ed.geoEstablecimientos.features.map((f: any) => f.properties).filter((e: any) => e.distrito === nombre);
+const refs = ed.tabla('c11').rows.filter(r => r[0] === nombre);
+const eq = ed.tabla('equipos').rows.filter(r => r[0] === nombre).map(r => r.slice(1));
+
+// población por curso de vida 2023-2025 del distrito
+const c03 = ed.tabla('c03');
+const filasPob = c03.rows.filter(r => r[0] === nombre);
+const cursos = c03.cols.slice(2, 7);
+const vPob: Variante = {
+  spec: { tipo: 'barras', orientacion: 'h', apilado: false, categorias: cursos, series: filasPob.map((r, k) => ({ nombre: r[1], color: (['o1', 'o2', 'o4'] as const)[k], valores: r.slice(2, 7).map(num), etiquetas: r.slice(2, 7) })) } as ChartSpec,
+  tabla: { cols: c03.cols, rows: filasPob }, ref: 'Cuadro 3', pag: c03.pag, fuente: c03.fuente, unidad: 'habitantes', subtitulo: `Cuadro 3. Población del distrito de ${nombre} por curso de vida, 2023-2025`, nota: null,
+};
+---
+<Base anio={anio} modulo="distritos/" titulo={`Distrito de ${nombre}`} descripcion={`Ficha del distrito de ${nombre} (provincia de San Miguel, Cajamarca): población, determinantes sociales, servicios de salud, morbilidad y mortalidad según el ASIS ${anio}.`}
+  indice={[{ id: 'resumen', t: 'Resumen' }, { id: 'indicadores', t: 'Todos los indicadores' }, { id: 'poblacion', t: 'Población' }, { id: 'establecimientos', t: 'Establecimientos' }, { id: 'equipamiento', t: 'Equipamiento' }]}>
+  <nav class="no-imprimir mb-3 flex flex-wrap items-center gap-2 text-[0.85rem]" aria-label="Migas de pan">
+    <a href={urlEd(anio, 'distritos/')}>Fichas distritales</a><span aria-hidden="true">/</span><span class="text-ink-2">{nombre}</span>
+  </nav>
+  <div class="flex flex-wrap items-end justify-between gap-3">
+    <div>
+      <p class="kicker">Ficha distrital · UBIGEO {d.ubigeo}</p>
+      <h1 class="mt-1 text-[2rem] font-extrabold text-ink">Distrito de {nombre}</h1>
+    </div>
+    <div class="no-imprimir flex gap-2">
+      <a class="btn" href={urlEd(anio, `distritos/${prev.slug}/`)}>← {prev.nombre}</a>
+      <a class="btn" href={urlEd(anio, `distritos/${next.slug}/`)}>{next.nombre} →</a>
+    </div>
+  </div>
+
+  <Seccion id="resumen" titulo="Resumen" intro="Cifras del documento para este distrito; debajo de cada una, el cuadro de origen.">
+    <div class="grid gap-5 xl:grid-cols-[minmax(0,1fr)_minmax(0,1.1fr)]">
+      <div class="grid grid-cols-2 gap-3 self-start">
+        <Kpi etiqueta="Población 2025" valor={val('pob2025')} fuente={`${I.pob2025.ref} · pág. ${I.pob2025.pag}`} detalle={`2023: ${mostrar(val('pob2023'))}`} icono="personas" tono="acento" />
+        <Kpi etiqueta="Afiliados al SIS 2025" valor={val('sis2025')} fuente={`${I.sis2025.ref} · pág. ${I.sis2025.pag}`} icono="escudo" />
+        <Kpi etiqueta="Pobreza monetaria" valor={val('t03')} sufijo=" %" fuente="Tabla 3 · datos 2017" detalle={`Provincia: ${I.t03.provincial} %`} icono="casa" />
+        <Kpi etiqueta="Viviendas con agua potable" valor={val('t09')} sufijo=" %" fuente="Tabla 9 · datos 2017" detalle={`Provincia: ${I.t09.provincial} %`} icono="casa" />
+        <Kpi etiqueta="Establecimientos de salud" valor={val('eess')} fuente="Cuadro 4 · pág. 25" detalle={`${val('infra_mala')} con infraestructura en mal estado`} icono="hospital" />
+        <Kpi etiqueta="Atenciones por morbilidad" valor={val('atenciones')} fuente="Cuadro 38 · pág. 62" detalle={`${val('atenciones_pct')} % del total provincial`} icono="pulso" />
+        <Kpi etiqueta="Defunciones 2025" valor={val('defunciones')} fuente="Cuadro 45 · pág. 69" detalle={`${val('defunciones_pct')} % del total provincial`} icono="pulso" />
+        <Kpi etiqueta="Disponibilidad de medicamentos" valor={val('medicamentos')} sufijo=" %" fuente="Gráfico 2 · pág. 50" detalle="Red: 96,67 %" icono="hospital" />
+      </div>
+      <div class="tarjeta p-4">
+        <MapaTerritorial client:visible {...propsMapa(ed, urlEd(anio, 'datos/'))} indicadores={indicadoresMapa(ed)} inicial="t03" urlFicha={urlEd(anio, 'distritos/')} soloDistrito={nombre} alto={420} />
+      </div>
+    </div>
+  </Seccion>
+
+  <Seccion id="indicadores" titulo="Todos los indicadores del distrito" intro="«Posición» indica el lugar del distrito al ordenar los 13 de mayor a menor valor (1 = el valor más alto). No implica un juicio: en algunos indicadores un valor alto es favorable (agua, desagüe) y en otros, desfavorable (pobreza).">
+    <figure class="tarjeta m-0 p-4 sm:p-5" id="c-ficha">
+      <TablaDatos titulo={`Indicadores del distrito de ${nombre}`} cols={['Tema', 'Indicador', nombre, 'Provincia', 'Posición', 'Fuente']} rows={filas} largos={[1]} maxAlto={false} />
+      <figcaption class="mt-3 border-t border-line pt-2.5 text-[0.78rem] text-ink-2"><strong>Fuente: ASIS RIS San Miguel {anio}</strong>, cuadros indicados en cada fila. Los determinantes sociales son datos de 2017. Posición calculada para esta visualización.</figcaption>
+    </figure>
+  </Seccion>
+
+  <Seccion id="poblacion" titulo="Población por curso de vida">
+    <VizCard client:visible id="c-pob-distrito" titulo={`Población de ${nombre} por curso de vida y año`} metodo="Habitantes por curso de vida; una barra por año." periodo="2023-2025" variantes={{ default: vPob }} />
+  </Seccion>
+
+  <Seccion id="establecimientos" titulo="Establecimientos de salud y referencia">
+    <div class="grid gap-5 xl:grid-cols-2">
+      <figure class="tarjeta m-0 p-4 sm:p-5">
+        <h3 class="font-semibold text-ink">Establecimientos georreferenciados (capa IGN)</h3>
+        <p class="meta mt-0.5">{EE.length} establecimientos en la capa; el ASIS reporta {val('eess')} en el Cuadro 4.</p>
+        <div class="mt-3"><TablaDatos titulo="Establecimientos del distrito" cols={['Establecimiento', 'Categoría', 'Microrred', 'Código', 'Coordenada']} rows={EE.map((e: any) => [e.nombre, e.categoria, e.microrred ?? e.institucion, e.codigo, e.verificacion])} largos={[4]} maxAlto={false} /></div>
+        <figcaption class="mt-3 border-t border-line pt-2.5 text-[0.78rem] text-ink-2"><strong>Fuente:</strong> {ed.geoEstablecimientos.fuente.nombre}.</figcaption>
+      </figure>
+      <figure class="tarjeta m-0 p-4 sm:p-5">
+        <h3 class="font-semibold text-ink">Ruta de referencia (Cuadro 11)</h3>
+        <p class="meta mt-0.5">pág. 32 del documento</p>
+        <div class="mt-3">{refs.length ? <TablaDatos titulo="Referencias" cols={['EE. SS. de origen', 'Destino', 'Nivel', 'Distancia (km)', 'Tiempo (h)']} rows={refs.map(r => [r[1], r[3], r[4], r[5], r[6]])} maxAlto={false} /> : <p class="text-ink-2">Sin datos en el documento.</p>}</div>
+        <p class="mt-3 text-[0.9rem]">Ambulancias en el distrito: <b>{val('ambulancias') || '0'}</b> (Cuadro 10) · EE. SS. con internet: <b>{mostrar(ed.tabla('c31').rows.find(r => r[0] === nombre)?.[2])} de {mostrar(ed.tabla('c31').rows.find(r => r[0] === nombre)?.[1])}</b> (Cuadro 31)</p>
+      </figure>
+    </div>
+  </Seccion>
+
+  <Seccion id="equipamiento" titulo="Equipamiento médico" intro={`Total del cuadro: ${val('eq_total')} equipos; ${val('eq_inop')} inoperativos según la suma de sus filas.`}>
+    <figure class="tarjeta m-0 p-4 sm:p-5">
+      <TablaDatos titulo={`Equipamiento de ${nombre}`} cols={['Equipo', 'Cantidad', 'Estado']} rows={eq} />
+      <figcaption class="mt-3 border-t border-line pt-2.5 text-[0.78rem] text-ink-2"><strong>Fuente: ASIS RIS San Miguel {anio}</strong>, cuadro de equipamiento del distrito (Cuadros 15 a 27, págs. 36-48). Dato original: Patrimonio – Red de Salud San Miguel.</figcaption>
+    </figure>
+  </Seccion>
+</Base>

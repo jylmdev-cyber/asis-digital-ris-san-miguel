@@ -1,0 +1,84 @@
+---
+import Base from '../../layouts/Base.astro';
+import Seccion from '../../components/Seccion.astro';
+import VizCard from '../../components/islas/VizCard.vue';
+import MapaTerritorial from '../../components/islas/MapaTerritorial.vue';
+import { edicion, filaDe, filaTotal, mostrar, num } from '../../lib/datos';
+import { rutasEdicion, filtroResaltar } from '../../lib/filtros';
+import { indicadoresMapa, propsMapa } from '../../lib/distritos';
+import { barrasColumna, variante } from '../../lib/specs';
+import { urlEd } from '../../lib/rutas';
+import type { Variante } from '../../lib/tipos';
+
+export const getStaticPaths = rutasEdicion;
+const { anio } = Astro.params as { anio: string };
+const ed = edicion(anio);
+const DET = ed.tablas.filter(t => t.seccion === 'determinantes');
+const TIPOS = { estructural: 'Determinantes estructurales', intermedio: 'Determinantes intermedios', psicosocial: 'Factores psicosociales' } as const;
+
+const vDet: Record<string, Variante> = Object.fromEntries(DET.map(t => [t.id, variante(t, barrasColumna(t, 1, { unidad: t.id === 't08' ? '' : ' %', nombre: t.indicador }), { unidad: t.id === 't08' ? 'índice' : '%' })]));
+
+// Mapa de calor: color por cuartil dentro de cada indicador (posición relativa); la cifra es la del documento.
+const D = ed.distritos.map(d => d.nombre);
+const cuartil = (vals: number[], v: number) => { const s = [...vals].sort((a, b) => a - b); const q = (p: number) => s[Math.floor(p * (s.length - 1) + 0.5)]; return v <= q(0.25) ? 0 : v <= q(0.5) ? 1 : v <= q(0.75) ? 2 : 3; };
+const matriz = DET.map(t => { const vals = D.map(d => num(filaDe(t, d)?.[1])!); return { t, vals, q: vals.map(v => cuartil(vals, v)), prov: filaTotal(t)?.[1] }; });
+
+// Lo que dice el documento (texto literal resumido de cada apartado del capítulo V)
+const LECTURAS: Record<string, string> = {
+  t03: 'Bolívar tiene el menor porcentaje de pobreza monetaria, en comparación a San Silvestre de Cochán (pág. 14).',
+  t05: 'En 2017 la deserción fue de 1,6 %; Unión Agua Blanca (2,7 %) tuvo la mayor y Catilluc y Nanchoc (0,9 %) la menor (pág. 16).',
+  t06: 'El desempleo provincial fue 3 %; El Prado 10,1 % y Bolívar 0,4 %. Más del 70 % de la PEA se dedica a la agricultura y ganadería (pág. 16).',
+  t07: 'Niepos tiene la mayor dependencia económica (80,5 %); San Silvestre de Cochán, 58,4 % (pág. 17).',
+  t08: 'Tongod y Bolívar tienen mayor densidad del Estado que Calquis (pág. 18).',
+  t09: 'San Gregorio ocupa el último lugar en viviendas con agua potable (17,1 %) y La Florida el primero (65,9 %). La conexión domiciliaria no garantiza que el agua sea potable todo el tiempo (págs. 19-20).',
+  t10: 'San Gregorio tiene el menor acceso a desagüe (40,4 %) y Calquis el mayor (76,1 %) (págs. 20-21).',
+  t11: 'Tongod tiene 29,8 % de familias hacinadas y San Gregorio 6,5 % (pág. 21).',
+  t12: 'El 63,6 % de los hogares usa leña o estiércol; Calquis el 79 %. Su uso se asocia a enfermedades respiratorias y problemas oftalmológicos (pág. 22).',
+  t13: 'Nanchoc tuvo la mayor migración (27 %) y Niepos la menor (4,5 %), por la cercanía de Nanchoc a Chiclayo (pág. 23).',
+  t14: 'En los últimos 7 años la provincia tuvo 75,3 % de población emigrante; La Florida registró la mayor emigración (150,4 %) y Tongod la menor (26,2 %) (pág. 24).',
+};
+for (const t of DET) if (LECTURAS[t.id]) vDet[t.id].nota = `Según el documento: ${LECTURAS[t.id]}${t.nota ? ' — ' + t.nota : ''}`;
+const indMapa = indicadoresMapa(ed).filter(i => i.grupo === 'Determinantes');
+const indice = [{ id: 'ranking', t: 'Ranking por indicador' }, { id: 'calor', t: 'Mapa de calor' }, { id: 'mapa', t: 'Distribución territorial' }];
+---
+<Base anio={anio} modulo="determinantes/" titulo="Determinantes sociales de la salud" descripcion="Pobreza, analfabetismo, desempleo, dependencia económica, densidad del Estado, agua, desagüe, hacinamiento, uso de leña y migración por distrito." indice={indice}>
+  <p class="kicker">Módulo E · Capítulo V</p>
+  <h1 class="mt-1 text-[1.9rem] font-extrabold text-ink">Determinantes sociales de la salud</h1>
+  <p class="mt-2 max-w-3xl text-ink-2">Condiciones estructurales, materiales y psicosociales por distrito. Las cifras provienen del Sistema de Información Distrital para la Gestión Pública y del Censo 2017.</p>
+
+  <Seccion id="ranking" kicker="Tablas 3 a 14" titulo="Ranking de distritos por indicador">
+    <VizCard client:visible id="c-det" titulo="Determinantes sociales por distrito" metodo="Valor de cada distrito ordenado de mayor a menor; la línea punteada marca el valor provincial. Datos de 2017." periodo="2017"
+      filtros={[{ id: 'ind', label: 'Indicador', tipo: 'select', opciones: DET.map(t => ({ v: t.id, t: `${TIPOS[t.tipo_determinante!]} — ${t.indicador} (${t.ref})` })) }, filtroResaltar(ed)]}
+      variantes={vDet} claves={DET.map(t => t.indicador).join(' ') + ' pobreza analfabetismo desempleo agua desagüe hacinamiento leña migración emigración dependencia densidad del estado'} />
+  </Seccion>
+
+  <Seccion id="calor" kicker="Comparación territorial" titulo="Mapa de calor de determinantes" intro="Todos los determinantes en una sola vista. El color indica la posición del distrito dentro de cada indicador (cuartiles entre los 13 distritos); la cifra es la del documento. Un color más intenso no siempre significa una situación peor: en agua, desagüe o densidad del Estado, un valor alto es favorable.">
+    <figure class="tarjeta m-0 p-4 sm:p-5" id="c-calor" data-buscar="Mapa de calor de determinantes|Tablas 3 a 14|comparación distritos">
+      <div class="tabla-wrap" style="max-height:none" tabindex="0" role="region" aria-label="Mapa de calor de determinantes por distrito">
+        <table class="tabla text-[0.8rem]">
+          <thead><tr><th scope="col">Distrito</th>{matriz.map(m => <th scope="col" class="n" style="min-width:86px"><span class="block leading-tight">{m.t.indicador!.replace(' (%)', '')}</span><span class="font-normal text-muted">{m.t.ref}</span></th>)}</tr></thead>
+          <tbody>
+            {D.map((d, i) => (
+              <tr>
+                <td><a href={urlEd(anio, `distritos/${ed.distritos[i].slug}/`)}>{d}</a></td>
+                {matriz.map(m => <td class="n" style={`background:var(--o${m.q[i] + 1});color:${m.q[i] >= 2 ? '#fff' : 'var(--ink)'}`} title={`${d} · ${m.t.indicador}: ${mostrar(filaDe(m.t, d)?.[1])}`}>{mostrar(filaDe(m.t, d)?.[1])}</td>)}
+              </tr>
+            ))}
+            <tr class="tot"><td>Provincial</td>{matriz.map(m => <td class="n">{mostrar(m.prov)}</td>)}</tr>
+          </tbody>
+        </table>
+      </div>
+      <div class="mt-3 flex flex-wrap items-center gap-3 text-[0.8rem] text-ink-2" aria-hidden="true">
+        <span>Posición dentro de cada columna:</span>
+        {['Cuartil más bajo', 'Segundo', 'Tercero', 'Cuartil más alto'].map((t, i) => <span class="inline-flex items-center gap-1.5"><span class="inline-block h-3 w-5 rounded" style={`background:var(--o${i + 1})`}></span>{t}</span>)}
+      </div>
+      <figcaption class="mt-3 border-t border-line pt-2.5 text-[0.78rem] text-ink-2"><strong>Fuente: ASIS RIS San Miguel 2025</strong>, Tablas 3 a 14 (págs. 15-24). Dato original: Sistema de Información Distrital para la Gestión Pública, 2017. Cuartiles calculados para esta visualización.</figcaption>
+    </figure>
+  </Seccion>
+
+  <Seccion id="mapa" kicker="Distribución territorial" titulo="Determinantes en el mapa">
+    <div class="tarjeta p-4 sm:p-5">
+      <MapaTerritorial client:visible {...propsMapa(ed, urlEd(anio, 'datos/'))} indicadores={indMapa} inicial="t09" urlFicha={urlEd(anio, 'distritos/')} mostrarEESS={false} alto={500} />
+    </div>
+  </Seccion>
+</Base>

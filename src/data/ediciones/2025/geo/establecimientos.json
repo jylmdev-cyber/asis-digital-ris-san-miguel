@@ -1,0 +1,1045 @@
+{
+ "type": "FeatureCollection",
+ "fuente": {
+  "nombre": "Capa SALUD de INFRAESTRUCTURA_SOCIAL – Instituto Geográfico Nacional (IGN), Infraestructura de Datos Espaciales del Perú (IDEP)",
+  "url": "https://www.idep.gob.pe/geoportal/rest/services/INSTITUCIONALES/INFRAESTRUCTURA_SOCIAL/FeatureServer/2",
+  "fecha_descarga": "2026-10-07",
+  "nota": "Fuente adicional al ASIS. La categoría y la microrred provienen de esta capa y pueden diferir del Cuadro 5 del ASIS. No se publican los campos de director ni teléfono."
+ },
+ "features": [
+  {
+   "type": "Feature",
+   "properties": {
+    "codigo": "00004534",
+    "nombre": "Bolivar",
+    "categoria": "I-2",
+    "institucion": "MINSA",
+    "tipo": "Puestos de salud o postas de salud",
+    "distrito": "Bolívar",
+    "ubigeo": "061102",
+    "microrred": "Nanchoc",
+    "red": "Red de Salud San Miguel",
+    "verificacion": "punto dentro de su distrito"
+   },
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     -79.1791,
+     -6.97723
+    ]
+   }
+  },
+  {
+   "type": "Feature",
+   "properties": {
+    "codigo": "00007405",
+    "nombre": "San Jose",
+    "categoria": "I-1",
+    "institucion": "MINSA",
+    "tipo": "Puestos de salud o postas de salud",
+    "distrito": "Bolívar",
+    "ubigeo": "061102",
+    "microrred": "Nanchoc",
+    "red": "Red de Salud San Miguel",
+    "verificacion": "punto dentro de su distrito"
+   },
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     -79.21158,
+     -6.98201
+    ]
+   }
+  },
+  {
+   "type": "Feature",
+   "properties": {
+    "codigo": "00004576",
+    "nombre": "Calquis",
+    "categoria": "I-2",
+    "institucion": "MINSA",
+    "tipo": "Puestos de salud o postas de salud",
+    "distrito": "Calquis",
+    "ubigeo": "061103",
+    "microrred": "San Miguel",
+    "red": "Red de Salud San Miguel",
+    "verificacion": "punto dentro de su distrito"
+   },
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     -78.8517,
+     -6.97879
+    ]
+   }
+  },
+  {
+   "type": "Feature",
+   "properties": {
+    "codigo": "00004570",
+    "nombre": "Taulis",
+    "categoria": "I-1",
+    "institucion": "MINSA",
+    "tipo": "Puestos de salud o postas de salud",
+    "distrito": "Calquis",
+    "ubigeo": "061103",
+    "microrred": "San Miguel",
+    "red": "Red de Salud San Miguel",
+    "verificacion": "punto dentro de su distrito"
+   },
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     -78.9891,
+     -6.93801
+    ]
+   }
+  },
+  {
+   "type": "Feature",
+   "properties": {
+    "codigo": "00004621",
+    "nombre": "Catilluc",
+    "categoria": "I-3",
+    "institucion": "MINSA",
+    "tipo": "Centros de salud o centros medicos",
+    "distrito": "Catilluc",
+    "ubigeo": "061104",
+    "microrred": "Catilluc",
+    "red": "Red de Salud San Miguel",
+    "verificacion": "punto dentro de su distrito"
+   },
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     -78.77797,
+     -6.80165
+    ]
+   }
+  },
+  {
+   "type": "Feature",
+   "properties": {
+    "codigo": "00004606",
+    "nombre": "Quilcate Alto",
+    "categoria": "I-1",
+    "institucion": "MINSA",
+    "tipo": "Puestos de salud o postas de salud",
+    "distrito": "Catilluc",
+    "ubigeo": "061104",
+    "microrred": "Catilluc",
+    "red": "Red de Salud San Miguel",
+    "verificacion": "punto dentro de su distrito"
+   },
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     -78.7313,
+     -6.81692
+    ]
+   }
+  },
+  {
+   "type": "Feature",
+   "properties": {
+    "codigo": "00004540",
+    "nombre": "El Guayo",
+    "categoria": "I-1",
+    "institucion": "MINSA",
+    "tipo": "Puestos de salud o postas de salud",
+    "distrito": "El Prado",
+    "ubigeo": "061105",
+    "microrred": "San Miguel",
+    "red": "Red de Salud San Miguel",
+    "verificacion": "punto dentro de su distrito"
+   },
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     -79.01052,
+     -7.10132
+    ]
+   }
+  },
+  {
+   "type": "Feature",
+   "properties": {
+    "codigo": "00004575",
+    "nombre": "El Prado",
+    "categoria": "I-2",
+    "institucion": "MINSA",
+    "tipo": "Puestos de salud o postas de salud",
+    "distrito": "El Prado",
+    "ubigeo": "061105",
+    "microrred": "San Miguel",
+    "red": "Red de Salud San Miguel",
+    "verificacion": "punto dentro de su distrito"
+   },
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     -79.00941,
+     -7.03319
+    ]
+   }
+  },
+  {
+   "type": "Feature",
+   "properties": {
+    "codigo": "00004573",
+    "nombre": "Lamaspampa",
+    "categoria": "I-2",
+    "institucion": "MINSA",
+    "tipo": "Puestos de salud o postas de salud",
+    "distrito": "El Prado",
+    "ubigeo": "061105",
+    "microrred": "San Miguel",
+    "red": "Red de Salud San Miguel",
+    "verificacion": "punto dentro de su distrito"
+   },
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     -78.98587,
+     -7.10447
+    ]
+   }
+  },
+  {
+   "type": "Feature",
+   "properties": {
+    "codigo": "00008995",
+    "nombre": "Las Pencas",
+    "categoria": "I-1",
+    "institucion": "MINSA",
+    "tipo": "Puestos de salud o postas de salud",
+    "distrito": "El Prado",
+    "ubigeo": "061105",
+    "microrred": "San Miguel",
+    "red": "Red de Salud San Miguel",
+    "verificacion": "revisar: el punto cae en San Miguel"
+   },
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     -78.94312,
+     -7.10388
+    ]
+   }
+  },
+  {
+   "type": "Feature",
+   "properties": {
+    "codigo": "00004542",
+    "nombre": "Quinden Bajo",
+    "categoria": "I-1",
+    "institucion": "MINSA",
+    "tipo": "Puestos de salud o postas de salud",
+    "distrito": "El Prado",
+    "ubigeo": "061105",
+    "microrred": "San Miguel",
+    "red": "Red de Salud San Miguel",
+    "verificacion": "revisar: el punto cae en San Miguel"
+   },
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     -79.01062,
+     -7.17658
+    ]
+   }
+  },
+  {
+   "type": "Feature",
+   "properties": {
+    "codigo": "00004556",
+    "nombre": "La Florida",
+    "categoria": "I-3",
+    "institucion": "MINSA",
+    "tipo": "Centros de salud o centros medicos",
+    "distrito": "La Florida",
+    "ubigeo": "061106",
+    "microrred": "La Florida",
+    "red": "Red de Salud San Miguel",
+    "verificacion": "punto dentro de su distrito"
+   },
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     -79.12444,
+     -6.87033
+    ]
+   }
+  },
+  {
+   "type": "Feature",
+   "properties": {
+    "codigo": "00004562",
+    "nombre": "Llapa",
+    "categoria": "I-3",
+    "institucion": "MINSA",
+    "tipo": "Centros de salud o centros medicos",
+    "distrito": "Llapa",
+    "ubigeo": "061107",
+    "microrred": "Llapa",
+    "red": "Red de Salud San Miguel",
+    "verificacion": "punto dentro de su distrito"
+   },
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     -78.80737,
+     -6.97937
+    ]
+   }
+  },
+  {
+   "type": "Feature",
+   "properties": {
+    "codigo": "00007083",
+    "nombre": "Pabellon Chico",
+    "categoria": "I-1",
+    "institucion": "MINSA",
+    "tipo": "Puestos de salud o postas de salud",
+    "distrito": "Llapa",
+    "ubigeo": "061107",
+    "microrred": "Llapa",
+    "red": "Red de Salud San Miguel",
+    "verificacion": "punto dentro de su distrito"
+   },
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     -78.75323,
+     -6.89316
+    ]
+   }
+  },
+  {
+   "type": "Feature",
+   "properties": {
+    "codigo": "00004567",
+    "nombre": "Pampa Cuyoc",
+    "categoria": "I-1",
+    "institucion": "MINSA",
+    "tipo": "Puestos de salud o postas de salud",
+    "distrito": "Llapa",
+    "ubigeo": "061107",
+    "microrred": "Llapa",
+    "red": "Red de Salud San Miguel",
+    "verificacion": "punto dentro de su distrito"
+   },
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     -78.76921,
+     -6.92776
+    ]
+   }
+  },
+  {
+   "type": "Feature",
+   "properties": {
+    "codigo": "00006809",
+    "nombre": "Pampa la Calzada",
+    "categoria": "I-1",
+    "institucion": "MINSA",
+    "tipo": "Puestos de salud o postas de salud",
+    "distrito": "Llapa",
+    "ubigeo": "061107",
+    "microrred": "San Miguel",
+    "red": "Red de Salud San Miguel",
+    "verificacion": "punto dentro de su distrito"
+   },
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     -78.8119,
+     -6.92986
+    ]
+   }
+  },
+  {
+   "type": "Feature",
+   "properties": {
+    "codigo": "00004564",
+    "nombre": "Sabana",
+    "categoria": "I-1",
+    "institucion": "MINSA",
+    "tipo": "Puestos de salud o postas de salud",
+    "distrito": "Llapa",
+    "ubigeo": "061107",
+    "microrred": "Llapa",
+    "red": "Red de Salud San Miguel",
+    "verificacion": "punto dentro de su distrito"
+   },
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     -78.80405,
+     -6.96692
+    ]
+   }
+  },
+  {
+   "type": "Feature",
+   "properties": {
+    "codigo": "00004565",
+    "nombre": "San Antonio de Ojos",
+    "categoria": "I-1",
+    "institucion": "MINSA",
+    "tipo": "Puestos de salud o postas de salud",
+    "distrito": "Llapa",
+    "ubigeo": "061107",
+    "microrred": "Llapa",
+    "red": "Red de Salud San Miguel",
+    "verificacion": "punto dentro de su distrito"
+   },
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     -78.76055,
+     -6.91726
+    ]
+   }
+  },
+  {
+   "type": "Feature",
+   "properties": {
+    "codigo": "00004609",
+    "nombre": "Uchuquinua",
+    "categoria": "I-1",
+    "institucion": "MINSA",
+    "tipo": "Puestos de salud o postas de salud",
+    "distrito": "Llapa",
+    "ubigeo": "061107",
+    "microrred": "Llapa",
+    "red": "Red de Salud San Miguel",
+    "verificacion": "punto dentro de su distrito"
+   },
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     -78.71136,
+     -6.8562
+    ]
+   }
+  },
+  {
+   "type": "Feature",
+   "properties": {
+    "codigo": "00004533",
+    "nombre": "Carahuasi",
+    "categoria": "I-1",
+    "institucion": "MINSA",
+    "tipo": "Puestos de salud o postas de salud",
+    "distrito": "Nanchoc",
+    "ubigeo": "061108",
+    "microrred": "Nanchoc",
+    "red": "Red de Salud San Miguel",
+    "verificacion": "punto dentro de su distrito"
+   },
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     -79.16918,
+     -7.01751
+    ]
+   }
+  },
+  {
+   "type": "Feature",
+   "properties": {
+    "codigo": "00004532",
+    "nombre": "Nanchoc",
+    "categoria": "I-3",
+    "institucion": "MINSA",
+    "tipo": "Centros de salud o centros medicos",
+    "distrito": "Nanchoc",
+    "ubigeo": "061108",
+    "microrred": "Nanchoc",
+    "red": "Red de Salud San Miguel",
+    "verificacion": "punto dentro de su distrito"
+   },
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     -79.24141,
+     -6.95981
+    ]
+   }
+  },
+  {
+   "type": "Feature",
+   "properties": {
+    "codigo": "00004560",
+    "nombre": "El Naranjo",
+    "categoria": "I-1",
+    "institucion": "MINSA",
+    "tipo": "Puestos de salud o postas de salud",
+    "distrito": "Niepos",
+    "ubigeo": "061109",
+    "microrred": "La Florida",
+    "red": "Red de Salud San Miguel",
+    "verificacion": "punto dentro de su distrito"
+   },
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     -79.13843,
+     -6.8994
+    ]
+   }
+  },
+  {
+   "type": "Feature",
+   "properties": {
+    "codigo": "00004558",
+    "nombre": "Lanchez",
+    "categoria": "I-1",
+    "institucion": "MINSA",
+    "tipo": "Puestos de salud o postas de salud",
+    "distrito": "Niepos",
+    "ubigeo": "061109",
+    "microrred": "La Florida",
+    "red": "Red de Salud San Miguel",
+    "verificacion": "punto dentro de su distrito"
+   },
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     -79.08834,
+     -6.93401
+    ]
+   }
+  },
+  {
+   "type": "Feature",
+   "properties": {
+    "codigo": "00004559",
+    "nombre": "Miravalles",
+    "categoria": "I-1",
+    "institucion": "MINSA",
+    "tipo": "Puestos de salud o postas de salud",
+    "distrito": "Niepos",
+    "ubigeo": "061109",
+    "microrred": "La Florida",
+    "red": "Red de Salud San Miguel",
+    "verificacion": "punto dentro de su distrito"
+   },
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     -79.10349,
+     -7.00604
+    ]
+   }
+  },
+  {
+   "type": "Feature",
+   "properties": {
+    "codigo": "00004557",
+    "nombre": "Niepos",
+    "categoria": "I-2",
+    "institucion": "MINSA",
+    "tipo": "Puestos de salud o postas de salud",
+    "distrito": "Niepos",
+    "ubigeo": "061109",
+    "microrred": "La Florida",
+    "red": "Red de Salud San Miguel",
+    "verificacion": "punto dentro de su distrito"
+   },
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     -79.1284,
+     -6.92673
+    ]
+   }
+  },
+  {
+   "type": "Feature",
+   "properties": {
+    "codigo": "00004537",
+    "nombre": "Casa Blanca",
+    "categoria": "I-2",
+    "institucion": "MINSA",
+    "tipo": "Puestos de salud o postas de salud",
+    "distrito": "San Gregorio",
+    "ubigeo": "061110",
+    "microrred": "Nanchoc",
+    "red": "Red de Salud San Miguel",
+    "verificacion": "punto dentro de su distrito"
+   },
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     -79.27434,
+     -7.12813
+    ]
+   }
+  },
+  {
+   "type": "Feature",
+   "properties": {
+    "codigo": "00004535",
+    "nombre": "El Sauce",
+    "categoria": "I-1",
+    "institucion": "MINSA",
+    "tipo": "Puestos de salud o postas de salud",
+    "distrito": "San Gregorio",
+    "ubigeo": "061110",
+    "microrred": "Nanchoc",
+    "red": "Red de Salud San Miguel",
+    "verificacion": "punto dentro de su distrito"
+   },
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     -79.12735,
+     -7.06395
+    ]
+   }
+  },
+  {
+   "type": "Feature",
+   "properties": {
+    "codigo": "00004536",
+    "nombre": "San Gregorio",
+    "categoria": "I-1",
+    "institucion": "MINSA",
+    "tipo": "Puestos de salud o postas de salud",
+    "distrito": "San Gregorio",
+    "ubigeo": "061110",
+    "microrred": "Nanchoc",
+    "red": "Red de Salud San Miguel",
+    "verificacion": "punto dentro de su distrito"
+   },
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     -79.09775,
+     -7.05743
+    ]
+   }
+  },
+  {
+   "type": "Feature",
+   "properties": {
+    "codigo": "00019285",
+    "nombre": "Chiapon",
+    "categoria": "I-1",
+    "institucion": "MINSA",
+    "tipo": "Puestos de salud o postas de salud",
+    "distrito": "San Miguel",
+    "ubigeo": "061101",
+    "microrred": "San Miguel",
+    "red": "Red de Salud San Miguel",
+    "verificacion": "punto dentro de su distrito"
+   },
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     -78.88526,
+     -7.08577
+    ]
+   }
+  },
+  {
+   "type": "Feature",
+   "properties": {
+    "codigo": "00008996",
+    "nombre": "Chuad",
+    "categoria": "I-1",
+    "institucion": "MINSA",
+    "tipo": "Puestos de salud o postas de salud",
+    "distrito": "San Miguel",
+    "ubigeo": "061101",
+    "microrred": "San Miguel",
+    "red": "Red de Salud San Miguel",
+    "verificacion": "punto dentro de su distrito"
+   },
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     -78.88943,
+     -7.01145
+    ]
+   }
+  },
+  {
+   "type": "Feature",
+   "properties": {
+    "codigo": "00004571",
+    "nombre": "Nitisuyo Alto",
+    "categoria": "I-1",
+    "institucion": "MINSA",
+    "tipo": "Puestos de salud o postas de salud",
+    "distrito": "San Miguel",
+    "ubigeo": "061101",
+    "microrred": "San Miguel",
+    "red": "Red de Salud San Miguel",
+    "verificacion": "punto dentro de su distrito"
+   },
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     -78.89577,
+     -7.0015
+    ]
+   }
+  },
+  {
+   "type": "Feature",
+   "properties": {
+    "codigo": "00010273",
+    "nombre": "Posta Medica EsSalud San Miguel",
+    "categoria": "I-2",
+    "institucion": "EsSalud",
+    "tipo": "Puestos de salud o postas de salud",
+    "distrito": "San Miguel",
+    "ubigeo": "061101",
+    "microrred": null,
+    "red": null,
+    "verificacion": "punto dentro de su distrito"
+   },
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     -78.85283,
+     -7.00331
+    ]
+   }
+  },
+  {
+   "type": "Feature",
+   "properties": {
+    "codigo": "00004561",
+    "nombre": "San Miguel",
+    "categoria": "I-4",
+    "institucion": "MINSA",
+    "tipo": "Centros de salud con camas de internamiento",
+    "distrito": "San Miguel",
+    "ubigeo": "061101",
+    "microrred": "San Miguel",
+    "red": "Red de Salud San Miguel",
+    "verificacion": "punto dentro de su distrito"
+   },
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     -78.85382,
+     -6.99998
+    ]
+   }
+  },
+  {
+   "type": "Feature",
+   "properties": {
+    "codigo": "00004572",
+    "nombre": "Santa Rosa",
+    "categoria": "I-1",
+    "institucion": "MINSA",
+    "tipo": "Puestos de salud o postas de salud",
+    "distrito": "San Miguel",
+    "ubigeo": "061101",
+    "microrred": "San Miguel",
+    "red": "Red de Salud San Miguel",
+    "verificacion": "punto dentro de su distrito"
+   },
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     -78.83212,
+     -6.96298
+    ]
+   }
+  },
+  {
+   "type": "Feature",
+   "properties": {
+    "codigo": "00004541",
+    "nombre": "Tanon Campo Alegre",
+    "categoria": "I-1",
+    "institucion": "MINSA",
+    "tipo": "Puestos de salud o postas de salud",
+    "distrito": "San Miguel",
+    "ubigeo": "061101",
+    "microrred": "San Miguel",
+    "red": "Red de Salud San Miguel",
+    "verificacion": "punto dentro de su distrito"
+   },
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     -78.88759,
+     -7.16206
+    ]
+   }
+  },
+  {
+   "type": "Feature",
+   "properties": {
+    "codigo": "00004574",
+    "nombre": "Tayapampa",
+    "categoria": "I-1",
+    "institucion": "MINSA",
+    "tipo": "Puestos de salud o postas de salud",
+    "distrito": "San Miguel",
+    "ubigeo": "061101",
+    "microrred": "San Miguel",
+    "red": "Red de Salud San Miguel",
+    "verificacion": "punto dentro de su distrito"
+   },
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     -78.89912,
+     -7.09991
+    ]
+   }
+  },
+  {
+   "type": "Feature",
+   "properties": {
+    "codigo": "00004569",
+    "nombre": "El Cobro Negro",
+    "categoria": "I-1",
+    "institucion": "MINSA",
+    "tipo": "Puestos de salud o postas de salud",
+    "distrito": "San Silvestre de Cochán",
+    "ubigeo": "061111",
+    "microrred": "Catilluc",
+    "red": "Red de Salud San Miguel",
+    "verificacion": "punto dentro de su distrito"
+   },
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     -78.68638,
+     -6.88403
+    ]
+   }
+  },
+  {
+   "type": "Feature",
+   "properties": {
+    "codigo": "00004563",
+    "nombre": "El Tambo",
+    "categoria": "I-1",
+    "institucion": "MINSA",
+    "tipo": "Puestos de salud o postas de salud",
+    "distrito": "San Silvestre de Cochán",
+    "ubigeo": "061111",
+    "microrred": "Llapa",
+    "red": "Red de Salud San Miguel",
+    "verificacion": "punto dentro de su distrito"
+   },
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     -78.79304,
+     -6.98713
+    ]
+   }
+  },
+  {
+   "type": "Feature",
+   "properties": {
+    "codigo": "00007084",
+    "nombre": "Lucmillo",
+    "categoria": "I-1",
+    "institucion": "MINSA",
+    "tipo": "Puestos de salud o postas de salud",
+    "distrito": "San Silvestre de Cochán",
+    "ubigeo": "061111",
+    "microrred": "Llapa",
+    "red": "Red de Salud San Miguel",
+    "verificacion": "punto dentro de su distrito"
+   },
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     -78.75746,
+     -6.92691
+    ]
+   }
+  },
+  {
+   "type": "Feature",
+   "properties": {
+    "codigo": "00004608",
+    "nombre": "Quebrada Honda",
+    "categoria": "I-1",
+    "institucion": "MINSA",
+    "tipo": "Puestos de salud o postas de salud",
+    "distrito": "San Silvestre de Cochán",
+    "ubigeo": "061111",
+    "microrred": "Catilluc",
+    "red": "Red de Salud San Miguel",
+    "verificacion": "revisar: el punto cae en San Miguel"
+   },
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     -78.85107,
+     -7.00009
+    ]
+   }
+  },
+  {
+   "type": "Feature",
+   "properties": {
+    "codigo": "00004568",
+    "nombre": "San Silvestre de Cochan",
+    "categoria": "I-2",
+    "institucion": "MINSA",
+    "tipo": "Puestos de salud o postas de salud",
+    "distrito": "San Silvestre de Cochán",
+    "ubigeo": "061111",
+    "microrred": "Llapa",
+    "red": "Red de Salud San Miguel",
+    "verificacion": "punto dentro de su distrito"
+   },
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     -78.77379,
+     -6.97827
+    ]
+   }
+  },
+  {
+   "type": "Feature",
+   "properties": {
+    "codigo": "00004566",
+    "nombre": "Tantachual Bajo",
+    "categoria": "I-1",
+    "institucion": "MINSA",
+    "tipo": "Puestos de salud o postas de salud",
+    "distrito": "San Silvestre de Cochán",
+    "ubigeo": "061111",
+    "microrred": "Llapa",
+    "red": "Red de Salud San Miguel",
+    "verificacion": "punto dentro de su distrito"
+   },
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     -78.69851,
+     -6.93277
+    ]
+   }
+  },
+  {
+   "type": "Feature",
+   "properties": {
+    "codigo": "00008751",
+    "nombre": "La Coronilla",
+    "categoria": "I-1",
+    "institucion": "MINSA",
+    "tipo": "Puestos de salud o postas de salud",
+    "distrito": "Tongod",
+    "ubigeo": "061112",
+    "microrred": "Catilluc",
+    "red": "Red de Salud San Miguel",
+    "verificacion": "punto dentro de su distrito"
+   },
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     -78.8149,
+     -6.8076
+    ]
+   }
+  },
+  {
+   "type": "Feature",
+   "properties": {
+    "codigo": "00007085",
+    "nombre": "Pisit",
+    "categoria": "I-1",
+    "institucion": "MINSA",
+    "tipo": "Puestos de salud o postas de salud",
+    "distrito": "Tongod",
+    "ubigeo": "061112",
+    "microrred": "Catilluc",
+    "red": "Red de Salud San Miguel",
+    "verificacion": "punto dentro de su distrito"
+   },
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     -78.86677,
+     -6.82447
+    ]
+   }
+  },
+  {
+   "type": "Feature",
+   "properties": {
+    "codigo": "00004607",
+    "nombre": "Tongod",
+    "categoria": "I-3",
+    "institucion": "MINSA",
+    "tipo": "Centros de salud o centros medicos",
+    "distrito": "Tongod",
+    "ubigeo": "061112",
+    "microrred": "Catilluc",
+    "red": "Red de Salud San Miguel",
+    "verificacion": "punto dentro de su distrito"
+   },
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     -78.82383,
+     -6.76306
+    ]
+   }
+  },
+  {
+   "type": "Feature",
+   "properties": {
+    "codigo": "00004543",
+    "nombre": "Lives",
+    "categoria": "I-1",
+    "institucion": "MINSA",
+    "tipo": "Puestos de salud o postas de salud",
+    "distrito": "Unión Agua Blanca",
+    "ubigeo": "061113",
+    "microrred": "San Miguel",
+    "red": "Red de Salud San Miguel",
+    "verificacion": "punto dentro de su distrito"
+   },
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     -79.04149,
+     -7.08045
+    ]
+   }
+  },
+  {
+   "type": "Feature",
+   "properties": {
+    "codigo": "00004546",
+    "nombre": "Union Agua Blanca",
+    "categoria": "I-2",
+    "institucion": "MINSA",
+    "tipo": "Puestos de salud o postas de salud",
+    "distrito": "Unión Agua Blanca",
+    "ubigeo": "061113",
+    "microrred": "San Miguel",
+    "red": "Red de Salud San Miguel",
+    "verificacion": "punto dentro de su distrito"
+   },
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     -79.06091,
+     -7.04469
+    ]
+   }
+  }
+ ]
+}

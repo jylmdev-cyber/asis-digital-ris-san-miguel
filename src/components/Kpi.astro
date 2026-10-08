@@ -1,0 +1,19 @@
+---
+// Tarjeta de cifra clave. `valor` es el texto exacto del documento; el contador animado termina en ese texto.
+import Icono from './Icono.astro';
+import { mostrar } from '../lib/datos';
+interface Props { etiqueta: string; valor: string; sufijo?: string; fuente: string; detalle?: string; href?: string; icono?: string; tono?: 'neutro' | 'acento' }
+const { etiqueta, valor, sufijo = '', fuente, detalle, href, icono, tono = 'neutro' } = Astro.props;
+const numerico = /^[\d\s ]+(,\d+)?$/.test(valor.trim());
+const valorNum = numerico ? valor.replace(/[\s ]/g, '') : '';
+const Tag = href ? 'a' : 'div';
+---
+<Tag href={href} class:list={['tarjeta group relative flex min-w-0 flex-col p-4 no-underline transition-shadow hover:shadow-lg', tono === 'acento' && 'ring-1 ring-accent/30']}>
+  <div class="flex items-start justify-between gap-2">
+    <span class="text-[0.85rem] font-medium leading-snug text-ink-2">{etiqueta}</span>
+    {icono && <span class="shrink-0 rounded-lg bg-accent-soft p-1.5 text-accent"><Icono nombre={icono} size={17} /></span>}
+  </div>
+  <span class="mt-1.5 text-[1.75rem] font-bold leading-tight text-ink" data-valor={valorNum || undefined} data-final={numerico ? mostrar(valor) + sufijo : undefined} data-sufijo={sufijo}>{mostrar(valor)}{sufijo}</span>
+  {detalle && <span class="mt-1 text-[0.8rem] text-ink-2">{detalle}</span>}
+  <span class="mt-auto pt-2 text-[0.72rem] text-muted">{fuente}</span>
+</Tag>

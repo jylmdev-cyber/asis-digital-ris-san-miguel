@@ -1,0 +1,130 @@
+---
+import Base from '../../layouts/Base.astro';
+import Seccion from '../../components/Seccion.astro';
+import TablaDatos from '../../components/TablaDatos.astro';
+import Icono from '../../components/Icono.astro';
+import { edicion } from '../../lib/datos';
+import { rutasEdicion } from '../../lib/filtros';
+import { EDICIONES } from '../../config/sitio';
+import { url, urlEd } from '../../lib/rutas';
+
+export const getStaticPaths = rutasEdicion;
+const { anio } = Astro.params as { anio: string };
+const ed = edicion(anio);
+const E = EDICIONES.find(e => e.anio === anio)!;
+const F = ed.ficha;
+const fuentes = [...new Set(ed.tablas.map(t => t.fuente))].map(f => [f, [...new Set(ed.tablas.filter(t => t.fuente === f).map(t => t.ref))].join(', ')]);
+const notas = ed.tablas.filter(t => t.nota).map(t => [t.ref, t.titulo, t.nota!]);
+const descargas = ed.tablas.map(t => [t.ref, t.titulo, String(t.pag), t.origen, t.id]);
+const geoD = ed.geoDistritos.fuente, geoE = ed.geoEstablecimientos.fuente;
+const enlace = new URL(urlEd(anio), Astro.site).href;
+const indice = [{ id: 'documento', t: 'Documento oficial' }, { id: 'compartir', t: 'Compartir (QR)' }, { id: 'ficha', t: 'Ficha técnica' }, { id: 'metodologia', t: 'Metodología' }, { id: 'fuentes', t: 'Fuentes' }, { id: 'calidad', t: 'Notas de calidad del dato' }, { id: 'limitaciones', t: 'Limitaciones' }, { id: 'privacidad', t: 'Privacidad' }, { id: 'glosario', t: 'Glosario de siglas' }, { id: 'datos', t: 'Descarga de datos' }, { id: 'creditos', t: 'Créditos' }];
+---
+<Base anio={anio} modulo="biblioteca/" titulo="Biblioteca documental" descripcion="Documento oficial, ficha técnica, metodología, fuentes, notas de calidad, limitaciones, glosario de siglas y descarga de datos del ASIS RIS San Miguel 2025." indice={indice}>
+  <p class="kicker">Módulo H</p>
+  <h1 class="mt-1 text-[1.9rem] font-extrabold text-ink">Biblioteca documental</h1>
+
+  <Seccion id="documento" titulo="Documento oficial">
+    <div class="tarjeta flex flex-col gap-4 p-5 sm:flex-row sm:items-center">
+      <span class="h-fit rounded-xl bg-accent-soft p-3 text-accent"><Icono nombre="libro" size={28} /></span>
+      <div class="min-w-0 flex-1">
+        <h3 class="text-[1.05rem] font-semibold text-ink">{E.titulo}</h3>
+        <p class="meta mt-0.5">{F.entidad} · {F.direccion_regional} · {F.paginas} páginas</p>
+        {E.documentoOficialUrl
+          ? <a class="btn mt-3" href={E.documentoOficialUrl} rel="noopener"><Icono nombre="descargar" size={16} />Descargar el documento oficial (PDF)</a>
+          : <p class="nota mt-3"><strong>Descarga no habilitada.</strong> El PDF y el DOC completos incluyen, en la pág. 70, la descripción de un caso de muerte materna con datos que permiten identificar a la persona. Se enlazarán aquí cuando la Red de Salud San Miguel publique una versión autorizada para difusión (configurable en <code>src/config/sitio.ts</code>). Mientras tanto, todas las tablas están disponibles en la sección «Descarga de datos».</p>}
+      </div>
+    </div>
+  </Seccion>
+
+  <Seccion id="compartir" titulo="Compartir la plataforma" intro="Enlace y código QR para WhatsApp, correo, redes sociales o material impreso.">
+    <div class="tarjeta flex flex-col items-start gap-5 p-5 sm:flex-row sm:items-center" data-buscar="Compartir la plataforma|Código QR|enlace WhatsApp QR">
+      <img src={url(`qr-asis-${anio}.svg`)} width="180" height="180" alt={`Código QR que abre ${enlace}`} class="rounded-xl border border-line bg-white p-2" loading="lazy" />
+      <div class="min-w-0">
+        <p class="font-semibold text-ink">Enlace público</p>
+        <p class="mt-1 break-all"><a href={enlace}>{enlace}</a></p>
+        <div class="mt-3 flex flex-wrap gap-2">
+          <a class="btn" href={url(`qr-asis-${anio}.png`)} download><Icono nombre="descargar" size={16} />QR en PNG (para imprimir)</a>
+          <a class="btn" href={url(`qr-asis-${anio}.svg`)} download><Icono nombre="descargar" size={16} />QR en SVG</a>
+          <a class="btn" href={`https://wa.me/?text=${encodeURIComponent('ASIS DIGITAL 2025 | RIS San Miguel: ' + enlace)}`} rel="noopener" target="_blank">Compartir por WhatsApp</a>
+        </div>
+      </div>
+    </div>
+  </Seccion>
+
+  <Seccion id="ficha" titulo="Ficha técnica del documento">
+    <div class="tarjeta p-4 sm:p-5">
+      <TablaDatos titulo="Ficha técnica" maxAlto={false} largos={[1]} cols={['Campo', 'Detalle']} rows={[
+        ['Título (portada)', F.titulo_portada], ['Título (página interior)', F.titulo_interior], ['Entidad', F.entidad], ['Dirección regional', F.direccion_regional],
+        ['Ámbito', F.ambito], ['Periodo de los datos', F.periodo], ['Población', F.poblacion], ['Páginas', String(F.paginas)],
+        ['Redacción y análisis', F.redaccion.join('; ')], ['Apoyo técnico regional', F.apoyo_regional], ['Priorización de problemas', F.priorizacion], ['Dirección de la Red', F.direccion_red],
+        ['Estructura', 'I. Introducción · II. Aspectos generales · III. Características geográficas · IV. Características demográficas · V. Análisis de los determinantes · VI. Análisis de salud-enfermedad · VII. Vinculación del ASIS con instrumentos de gestión · VIII. Determinantes sociales y desigualdades · IX. Líneas de acción · X. Conclusiones · XI. Recomendaciones'],
+      ]} />
+    </div>
+  </Seccion>
+
+  <Seccion id="metodologia" titulo="Metodología de esta plataforma">
+    <div class="prosa tarjeta p-5 text-[0.95rem]">
+      <p><b>Extracción.</b> Se compararon los dos archivos entregados: el PDF de 97 páginas y el archivo de Word (formato .doc, no .docx), que tienen el mismo contenido. Las 57 tablas del documento se extrajeron del archivo de Word convertido a formato abierto, sin transcripción manual. Las cifras que en el documento solo existen como imagen (pirámide, Cuadros 3, 11 y 48, Gráfico 2 y Gráficos 4 a 14) se transcribieron de sus etiquetas y se identifican como «PDF (imagen)» o «PDF (texto)».</p>
+      <p><b>Integridad.</b> Las cifras se guardan como texto, tal como figuran en el documento; solo se normaliza el separador decimal (coma). Las pruebas automáticas verifican, entre otras cosas, que la suma distrital de la población coincida con los totales provinciales y que las sumas de los cuadros de morbilidad y mortalidad coincidan con sus totales.</p>
+      <p><b>Cálculos propios.</b> Algunos elementos se calculan solo para la visualización y se señalan como tales: porcentaje acumulado del Pareto, operativos e inoperativos por distrito (suma de filas), posición del distrito entre los 13 y cuartiles de color en mapas y mapa de calor.</p>
+      <p><b>Información geográfica.</b> Los límites distritales y la ubicación de los establecimientos provienen del Instituto Geográfico Nacional (IGN), a través de la Infraestructura de Datos Espaciales del Perú (IDEP), descargados el {geoD.fecha_descarga}. Son una fuente adicional al ASIS. Se verificó que cada establecimiento caiga dentro de su distrito; las excepciones se marcan «a revisar».</p>
+      <p><b>Tecnología.</b> Sitio estático generado con Astro; gráficos con Apache ECharts y mapas con Leaflet, cargados solo cuando se necesitan. No hay base de datos, servidor, cookies ni analítica.</p>
+    </div>
+  </Seccion>
+
+  <Seccion id="fuentes" titulo="Fuentes de información">
+    <div class="tarjeta p-4 sm:p-5">
+      <TablaDatos titulo="Fuentes citadas por el documento" cols={['Fuente original citada por el ASIS', 'Cuadros, tablas o gráficos']} rows={fuentes} largos={[0, 1]} />
+      <h3 class="mt-5 font-semibold text-ink">Fuentes geográficas adicionales</h3>
+      <ul class="mt-2 list-disc space-y-2 pl-5 text-[0.9rem]">
+        <li>{geoD.nombre}. <a href={geoD.url} rel="noopener">Servicio en línea</a>. {geoD.nota}</li>
+        <li>{geoE.nombre}. <a href={geoE.url} rel="noopener">Servicio en línea</a>. {geoE.nota}</li>
+      </ul>
+    </div>
+  </Seccion>
+
+  <Seccion id="calidad" titulo="Notas de calidad del dato" intro="Diferencias detectadas al comparar el texto con los cuadros del documento. La plataforma siempre muestra la cifra del cuadro; estas notas no corrigen ni reinterpretan el análisis y deben validarse con la Oficina de Epidemiología.">
+    <div class="tarjeta p-4 sm:p-5" data-buscar="Notas de calidad del dato|Biblioteca|inconsistencias diferencias validación">
+      <TablaDatos titulo="Notas de calidad" cols={['Cuadro', 'Título', 'Nota']} rows={notas} largos={[1, 2]} />
+    </div>
+  </Seccion>
+
+  <Seccion id="limitaciones" titulo="Limitaciones que declara el documento">
+    <ol class="tarjeta list-decimal space-y-2 p-5 pl-10 text-[0.93rem]">{ed.limitaciones.map(l => <li>{l}</li>)}</ol>
+  </Seccion>
+
+  <Seccion id="privacidad" titulo="Privacidad y datos excluidos" intro="El ASIS contiene solo datos agregados: no hay nombres de pacientes, códigos personales, direcciones ni teléfonos. Aun así, los datos con muy pocos casos se publican de forma más agregada.">
+    <div class="tarjeta p-4 sm:p-5"><TablaDatos titulo="Datos excluidos" cols={['Elemento', 'Tratamiento en la plataforma']} rows={ed.excluido_por_privacidad.map(x => [x.ref, x.motivo])} largos={[1]} maxAlto={false} /></div>
+  </Seccion>
+
+  <Seccion id="glosario" titulo="Glosario de siglas">
+    <div class="tarjeta p-4 sm:p-5" data-buscar={`Glosario de siglas|Biblioteca|${ed.siglas.map(s => s.join(' ')).join(' ')}`}>
+      <TablaDatos titulo="Siglas" cols={['Sigla', 'Significado']} rows={ed.siglas} largos={[1]} maxAlto={false} />
+    </div>
+  </Seccion>
+
+  <Seccion id="datos" titulo="Descarga de datos" intro="Cada cuadro en formato CSV (separador punto y coma, se abre en Excel) y todos los datos públicos de la edición en un archivo JSON.">
+    <div class="tarjeta p-4 sm:p-5">
+      <div class="mb-4 flex flex-wrap gap-2">
+        <a class="btn" href={urlEd(anio, `datos/asis-ris-san-miguel-${anio}.json`)} download><Icono nombre="descargar" size={16} />Todos los datos (JSON)</a>
+        <a class="btn" href={urlEd(anio, 'datos/distritos.geojson')} download><Icono nombre="mapa" size={16} />Límites distritales (GeoJSON)</a>
+        <a class="btn" href={urlEd(anio, 'datos/establecimientos.geojson')} download><Icono nombre="hospital" size={16} />Establecimientos (GeoJSON)</a>
+      </div>
+      <div class="tabla-wrap" tabindex="0" role="region" aria-label="Cuadros disponibles para descarga">
+        <table class="tabla">
+          <thead><tr><th>Cuadro</th><th>Título</th><th class="n">Pág.</th><th>Origen</th><th>Descarga</th></tr></thead>
+          <tbody>{descargas.map(r => <tr><td>{r[0]}</td><td class="largo">{r[1]}</td><td class="n">{r[2]}</td><td>{r[3]}</td><td><a href={urlEd(anio, `datos/${r[4]}.csv`)} download>CSV</a></td></tr>)}</tbody>
+        </table>
+      </div>
+    </div>
+  </Seccion>
+
+  <Seccion id="creditos" titulo="Créditos y aviso">
+    <div class="prosa tarjeta p-5 text-[0.95rem]">
+      <p><b>Autoría del análisis y de los datos:</b> {F.entidad}, con el apoyo de la {F.apoyo_regional}. Redacción y análisis: {F.redaccion.join(', ')}. Priorización: {F.priorizacion}.</p>
+      <p>Esta plataforma reorganiza el contenido del documento oficial para facilitar su consulta. No agrega indicadores, metas, poblaciones ni fuentes al análisis, y no modifica sus conclusiones. No es un sistema de registro ni sustituye al HIS MINSA, al SINADEF ni a otros sistemas oficiales. No contiene datos de pacientes ni microdatos.</p>
+      <p>Versión de datos {ed.version} · edición {anio}.</p>
+    </div>
+  </Seccion>
+</Base>

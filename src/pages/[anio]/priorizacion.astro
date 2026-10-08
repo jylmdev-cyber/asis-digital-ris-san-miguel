@@ -1,0 +1,68 @@
+---
+import Base from '../../layouts/Base.astro';
+import Seccion from '../../components/Seccion.astro';
+import Icono from '../../components/Icono.astro';
+import VizCard from '../../components/islas/VizCard.vue';
+import { edicion } from '../../lib/datos';
+import { rutasEdicion } from '../../lib/filtros';
+import { variante, vista } from '../../lib/specs';
+import { urlEd } from '../../lib/rutas';
+import type { Variante } from '../../lib/tipos';
+
+export const getStaticPaths = rutasEdicion;
+const { anio } = Astro.params as { anio: string };
+const ed = edicion(anio);
+const c46b = ed.tabla('c46b'), c48 = ed.tabla('c48');
+const problemas = [...new Set(c46b.rows.map(r => r[1]))];
+const vVinc: Record<string, Variante> = Object.fromEntries([['', c46b.rows], ...problemas.map(p => [p, c46b.rows.filter(r => r[1] === p)])].map(([k, f]) => [k as string, variante(c46b, null, { tabla: vista(c46b, f as string[][]) })]));
+const indice = [{ id: 'problemas', t: 'Problemas priorizados' }, { id: 'lineas', t: 'Líneas de acción' }, { id: 'indicadores', t: 'Indicadores de seguimiento' }, { id: 'vinculacion', t: 'Vinculación con la gestión' }, { id: 'conclusiones', t: 'Conclusiones' }, { id: 'recomendaciones', t: 'Recomendaciones' }];
+---
+<Base anio={anio} modulo="priorizacion/" titulo="Priorización y líneas de acción" descripcion="Problemas de salud priorizados, vinculación con el PDRC 2033, el PEI 2023-2027 y las prioridades del MINSA, líneas de acción, conclusiones y recomendaciones del ASIS." indice={indice}>
+  <p class="kicker">Capítulos VII, IX, X y XI</p>
+  <h1 class="mt-1 text-[1.9rem] font-extrabold text-ink">Priorización de problemas y líneas de acción</h1>
+  <p class="mt-2 max-w-3xl text-ink-2">El ASIS se articula con el Plan de Desarrollo Regional Concertado de Cajamarca al 2033 (PDRC), el Plan Estratégico Institucional 2023-2027 (PEI) del Gobierno Regional y las Prioridades Nacionales de Investigación e Intervención Sanitaria 2024-2030 del MINSA (pág. 72).</p>
+
+  <Seccion id="problemas" kicker="Capítulo VII" titulo="Problemas de salud priorizados" intro="Priorizados por el Consejo Provincial de Salud San Miguel con la matriz de priorización. El documento indica «once problemas» y enumera los siguientes.">
+    <ol class="grid gap-2 sm:grid-cols-2 lg:grid-cols-3">
+      {ed.texto.priorizados.map((p, i) => <li class="tarjeta flex items-center gap-3 px-4 py-3"><span class="grid size-8 shrink-0 place-items-center rounded-full bg-accent-soft text-sm font-bold text-accent">{i + 1}</span><span class="text-[0.93rem]">{p}</span></li>)}
+    </ol>
+  </Seccion>
+
+  <Seccion id="lineas" kicker="Cuadro 48 · Capítulo IX" titulo="Líneas de acción priorizadas" intro="Según el determinante identificado en el análisis de desigualdades (págs. 91-92).">
+    <div class="prosa tarjeta p-4 sm:p-5 text-[0.95rem]">{ed.texto.lineas_accion.map(p => <p>{p}</p>)}</div>
+    <div class="grid gap-4 lg:grid-cols-2">
+      {c48.rows.map(r => (
+        <article class="tarjeta flex flex-col p-5" data-buscar={`${r[0]}|Cuadro 48 · Línea de acción|${r[1]} ${r[3]}`}>
+          <div class="flex items-start gap-3"><span class="rounded-xl bg-accent-soft p-2 text-accent"><Icono nombre="bandera" /></span><h3 class="text-[1.05rem] font-semibold text-ink">{r[0]}</h3></div>
+          <dl class="mt-3 grid gap-3 text-[0.92rem]">
+            <div><dt class="kicker !text-ink-2">Determinante principal</dt><dd class="mt-0.5">{r[1]}</dd></div>
+            <div><dt class="kicker !text-ink-2">Línea de acción propuesta</dt><dd class="mt-0.5">{r[2]}</dd></div>
+            <div><dt class="kicker !text-ink-2">Indicador de seguimiento</dt><dd class="mt-0.5">{r[3]}</dd></div>
+          </dl>
+        </article>
+      ))}
+    </div>
+    <p class="nota"><strong>Nota de lectura:</strong> {c48.nota}</p>
+  </Seccion>
+
+  <Seccion id="indicadores" kicker="Indicadores críticos" titulo="Indicadores de seguimiento propuestos" intro="Indicadores que el Cuadro 48 propone para monitorear cada línea de acción. El documento recomienda su seguimiento semestral en el Consejo Provincial de Salud.">
+    <VizCard client:visible id="c-c48" titulo="Indicadores de seguimiento por problema priorizado" variantes={{ default: variante(c48, null, { tabla: vista(c48, c48.rows.map(r => [r[0], r[3]]), ['Problema de salud priorizado', 'Indicador de seguimiento']) }) }} largos={[0, 1]} claves="indicador de seguimiento monitoreo" />
+  </Seccion>
+
+  <Seccion id="vinculacion" kicker="Cuadro 46 (vinculación)" titulo="Vinculación con los instrumentos de gestión">
+    <VizCard client:visible id="c-c46b" titulo={c46b.titulo} metodo="Objetivo estratégico regional, problema priorizado, indicador, determinantes de vinculación y fuente de información." filtros={[{ id: 'p', label: 'Problema priorizado', tipo: 'select', opciones: [{ v: '', t: 'Todos' }, ...problemas.map(p => ({ v: p, t: p.length > 90 ? p.slice(0, 88) + '…' : p }))] }]} variantes={vVinc} largos={[0, 1, 2, 3]} claves="vinculación PDRC PEI objetivo estratégico AER AEI OEI" />
+  </Seccion>
+
+  <Seccion id="conclusiones" kicker="Capítulo X" titulo="Conclusiones" intro="Texto literal (pág. 93).">
+    <div class="grid gap-3">
+      {ed.texto.conclusiones.map(c => <blockquote class="tarjeta border-l-4 !border-l-[var(--accent)] p-4 text-[0.97rem]">{c}</blockquote>)}
+    </div>
+  </Seccion>
+
+  <Seccion id="recomendaciones" kicker="Capítulo XI" titulo="Recomendaciones estratégicas" intro="Texto literal (págs. 93-94).">
+    <ol class="grid gap-3">
+      {ed.texto.recomendaciones.map((c, i) => <li class="tarjeta flex gap-3 p-4"><span class="grid size-8 shrink-0 place-items-center rounded-full bg-brand text-sm font-bold text-white">{i + 1}</span><p class="text-[0.97rem]">{c}</p></li>)}
+    </ol>
+    <p><a href={urlEd(anio, 'desigualdades/')} class="font-semibold">Ver las brechas que sustentan estas recomendaciones →</a></p>
+  </Seccion>
+</Base>

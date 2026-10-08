@@ -1,0 +1,19 @@
+---
+import { edicionActual, SITIO } from '../config/sitio';
+import { urlEd } from '../lib/rutas';
+const destino = urlEd(edicionActual().anio);
+---
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>{SITIO.nombreCompleto}</title>
+  <meta name="description" content={SITIO.descripcion} />
+  <meta http-equiv="refresh" content={`0; url=${destino}`} />
+  <link rel="canonical" href={new URL(destino, Astro.site).href} />
+</head>
+<body style="font-family:system-ui,sans-serif;padding:24px">
+  <p>Redirigiendo a la edición vigente… <a href={destino}>Ir a {SITIO.nombreCompleto}</a></p>
+</body>
+</html>

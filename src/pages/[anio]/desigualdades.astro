@@ -1,0 +1,68 @@
+---
+import Base from '../../layouts/Base.astro';
+import Seccion from '../../components/Seccion.astro';
+import VizCard from '../../components/islas/VizCard.vue';
+import { edicion, num } from '../../lib/datos';
+import { rutasEdicion } from '../../lib/filtros';
+import type { ChartSpec, Color, Variante } from '../../lib/tipos';
+
+export const getStaticPaths = rutasEdicion;
+const { anio } = Astro.params as { anio: string };
+const ed = edicion(anio);
+const G = ed.gradientes;
+const ANIOS = ['2023', '2024', '2025'];
+const COL: Color[] = ['o1', 'o2', 'o3', 'o4'];
+const GR = ['Grupo social 1', 'Grupo social 2', 'Grupo social 3', 'Grupo social 4'];
+const tablaG = (g: typeof G[number]) => ({ cols: ['Año', ...GR], rows: Object.entries(g.valores).map(([a, v]) => [a, ...v]) });
+const base = (g: typeof G[number]) => ({ ref: g.ref, pag: g.pag, fuente: g.fuente, unidad: g.unidad, subtitulo: `${g.ref}. ${g.nombre} según ${g.determinante.toLowerCase()}`, nota: `Lectura del documento: ${g.lectura}` });
+
+const vBar: Record<string, Variante> = {};
+for (const g of G) for (const a of ANIOS) {
+  const v = g.valores[a];
+  vBar[`${g.id}|${a}`] = v
+    ? { ...base(g), spec: { tipo: 'barras', orientacion: 'h', categorias: GR, series: [{ nombre: g.nombre, color: 'o3', coloresPorPunto: COL, valores: v.map(num), etiquetas: v }] } as ChartSpec, tabla: tablaG(g) }
+    : { ...base(g), spec: null, tabla: tablaG(g), nota: `El documento presenta este gradiente solo para ${Object.keys(g.valores).join(', ')}. ${base(g).nota}` };
+}
+const multi = G.filter(g => Object.keys(g.valores).length > 1);
+const vLin: Record<string, Variante> = Object.fromEntries(multi.map(g => [g.id, {
+  ...base(g), tabla: tablaG(g),
+  spec: { tipo: 'lineas', categorias: ANIOS, series: GR.map((n, i) => ({ nombre: n, color: COL[i], valores: ANIOS.map(a => num(g.valores[a]?.[i])), etiquetas: ANIOS.map(a => g.valores[a]?.[i] ?? '–') })) } as ChartSpec,
+}]));
+const opcG = G.map(g => ({ v: g.id, t: `${g.nombre} vs ${g.determinante.toLowerCase()} (${g.ref})` }));
+const indice = [{ id: 'metodo', t: 'Cómo leer los gradientes' }, { id: 'gradientes', t: 'Gradiente por año' }, { id: 'tendencias', t: 'Evolución 2023-2025' }, { id: 'resumen', t: 'Resumen por indicador' }];
+---
+<Base anio={anio} modulo="desigualdades/" titulo="Brechas y desigualdades" descripcion="Gradientes de desigualdad por grupo social para desnutrición, anemia, VIH, tuberculosis, leishmaniasis, embarazo adolescente, cáncer, diabetes, hipertensión y salud mental." indice={indice}>
+  <p class="kicker">Módulo G · Capítulo VIII</p>
+  <h1 class="mt-1 text-[1.9rem] font-extrabold text-ink">Brechas y desigualdades en salud</h1>
+  <p class="mt-2 max-w-3xl text-ink-2">Cómo cambia cada indicador de salud entre grupos de distritos según su exposición a un determinante estructural, de servicios o biológico, calculado por el documento con el Cuantificador de Desigualdades en Salud del Centro Nacional de Epidemiología (DGE) del MINSA.</p>
+
+  <Seccion id="metodo" kicker="Metodología" titulo="Cómo leer los gradientes">
+    <div class="grid gap-3 md:grid-cols-3">
+      <div class="tarjeta p-4"><h3 class="font-semibold text-ink">Grupos sociales 1 a 4</h3><p class="mt-1 text-[0.9rem] text-ink-2">Agrupan a los distritos según su nivel en el determinante indicado, tal como los presenta el documento. El ASIS no detalla los puntos de corte de cada grupo.</p></div>
+      <div class="tarjeta p-4"><h3 class="font-semibold text-ink">Asociación, no causalidad</h3><p class="mt-1 text-[0.9rem] text-ink-2">El documento advierte que las asociaciones son territoriales y no permiten establecer causalidad. Con pocos casos (TBC: 4; cáncer: 11), la lectura es indicativa.</p></div>
+      <div class="tarjeta p-4"><h3 class="font-semibold text-ink">Indicadores sin gráfico</h3><p class="mt-1 text-[0.9rem] text-ink-2">La razón de mortalidad materna (0 casos en 2025) y el dengue (0 casos autóctonos) no tienen gradiente. Los mapas distritales del capítulo son imágenes sin tabla y no se reproducen.</p></div>
+    </div>
+  </Seccion>
+
+  <Seccion id="gradientes" kicker="Gráficos 4 a 14" titulo="Gradiente por grupo social">
+    <VizCard client:visible id="c-gradiente" titulo="Indicador de salud por grupo social" metodo="Valor del indicador en cada grupo social. Cifras transcritas de las etiquetas de los gráficos del documento." filtros={[{ id: 'g', label: 'Indicador y determinante', tipo: 'select', opciones: opcG }, { id: 'a', label: 'Año', tipo: 'seg', opciones: ANIOS.map(a => ({ v: a, t: a })) }]} inicial={{ a: '2025' }} variantes={vBar}
+      claves={G.map(g => `${g.nombre} ${g.determinante}`).join(' ') + ' DCI desnutrición anemia VIH tuberculosis leishmaniasis embarazo adolescente cáncer diabetes hipertensión salud mental brecha gradiente'} />
+  </Seccion>
+
+  <Seccion id="tendencias" kicker="Series 2023-2025" titulo="Evolución de cada grupo social" intro="Solo para los indicadores que el documento presenta en los tres años.">
+    <VizCard client:visible id="c-tendencia" titulo="Evolución del indicador por grupo social" metodo="Una línea por grupo social. Compare la distancia entre líneas para ver si la brecha se amplía o se reduce." periodo="2023-2025" filtros={[{ id: 'g', label: 'Indicador', tipo: 'select', opciones: opcG.filter(o => multi.some(g => g.id === o.v)) }]} variantes={vLin} claves="tendencia evolución brecha series temporales" />
+  </Seccion>
+
+  <Seccion id="resumen" kicker="Síntesis" titulo="Resumen por indicador" intro="Determinante analizado, unidad y lectura que hace el documento de cada gradiente.">
+    <div class="grid gap-3 md:grid-cols-2">
+      {G.map(g => (
+        <article class="tarjeta p-4" data-buscar={`${g.nombre} vs ${g.determinante}|${g.ref}|desigualdad gradiente`}>
+          <p class="kicker">{g.ref} · pág. {g.pag}</p>
+          <h3 class="mt-1 font-semibold text-ink">{g.nombre}</h3>
+          <p class="meta">Determinante: {g.determinante} · Unidad: {g.unidad} · Años: {Object.keys(g.valores).join(', ')}</p>
+          <p class="mt-2 text-[0.92rem]">{g.lectura}</p>
+        </article>
+      ))}
+    </div>
+  </Seccion>
+</Base>

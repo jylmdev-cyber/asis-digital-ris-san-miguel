@@ -1,0 +1,17 @@
+# dependencias y compilación
+node_modules/
+dist/
+.astro/
+
+# DATOS FUENTE: incluyen tablas de uso interno. Nunca se suben al repositorio público.
+datos-fuente/
+
+# documentos originales (solo se publican si hay una versión autorizada)
+*.pdf
+*.doc
+*.docx
+
+# herramientas locales
+.playwright-mcp/
+.env
+.DS_Store

@@ -1,0 +1,7360 @@
+{
+ "version": "1.0.0",
+ "generado_desde": "ASIS_RED_SAN_MIGUEL_2026_FINAL.doc (texto y tablas) y ASIS_RIS_SAN_MIGUEL_2025.pdf (verificación, imágenes y paginación)",
+ "ficha": {
+  "titulo_portada": "Análisis de la Situación de Salud de la Provincia de San Miguel 2025",
+  "titulo_interior": "Análisis de Situación de Salud de la Red de Servicios de Salud San Miguel, 2026",
+  "entidad": "Red Integrada de Salud (RIS) San Miguel – Red de Salud San Miguel, Oficina de Epidemiología",
+  "direccion_regional": "Dirección Regional de Salud (DIRESA) Cajamarca",
+  "ambito": "Provincia de San Miguel (Cajamarca): 13 distritos, 5 microrredes y 48 Instituciones Prestadoras de Servicios de Salud (IPRESS), todas del primer nivel de atención",
+  "periodo": "Datos de 2023 a 2025 (determinantes sociales con datos de 2017; algunos gráficos de desigualdad 2023-2025)",
+  "poblacion": "43 651 habitantes en 2025 (21 846 hombres y 21 805 mujeres), según ORE Cajamarca",
+  "paginas": 97,
+  "redaccion": [
+   "Dra. Jessica E. Tucumango Alcántara",
+   "Mg. Yuli Alcántara Ramírez",
+   "Lic. Silvia M. Soberón Romero"
+  ],
+  "apoyo_regional": "Oficina Regional de Epidemiología, DIRESA Cajamarca – Unidad de Análisis de Situación de Salud (Ing. Raquel Malaver)",
+  "priorizacion": "Consejo Provincial de Salud San Miguel",
+  "direccion_red": "Mg. Jenny Bardales Celis, directora de la Red de Salud San Miguel",
+  "contacto": "Jr. Bolívar S/N, San Miguel"
+ },
+ "distritos": [
+  {
+   "nombre": "Bolívar",
+   "ubigeo": "061102",
+   "slug": "bolivar"
+  },
+  {
+   "nombre": "Calquis",
+   "ubigeo": "061103",
+   "slug": "calquis"
+  },
+  {
+   "nombre": "Catilluc",
+   "ubigeo": "061104",
+   "slug": "catilluc"
+  },
+  {
+   "nombre": "El Prado",
+   "ubigeo": "061105",
+   "slug": "el-prado"
+  },
+  {
+   "nombre": "La Florida",
+   "ubigeo": "061106",
+   "slug": "la-florida"
+  },
+  {
+   "nombre": "Llapa",
+   "ubigeo": "061107",
+   "slug": "llapa"
+  },
+  {
+   "nombre": "Nanchoc",
+   "ubigeo": "061108",
+   "slug": "nanchoc"
+  },
+  {
+   "nombre": "Niepos",
+   "ubigeo": "061109",
+   "slug": "niepos"
+  },
+  {
+   "nombre": "San Gregorio",
+   "ubigeo": "061110",
+   "slug": "san-gregorio"
+  },
+  {
+   "nombre": "San Miguel",
+   "ubigeo": "061101",
+   "slug": "san-miguel"
+  },
+  {
+   "nombre": "San Silvestre de Cochán",
+   "ubigeo": "061111",
+   "slug": "san-silvestre-de-cochan"
+  },
+  {
+   "nombre": "Tongod",
+   "ubigeo": "061112",
+   "slug": "tongod"
+  },
+  {
+   "nombre": "Unión Agua Blanca",
+   "ubigeo": "061113",
+   "slug": "union-agua-blanca"
+  }
+ ],
+ "tablas": [
+  {
+   "id": "t01",
+   "ref": "Tabla 1",
+   "titulo": "Provincia de San Miguel: distritos con mayor y menor altitud",
+   "pag": 7,
+   "fuente": "Atlas de Cajamarca (atlascajamarca.pe), 2022",
+   "elaborado": "Oficina de Epidemiología – Red de Salud San Miguel",
+   "cols": [
+    "Distrito",
+    "Altitud (m s. n. m.)"
+   ],
+   "rows": [
+    [
+     "San Miguel",
+     "2665"
+    ],
+    [
+     "Llapa",
+     "3200"
+    ],
+    [
+     "Calquis",
+     "2855"
+    ],
+    [
+     "El Prado",
+     "2830"
+    ],
+    [
+     "Unión Agua Blanca",
+     "2900"
+    ],
+    [
+     "San Silvestre de Cochán",
+     "3237"
+    ],
+    [
+     "La Florida",
+     "1200"
+    ],
+    [
+     "Niepos",
+     "2451"
+    ],
+    [
+     "Nanchoc",
+     "400"
+    ],
+    [
+     "Bolívar",
+     "917"
+    ],
+    [
+     "San Gregorio",
+     "1854"
+    ],
+    [
+     "Catilluc",
+     "2759"
+    ],
+    [
+     "Tongod",
+     "2645"
+    ]
+   ],
+   "seccion": "territorio",
+   "nota": null,
+   "origen": "DOC"
+  },
+  {
+   "id": "c01",
+   "ref": "Cuadro 1",
+   "titulo": "Dinámica poblacional, provincia de San Miguel, 2023-2025",
+   "pag": 10,
+   "fuente": "ORE Cajamarca, 2026",
+   "elaborado": "Oficina de Epidemiología – Red de Salud San Miguel",
+   "cols": [
+    "Indicador",
+    "2023",
+    "2024",
+    "2025"
+   ],
+   "rows": [
+    [
+     "N° de nacimientos",
+     "326",
+     "314",
+     "307"
+    ],
+    [
+     "Tasa de natalidad x 1 000",
+     "7",
+     "7",
+     "7"
+    ],
+    [
+     "N° de defunciones",
+     "61",
+     "42",
+     "200"
+    ],
+    [
+     "Tasa de mortalidad x 1 000",
+     "1",
+     "1",
+     "5"
+    ],
+    [
+     "Esperanza de vida al nacer",
+     "76,3",
+     "76,4",
+     "76,2"
+    ]
+   ],
+   "seccion": "poblacion",
+   "nota": "El título original del cuadro dice “región Cajamarca”, pero las cifras corresponden a la provincia de San Miguel según el texto del capítulo IV.",
+   "origen": "DOC"
+  },
+  {
+   "id": "c02",
+   "ref": "Cuadro 2",
+   "titulo": "Población de la provincia de San Miguel por curso de vida y sexo, 2025",
+   "pag": 11,
+   "fuente": "ORE Cajamarca, 2026",
+   "elaborado": "Oficina de Epidemiología – Red de Salud San Miguel",
+   "cols": [
+    "Curso de vida",
+    "Masculino",
+    "Femenino"
+   ],
+   "rows": [
+    [
+     "Niños (0 -11 años)",
+     "3803",
+     "3795"
+    ],
+    [
+     "Adolescentes (12 -17 años)",
+     "2388",
+     "2384"
+    ],
+    [
+     "Joven (18 - 29 años)",
+     "3675",
+     "3669"
+    ],
+    [
+     "Adulto (30 -59 años)",
+     "8560",
+     "8544"
+    ],
+    [
+     "Adulto mayor (60 a más años)",
+     "3420",
+     "3413"
+    ],
+    [
+     "Total",
+     "21846",
+     "21805"
+    ]
+   ],
+   "seccion": "poblacion",
+   "nota": null,
+   "origen": "DOC"
+  },
+  {
+   "id": "g01",
+   "ref": "Gráfico 1",
+   "titulo": "Pirámide poblacional, provincia de San Miguel, 2025 (% de la población de cada sexo)",
+   "pag": 12,
+   "fuente": "ORE Cajamarca, 2026",
+   "elaborado": "Oficina de Epidemiología – Red de Salud San Miguel",
+   "cols": [
+    "Grupo de edad",
+    "Femenino (%)",
+    "Masculino (%)"
+   ],
+   "rows": [
+    [
+     "0 - 4",
+     "6,8",
+     "6,84"
+    ],
+    [
+     "5 - 9",
+     "7,2",
+     "7,21"
+    ],
+    [
+     "10 - 14",
+     "8,3",
+     "8,28"
+    ],
+    [
+     "15 - 19",
+     "9,3",
+     "9,34"
+    ],
+    [
+     "20 - 24",
+     "6,8",
+     "6,82"
+    ],
+    [
+     "25 - 29",
+     "6,7",
+     "6,68"
+    ],
+    [
+     "30 - 34",
+     "6,8",
+     "6,76"
+    ],
+    [
+     "35 - 39",
+     "7,3",
+     "7,31"
+    ],
+    [
+     "40 - 44",
+     "7,1",
+     "7,07"
+    ],
+    [
+     "45 - 49",
+     "7,1",
+     "7,12"
+    ],
+    [
+     "50 - 54",
+     "5,8",
+     "5,83"
+    ],
+    [
+     "55 - 59",
+     "5,1",
+     "5,09"
+    ],
+    [
+     "60 - 64",
+     "4,3",
+     "4,30"
+    ],
+    [
+     "65 - 69",
+     "3,7",
+     "3,67"
+    ],
+    [
+     "70 - 74",
+     "2,9",
+     "2,86"
+    ],
+    [
+     "75 - 79",
+     "2,1",
+     "2,06"
+    ],
+    [
+     "80+",
+     "2,76",
+     "2,8"
+    ]
+   ],
+   "seccion": "poblacion",
+   "nota": "Cifras transcritas de las etiquetas del gráfico original (imagen). Se respetan los decimales que muestra cada etiqueta.",
+   "origen": "PDF (imagen)"
+  },
+  {
+   "id": "c03",
+   "ref": "Cuadro 3",
+   "titulo": "Población por distritos de San Miguel, por curso de vida, 2023-2025",
+   "pag": 13,
+   "fuente": "OITE – Red San Miguel, 2026",
+   "elaborado": "Oficina de Epidemiología – Red de Salud San Miguel",
+   "cols": [
+    "Distrito",
+    "Año",
+    "Niños (0-11 a)",
+    "Adolescentes (12-17 a)",
+    "Jóvenes (18-29 a)",
+    "Adultos (30-59 a)",
+    "Adultos mayores (60 a más)",
+    "Total"
+   ],
+   "rows": [
+    [
+     "San Miguel",
+     "2023",
+     "2226",
+     "1425",
+     "2287",
+     "4926",
+     "2475",
+     "13339"
+    ],
+    [
+     "San Miguel",
+     "2024",
+     "2289",
+     "1494",
+     "2361",
+     "5081",
+     "2539",
+     "13764"
+    ],
+    [
+     "San Miguel",
+     "2025",
+     "2481",
+     "1601",
+     "2403",
+     "5379",
+     "2219",
+     "14083"
+    ],
+    [
+     "Bolívar",
+     "2023",
+     "169",
+     "110",
+     "183",
+     "464",
+     "298",
+     "1224"
+    ],
+    [
+     "Bolívar",
+     "2024",
+     "167",
+     "110",
+     "174",
+     "438",
+     "281",
+     "1170"
+    ],
+    [
+     "Bolívar",
+     "2025",
+     "170",
+     "103",
+     "169",
+     "434",
+     "226",
+     "1102"
+    ],
+    [
+     "Calquis",
+     "2023",
+     "699",
+     "456",
+     "793",
+     "1570",
+     "653",
+     "4171"
+    ],
+    [
+     "Calquis",
+     "2024",
+     "669",
+     "446",
+     "769",
+     "1523",
+     "632",
+     "4039"
+    ],
+    [
+     "Calquis",
+     "2025",
+     "702",
+     "450",
+     "744",
+     "1544",
+     "530",
+     "3970"
+    ],
+    [
+     "Catilluc",
+     "2023",
+     "497",
+     "266",
+     "494",
+     "1065",
+     "339",
+     "2661"
+    ],
+    [
+     "Catilluc",
+     "2024",
+     "464",
+     "254",
+     "468",
+     "1007",
+     "318",
+     "2511"
+    ],
+    [
+     "Catilluc",
+     "2025",
+     "467",
+     "253",
+     "448",
+     "1009",
+     "271",
+     "2448"
+    ],
+    [
+     "El Prado",
+     "2023",
+     "315",
+     "151",
+     "251",
+     "581",
+     "306",
+     "1604"
+    ],
+    [
+     "El Prado",
+     "2024",
+     "430",
+     "178",
+     "293",
+     "679",
+     "358",
+     "1938"
+    ],
+    [
+     "El Prado",
+     "2025",
+     "414",
+     "210",
+     "325",
+     "785",
+     "344",
+     "2078"
+    ],
+    [
+     "La Florida",
+     "2023",
+     "285",
+     "182",
+     "350",
+     "780",
+     "476",
+     "2073"
+    ],
+    [
+     "La Florida",
+     "2024",
+     "274",
+     "176",
+     "334",
+     "744",
+     "452",
+     "1980"
+    ],
+    [
+     "La Florida",
+     "2025",
+     "260",
+     "176",
+     "321",
+     "741",
+     "372",
+     "1870"
+    ],
+    [
+     "Llapa",
+     "2023",
+     "746",
+     "466",
+     "743",
+     "1612",
+     "756",
+     "4323"
+    ],
+    [
+     "Llapa",
+     "2024",
+     "730",
+     "450",
+     "708",
+     "1534",
+     "719",
+     "4141"
+    ],
+    [
+     "Llapa",
+     "2025",
+     "682",
+     "461",
+     "679",
+     "1531",
+     "597",
+     "3950"
+    ],
+    [
+     "Nanchoc",
+     "2023",
+     "193",
+     "108",
+     "194",
+     "544",
+     "283",
+     "1322"
+    ],
+    [
+     "Nanchoc",
+     "2024",
+     "195",
+     "109",
+     "189",
+     "522",
+     "269",
+     "1284"
+    ],
+    [
+     "Nanchoc",
+     "2025",
+     "200",
+     "114",
+     "181",
+     "526",
+     "223",
+     "1244"
+    ],
+    [
+     "Niepos",
+     "2023",
+     "520",
+     "360",
+     "438",
+     "1003",
+     "704",
+     "3025"
+    ],
+    [
+     "Niepos",
+     "2024",
+     "490",
+     "343",
+     "411",
+     "936",
+     "656",
+     "2836"
+    ],
+    [
+     "Niepos",
+     "2025",
+     "492",
+     "333",
+     "392",
+     "921",
+     "526",
+     "2664"
+    ],
+    [
+     "San Gregorio",
+     "2023",
+     "374",
+     "198",
+     "311",
+     "857",
+     "462",
+     "2202"
+    ],
+    [
+     "San Gregorio",
+     "2024",
+     "333",
+     "186",
+     "298",
+     "818",
+     "443",
+     "2078"
+    ],
+    [
+     "San Gregorio",
+     "2025",
+     "306",
+     "184",
+     "286",
+     "817",
+     "369",
+     "1962"
+    ],
+    [
+     "San Silvestre de Cochán",
+     "2023",
+     "613",
+     "355",
+     "586",
+     "1404",
+     "575",
+     "3533"
+    ],
+    [
+     "San Silvestre de Cochán",
+     "2024",
+     "577",
+     "346",
+     "564",
+     "1354",
+     "554",
+     "3395"
+    ],
+    [
+     "San Silvestre de Cochán",
+     "2025",
+     "545",
+     "350",
+     "538",
+     "1369",
+     "466",
+     "3268"
+    ],
+    [
+     "Tongod",
+     "2023",
+     "473",
+     "217",
+     "390",
+     "873",
+     "310",
+     "2263"
+    ],
+    [
+     "Tongod",
+     "2024",
+     "423",
+     "219",
+     "396",
+     "894",
+     "315",
+     "2247"
+    ],
+    [
+     "Tongod",
+     "2025",
+     "442",
+     "222",
+     "396",
+     "941",
+     "279",
+     "2280"
+    ],
+    [
+     "Unión Agua Blanca",
+     "2023",
+     "444",
+     "327",
+     "499",
+     "1162",
+     "520",
+     "2952"
+    ],
+    [
+     "Unión Agua Blanca",
+     "2024",
+     "440",
+     "315",
+     "477",
+     "1107",
+     "497",
+     "2836"
+    ],
+    [
+     "Unión Agua Blanca",
+     "2025",
+     "437",
+     "315",
+     "462",
+     "1107",
+     "411",
+     "2732"
+    ]
+   ],
+   "seccion": "poblacion",
+   "nota": "En el DOC este cuadro es una imagen; las cifras provienen de la capa de texto del PDF. La suma de los 13 distritos coincide con los totales provinciales (44 692, 44 219 y 43 651) y, en 2025, con el Cuadro 2 por curso de vida.",
+   "origen": "PDF (texto)"
+  },
+  {
+   "id": "t02",
+   "ref": "Tabla 2",
+   "titulo": "Afiliados al SIS por distritos, provincia San Miguel, 2023-2025",
+   "pag": 14,
+   "fuente": "Unidad de Seguros – DIRESA Cajamarca, 2026",
+   "elaborado": "Oficina de Epidemiología – Red de Salud San Miguel",
+   "cols": [
+    "Distrito",
+    "2023",
+    "2024",
+    "2025"
+   ],
+   "rows": [
+    [
+     "Bolívar",
+     "1328",
+     "1650",
+     "1668"
+    ],
+    [
+     "Calquis",
+     "4144",
+     "4687",
+     "4707"
+    ],
+    [
+     "Catilluc",
+     "3239",
+     "3602",
+     "3579"
+    ],
+    [
+     "El Prado",
+     "4775",
+     "3889",
+     "3848"
+    ],
+    [
+     "La Florida",
+     "2225",
+     "2682",
+     "2683"
+    ],
+    [
+     "Llapa",
+     "4685",
+     "5525",
+     "5532"
+    ],
+    [
+     "Nanchoc",
+     "1409",
+     "1638",
+     "1647"
+    ],
+    [
+     "Niepos",
+     "3562",
+     "4149",
+     "4159"
+    ],
+    [
+     "San Gregorio",
+     "2290",
+     "2626",
+     "2604"
+    ],
+    [
+     "San Miguel",
+     "11086",
+     "14665",
+     "14772"
+    ],
+    [
+     "San Silvestre de Cochán",
+     "4204",
+     "4753",
+     "4735"
+    ],
+    [
+     "Tongod",
+     "2988",
+     "3478",
+     "3468"
+    ],
+    [
+     "Unión Agua Blanca",
+     "2960",
+     "3267",
+     "3268"
+    ],
+    [
+     "Total",
+     "48895",
+     "56611",
+     "56670"
+    ]
+   ],
+   "seccion": "poblacion",
+   "nota": null,
+   "origen": "DOC"
+  },
+  {
+   "id": "t03",
+   "ref": "Tabla 3",
+   "titulo": "Pobreza monetaria por distritos, provincia San Miguel, 2017",
+   "pag": 15,
+   "fuente": "Sistema de Información Distrital para la Gestión Pública, 2017",
+   "elaborado": "Oficina de Epidemiología – Red de Salud San Miguel",
+   "cols": [
+    "Distrito",
+    "Pobreza monetaria (%)"
+   ],
+   "rows": [
+    [
+     "Bolívar",
+     "39,5"
+    ],
+    [
+     "Calquis",
+     "66,2"
+    ],
+    [
+     "Catilluc",
+     "60,1"
+    ],
+    [
+     "El Prado",
+     "65,7"
+    ],
+    [
+     "La Florida",
+     "47,9"
+    ],
+    [
+     "Llapa",
+     "45,0"
+    ],
+    [
+     "Nanchoc",
+     "44,7"
+    ],
+    [
+     "Niepos",
+     "55,9"
+    ],
+    [
+     "San Gregorio",
+     "59,5"
+    ],
+    [
+     "San Miguel",
+     "44,1"
+    ],
+    [
+     "San Silvestre de Cochán",
+     "70,1"
+    ],
+    [
+     "Tongod",
+     "52,3"
+    ],
+    [
+     "Unión Agua Blanca",
+     "59,3"
+    ],
+    [
+     "Provincial",
+     "52,9"
+    ]
+   ],
+   "seccion": "determinantes",
+   "nota": null,
+   "origen": "DOC",
+   "indicador": "Pobreza monetaria (%)",
+   "tipo_determinante": "estructural"
+  },
+  {
+   "id": "t04",
+   "ref": "Tabla 4",
+   "titulo": "Analfabetismo por distritos, provincia San Miguel, 2017",
+   "pag": 15,
+   "fuente": "Sistema de Información Distrital para la Gestión Pública, 2017",
+   "elaborado": "Oficina de Epidemiología – Red de Salud San Miguel",
+   "cols": [
+    "Distrito",
+    "Analfabetismo (%)"
+   ],
+   "rows": [
+    [
+     "Bolívar",
+     "8,1"
+    ],
+    [
+     "Calquis",
+     "13,9"
+    ],
+    [
+     "Catilluc",
+     "13,1"
+    ],
+    [
+     "El Prado",
+     "6,0"
+    ],
+    [
+     "La Florida",
+     "12,6"
+    ],
+    [
+     "Llapa",
+     "14,3"
+    ],
+    [
+     "Nanchoc",
+     "9,1"
+    ],
+    [
+     "Niepos",
+     "10,7"
+    ],
+    [
+     "San Gregorio",
+     "10,5"
+    ],
+    [
+     "San Miguel",
+     "19,0"
+    ],
+    [
+     "San Silvestre de Cochán",
+     "13,4"
+    ],
+    [
+     "Tongod",
+     "9,6"
+    ],
+    [
+     "Unión Agua Blanca",
+     "13,7"
+    ],
+    [
+     "Provincial",
+     "12,7"
+    ]
+   ],
+   "seccion": "determinantes",
+   "nota": "El texto del documento indica que Llapa y Calquis tienen el mayor analfabetismo; en la tabla el valor más alto corresponde a San Miguel (19,0 %). Se muestran las cifras de la tabla.",
+   "origen": "DOC",
+   "indicador": "Analfabetismo (%)",
+   "tipo_determinante": "estructural"
+  },
+  {
+   "id": "t05",
+   "ref": "Tabla 5",
+   "titulo": "Niños que no asisten a la escuela, por distritos, provincia San Miguel",
+   "pag": 16,
+   "fuente": "Sistema de Información Distrital para la Gestión Pública, 2017",
+   "elaborado": "Oficina de Epidemiología – Red de Salud San Miguel",
+   "cols": [
+    "Distrito",
+    "Niños que no asisten a la escuela (%)"
+   ],
+   "rows": [
+    [
+     "Bolívar",
+     "1,9"
+    ],
+    [
+     "Calquis",
+     "1,7"
+    ],
+    [
+     "Catilluc",
+     "0,9"
+    ],
+    [
+     "El Prado",
+     "1,8"
+    ],
+    [
+     "La Florida",
+     "1,5"
+    ],
+    [
+     "Llapa",
+     "1,0"
+    ],
+    [
+     "Nanchoc",
+     "0,9"
+    ],
+    [
+     "Niepos",
+     "1,7"
+    ],
+    [
+     "San Gregorio",
+     "1,7"
+    ],
+    [
+     "San Miguel",
+     "1,9"
+    ],
+    [
+     "San Silvestre de Cochán",
+     "1,9"
+    ],
+    [
+     "Tongod",
+     "1,3"
+    ],
+    [
+     "Unión Agua Blanca",
+     "2,7"
+    ],
+    [
+     "Provincial",
+     "1,6"
+    ]
+   ],
+   "seccion": "determinantes",
+   "nota": "El título original dice “2025”, pero la fuente y el texto indican datos de 2017.",
+   "origen": "DOC",
+   "indicador": "Niños que no asisten a la escuela (%)",
+   "tipo_determinante": "estructural"
+  },
+  {
+   "id": "t06",
+   "ref": "Tabla 6",
+   "titulo": "Porcentaje de desempleo por distritos, provincia San Miguel, 2017",
+   "pag": 17,
+   "fuente": "Sistema de Información Distrital para la Gestión Pública, 2017",
+   "elaborado": "Oficina de Epidemiología – Red de Salud San Miguel",
+   "cols": [
+    "Distrito",
+    "Desempleo (%)"
+   ],
+   "rows": [
+    [
+     "Bolívar",
+     "0,4"
+    ],
+    [
+     "Calquis",
+     "0,7"
+    ],
+    [
+     "Catilluc",
+     "0,6"
+    ],
+    [
+     "El Prado",
+     "10,1"
+    ],
+    [
+     "La Florida",
+     "7,2"
+    ],
+    [
+     "Llapa",
+     "2,0"
+    ],
+    [
+     "Nanchoc",
+     "4,8"
+    ],
+    [
+     "Niepos",
+     "2,5"
+    ],
+    [
+     "San Gregorio",
+     "1,9"
+    ],
+    [
+     "San Miguel",
+     "3,7"
+    ],
+    [
+     "San Silvestre de Cochán",
+     "1,2"
+    ],
+    [
+     "Tongod",
+     "1,6"
+    ],
+    [
+     "Unión Agua Blanca",
+     "2,6"
+    ],
+    [
+     "Provincial",
+     "3,0"
+    ]
+   ],
+   "seccion": "determinantes",
+   "nota": null,
+   "origen": "DOC",
+   "indicador": "Desempleo (%)",
+   "tipo_determinante": "estructural"
+  },
+  {
+   "id": "t07",
+   "ref": "Tabla 7",
+   "titulo": "Porcentaje de hogares con dependencia económica por distritos, provincia San Miguel",
+   "pag": 18,
+   "fuente": "Sistema de Información Distrital para la Gestión Pública, 2017",
+   "elaborado": "Oficina de Epidemiología – Red de Salud San Miguel",
+   "cols": [
+    "Distrito",
+    "Dependencia económica (%)"
+   ],
+   "rows": [
+    [
+     "Bolívar",
+     "69,1"
+    ],
+    [
+     "Calquis",
+     "65,8"
+    ],
+    [
+     "Catilluc",
+     "59,6"
+    ],
+    [
+     "El Prado",
+     "65,3"
+    ],
+    [
+     "La Florida",
+     "64,8"
+    ],
+    [
+     "Llapa",
+     "65,9"
+    ],
+    [
+     "Nanchoc",
+     "65,6"
+    ],
+    [
+     "Niepos",
+     "80,5"
+    ],
+    [
+     "San Gregorio",
+     "65,1"
+    ],
+    [
+     "San Miguel",
+     "61,9"
+    ],
+    [
+     "San Silvestre de Cochán",
+     "58,4"
+    ],
+    [
+     "Tongod",
+     "62,5"
+    ],
+    [
+     "Unión Agua Blanca",
+     "66,1"
+    ],
+    [
+     "Provincial",
+     "65,4"
+    ]
+   ],
+   "seccion": "determinantes",
+   "nota": "El título original dice “2025”, pero la fuente indicada es el Sistema de Información Distrital, 2017.",
+   "origen": "DOC",
+   "indicador": "Dependencia económica (%)",
+   "tipo_determinante": "estructural"
+  },
+  {
+   "id": "t08",
+   "ref": "Tabla 8",
+   "titulo": "Índice de densidad del Estado por distritos, provincia San Miguel, 2017",
+   "pag": 19,
+   "fuente": "Sistema de Información Distrital para la Gestión Pública, 2017",
+   "elaborado": "Oficina de Epidemiología – Red de Salud San Miguel",
+   "cols": [
+    "Distrito",
+    "Índice de densidad del Estado (IDE)"
+   ],
+   "rows": [
+    [
+     "Bolívar",
+     "0,64"
+    ],
+    [
+     "Calquis",
+     "0,44"
+    ],
+    [
+     "Catilluc",
+     "0,55"
+    ],
+    [
+     "El Prado",
+     "0,59"
+    ],
+    [
+     "La Florida",
+     "0,60"
+    ],
+    [
+     "Llapa",
+     "0,59"
+    ],
+    [
+     "Nanchoc",
+     "0,60"
+    ],
+    [
+     "Niepos",
+     "0,52"
+    ],
+    [
+     "San Gregorio",
+     "0,50"
+    ],
+    [
+     "San Miguel",
+     "0,58"
+    ],
+    [
+     "San Silvestre de Cochán",
+     "0,52"
+    ],
+    [
+     "Tongod",
+     "0,64"
+    ],
+    [
+     "Unión Agua Blanca",
+     "0,55"
+    ],
+    [
+     "Provincial",
+     "0,65"
+    ]
+   ],
+   "seccion": "determinantes",
+   "nota": "El documento expresa el IDE como “%”, aunque es un índice de 0 a 1. Se muestra tal como figura. El valor provincial (0,65) es mayor que el de todos los distritos.",
+   "origen": "DOC",
+   "indicador": "Índice de densidad del Estado (IDE)",
+   "tipo_determinante": "estructural"
+  },
+  {
+   "id": "t09",
+   "ref": "Tabla 9",
+   "titulo": "Porcentaje de viviendas con acceso a agua potable, por distritos, provincia San Miguel, 2017",
+   "pag": 20,
+   "fuente": "Sistema de Información Distrital para la Gestión Pública, 2017",
+   "elaborado": "Oficina de Epidemiología – Red de Salud San Miguel",
+   "cols": [
+    "Distrito",
+    "Viviendas con agua potable (%)"
+   ],
+   "rows": [
+    [
+     "Bolívar",
+     "44,2"
+    ],
+    [
+     "Calquis",
+     "31,9"
+    ],
+    [
+     "Catilluc",
+     "46,6"
+    ],
+    [
+     "El Prado",
+     "54,3"
+    ],
+    [
+     "La Florida",
+     "65,9"
+    ],
+    [
+     "Llapa",
+     "55,9"
+    ],
+    [
+     "Nanchoc",
+     "43,3"
+    ],
+    [
+     "Niepos",
+     "39,5"
+    ],
+    [
+     "San Gregorio",
+     "17,1"
+    ],
+    [
+     "San Miguel",
+     "52,9"
+    ],
+    [
+     "San Silvestre de Cochán",
+     "59,5"
+    ],
+    [
+     "Tongod",
+     "57,6"
+    ],
+    [
+     "Unión Agua Blanca",
+     "55,9"
+    ],
+    [
+     "Provincial",
+     "49,3"
+    ]
+   ],
+   "seccion": "determinantes",
+   "nota": null,
+   "origen": "DOC",
+   "indicador": "Viviendas con agua potable (%)",
+   "tipo_determinante": "intermedio"
+  },
+  {
+   "id": "t10",
+   "ref": "Tabla 10",
+   "titulo": "Porcentaje de viviendas con acceso a desagüe, por distritos, provincia San Miguel, 2017",
+   "pag": 21,
+   "fuente": "Sistema de Información Distrital para la Gestión Pública, 2017",
+   "elaborado": "Oficina de Epidemiología – Red de Salud San Miguel",
+   "cols": [
+    "Distrito",
+    "Viviendas con desagüe (%)"
+   ],
+   "rows": [
+    [
+     "Bolívar",
+     "58,6"
+    ],
+    [
+     "Calquis",
+     "76,1"
+    ],
+    [
+     "Catilluc",
+     "63,2"
+    ],
+    [
+     "El Prado",
+     "47,4"
+    ],
+    [
+     "La Florida",
+     "72,7"
+    ],
+    [
+     "Llapa",
+     "68,0"
+    ],
+    [
+     "Nanchoc",
+     "49,3"
+    ],
+    [
+     "Niepos",
+     "63,1"
+    ],
+    [
+     "San Gregorio",
+     "40,4"
+    ],
+    [
+     "San Miguel",
+     "69,1"
+    ],
+    [
+     "San Silvestre de Cochán",
+     "75,9"
+    ],
+    [
+     "Tongod",
+     "65,1"
+    ],
+    [
+     "Unión Agua Blanca",
+     "46,5"
+    ],
+    [
+     "Provincial",
+     "64,2"
+    ]
+   ],
+   "seccion": "determinantes",
+   "nota": null,
+   "origen": "DOC",
+   "indicador": "Viviendas con desagüe (%)",
+   "tipo_determinante": "intermedio"
+  },
+  {
+   "id": "t11",
+   "ref": "Tabla 11",
+   "titulo": "Porcentaje de hogares hacinados, por distritos, provincia San Miguel, 2017",
+   "pag": 22,
+   "fuente": "Sistema de Información Distrital para la Gestión Pública, 2017",
+   "elaborado": "Oficina de Epidemiología – Red de Salud San Miguel",
+   "cols": [
+    "Distrito",
+    "Hogares hacinados (%)"
+   ],
+   "rows": [
+    [
+     "Bolívar",
+     "13,6"
+    ],
+    [
+     "Calquis",
+     "24"
+    ],
+    [
+     "Catilluc",
+     "25,5"
+    ],
+    [
+     "El Prado",
+     "11"
+    ],
+    [
+     "La Florida",
+     "10,5"
+    ],
+    [
+     "Llapa",
+     "11,8"
+    ],
+    [
+     "Nanchoc",
+     "9,6"
+    ],
+    [
+     "Niepos",
+     "19,8"
+    ],
+    [
+     "San Gregorio",
+     "6,5"
+    ],
+    [
+     "San Miguel",
+     "11,2"
+    ],
+    [
+     "San Silvestre de Cochán",
+     "9,9"
+    ],
+    [
+     "Tongod",
+     "29,8"
+    ],
+    [
+     "Unión Agua Blanca",
+     "13,2"
+    ],
+    [
+     "Provincial",
+     "14,5"
+    ]
+   ],
+   "seccion": "determinantes",
+   "nota": null,
+   "origen": "DOC",
+   "indicador": "Hogares hacinados (%)",
+   "tipo_determinante": "intermedio"
+  },
+  {
+   "id": "t12",
+   "ref": "Tabla 12",
+   "titulo": "Hogares que cocinan con leña y/o estiércol, por distritos, provincia San Miguel, 2017",
+   "pag": 23,
+   "fuente": "Sistema de Información Distrital para la Gestión Pública, 2017",
+   "elaborado": "Oficina de Epidemiología – Red de Salud San Miguel",
+   "cols": [
+    "Distrito",
+    "Hogares que cocinan con leña o estiércol (%)"
+   ],
+   "rows": [
+    [
+     "Bolívar",
+     "51,2"
+    ],
+    [
+     "Calquis",
+     "79,0"
+    ],
+    [
+     "Catilluc",
+     "61,2"
+    ],
+    [
+     "El Prado",
+     "65,4"
+    ],
+    [
+     "La Florida",
+     "66,3"
+    ],
+    [
+     "Llapa",
+     "62,8"
+    ],
+    [
+     "Nanchoc",
+     "53,6"
+    ],
+    [
+     "Niepos",
+     "63,2"
+    ],
+    [
+     "San Gregorio",
+     "58,7"
+    ],
+    [
+     "San Miguel",
+     "61,4"
+    ],
+    [
+     "San Silvestre de Cochán",
+     "71,9"
+    ],
+    [
+     "Tongod",
+     "61,9"
+    ],
+    [
+     "Unión Agua Blanca",
+     "59,0"
+    ],
+    [
+     "Provincial",
+     "63,6"
+    ]
+   ],
+   "seccion": "determinantes",
+   "nota": null,
+   "origen": "DOC",
+   "indicador": "Hogares que cocinan con leña o estiércol (%)",
+   "tipo_determinante": "intermedio"
+  },
+  {
+   "id": "t13",
+   "ref": "Tabla 13",
+   "titulo": "Porcentaje de población migrante por distritos, provincia San Miguel, 2017",
+   "pag": 24,
+   "fuente": "Sistema de Información Distrital para la Gestión Pública, 2017",
+   "elaborado": "Oficina de Epidemiología – Red de Salud San Miguel",
+   "cols": [
+    "Distrito",
+    "Población migrante (%)"
+   ],
+   "rows": [
+    [
+     "Bolívar",
+     "13,2"
+    ],
+    [
+     "Calquis",
+     "7,2"
+    ],
+    [
+     "Catilluc",
+     "12,8"
+    ],
+    [
+     "El Prado",
+     "15,2"
+    ],
+    [
+     "La Florida",
+     "18,3"
+    ],
+    [
+     "Llapa",
+     "5,3"
+    ],
+    [
+     "Nanchoc",
+     "27,0"
+    ],
+    [
+     "Niepos",
+     "4,5"
+    ],
+    [
+     "San Gregorio",
+     "15,0"
+    ],
+    [
+     "San Miguel",
+     "12,5"
+    ],
+    [
+     "San Silvestre de Cochán",
+     "5,0"
+    ],
+    [
+     "Tongod",
+     "6,7"
+    ],
+    [
+     "Unión Agua Blanca",
+     "11,7"
+    ],
+    [
+     "Provincial",
+     "10,4"
+    ]
+   ],
+   "seccion": "determinantes",
+   "nota": null,
+   "origen": "DOC",
+   "indicador": "Población migrante (%)",
+   "tipo_determinante": "psicosocial"
+  },
+  {
+   "id": "t14",
+   "ref": "Tabla 14",
+   "titulo": "Porcentaje de población emigrante por distritos, provincia San Miguel, 2017",
+   "pag": 24,
+   "fuente": "Sistema de Información Distrital para la Gestión Pública, 2017",
+   "elaborado": "Oficina de Epidemiología – Red de Salud San Miguel",
+   "cols": [
+    "Distrito",
+    "Población emigrante (%)"
+   ],
+   "rows": [
+    [
+     "Bolívar",
+     "70,4"
+    ],
+    [
+     "Calquis",
+     "44,3"
+    ],
+    [
+     "Catilluc",
+     "36,0"
+    ],
+    [
+     "El Prado",
+     "140,1"
+    ],
+    [
+     "La Florida",
+     "150,4"
+    ],
+    [
+     "Llapa",
+     "77,1"
+    ],
+    [
+     "Nanchoc",
+     "61,9"
+    ],
+    [
+     "Niepos",
+     "140,6"
+    ],
+    [
+     "San Gregorio",
+     "122,9"
+    ],
+    [
+     "San Miguel",
+     "88,12"
+    ],
+    [
+     "San Silvestre de Cochán",
+     "29,5"
+    ],
+    [
+     "Tongod",
+     "26,2"
+    ],
+    [
+     "Unión Agua Blanca",
+     "47,7"
+    ],
+    [
+     "Provincial",
+     "75,3"
+    ]
+   ],
+   "seccion": "determinantes",
+   "nota": "Varios distritos superan el 100 %; el documento no explica el método de cálculo. Se muestran las cifras tal como figuran.",
+   "origen": "DOC",
+   "indicador": "Población emigrante (%)",
+   "tipo_determinante": "psicosocial"
+  },
+  {
+   "id": "c04",
+   "ref": "Cuadro 4",
+   "titulo": "Saneamiento físico legal de los establecimientos de salud, provincia San Miguel, 2025",
+   "pag": 25,
+   "fuente": "Patrimonio – Red de Salud San Miguel, 2025",
+   "elaborado": "Oficina de Epidemiología – Red de Salud San Miguel",
+   "cols": [
+    "Distrito",
+    "N° EE. SS.",
+    "Saneamiento físico legal: sí",
+    "Saneamiento físico legal: no",
+    "Título de propiedad: sí",
+    "Título de propiedad: no"
+   ],
+   "rows": [
+    [
+     "Bolívar",
+     "2",
+     "2",
+     "",
+     "2",
+     ""
+    ],
+    [
+     "Calquis",
+     "3",
+     "2",
+     "1",
+     "2",
+     "1"
+    ],
+    [
+     "Catilluc",
+     "2",
+     "",
+     "2",
+     "",
+     "2"
+    ],
+    [
+     "El Prado",
+     "5",
+     "1",
+     "4",
+     "1",
+     "4"
+    ],
+    [
+     "La Florida",
+     "1",
+     "",
+     "1",
+     "",
+     "1"
+    ],
+    [
+     "Llapa",
+     "7",
+     "1",
+     "6",
+     "1",
+     "6"
+    ],
+    [
+     "Nanchoc",
+     "2",
+     "1",
+     "1",
+     "1",
+     "1"
+    ],
+    [
+     "Niepos",
+     "4",
+     "4",
+     "",
+     "4",
+     ""
+    ],
+    [
+     "San Gregorio",
+     "3",
+     "2",
+     "1",
+     "2",
+     "1"
+    ],
+    [
+     "San Miguel",
+     "7",
+     "2",
+     "5",
+     "2",
+     "5"
+    ],
+    [
+     "San Silvestre de Cochán",
+     "6",
+     "",
+     "6",
+     "",
+     "6"
+    ],
+    [
+     "Tongod",
+     "4",
+     "3",
+     "1",
+     "",
+     "4"
+    ],
+    [
+     "Unión Agua Blanca",
+     "2",
+     "",
+     "2",
+     "",
+     "2"
+    ],
+    [
+     "Total provincial",
+     "48",
+     "18",
+     "30",
+     "15",
+     "33"
+    ]
+   ],
+   "seccion": "servicios",
+   "nota": null,
+   "origen": "DOC"
+  },
+  {
+   "id": "c05",
+   "ref": "Cuadro 5",
+   "titulo": "Número y categoría de los establecimientos de salud, provincia San Miguel, 2025",
+   "pag": 26,
+   "fuente": "Servicios de Salud – Red de Salud San Miguel, 2025",
+   "elaborado": "Oficina de Epidemiología – Red de Salud San Miguel",
+   "cols": [
+    "Distrito",
+    "I-1",
+    "I-2",
+    "I-3",
+    "I-4"
+   ],
+   "rows": [
+    [
+     "Bolívar",
+     "1",
+     "1",
+     "",
+     ""
+    ],
+    [
+     "Calquis",
+     "2",
+     "1",
+     "",
+     ""
+    ],
+    [
+     "Catilluc",
+     "1",
+     "1",
+     "",
+     ""
+    ],
+    [
+     "El Prado",
+     "2",
+     "2",
+     "",
+     ""
+    ],
+    [
+     "La Florida",
+     "",
+     "",
+     "1",
+     ""
+    ],
+    [
+     "Llapa",
+     "6",
+     "1",
+     "",
+     ""
+    ],
+    [
+     "Nanchoc",
+     "1",
+     "",
+     "1",
+     ""
+    ],
+    [
+     "Niepos",
+     "3",
+     "1",
+     "",
+     ""
+    ],
+    [
+     "San Gregorio",
+     "2",
+     "1",
+     "",
+     ""
+    ],
+    [
+     "San Miguel",
+     "7",
+     "",
+     "",
+     "1"
+    ],
+    [
+     "San Silvestre de Cochán",
+     "4",
+     "2",
+     "",
+     ""
+    ],
+    [
+     "Tongod",
+     "3",
+     "",
+     "1",
+     ""
+    ],
+    [
+     "Unión Agua Blanca",
+     "1",
+     "1",
+     "",
+     ""
+    ]
+   ],
+   "seccion": "servicios",
+   "nota": "El Cuadro 30 (equipos de cómputo) reporta otra distribución por categoría (34 I-1, 8 I-2, 5 I-3, 1 I-4); el texto de este apartado indica 32 I-1, 10 I-2, 5 I-3 y 1 I-4.",
+   "origen": "DOC"
+  },
+  {
+   "id": "c06",
+   "ref": "Cuadro 6",
+   "titulo": "Capacidad resolutiva de los establecimientos con funciones obstétricas y neonatales (FON), provincia San Miguel, 2025",
+   "pag": 27,
+   "fuente": "ESSR – Red de Salud San Miguel, 2025",
+   "elaborado": "Oficina de Epidemiología – Red de Salud San Miguel",
+   "cols": [
+    "Distrito",
+    "N° EE. SS.",
+    "FON-P 30-50 %",
+    "FON-P 50-70 %",
+    "FON-P 70-<90 %",
+    "FON-P ≥90 %",
+    "FON-B 30-50 %",
+    "FON-B 50-70 %",
+    "FON-B 70-<90 %",
+    "FON-B ≥90 %"
+   ],
+   "rows": [
+    [
+     "Bolívar",
+     "2",
+     "1",
+     "1",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Calquis",
+     "3",
+     "",
+     "3",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Catilluc",
+     "2",
+     "",
+     "",
+     "1",
+     "1",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "El Prado",
+     "5",
+     "1",
+     "3",
+     "1",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "La Florida",
+     "1",
+     "",
+     "",
+     "1",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Llapa",
+     "7",
+     "3",
+     "3",
+     "1",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Nanchoc",
+     "2",
+     "1",
+     "",
+     "1",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Niepos",
+     "4",
+     "1",
+     "2",
+     "1",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "San Gregorio",
+     "3",
+     "",
+     "3",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "San Miguel",
+     "7",
+     "3",
+     "3",
+     "",
+     "",
+     "",
+     "",
+     "1",
+     ""
+    ],
+    [
+     "San Silvestre de Cochán",
+     "6",
+     "2",
+     "4",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Tongod",
+     "4",
+     "",
+     "3",
+     "1",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Unión Agua Blanca",
+     "2",
+     "",
+     "1",
+     "1",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Total provincial",
+     "48",
+     "12",
+     "26",
+     "8",
+     "1",
+     "0",
+     "0",
+     "1",
+     "0"
+    ]
+   ],
+   "seccion": "servicios",
+   "nota": null,
+   "origen": "DOC"
+  },
+  {
+   "id": "c10",
+   "ref": "Cuadro 10",
+   "titulo": "Número de ambulancias por distrito, provincia San Miguel, 2025",
+   "pag": 31,
+   "fuente": "Servicios de Salud – Red de Salud San Miguel, 2025",
+   "elaborado": "Oficina de Epidemiología – Red de Salud San Miguel",
+   "cols": [
+    "Distrito",
+    "N° ambulancias"
+   ],
+   "rows": [
+    [
+     "Bolívar",
+     "0"
+    ],
+    [
+     "Calquis",
+     "0"
+    ],
+    [
+     "Catilluc",
+     "2"
+    ],
+    [
+     "El Prado",
+     "1"
+    ],
+    [
+     "La Florida",
+     "1"
+    ],
+    [
+     "Llapa",
+     "1"
+    ],
+    [
+     "Nanchoc",
+     "1"
+    ],
+    [
+     "Niepos",
+     "1"
+    ],
+    [
+     "San Gregorio",
+     "0"
+    ],
+    [
+     "San Miguel",
+     "2"
+    ],
+    [
+     "San Silvestre de Cochán",
+     "1"
+    ],
+    [
+     "Tongod",
+     "1"
+    ],
+    [
+     "Unión Agua Blanca",
+     "1"
+    ]
+   ],
+   "seccion": "servicios",
+   "nota": "Según el texto, la ambulancia de Tongod está inoperativa desde 2024 (en condición de baja en el SIGA patrimonial).",
+   "origen": "DOC"
+  },
+  {
+   "id": "c11",
+   "ref": "Cuadro 11",
+   "titulo": "Distancias y tiempo entre los establecimientos de referencia, provincia San Miguel, 2025",
+   "pag": 32,
+   "fuente": "Servicios de Salud – Red de Salud San Miguel, 2025",
+   "elaborado": "Oficina de Epidemiología – Red de Salud San Miguel",
+   "cols": [
+    "Distrito",
+    "EE. SS. de origen",
+    "Nivel origen",
+    "EE. SS. de destino",
+    "Nivel destino",
+    "Distancia (km)",
+    "Tiempo (horas)",
+    "Medio más usado"
+   ],
+   "rows": [
+    [
+     "Bolívar",
+     "P.S. Bolívar",
+     "I-2",
+     "Hospital Las Mercedes",
+     "II-2",
+     "200",
+     "6,00",
+     "Carro"
+    ],
+    [
+     "Bolívar",
+     "P.S. Bolívar",
+     "I-2",
+     "C.S. Nanchoc",
+     "I-3",
+     "30",
+     "1,00",
+     "Carro"
+    ],
+    [
+     "Calquis",
+     "P.S. Calquis",
+     "I-2",
+     "C.S. San Miguel",
+     "I-4",
+     "18",
+     "1,00",
+     "Carro"
+    ],
+    [
+     "Catilluc",
+     "C.S. Catilluc",
+     "I-3",
+     "Hospital Regional Cajamarca",
+     "II-2",
+     "176",
+     "6,00",
+     "Carro"
+    ],
+    [
+     "El Prado",
+     "P.S. El Prado",
+     "I-2",
+     "C.S. San Miguel",
+     "I-4",
+     "70",
+     "4,00",
+     "Carro"
+    ],
+    [
+     "La Florida",
+     "C.S. La Florida",
+     "I-3",
+     "Hospital Las Mercedes",
+     "II-2",
+     "240",
+     "8,00",
+     "Carro"
+    ],
+    [
+     "Llapa",
+     "C.S. Llapa",
+     "I-3",
+     "Hospital Regional Cajamarca",
+     "II-2",
+     "290",
+     "9,00",
+     "Carro"
+    ],
+    [
+     "Llapa",
+     "C.S. Llapa",
+     "I-3",
+     "C.S. San Miguel",
+     "I-4",
+     "40",
+     "1,50",
+     "Carro"
+    ],
+    [
+     "Nanchoc",
+     "C.S. Nanchoc",
+     "I-3",
+     "Hospital Las Mercedes",
+     "II-2",
+     "180",
+     "5,00",
+     "Carro"
+    ],
+    [
+     "Niepos",
+     "P.S. Niepos",
+     "I-2",
+     "Hospital Las Mercedes",
+     "I-3",
+     "260",
+     "9,00",
+     "Carro"
+    ],
+    [
+     "San Gregorio",
+     "P.S. San Gregorio",
+     "I-1",
+     "Hospital Chepén",
+     "II-1",
+     "140",
+     "5,00",
+     "Carro"
+    ],
+    [
+     "San Miguel",
+     "C.S. San Miguel",
+     "I-4",
+     "Hospital Regional Cajamarca",
+     "II-2",
+     "280",
+     "8,00",
+     "Carro"
+    ],
+    [
+     "San Silvestre de Cochán",
+     "P.S. S.S. Cochán",
+     "I-2",
+     "Hospital Regional Cajamarca",
+     "II-2",
+     "160",
+     "6,00",
+     "Carro"
+    ],
+    [
+     "San Silvestre de Cochán",
+     "P.S. S.S. Cochán",
+     "I-2",
+     "C.S. Llapa",
+     "I-3",
+     "30",
+     "1,00",
+     "Carro"
+    ],
+    [
+     "Tongod",
+     "C.S. Tongod",
+     "I-3",
+     "Hospital Regional Cajamarca",
+     "II-2",
+     "210",
+     "7,00",
+     "Carro"
+    ],
+    [
+     "Unión Agua Blanca",
+     "P.S. Unión Agua Blanca",
+     "I-2",
+     "C.S. San Miguel",
+     "I-4",
+     "108",
+     "5,00",
+     "Carro"
+    ]
+   ],
+   "seccion": "servicios",
+   "nota": "Transcrito de la imagen del cuadro original. El nivel “I-3” del Hospital Las Mercedes en la fila de Niepos figura así en el documento.",
+   "origen": "PDF (imagen)"
+  },
+  {
+   "id": "c12",
+   "ref": "Cuadro 12",
+   "titulo": "Recurso humano según régimen laboral, provincia San Miguel, 2025",
+   "pag": 33,
+   "fuente": "Recursos Humanos – Red de Salud San Miguel, 2025",
+   "elaborado": "Oficina de Epidemiología – Red de Salud San Miguel",
+   "cols": [
+    "Grupo ocupacional",
+    "DL 276",
+    "DL 1057 (CAS)",
+    "Locación de servicios",
+    "Otro",
+    "Total"
+   ],
+   "rows": [
+    [
+     "Funcionarios y Directivos",
+     "1",
+     "",
+     "",
+     "",
+     "1"
+    ],
+    [
+     "Profesionales",
+     "205",
+     "41",
+     "5",
+     "2",
+     "253"
+    ],
+    [
+     "Técnicos",
+     "82",
+     "7",
+     "1",
+     "",
+     "90"
+    ],
+    [
+     "Otros",
+     "",
+     "",
+     "",
+     "22",
+     "22"
+    ],
+    [
+     "Total",
+     "288",
+     "48",
+     "6",
+     "24",
+     "366"
+    ]
+   ],
+   "seccion": "servicios",
+   "nota": null,
+   "origen": "DOC"
+  },
+  {
+   "id": "c13",
+   "ref": "Cuadro 13",
+   "titulo": "Recurso humano asistencial según grupo ocupacional, provincia San Miguel, 2025",
+   "pag": 34,
+   "fuente": "Recursos Humanos – Red de Salud San Miguel, 2025",
+   "elaborado": "Oficina de Epidemiología – Red de Salud San Miguel",
+   "cols": [
+    "Cargo",
+    "DL 276",
+    "DL 1057 (CAS)",
+    "Locación de servicios",
+    "Otro",
+    "Total"
+   ],
+   "rows": [
+    [
+     "Médicos",
+     "20",
+     "4",
+     "",
+     "",
+     "24"
+    ],
+    [
+     "Enfermeros",
+     "52",
+     "12",
+     "2",
+     "",
+     "66"
+    ],
+    [
+     "Obstetras",
+     "31",
+     "2",
+     "",
+     "",
+     "33"
+    ],
+    [
+     "Psicólogos",
+     "4",
+     "7",
+     "",
+     "",
+     "11"
+    ],
+    [
+     "Odontólogos",
+     "5",
+     "4",
+     "",
+     "",
+     "9"
+    ],
+    [
+     "Técnicos",
+     "82",
+     "7",
+     "1",
+     "",
+     "90"
+    ],
+    [
+     "Otros",
+     "94",
+     "12",
+     "3",
+     "",
+     "109"
+    ],
+    [
+     "Total",
+     "288",
+     "48",
+     "6",
+     "0",
+     "342"
+    ]
+   ],
+   "seccion": "servicios",
+   "nota": "Total 342 (personal asistencial). El Cuadro 12 suma 366 porque incluye al personal administrativo y de otros regímenes.",
+   "origen": "DOC"
+  },
+  {
+   "id": "c14",
+   "ref": "Cuadro 14",
+   "titulo": "Recurso humano administrativo según profesión, provincia San Miguel, 2025",
+   "pag": 35,
+   "fuente": "Recursos Humanos – Red de Salud San Miguel, 2025",
+   "elaborado": "Oficina de Epidemiología – Red de Salud San Miguel",
+   "cols": [
+    "Cargo",
+    "DL 276",
+    "DL 1057 (CAS)",
+    "Locación de servicios",
+    "Otro",
+    "Total"
+   ],
+   "rows": [
+    [
+     "Abogado",
+     "",
+     "",
+     "",
+     "",
+     "0"
+    ],
+    [
+     "Chofer",
+     "2",
+     "2",
+     "",
+     "",
+     "4"
+    ],
+    [
+     "Ingeniero",
+     "",
+     "",
+     "2",
+     "",
+     "2"
+    ],
+    [
+     "Otros",
+     "",
+     "",
+     "",
+     "18",
+     "18"
+    ],
+    [
+     "Total",
+     "2",
+     "2",
+     "2",
+     "18",
+     "24"
+    ]
+   ],
+   "seccion": "servicios",
+   "nota": null,
+   "origen": "DOC"
+  },
+  {
+   "id": "equipos",
+   "ref": "Cuadros 15 a 27",
+   "titulo": "Equipamiento de los establecimientos de salud por distrito, provincia San Miguel, 2025",
+   "pag": 36,
+   "fuente": "Patrimonio – Red de Salud San Miguel, 2025",
+   "elaborado": "Oficina de Epidemiología – Red de Salud San Miguel",
+   "cols": [
+    "Distrito",
+    "Equipo",
+    "Cantidad",
+    "Estado"
+   ],
+   "rows": [
+    [
+     "Bolívar",
+     "Congeladora para vacunas",
+     "2",
+     "Operativo"
+    ],
+    [
+     "Bolívar",
+     "Refrigeradora para vacunas",
+     "2",
+     "Inoperativo"
+    ],
+    [
+     "Bolívar",
+     "Detector de latidos fetales portátil",
+     "4",
+     "Operativo"
+    ],
+    [
+     "Bolívar",
+     "Detector de latidos fetales portátil",
+     "2",
+     "Inoperativo"
+    ],
+    [
+     "Bolívar",
+     "Equipo nebulizador eléctrico portátil",
+     "1",
+     "Operativo"
+    ],
+    [
+     "Bolívar",
+     "Hemoglobinómetro portátil",
+     "4",
+     "Operativo"
+    ],
+    [
+     "Bolívar",
+     "Hemoglobinómetro",
+     "2",
+     "Inoperativo"
+    ],
+    [
+     "Bolívar",
+     "Oftalmoscopio directo con mango recargable",
+     "2",
+     "Inoperativo"
+    ],
+    [
+     "Bolívar",
+     "Glucómetro portátil",
+     "5",
+     "Operativo"
+    ],
+    [
+     "Bolívar",
+     "Fetoscopio de pinar",
+     "1",
+     "Operativo"
+    ],
+    [
+     "Calquis",
+     "Refrigeradora para vacunas",
+     "9",
+     "Operativo"
+    ],
+    [
+     "Calquis",
+     "Refrigeradora para vacunas",
+     "2",
+     "Inoperativo"
+    ],
+    [
+     "Calquis",
+     "Congeladora para vacunas y paquetes",
+     "4",
+     "Operativo"
+    ],
+    [
+     "Calquis",
+     "Equipo nebulizador eléctrico portátil",
+     "1",
+     "Operativo"
+    ],
+    [
+     "Calquis",
+     "Equipo Doppler fetal portátil",
+     "5",
+     "Operativo"
+    ],
+    [
+     "Calquis",
+     "Detector de latidos fetales portátil",
+     "2",
+     "Inoperativo"
+    ],
+    [
+     "Calquis",
+     "Detector de latidos fetales de sobremesa",
+     "3",
+     "Inoperativo"
+    ],
+    [
+     "Calquis",
+     "Esterilizador eléctrico",
+     "1",
+     "Inoperativo"
+    ],
+    [
+     "Calquis",
+     "Esterilizador de calor seco",
+     "2",
+     "Operativo"
+    ],
+    [
+     "Calquis",
+     "Hemoglobinómetro portátil",
+     "10",
+     "Operativo"
+    ],
+    [
+     "Calquis",
+     "Hemoglobinómetro portátil",
+     "2",
+     "Inoperativo"
+    ],
+    [
+     "Calquis",
+     "Oftalmoscopio directo",
+     "1",
+     "Operativo"
+    ],
+    [
+     "Calquis",
+     "Pantoscopio",
+     "1",
+     "Inoperativo"
+    ],
+    [
+     "Calquis",
+     "Resucitador para adultos",
+     "2",
+     "Operativo"
+    ],
+    [
+     "Calquis",
+     "Resucitador neonatal",
+     "1",
+     "Operativo"
+    ],
+    [
+     "Calquis",
+     "Tensiómetro",
+     "14",
+     "Inoperativo"
+    ],
+    [
+     "Calquis",
+     "Tensiómetro",
+     "7",
+     "Operativo"
+    ],
+    [
+     "Calquis",
+     "Glucómetro portátil",
+     "1",
+     "Operativo"
+    ],
+    [
+     "Catilluc",
+     "Refrigeradora congeladora",
+     "4",
+     "Operativo"
+    ],
+    [
+     "Catilluc",
+     "Refrigeradora conservadora",
+     "7",
+     "Operativo"
+    ],
+    [
+     "Catilluc",
+     "Detector de latidos fetales portátiles",
+     "3",
+     "Operativo"
+    ],
+    [
+     "Catilluc",
+     "Equipo de crioterapia",
+     "1",
+     "Operativo"
+    ],
+    [
+     "Catilluc",
+     "Equipo de rayos x dental rodable",
+     "1",
+     "Operativo"
+    ],
+    [
+     "Catilluc",
+     "Equipo Doppler fetal portátil",
+     "4",
+     "Operativo"
+    ],
+    [
+     "Catilluc",
+     "Equipo nebulizador",
+     "1",
+     "Operativo"
+    ],
+    [
+     "Catilluc",
+     "Esterilizador",
+     "2",
+     "Operativo"
+    ],
+    [
+     "Catilluc",
+     "Esterilizador",
+     "1",
+     "Inoperativo"
+    ],
+    [
+     "Catilluc",
+     "Hemoglobinómetro portátil",
+     "6",
+     "Operativo"
+    ],
+    [
+     "Catilluc",
+     "Oftalmoscopio directo",
+     "1",
+     "Operativo"
+    ],
+    [
+     "Catilluc",
+     "Pantoscopio pediátrico",
+     "1",
+     "Operativo"
+    ],
+    [
+     "Catilluc",
+     "Pantoscopio pediátrico",
+     "1",
+     "Operativo"
+    ],
+    [
+     "Catilluc",
+     "Unidad dental eléctrica completa",
+     "1",
+     "Operativo"
+    ],
+    [
+     "Catilluc",
+     "Unidad dental eléctrica completa",
+     "1",
+     "Inoperativo"
+    ],
+    [
+     "Catilluc",
+     "Glucómetro portátil",
+     "4",
+     "Operativo"
+    ],
+    [
+     "Catilluc",
+     "Equipo de baño maría",
+     "1",
+     "Operativo"
+    ],
+    [
+     "Catilluc",
+     "Ecógrafo portátil",
+     "2",
+     "Operativo"
+    ],
+    [
+     "Catilluc",
+     "Tensiómetro aneroide para adulto",
+     "20",
+     "Operativo"
+    ],
+    [
+     "Catilluc",
+     "Tensiómetro aneroide para adulto",
+     "10",
+     "Inoperativo"
+    ],
+    [
+     "Catilluc",
+     "Tensiómetro aneroide pediátrico",
+     "4",
+     "Operativo"
+    ],
+    [
+     "Catilluc",
+     "Refrigeradora a kerosene",
+     "2",
+     "Inoperativo"
+    ],
+    [
+     "Catilluc",
+     "Hemoglobinómetro portátil",
+     "1",
+     "Inoperativo"
+    ],
+    [
+     "El Prado",
+     "Refrigeradora para vacunas",
+     "9",
+     "Operativo"
+    ],
+    [
+     "El Prado",
+     "Refrigeradora para vacunas",
+     "2",
+     "Inoperativo"
+    ],
+    [
+     "El Prado",
+     "Congeladora para vacunas y paquetes",
+     "4",
+     "Operativo"
+    ],
+    [
+     "El Prado",
+     "Equipo nebulizador eléctrico portátil",
+     "1",
+     "Operativo"
+    ],
+    [
+     "El Prado",
+     "Equipo Doppler fetal portátil",
+     "5",
+     "Operativo"
+    ],
+    [
+     "El Prado",
+     "Detector de latidos fetales portátil",
+     "2",
+     "Inoperativo"
+    ],
+    [
+     "El Prado",
+     "Detector de latidos fetales de sobremesa",
+     "3",
+     "Inoperativo"
+    ],
+    [
+     "El Prado",
+     "Esterilizador eléctrico",
+     "1",
+     "Inoperativo"
+    ],
+    [
+     "El Prado",
+     "Esterilizador de calor seco",
+     "2",
+     "Operativo"
+    ],
+    [
+     "El Prado",
+     "Hemoglobinómetro portátil",
+     "10",
+     "Operativo"
+    ],
+    [
+     "El Prado",
+     "Hemoglobinómetro portátil",
+     "2",
+     "Inoperativo"
+    ],
+    [
+     "El Prado",
+     "Oftalmoscopio directo",
+     "1",
+     "Operativo"
+    ],
+    [
+     "El Prado",
+     "Pantoscopio",
+     "1",
+     "Inoperativo"
+    ],
+    [
+     "El Prado",
+     "Resucitador para adultos",
+     "2",
+     "Operativo"
+    ],
+    [
+     "El Prado",
+     "Resucitador neonatal",
+     "1",
+     "Operativo"
+    ],
+    [
+     "El Prado",
+     "Tensiómetro",
+     "14",
+     "Inoperativo"
+    ],
+    [
+     "El Prado",
+     "Tensiómetro",
+     "7",
+     "Operativo"
+    ],
+    [
+     "El Prado",
+     "Glucómetro portátil",
+     "1",
+     "Operativo"
+    ],
+    [
+     "La Florida",
+     "Refrigeradora para vacunas",
+     "4",
+     "Operativo"
+    ],
+    [
+     "La Florida",
+     "Refrigeradora para vacunas",
+     "2",
+     "Inoperativo"
+    ],
+    [
+     "La Florida",
+     "Congeladora eléctrica horizontal",
+     "2",
+     "Operativo"
+    ],
+    [
+     "La Florida",
+     "Autoclave",
+     "1",
+     "Operativo"
+    ],
+    [
+     "La Florida",
+     "Analizador bioquímico",
+     "3",
+     "Operativo"
+    ],
+    [
+     "La Florida",
+     "Parlantes para computadora",
+     "1",
+     "Inoperativo"
+    ],
+    [
+     "La Florida",
+     "Aspiradora de secreciones para adultos",
+     "3",
+     "Operativo"
+    ],
+    [
+     "La Florida",
+     "Aspirador de secreciones",
+     "1",
+     "Inoperativo"
+    ],
+    [
+     "La Florida",
+     "Centrifuga para 12 tubos",
+     "3",
+     "Operativo"
+    ],
+    [
+     "La Florida",
+     "Contador mecánico de células",
+     "1",
+     "Inoperativo"
+    ],
+    [
+     "La Florida",
+     "Detector de latidos fetales portátil",
+     "3",
+     "Operativo"
+    ],
+    [
+     "La Florida",
+     "Electrocardiógrafo",
+     "1",
+     "Operativo"
+    ],
+    [
+     "La Florida",
+     "Pantoscopio",
+     "2",
+     "Operativo"
+    ],
+    [
+     "La Florida",
+     "Pantoscopio pediátrico",
+     "1",
+     "Inoperativo"
+    ],
+    [
+     "La Florida",
+     "Resucitador manual pediátrico",
+     "1",
+     "Operativo"
+    ],
+    [
+     "La Florida",
+     "Tonómetro aplanético",
+     "1",
+     "Operativo"
+    ],
+    [
+     "La Florida",
+     "Unidad dental eléctrica completa",
+     "1",
+     "Operativo"
+    ],
+    [
+     "La Florida",
+     "Glucómetro portátil",
+     "3",
+     "Operativo"
+    ],
+    [
+     "La Florida",
+     "Equipo de rayos x dental rodable",
+     "1",
+     "Inoperativo"
+    ],
+    [
+     "La Florida",
+     "Equipo ecógrafo - ultrasonido portátil",
+     "1",
+     "Operativo"
+    ],
+    [
+     "La Florida",
+     "Equipo nebulizador eléctrico portátil",
+     "1",
+     "Inoperativo"
+    ],
+    [
+     "La Florida",
+     "Equipo nebulizador",
+     "3",
+     "Operativo"
+    ],
+    [
+     "La Florida",
+     "Equipo baño maría",
+     "1",
+     "Inoperativo"
+    ],
+    [
+     "La Florida",
+     "Equipo de baño maría",
+     "1",
+     "Operativo"
+    ],
+    [
+     "La Florida",
+     "Hemoglobinómetro portátil",
+     "4",
+     "Operativo"
+    ],
+    [
+     "La Florida",
+     "Tensiómetro aneroide para adulto",
+     "22",
+     "Operativo"
+    ],
+    [
+     "La Florida",
+     "Tensiómetro aneroide para adulto",
+     "3",
+     "Inoperativo"
+    ],
+    [
+     "La Florida",
+     "Tensiómetro aneroide pediátrico",
+     "2",
+     "Operativo"
+    ],
+    [
+     "Llapa",
+     "Refrigeradora para vacunas",
+     "8",
+     "Operativo"
+    ],
+    [
+     "Llapa",
+     "Congeladora para vacunas y paquetes fríos 271 lt",
+     "6",
+     "Operativo"
+    ],
+    [
+     "Llapa",
+     "Autoclave",
+     "1",
+     "Inoperativo"
+    ],
+    [
+     "Llapa",
+     "Equipo de rayos X dental rodable",
+     "1",
+     "Inoperativo"
+    ],
+    [
+     "Llapa",
+     "Equipo nebulizador eléctrico portátil",
+     "3",
+     "Operativo"
+    ],
+    [
+     "Llapa",
+     "Equipo nebulizador eléctrico portátil",
+     "1",
+     "Inoperativo"
+    ],
+    [
+     "Llapa",
+     "Equipo Doppler fetal portátil",
+     "7",
+     "Operativo"
+    ],
+    [
+     "Llapa",
+     "Equipo de baño maría",
+     "5",
+     "Operativo"
+    ],
+    [
+     "Llapa",
+     "Equipo de alta frecuencia facial portátil",
+     "2",
+     "Operativo"
+    ],
+    [
+     "Llapa",
+     "Hemoglobinómetro portátil",
+     "16",
+     "Operativo"
+    ],
+    [
+     "Llapa",
+     "Hemoglobinómetro portátil",
+     "1",
+     "Inoperativo"
+    ],
+    [
+     "Llapa",
+     "Oftalmoscopio directo con mango recargable",
+     "2",
+     "Operativo"
+    ],
+    [
+     "Llapa",
+     "Pantoscopio",
+     "4",
+     "Operativo"
+    ],
+    [
+     "Llapa",
+     "Pantoscopio",
+     "2",
+     "Inoperativo"
+    ],
+    [
+     "Llapa",
+     "Resucitador manual adulto",
+     "1",
+     "Operativo"
+    ],
+    [
+     "Llapa",
+     "Unidad dental eléctrica completa",
+     "1",
+     "Operativo"
+    ],
+    [
+     "Llapa",
+     "Glucómetro",
+     "11",
+     "Operativo"
+    ],
+    [
+     "Llapa",
+     "Tensiómetro adulto",
+     "33",
+     "Operativo"
+    ],
+    [
+     "Llapa",
+     "Tensiómetro adulto",
+     "22",
+     "Inoperativo"
+    ],
+    [
+     "Llapa",
+     "Esterilizador",
+     "2",
+     "Operativo"
+    ],
+    [
+     "Llapa",
+     "Detector de latidos fetales portátiles",
+     "1",
+     "Inoperativo"
+    ],
+    [
+     "Nanchoc",
+     "Congeladora eléctrica horizontal",
+     "3",
+     "Operativo"
+    ],
+    [
+     "Nanchoc",
+     "Congeladora eléctrica horizontal",
+     "1",
+     "Inoperativo"
+    ],
+    [
+     "Nanchoc",
+     "Refrigeradora para vacunas",
+     "8",
+     "Operativo"
+    ],
+    [
+     "Nanchoc",
+     "Refrigeradora para vacunas",
+     "2",
+     "Inoperativo"
+    ],
+    [
+     "Nanchoc",
+     "Centrifuga para 12 tubos",
+     "3",
+     "Operativo"
+    ],
+    [
+     "Nanchoc",
+     "Detector de latidos fetales portátil",
+     "3",
+     "Operativo"
+    ],
+    [
+     "Nanchoc",
+     "Detector de latidos fetales portátil",
+     "1",
+     "Inoperativo"
+    ],
+    [
+     "Nanchoc",
+     "Equipo ecógrafo - ultrasonido de 2 transductores",
+     "1",
+     "Operativo"
+    ],
+    [
+     "Nanchoc",
+     "Equipo nebulizador",
+     "3",
+     "Operativo"
+    ],
+    [
+     "Nanchoc",
+     "Equipo nebulizador",
+     "1",
+     "Inoperativo"
+    ],
+    [
+     "Nanchoc",
+     "Equipo baño maría",
+     "2",
+     "Operativo"
+    ],
+    [
+     "Nanchoc",
+     "Laringoscopio",
+     "1",
+     "Operativo"
+    ],
+    [
+     "Nanchoc",
+     "Microcentrífuga",
+     "1",
+     "Operativo"
+    ],
+    [
+     "Nanchoc",
+     "Oftalmoscopio directo",
+     "2",
+     "Inoperativo"
+    ],
+    [
+     "Nanchoc",
+     "Pantoscopio",
+     "2",
+     "Operativo"
+    ],
+    [
+     "Nanchoc",
+     "Resucitador manual pediátrico",
+     "1",
+     "Inoperativo"
+    ],
+    [
+     "Nanchoc",
+     "Resucitador manual adulto",
+     "1",
+     "Operativo"
+    ],
+    [
+     "Nanchoc",
+     "Unidad dental eléctrica completa",
+     "1",
+     "Operativo"
+    ],
+    [
+     "Nanchoc",
+     "Glucómetro portátil",
+     "4",
+     "Operativo"
+    ],
+    [
+     "Nanchoc",
+     "Hemoglobinómetro portátil",
+     "5",
+     "Operativo"
+    ],
+    [
+     "Nanchoc",
+     "Tensiómetro",
+     "3",
+     "Operativo"
+    ],
+    [
+     "Nanchoc",
+     "Tensiómetro",
+     "3",
+     "Inoperativo"
+    ],
+    [
+     "Niepos",
+     "Refrigeradora para vacunas",
+     "7",
+     "Operativo"
+    ],
+    [
+     "Niepos",
+     "Congeladora eléctrica horizontal",
+     "4",
+     "Operativo"
+    ],
+    [
+     "Niepos",
+     "Detector de latidos fetales portátiles",
+     "3",
+     "Inoperativo"
+    ],
+    [
+     "Niepos",
+     "Detector de latidos fetales portátil",
+     "9",
+     "Operativo"
+    ],
+    [
+     "Niepos",
+     "Esterilizador eléctrico de aire seco x 39 lt",
+     "3",
+     "Operativo"
+    ],
+    [
+     "Niepos",
+     "Esterilizador",
+     "1",
+     "Inoperativo"
+    ],
+    [
+     "Niepos",
+     "Hemoglobinómetro portátil",
+     "2",
+     "Inoperativo"
+    ],
+    [
+     "Niepos",
+     "Hemoglobinómetro portátil",
+     "9",
+     "Operativo"
+    ],
+    [
+     "Niepos",
+     "Microcentrífuga",
+     "1",
+     "Operativo"
+    ],
+    [
+     "Niepos",
+     "Microscopio compuesto binocular",
+     "1",
+     "Operativo"
+    ],
+    [
+     "Niepos",
+     "Oftalmoscopio directo",
+     "1",
+     "Operativo"
+    ],
+    [
+     "Niepos",
+     "Espectrofotómetro",
+     "1",
+     "Operativo"
+    ],
+    [
+     "Niepos",
+     "Glucómetro portátil",
+     "5",
+     "Operativo"
+    ],
+    [
+     "Niepos",
+     "Glucómetro portátil",
+     "3",
+     "Inoperativo"
+    ],
+    [
+     "Niepos",
+     "Tensiómetro aneroide para adulto",
+     "6",
+     "Operativo"
+    ],
+    [
+     "Niepos",
+     "Tensiómetro aneroide para adulto",
+     "2",
+     "Inoperativo"
+    ],
+    [
+     "Niepos",
+     "Tensiómetro aneroide pediátrico",
+     "1",
+     "Operativo"
+    ],
+    [
+     "San Gregorio",
+     "Refrigeradora para vacunas",
+     "2",
+     "Operativo"
+    ],
+    [
+     "San Gregorio",
+     "Refrigeradora a kerosene",
+     "6",
+     "Inoperativo"
+    ],
+    [
+     "San Gregorio",
+     "Congeladora para vacunas",
+     "2",
+     "Operativo"
+    ],
+    [
+     "San Gregorio",
+     "Detector de latidos fetales portátil",
+     "6",
+     "Operativo"
+    ],
+    [
+     "San Gregorio",
+     "Hemoglobinómetro portátil",
+     "8",
+     "Operativo"
+    ],
+    [
+     "San Gregorio",
+     "Microscopio",
+     "1",
+     "Operativo"
+    ],
+    [
+     "San Gregorio",
+     "Glucómetro portátil",
+     "3",
+     "Operativo"
+    ],
+    [
+     "San Gregorio",
+     "Detector de latidos fetales portátil",
+     "1",
+     "Inoperativo"
+    ],
+    [
+     "San Gregorio",
+     "Congeladora para vacunas",
+     "1",
+     "Operativo"
+    ],
+    [
+     "San Gregorio",
+     "Detector de latidos fetales portátil",
+     "3",
+     "Inoperativo"
+    ],
+    [
+     "San Gregorio",
+     "Equipo Doppler fetal portátil",
+     "1",
+     "Inoperativo"
+    ],
+    [
+     "San Gregorio",
+     "Equipo ecógrafo básico de sobremesa",
+     "1",
+     "Inoperativo"
+    ],
+    [
+     "San Gregorio",
+     "Equipo nebulizador eléctrico portátil",
+     "1",
+     "Inoperativo"
+    ],
+    [
+     "San Gregorio",
+     "Hemoglobinómetro",
+     "1",
+     "Inoperativo"
+    ],
+    [
+     "San Gregorio",
+     "Laringoscopio",
+     "1",
+     "Inoperativo"
+    ],
+    [
+     "San Gregorio",
+     "Oftalmoscopio directo",
+     "1",
+     "Operativo"
+    ],
+    [
+     "San Gregorio",
+     "Glucómetro portátil",
+     "1",
+     "Inoperativo"
+    ],
+    [
+     "San Miguel",
+     "Esterilizador",
+     "9",
+     "Operativo"
+    ],
+    [
+     "San Miguel",
+     "Esterilizador",
+     "3",
+     "Inoperativo"
+    ],
+    [
+     "San Miguel",
+     "Analizador bioquímico",
+     "2",
+     "Operativo"
+    ],
+    [
+     "San Miguel",
+     "Aspirador de secreciones",
+     "7",
+     "Operativo"
+    ],
+    [
+     "San Miguel",
+     "Balanza",
+     "22",
+     "Operativo"
+    ],
+    [
+     "San Miguel",
+     "Centrifuga para tubos",
+     "5",
+     "Operativo"
+    ],
+    [
+     "San Miguel",
+     "Microcentrífuga",
+     "1",
+     "Operativo"
+    ],
+    [
+     "San Miguel",
+     "Microcentrífuga",
+     "1",
+     "Inoperativo"
+    ],
+    [
+     "San Miguel",
+     "Congeladora para vacunas y paquetes fríos",
+     "12",
+     "Operativo"
+    ],
+    [
+     "San Miguel",
+     "Refrigeradora para vacunas",
+     "17",
+     "Operativo"
+    ],
+    [
+     "San Miguel",
+     "Desfibrilador",
+     "3",
+     "Operativo"
+    ],
+    [
+     "San Miguel",
+     "Cuna de calor radiante",
+     "2",
+     "Operativo"
+    ],
+    [
+     "San Miguel",
+     "Cuna de calor radiante",
+     "1",
+     "Inoperativo"
+    ],
+    [
+     "San Miguel",
+     "Bomba de infusión",
+     "5",
+     "Operativo"
+    ],
+    [
+     "San Miguel",
+     "Detector de latidos fetales",
+     "23",
+     "Operativo"
+    ],
+    [
+     "San Miguel",
+     "Detector de latidos fetales",
+     "4",
+     "Inoperativo"
+    ],
+    [
+     "San Miguel",
+     "Equipo ecógrafo",
+     "3",
+     "Operativo"
+    ],
+    [
+     "San Miguel",
+     "Electrocardiógrafo",
+     "2",
+     "Operativo"
+    ],
+    [
+     "San Miguel",
+     "Equipo electroestimulador",
+     "1",
+     "Operativo"
+    ],
+    [
+     "San Miguel",
+     "Equipo de anestesia de dos gases",
+     "1",
+     "Operativo"
+    ],
+    [
+     "San Miguel",
+     "Equipo de termocoagulación",
+     "2",
+     "Operativo"
+    ],
+    [
+     "San Miguel",
+     "Equipo de crioterap",
+     "1",
+     "Operativo"
+    ],
+    [
+     "San Miguel",
+     "Equipo de fotopolimerización",
+     "1",
+     "Operativo"
+    ],
+    [
+     "San Miguel",
+     "Equipo de rayos x dental",
+     "1",
+     "Operativo"
+    ],
+    [
+     "San Miguel",
+     "Equipo de rayos x dental",
+     "1",
+     "Inoperativo"
+    ],
+    [
+     "San Miguel",
+     "Equipo nebulizador",
+     "4",
+     "Operativo"
+    ],
+    [
+     "San Miguel",
+     "Equipo nebulizador",
+     "3",
+     "Inoperativo"
+    ],
+    [
+     "San Miguel",
+     "Equipo de baño maría",
+     "2",
+     "Operativo"
+    ],
+    [
+     "San Miguel",
+     "Hemoglobinómetro portátil",
+     "21",
+     "Operativo"
+    ],
+    [
+     "San Miguel",
+     "Hemoglobinómetro portátil",
+     "5",
+     "Inoperativo"
+    ],
+    [
+     "San Miguel",
+     "Tensiómetro aneroide para adulto",
+     "61",
+     "Operativo"
+    ],
+    [
+     "San Miguel",
+     "Tensiómetro aneroide para adulto",
+     "14",
+     "Inoperativo"
+    ],
+    [
+     "San Miguel",
+     "Tensiómetro pediátrico",
+     "7",
+     "Operativo"
+    ],
+    [
+     "San Miguel",
+     "Glucómetro portátil",
+     "7",
+     "Operativo"
+    ],
+    [
+     "San Silvestre de Cochán",
+     "Refrigeradora para vacunas",
+     "7",
+     "Operativo"
+    ],
+    [
+     "San Silvestre de Cochán",
+     "Refrigeradora a kerosene",
+     "5",
+     "Inoperativo"
+    ],
+    [
+     "San Silvestre de Cochán",
+     "Congeladora para vacunas",
+     "5",
+     "Operativo"
+    ],
+    [
+     "San Silvestre de Cochán",
+     "Oftalmoscopio directo",
+     "1",
+     "Operativo"
+    ],
+    [
+     "San Silvestre de Cochán",
+     "Detector de latidos fetales portátil",
+     "18",
+     "Operativo"
+    ],
+    [
+     "San Silvestre de Cochán",
+     "Detector de latidos fetales portátil",
+     "3",
+     "Inoperativo"
+    ],
+    [
+     "San Silvestre de Cochán",
+     "Hemoglobinómetro portátil",
+     "16",
+     "Operativo"
+    ],
+    [
+     "San Silvestre de Cochán",
+     "Hemoglobinómetro portátil",
+     "1",
+     "Inoperativo"
+    ],
+    [
+     "San Silvestre de Cochán",
+     "Glucómetro portátil",
+     "7",
+     "Operativo"
+    ],
+    [
+     "San Silvestre de Cochán",
+     "Equipo nebulizador eléctrico portátil",
+     "1",
+     "Operativo"
+    ],
+    [
+     "San Silvestre de Cochán",
+     "Centrifuga para tubos",
+     "1",
+     "Operativo"
+    ],
+    [
+     "San Silvestre de Cochán",
+     "Resucitador manual adulto",
+     "1",
+     "Operativo"
+    ],
+    [
+     "San Silvestre de Cochán",
+     "Tensiómetro adulto",
+     "17",
+     "Operativo"
+    ],
+    [
+     "San Silvestre de Cochán",
+     "Pantoscopio",
+     "1",
+     "Operativo"
+    ],
+    [
+     "Tongod",
+     "Congeladora eléctrica horizontal",
+     "4",
+     "Operativo"
+    ],
+    [
+     "Tongod",
+     "Refrigeradora para vacunas tipo ice lined 48 L",
+     "4",
+     "Operativo"
+    ],
+    [
+     "Tongod",
+     "Refrigeradora a gas",
+     "1",
+     "Inoperativo"
+    ],
+    [
+     "Tongod",
+     "Analizador bioquímico semiautomatizado",
+     "1",
+     "Operativo"
+    ],
+    [
+     "Tongod",
+     "Aspirador de secreciones",
+     "2",
+     "Operativo"
+    ],
+    [
+     "Tongod",
+     "Centrifuga para tubos",
+     "2",
+     "Operativo"
+    ],
+    [
+     "Tongod",
+     "Detector de latidos fetales portátil",
+     "10",
+     "Operativo"
+    ],
+    [
+     "Tongod",
+     "Detector de latidos fetales portátil",
+     "2",
+     "Inoperativo"
+    ],
+    [
+     "Tongod",
+     "Equipo nebulizador",
+     "2",
+     "Operativo"
+    ],
+    [
+     "Tongod",
+     "Equipo nebulizador",
+     "1",
+     "Inoperativo"
+    ],
+    [
+     "Tongod",
+     "Esterilizador",
+     "4",
+     "Inoperativo"
+    ],
+    [
+     "Tongod",
+     "Hemoglobinómetro portátil",
+     "8",
+     "Operativo"
+    ],
+    [
+     "Tongod",
+     "Hemoglobinómetro portátil",
+     "1",
+     "Inoperativo"
+    ],
+    [
+     "Tongod",
+     "Microcentrífuga",
+     "1",
+     "Inoperativo"
+    ],
+    [
+     "Tongod",
+     "Oftalmoscopio directo",
+     "2",
+     "Operativo"
+    ],
+    [
+     "Tongod",
+     "Pantoscopio pediátrico",
+     "1",
+     "Operativo"
+    ],
+    [
+     "Tongod",
+     "Resucitador para adultos",
+     "1",
+     "Operativo"
+    ],
+    [
+     "Tongod",
+     "Resucitador para adultos",
+     "1",
+     "Inoperativo"
+    ],
+    [
+     "Tongod",
+     "Unidad dental",
+     "1",
+     "Operativo"
+    ],
+    [
+     "Tongod",
+     "Glucómetro",
+     "4",
+     "Operativo"
+    ],
+    [
+     "Tongod",
+     "Glucómetro",
+     "4",
+     "Inoperativo"
+    ],
+    [
+     "Tongod",
+     "Tensiómetro aneroide para adulto",
+     "6",
+     "Operativo"
+    ],
+    [
+     "Tongod",
+     "Tensiómetro aneroide para adulto",
+     "10",
+     "Inoperativo"
+    ],
+    [
+     "Unión Agua Blanca",
+     "Congeladora eléctrica horizontal",
+     "2",
+     "Operativo"
+    ],
+    [
+     "Unión Agua Blanca",
+     "Refrigeradora conservadora",
+     "2",
+     "Operativo"
+    ],
+    [
+     "Unión Agua Blanca",
+     "Refrigeradora a kerosene",
+     "1",
+     "Inoperativo"
+    ],
+    [
+     "Unión Agua Blanca",
+     "Detector de latidos",
+     "3",
+     "Inoperativo"
+    ],
+    [
+     "Unión Agua Blanca",
+     "Detector de latidos fetales portátil",
+     "5",
+     "Operativo"
+    ],
+    [
+     "Unión Agua Blanca",
+     "Detector de latidos fetales de sobremesa",
+     "1",
+     "Operativo"
+    ],
+    [
+     "Unión Agua Blanca",
+     "Equipo nebulizador",
+     "3",
+     "Operativo"
+    ],
+    [
+     "Unión Agua Blanca",
+     "Fetoscopio",
+     "3",
+     "Operativo"
+    ],
+    [
+     "Unión Agua Blanca",
+     "Hemoglobinómetro",
+     "6",
+     "Operativo"
+    ],
+    [
+     "Unión Agua Blanca",
+     "Resucitador manual pediátrico",
+     "1",
+     "Operativo"
+    ],
+    [
+     "Unión Agua Blanca",
+     "Tensiómetro adulto",
+     "6",
+     "Operativo"
+    ],
+    [
+     "Unión Agua Blanca",
+     "Tensiómetro pediátrico",
+     "2",
+     "Operativo"
+    ],
+    [
+     "Unión Agua Blanca",
+     "Tensiómetro adulto",
+     "6",
+     "Inoperativo"
+    ],
+    [
+     "Unión Agua Blanca",
+     "Glucómetro portátil",
+     "5",
+     "Operativo"
+    ]
+   ],
+   "seccion": "servicios",
+   "nota": "Un cuadro por distrito en el documento (Cuadros 15 a 27, págs. 36-48). Según el texto, ningún equipo recibió mantenimiento.",
+   "origen": "DOC"
+  },
+  {
+   "id": "equipos_res",
+   "ref": "Cuadros 15 a 27",
+   "titulo": "Equipos médicos operativos e inoperativos por distrito, provincia San Miguel, 2025",
+   "pag": 36,
+   "fuente": "Patrimonio – Red de Salud San Miguel, 2025",
+   "elaborado": "Oficina de Epidemiología – Red de Salud San Miguel",
+   "cols": [
+    "Distrito",
+    "Total del cuadro",
+    "Operativos (suma de filas)",
+    "Inoperativos (suma de filas)"
+   ],
+   "rows": [
+    [
+     "Bolívar",
+     "25",
+     "17",
+     "8"
+    ],
+    [
+     "Calquis",
+     "68",
+     "43",
+     "25"
+    ],
+    [
+     "Catilluc",
+     "79",
+     "64",
+     "15"
+    ],
+    [
+     "El Prado",
+     "68",
+     "43",
+     "25"
+    ],
+    [
+     "La Florida",
+     "73",
+     "61",
+     "12"
+    ],
+    [
+     "Llapa",
+     "130",
+     "101",
+     "29"
+    ],
+    [
+     "Nanchoc",
+     "52",
+     "41",
+     "11"
+    ],
+    [
+     "Niepos",
+     "59",
+     "48",
+     "11"
+    ],
+    [
+     "San Gregorio",
+     "40",
+     "24",
+     "16"
+    ],
+    [
+     "San Miguel",
+     "254",
+     "222",
+     "32"
+    ],
+    [
+     "San Silvestre de Cochán",
+     "84",
+     "75",
+     "9"
+    ],
+    [
+     "Tongod",
+     "73",
+     "48",
+     "25"
+    ],
+    [
+     "Unión Agua Blanca",
+     "46",
+     "36",
+     "10"
+    ]
+   ],
+   "seccion": "servicios",
+   "nota": "“Total del cuadro” es la cifra impresa en cada cuadro; operativos e inoperativos se obtienen sumando sus filas. En Unión Agua Blanca el cuadro suma 46 equipos, mientras el texto menciona 73 (48 operativos y 25 inoperativos). El cuadro de El Prado repite exactamente las filas del de Calquis.",
+   "origen": "DOC"
+  },
+  {
+   "id": "c28",
+   "ref": "Cuadro 28",
+   "titulo": "Estado de la infraestructura de los establecimientos de salud, provincia San Miguel, 2025",
+   "pag": 49,
+   "fuente": "Patrimonio – Red de Salud San Miguel, 2025",
+   "elaborado": "Oficina de Epidemiología – Red de Salud San Miguel",
+   "cols": [
+    "Distrito",
+    "N° EE. SS.",
+    "Bueno",
+    "Malo"
+   ],
+   "rows": [
+    [
+     "Bolívar",
+     "2",
+     "1",
+     "1"
+    ],
+    [
+     "Calquis",
+     "3",
+     "1",
+     "2"
+    ],
+    [
+     "Catilluc",
+     "2",
+     "",
+     "2"
+    ],
+    [
+     "El Prado",
+     "5",
+     "",
+     "5"
+    ],
+    [
+     "La Florida",
+     "1",
+     "",
+     "1"
+    ],
+    [
+     "Llapa",
+     "7",
+     "3",
+     "4"
+    ],
+    [
+     "Nanchoc",
+     "2",
+     "1",
+     "1"
+    ],
+    [
+     "Niepos",
+     "4",
+     "",
+     "4"
+    ],
+    [
+     "San Gregorio",
+     "3",
+     "2",
+     "1"
+    ],
+    [
+     "San Miguel",
+     "7",
+     "",
+     "7"
+    ],
+    [
+     "San Silvestre de Cochán",
+     "6",
+     "2",
+     "4"
+    ],
+    [
+     "Tongod",
+     "4",
+     "4",
+     ""
+    ],
+    [
+     "Unión Agua Blanca",
+     "2",
+     "",
+     "2"
+    ],
+    [
+     "Total provincial",
+     "48",
+     "14",
+     "34"
+    ]
+   ],
+   "seccion": "servicios",
+   "nota": null,
+   "origen": "DOC"
+  },
+  {
+   "id": "g02",
+   "ref": "Gráfico 2",
+   "titulo": "Disponibilidad de medicamentos esenciales por distritos, provincia de San Miguel, 2025 (%)",
+   "pag": 50,
+   "fuente": "SISMED – Red de Salud San Miguel, 2025",
+   "elaborado": "Oficina de Epidemiología – Red de Salud San Miguel",
+   "cols": [
+    "Distrito",
+    "Disponibilidad (%)"
+   ],
+   "rows": [
+    [
+     "San Gregorio",
+     "98,20"
+    ],
+    [
+     "Catilluc",
+     "97,25"
+    ],
+    [
+     "Llapa",
+     "97,13"
+    ],
+    [
+     "Tongod",
+     "97,07"
+    ],
+    [
+     "El Prado",
+     "96,96"
+    ],
+    [
+     "San Silvestre de Cochán",
+     "96,80"
+    ],
+    [
+     "Niepos",
+     "96,78"
+    ],
+    [
+     "San Miguel",
+     "96,75"
+    ],
+    [
+     "Bolívar",
+     "96,62"
+    ],
+    [
+     "Unión Agua Blanca",
+     "96,45"
+    ],
+    [
+     "Nanchoc",
+     "96,37"
+    ],
+    [
+     "Calquis",
+     "95,84"
+    ],
+    [
+     "La Florida",
+     "94,55"
+    ],
+    [
+     "Red de Salud San Miguel",
+     "96,67"
+    ]
+   ],
+   "seccion": "servicios",
+   "nota": "Cifras transcritas de las etiquetas del gráfico original. El texto redondea: promedio 96,65 %, San Gregorio 98,2 %, La Florida 94,6 %. Meta regional: mayor a 90 %.",
+   "origen": "PDF (imagen)"
+  },
+  {
+   "id": "c29",
+   "ref": "Cuadro 29",
+   "titulo": "Gestión del manejo de residuos sólidos hospitalarios (fichas 1 y 2), por distritos, provincia San Miguel, 2025",
+   "pag": 51,
+   "fuente": "Salud Ambiental – Red de Salud San Miguel, 2025",
+   "elaborado": "Oficina de Epidemiología – Red de Salud San Miguel",
+   "cols": [
+    "Distrito",
+    "N° EE. SS.",
+    "Cumple",
+    "No cumple",
+    "Observaciones"
+   ],
+   "rows": [
+    [
+     "Bolívar",
+     "2",
+     "",
+     "2",
+     "No cuenta con infraestructura para disposición de residuos hospitalarios"
+    ],
+    [
+     "Calquis",
+     "3",
+     "",
+     "3",
+     "No cuenta con infraestructura para disposición de residuos hospitalarios"
+    ],
+    [
+     "Catilluc",
+     "2",
+     "1",
+     "1",
+     "No cuenta con infraestructura para disposición de residuos hospitalarios"
+    ],
+    [
+     "El Prado",
+     "5",
+     "",
+     "5",
+     "No cuenta con infraestructura para disposición de residuos hospitalarios"
+    ],
+    [
+     "La Florida",
+     "1",
+     "1",
+     "",
+     "No cuenta con infraestructura para disposición de residuos hospitalarios"
+    ],
+    [
+     "Llapa",
+     "7",
+     "1",
+     "6",
+     "No cuenta con infraestructura para disposición de residuos hospitalarios"
+    ],
+    [
+     "Nanchoc",
+     "2",
+     "1",
+     "1",
+     "No cuenta con infraestructura para disposición de residuos hospitalarios"
+    ],
+    [
+     "Niepos",
+     "4",
+     "",
+     "4",
+     "No cuenta con infraestructura para disposición de residuos hospitalarios"
+    ],
+    [
+     "San Gregorio",
+     "3",
+     "",
+     "3",
+     "No cuenta con infraestructura para disposición de residuos hospitalarios"
+    ],
+    [
+     "San Miguel",
+     "7",
+     "1",
+     "6",
+     "No cuenta con infraestructura para disposición de residuos hospitalarios"
+    ],
+    [
+     "San Silvestre de Cochán",
+     "6",
+     "",
+     "6",
+     "No cuenta con infraestructura para disposición de residuos hospitalarios"
+    ],
+    [
+     "Tongod",
+     "4",
+     "1",
+     "3",
+     "No cuenta con infraestructura para disposición de residuos hospitalarios"
+    ],
+    [
+     "Unión Agua Blanca",
+     "2",
+     "",
+     "2",
+     "No cuenta con infraestructura para disposición de residuos hospitalarios"
+    ],
+    [
+     "Total provincial",
+     "48",
+     "6",
+     "42",
+     ""
+    ]
+   ],
+   "seccion": "servicios",
+   "nota": null,
+   "origen": "DOC"
+  },
+  {
+   "id": "c30",
+   "ref": "Cuadro 30",
+   "titulo": "Equipos de cómputo por distrito, provincia de San Miguel, 2025",
+   "pag": 53,
+   "fuente": "Oficina de Informática, Telecomunicaciones y Estadística (OITE) – Red de Salud San Miguel, 2025",
+   "elaborado": "Oficina de Epidemiología – Red de Salud San Miguel",
+   "cols": [
+    "Distrito",
+    "EE. SS.",
+    "I-1",
+    "I-2",
+    "I-3",
+    "I-4",
+    "CPU (regulares)",
+    "Monitores (buenos)",
+    "Impresoras (malas)",
+    "Total"
+   ],
+   "rows": [
+    [
+     "San Miguel",
+     "7",
+     "6",
+     "0",
+     "0",
+     "1",
+     "18",
+     "18",
+     "10",
+     "46"
+    ],
+    [
+     "Calquis",
+     "3",
+     "2",
+     "1",
+     "0",
+     "0",
+     "6",
+     "6",
+     "3",
+     "15"
+    ],
+    [
+     "Tongod",
+     "4",
+     "3",
+     "0",
+     "1",
+     "0",
+     "11",
+     "11",
+     "6",
+     "28"
+    ],
+    [
+     "Nanchoc",
+     "2",
+     "1",
+     "0",
+     "1",
+     "0",
+     "9",
+     "9",
+     "6",
+     "24"
+    ],
+    [
+     "Bolívar",
+     "2",
+     "1",
+     "1",
+     "0",
+     "0",
+     "5",
+     "5",
+     "3",
+     "13"
+    ],
+    [
+     "San Gregorio",
+     "3",
+     "2",
+     "1",
+     "0",
+     "0",
+     "6",
+     "6",
+     "3",
+     "15"
+    ],
+    [
+     "El Prado",
+     "5",
+     "3",
+     "2",
+     "0",
+     "0",
+     "11",
+     "11",
+     "6",
+     "28"
+    ],
+    [
+     "Unión Agua Blanca",
+     "2",
+     "1",
+     "1",
+     "0",
+     "0",
+     "5",
+     "5",
+     "3",
+     "13"
+    ],
+    [
+     "La Florida",
+     "1",
+     "0",
+     "0",
+     "1",
+     "0",
+     "8",
+     "8",
+     "6",
+     "22"
+    ],
+    [
+     "Niepos",
+     "4",
+     "3",
+     "1",
+     "0",
+     "0",
+     "7",
+     "7",
+     "3",
+     "17"
+    ],
+    [
+     "Llapa",
+     "7",
+     "6",
+     "0",
+     "1",
+     "0",
+     "14",
+     "14",
+     "6",
+     "34"
+    ],
+    [
+     "San Silvestre de Cochán",
+     "6",
+     "5",
+     "1",
+     "0",
+     "0",
+     "9",
+     "9",
+     "3",
+     "21"
+    ],
+    [
+     "Catilluc",
+     "2",
+     "1",
+     "0",
+     "1",
+     "0",
+     "9",
+     "9",
+     "6",
+     "24"
+    ],
+    [
+     "Total",
+     "48",
+     "34",
+     "8",
+     "5",
+     "1",
+     "118",
+     "118",
+     "64",
+     "300"
+    ]
+   ],
+   "seccion": "servicios",
+   "nota": null,
+   "origen": "DOC"
+  },
+  {
+   "id": "c31",
+   "ref": "Cuadro 31",
+   "titulo": "Establecimientos de salud con acceso a internet, por distrito, provincia de San Miguel, 2025",
+   "pag": 54,
+   "fuente": "Oficina de Informática, Telecomunicaciones y Estadística (OITE) – Red de Salud San Miguel, 2025",
+   "elaborado": "Oficina de Epidemiología – Red de Salud San Miguel",
+   "cols": [
+    "Distrito",
+    "N° EE. SS.",
+    "Con internet",
+    "Sin internet",
+    "% con internet"
+   ],
+   "rows": [
+    [
+     "Llapa",
+     "7",
+     "2",
+     "5",
+     "28,6"
+    ],
+    [
+     "San Miguel",
+     "7",
+     "3",
+     "4",
+     "42,9"
+    ],
+    [
+     "San Silvestre de Cochán",
+     "6",
+     "4",
+     "2",
+     "66,7"
+    ],
+    [
+     "El Prado",
+     "5",
+     "5",
+     "0",
+     "100,0"
+    ],
+    [
+     "Niepos",
+     "4",
+     "3",
+     "1",
+     "75,0"
+    ],
+    [
+     "Tongod",
+     "4",
+     "2",
+     "2",
+     "50,0"
+    ],
+    [
+     "San Gregorio",
+     "3",
+     "3",
+     "0",
+     "100,0"
+    ],
+    [
+     "Calquis",
+     "3",
+     "2",
+     "1",
+     "66,7"
+    ],
+    [
+     "Bolívar",
+     "2",
+     "1",
+     "1",
+     "50,0"
+    ],
+    [
+     "Nanchoc",
+     "2",
+     "1",
+     "1",
+     "50,0"
+    ],
+    [
+     "Catilluc",
+     "2",
+     "2",
+     "0",
+     "100,0"
+    ],
+    [
+     "Unión Agua Blanca",
+     "2",
+     "2",
+     "0",
+     "100,0"
+    ],
+    [
+     "La Florida",
+     "1",
+     "1",
+     "0",
+     "100,0"
+    ],
+    [
+     "Total",
+     "48",
+     "31",
+     "17",
+     "64,6"
+    ]
+   ],
+   "seccion": "servicios",
+   "nota": null,
+   "origen": "DOC"
+  },
+  {
+   "id": "c32",
+   "ref": "Cuadro 32",
+   "titulo": "Morbilidad general de la provincia de San Miguel, según lista 12/110, 2025",
+   "pag": 55,
+   "fuente": "Sistema de Información HIS MINSA, filtrado a la provincia San Miguel",
+   "elaborado": "Oficina de Epidemiología – Red de Salud San Miguel",
+   "cols": [
+    "Grupo de enfermedad",
+    "N°",
+    "Femenino",
+    "Masculino",
+    "%"
+   ],
+   "rows": [
+    [
+     "Infecciones de vías respiratorias agudas",
+     "38 627",
+     "23 001",
+     "15 626",
+     "28,1"
+    ],
+    [
+     "Obesidad",
+     "9 448",
+     "6 400",
+     "3 048",
+     "6,9"
+    ],
+    [
+     "Caries dental",
+     "9 282",
+     "5 497",
+     "3 785",
+     "6,8"
+    ],
+    [
+     "Gastritis y duodenitis",
+     "8 662",
+     "5 681",
+     "2 981",
+     "6,3"
+    ],
+    [
+     "Lumbago y otras dorsalgias",
+     "7 616",
+     "4 821",
+     "2 795",
+     "5,5"
+    ],
+    [
+     "Infección de vías urinarias",
+     "5 833",
+     "4 716",
+     "1 117",
+     "4,2"
+    ],
+    [
+     "Gingivitis",
+     "5 299",
+     "3 175",
+     "2 124",
+     "3,9"
+    ],
+    [
+     "Trastornos del metabolismo de las lipoproteínas",
+     "4 379",
+     "3 201",
+     "1 178",
+     "3,2"
+    ],
+    [
+     "Contractura muscular",
+     "4 169",
+     "2 765",
+     "1 404",
+     "3,0"
+    ],
+    [
+     "Enfermedades del esófago, del estómago y del duodeno",
+     "3 817",
+     "2 563",
+     "1 254",
+     "2,8"
+    ],
+    [
+     "Otras enfermedades dentales",
+     "2 629",
+     "1 512",
+     "1 117",
+     "1,9"
+    ],
+    [
+     "Desnutrición",
+     "2 450",
+     "1 434",
+     "1 016",
+     "1,8"
+    ],
+    [
+     "Enfermedades infecciosas intestinales",
+     "2 260",
+     "1 201",
+     "1 059",
+     "1,6"
+    ],
+    [
+     "Dermatitis",
+     "2 050",
+     "1 314",
+     "736",
+     "1,5"
+    ],
+    [
+     "Enfermedades de la pulpa",
+     "2 017",
+     "1 180",
+     "837",
+     "1,5"
+    ],
+    [
+     "Resto de enfermedades",
+     "28 728",
+     "18 217",
+     "10 511",
+     "20,9"
+    ],
+    [
+     "Total",
+     "137 266",
+     "86 678",
+     "50 588",
+     "100"
+    ]
+   ],
+   "seccion": "morbilidad",
+   "nota": "Unidad: atenciones registradas en HIS MINSA. El texto del documento cita 38 627 atenciones como total y asigna 15 626 a mujeres; en el cuadro, 38 627 corresponde a las infecciones respiratorias agudas (23 001 mujeres) y el total es 137 266. Se muestran las cifras del cuadro.",
+   "origen": "DOC"
+  },
+  {
+   "id": "morb_nino",
+   "ref": "Cuadro 33",
+   "titulo": "Morbilidad en el curso de vida niño, provincia de San Miguel, según lista 12/110, 2025",
+   "pag": 57,
+   "fuente": "Sistema de Información HIS MINSA, filtrado a la provincia San Miguel",
+   "elaborado": "Oficina de Epidemiología – Red de Salud San Miguel",
+   "cols": [
+    "Grupo de enfermedad",
+    "N°",
+    "Femenino",
+    "Masculino",
+    "%"
+   ],
+   "rows": [
+    [
+     "Infecciones de vías respiratorias agudas",
+     "13 286",
+     "6 653",
+     "6 633",
+     "56,7"
+    ],
+    [
+     "Caries dental",
+     "2 607",
+     "1 234",
+     "1 373",
+     "11,1"
+    ],
+    [
+     "Enfermedades infecciosas intestinales",
+     "999",
+     "466",
+     "533",
+     "4,3"
+    ],
+    [
+     "Desnutrición",
+     "771",
+     "351",
+     "420",
+     "3,3"
+    ],
+    [
+     "Dermatitis",
+     "551",
+     "292",
+     "259",
+     "2,4"
+    ],
+    [
+     "Enfermedades de la pulpa",
+     "537",
+     "263",
+     "274",
+     "2,3"
+    ],
+    [
+     "Helmintiasis",
+     "464",
+     "226",
+     "238",
+     "2,0"
+    ],
+    [
+     "Otras enfermedades infecciosas y parasitarias y sus secuelas",
+     "375",
+     "173",
+     "202",
+     "1,6"
+    ],
+    [
+     "Obesidad",
+     "329",
+     "154",
+     "175",
+     "1,4"
+    ],
+    [
+     "Micosis superficiales",
+     "304",
+     "172",
+     "132",
+     "1,3"
+    ],
+    [
+     "Conjuntivitis",
+     "278",
+     "115",
+     "163",
+     "1,2"
+    ],
+    [
+     "Enfermedades del apéndice y de los intestinos",
+     "271",
+     "148",
+     "123",
+     "1,2"
+    ],
+    [
+     "Infección de vías urinarias",
+     "210",
+     "157",
+     "53",
+     "0,9"
+    ],
+    [
+     "Anemias nutricionales",
+     "206",
+     "89",
+     "117",
+     "0,9"
+    ],
+    [
+     "Gingivitis",
+     "180",
+     "86",
+     "94",
+     "0,8"
+    ],
+    [
+     "Resto de enfermedades",
+     "2 064",
+     "1 015",
+     "1 049",
+     "8,8"
+    ],
+    [
+     "Total",
+     "23 432",
+     "11 594",
+     "11 838",
+     "100"
+    ]
+   ],
+   "seccion": "morbilidad",
+   "nota": null,
+   "origen": "DOC",
+   "curso": "Niño (0-11 años)"
+  },
+  {
+   "id": "morb_adolescente",
+   "ref": "Cuadro 34",
+   "titulo": "Morbilidad en el curso de vida adolescente, provincia de San Miguel, según lista 12/110, 2025",
+   "pag": 58,
+   "fuente": "Sistema de Información HIS MINSA, filtrado a la provincia San Miguel",
+   "elaborado": "Oficina de Epidemiología – Red de Salud San Miguel",
+   "cols": [
+    "Grupo de enfermedad",
+    "N°",
+    "Femenino",
+    "Masculino",
+    "%"
+   ],
+   "rows": [
+    [
+     "Infecciones de vías respiratorias agudas",
+     "4 147",
+     "2 161",
+     "1 986",
+     "33,8"
+    ],
+    [
+     "Caries dental",
+     "1 872",
+     "1 077",
+     "795",
+     "15,3"
+    ],
+    [
+     "Gingivitis",
+     "1 706",
+     "823",
+     "883",
+     "13,9"
+    ],
+    [
+     "Obesidad",
+     "649",
+     "358",
+     "291",
+     "5,3"
+    ],
+    [
+     "Desnutrición",
+     "442",
+     "254",
+     "188",
+     "3,6"
+    ],
+    [
+     "Gastritis y duodenitis",
+     "295",
+     "188",
+     "107",
+     "2,4"
+    ],
+    [
+     "Enfermedades de la pulpa",
+     "206",
+     "114",
+     "92",
+     "1,7"
+    ],
+    [
+     "Infección de vías urinarias",
+     "188",
+     "162",
+     "26",
+     "1,5"
+    ],
+    [
+     "Lumbago y otras dorsalgias",
+     "175",
+     "78",
+     "97",
+     "1,4"
+    ],
+    [
+     "Enfermedades infecciosas intestinales",
+     "174",
+     "92",
+     "82",
+     "1,4"
+    ],
+    [
+     "Dermatitis",
+     "164",
+     "90",
+     "74",
+     "1,3"
+    ],
+    [
+     "Otras enfermedades dentales",
+     "160",
+     "78",
+     "82",
+     "1,3"
+    ],
+    [
+     "Contractura muscular",
+     "146",
+     "76",
+     "70",
+     "1,2"
+    ],
+    [
+     "Traumatismos superficiales y heridas",
+     "146",
+     "52",
+     "94",
+     "1,2"
+    ],
+    [
+     "Enfermedades del esófago, del estómago y del duodeno",
+     "134",
+     "92",
+     "42",
+     "1,1"
+    ],
+    [
+     "Resto de enfermedades",
+     "1 657",
+     "1 027",
+     "630",
+     "13,5"
+    ],
+    [
+     "Total",
+     "12 261",
+     "6 722",
+     "5 539",
+     "100"
+    ]
+   ],
+   "seccion": "morbilidad",
+   "nota": null,
+   "origen": "DOC",
+   "curso": "Adolescente (12-17 años)"
+  },
+  {
+   "id": "morb_joven",
+   "ref": "Cuadro 35",
+   "titulo": "Morbilidad en el curso de vida joven, provincia de San Miguel, según lista 12/110, 2025",
+   "pag": 59,
+   "fuente": "Sistema de Información HIS MINSA, filtrado a la provincia San Miguel",
+   "elaborado": "Oficina de Epidemiología – Red de Salud San Miguel",
+   "cols": [
+    "Grupo de enfermedad",
+    "N°",
+    "Femenino",
+    "Masculino",
+    "%"
+   ],
+   "rows": [
+    [
+     "Infecciones de vías respiratorias agudas",
+     "3 612",
+     "2 513",
+     "1 099",
+     "25,9"
+    ],
+    [
+     "Obesidad",
+     "1 554",
+     "1 110",
+     "444",
+     "11,2"
+    ],
+    [
+     "Caries dental",
+     "1 472",
+     "1 012",
+     "460",
+     "10,6"
+    ],
+    [
+     "Gingivitis",
+     "1 037",
+     "712",
+     "325",
+     "7,4"
+    ],
+    [
+     "Infección de vías urinarias",
+     "687",
+     "599",
+     "88",
+     "4,9"
+    ],
+    [
+     "Lumbago y otras dorsalgias",
+     "550",
+     "325",
+     "225",
+     "3,9"
+    ],
+    [
+     "Gastritis y duodenitis",
+     "541",
+     "370",
+     "171",
+     "3,9"
+    ],
+    [
+     "Complicaciones relacionadas con el embarazo",
+     "334",
+     "334",
+     "0",
+     "2,4"
+    ],
+    [
+     "Enfermedades de la pulpa",
+     "325",
+     "203",
+     "122",
+     "2,3"
+    ],
+    [
+     "Infección de las vías genitourinarias en el embarazo",
+     "265",
+     "265",
+     "0",
+     "1,9"
+    ],
+    [
+     "Otras enfermedades dentales",
+     "257",
+     "173",
+     "84",
+     "1,8"
+    ],
+    [
+     "Contractura muscular",
+     "245",
+     "167",
+     "78",
+     "1,8"
+    ],
+    [
+     "Dermatitis",
+     "231",
+     "182",
+     "49",
+     "1,7"
+    ],
+    [
+     "Enfermedades del esófago, del estómago y del duodeno",
+     "231",
+     "172",
+     "59",
+     "1,7"
+    ],
+    [
+     "Micosis superficiales",
+     "174",
+     "116",
+     "58",
+     "1,2"
+    ],
+    [
+     "Resto de enfermedades",
+     "2 411",
+     "1 680",
+     "731",
+     "17,3"
+    ],
+    [
+     "Total",
+     "13 926",
+     "9 933",
+     "3 993",
+     "100"
+    ]
+   ],
+   "seccion": "morbilidad",
+   "nota": null,
+   "origen": "DOC",
+   "curso": "Joven (18-29 años)"
+  },
+  {
+   "id": "morb_adulto",
+   "ref": "Cuadro 36",
+   "titulo": "Morbilidad en el curso de vida adulto, provincia de San Miguel, según lista 12/110, 2025",
+   "pag": 60,
+   "fuente": "Sistema de Información HIS MINSA, filtrado a la provincia San Miguel",
+   "elaborado": "Oficina de Epidemiología – Red de Salud San Miguel",
+   "cols": [
+    "Grupo de enfermedad",
+    "N°",
+    "Femenino",
+    "Masculino",
+    "%"
+   ],
+   "rows": [
+    [
+     "Infecciones de vías respiratorias agudas",
+     "11 788",
+     "8 282",
+     "3 506",
+     "23,7"
+    ],
+    [
+     "Lumbago y otras dorsalgias",
+     "4 090",
+     "2 778",
+     "1 312",
+     "8,2"
+    ],
+    [
+     "Obesidad",
+     "3 983",
+     "3 004",
+     "979",
+     "8,0"
+    ],
+    [
+     "Gastritis y duodenitis",
+     "3 382",
+     "2 361",
+     "1 021",
+     "6,8"
+    ],
+    [
+     "Infección de vías urinarias",
+     "3 330",
+     "2 858",
+     "472",
+     "6,7"
+    ],
+    [
+     "Caries dental",
+     "2 554",
+     "1 757",
+     "797",
+     "5,1"
+    ],
+    [
+     "Contractura muscular",
+     "2 086",
+     "1 497",
+     "589",
+     "4,2"
+    ],
+    [
+     "Trastornos del metabolismo de las lipoproteínas",
+     "1 924",
+     "1 509",
+     "415",
+     "3,9"
+    ],
+    [
+     "Gingivitis",
+     "1 772",
+     "1 260",
+     "512",
+     "3,6"
+    ],
+    [
+     "Enfermedades del esófago, del estómago y del duodeno",
+     "1 413",
+     "1 074",
+     "339",
+     "2,8"
+    ],
+    [
+     "Micosis superficiales",
+     "771",
+     "573",
+     "198",
+     "1,5"
+    ],
+    [
+     "Enfermedades de la pulpa",
+     "755",
+     "534",
+     "221",
+     "1,5"
+    ],
+    [
+     "Otras enfermedades dentales",
+     "750",
+     "522",
+     "228",
+     "1,5"
+    ],
+    [
+     "Mialgia",
+     "739",
+     "483",
+     "256",
+     "1,5"
+    ],
+    [
+     "Dolor en articulación",
+     "681",
+     "516",
+     "165",
+     "1,4"
+    ],
+    [
+     "Resto de enfermedades",
+     "9 726",
+     "6 872",
+     "2 854",
+     "19,6"
+    ],
+    [
+     "Total",
+     "49 744",
+     "35 880",
+     "13 864",
+     "100"
+    ]
+   ],
+   "seccion": "morbilidad",
+   "nota": null,
+   "origen": "DOC",
+   "curso": "Adulto (30-59 años)"
+  },
+  {
+   "id": "morb_adulto_mayor",
+   "ref": "Cuadro 37",
+   "titulo": "Morbilidad en el curso de vida adulto mayor, provincia de San Miguel, según lista 12/110, 2025",
+   "pag": 61,
+   "fuente": "Sistema de Información HIS MINSA, filtrado a la provincia San Miguel",
+   "elaborado": "Oficina de Epidemiología – Red de Salud San Miguel",
+   "cols": [
+    "Grupo de enfermedad",
+    "N°",
+    "Femenino",
+    "Masculino",
+    "%"
+   ],
+   "rows": [
+    [
+     "Infecciones de vías respiratorias agudas",
+     "5 794",
+     "3 392",
+     "2 402",
+     "15,3"
+    ],
+    [
+     "Gastritis y duodenitis",
+     "4 390",
+     "2 734",
+     "1 656",
+     "11,6"
+    ],
+    [
+     "Obesidad",
+     "2 933",
+     "1 774",
+     "1 159",
+     "7,7"
+    ],
+    [
+     "Lumbago y otras dorsalgias",
+     "2 781",
+     "1 636",
+     "1 145",
+     "7,3"
+    ],
+    [
+     "Trastornos del metabolismo de las lipoproteínas",
+     "2 180",
+     "1 516",
+     "664",
+     "5,8"
+    ],
+    [
+     "Enfermedades del esófago, del estómago y del duodeno",
+     "1 878",
+     "1 140",
+     "738",
+     "5,0"
+    ],
+    [
+     "Contractura muscular",
+     "1 658",
+     "999",
+     "659",
+     "4,4"
+    ],
+    [
+     "Infección de vías urinarias",
+     "1 418",
+     "940",
+     "478",
+     "3,7"
+    ],
+    [
+     "Otras enfermedades dentales",
+     "1 296",
+     "669",
+     "627",
+     "3,4"
+    ],
+    [
+     "Dolor en articulación",
+     "1 157",
+     "769",
+     "388",
+     "3,1"
+    ],
+    [
+     "Desnutrición",
+     "1 017",
+     "649",
+     "368",
+     "2,7"
+    ],
+    [
+     "Hipertensión esencial",
+     "843",
+     "503",
+     "340",
+     "2,2"
+    ],
+    [
+     "Otras enfermedades osteomusculares",
+     "785",
+     "440",
+     "345",
+     "2,1"
+    ],
+    [
+     "Caries dental",
+     "777",
+     "417",
+     "360",
+     "2,0"
+    ],
+    [
+     "Gingivitis",
+     "604",
+     "294",
+     "310",
+     "1,6"
+    ],
+    [
+     "Resto de enfermedades",
+     "8 392",
+     "4 677",
+     "3 715",
+     "22,1"
+    ],
+    [
+     "Total",
+     "37 903",
+     "22 549",
+     "15 354",
+     "100"
+    ]
+   ],
+   "seccion": "morbilidad",
+   "nota": null,
+   "origen": "DOC",
+   "curso": "Adulto mayor (60 años a más)"
+  },
+  {
+   "id": "c38",
+   "ref": "Cuadro 38",
+   "titulo": "Morbilidad general por distritos, por sexo, según lista 12/110, 2025 (atenciones)",
+   "pag": 62,
+   "fuente": "Estadística e Informática – DIRESA Cajamarca, 2025",
+   "elaborado": "Oficina de Epidemiología – Red de Salud San Miguel",
+   "cols": [
+    "Distrito",
+    "N°",
+    "Femenino",
+    "Masculino",
+    "%"
+   ],
+   "rows": [
+    [
+     "San Miguel",
+     "21947",
+     "13951",
+     "7996",
+     "16,0"
+    ],
+    [
+     "San Silvestre de Cochán",
+     "15130",
+     "9763",
+     "5367",
+     "11,0"
+    ],
+    [
+     "Catilluc",
+     "12978",
+     "7937",
+     "5041",
+     "9,5"
+    ],
+    [
+     "El Prado",
+     "12697",
+     "8097",
+     "4600",
+     "9,2"
+    ],
+    [
+     "Llapa",
+     "12349",
+     "8107",
+     "4242",
+     "9,0"
+    ],
+    [
+     "Tongod",
+     "11694",
+     "7266",
+     "4428",
+     "8,5"
+    ],
+    [
+     "Niepos",
+     "10964",
+     "7068",
+     "3896",
+     "8,0"
+    ],
+    [
+     "Unión Agua Blanca",
+     "8898",
+     "5733",
+     "3165",
+     "6,5"
+    ],
+    [
+     "La Florida",
+     "7939",
+     "4931",
+     "3008",
+     "5,8"
+    ],
+    [
+     "Nanchoc",
+     "7819",
+     "4852",
+     "2967",
+     "5,7"
+    ],
+    [
+     "Calquis",
+     "6943",
+     "4154",
+     "2789",
+     "5,1"
+    ],
+    [
+     "San Gregorio",
+     "4719",
+     "2945",
+     "1774",
+     "3,4"
+    ],
+    [
+     "Bolívar",
+     "3189",
+     "1874",
+     "1315",
+     "2,3"
+    ],
+    [
+     "Total",
+     "137266",
+     "86678",
+     "50588",
+     "100"
+    ]
+   ],
+   "seccion": "morbilidad",
+   "nota": null,
+   "origen": "DOC"
+  },
+  {
+   "id": "c39",
+   "ref": "Cuadro 39",
+   "titulo": "Mortalidad general de la provincia de San Miguel, según lista 10/110, 2025",
+   "pag": 64,
+   "fuente": "Sistema Informático Nacional de Defunciones (SINADEF), filtrado a la provincia San Miguel",
+   "elaborado": "Oficina de Epidemiología – Red de Salud San Miguel",
+   "cols": [
+    "Grupo de enfermedad",
+    "N°",
+    "Femenino",
+    "Masculino",
+    "%"
+   ],
+   "rows": [
+    [
+     "Enfermedades isquémicas del corazón",
+     "26",
+     "10",
+     "16",
+     "12,7"
+    ],
+    [
+     "Infecciones respiratorias agudas bajas",
+     "25",
+     "15",
+     "10",
+     "12,3"
+    ],
+    [
+     "Enfermedades hipertensivas",
+     "23",
+     "12",
+     "11",
+     "11,3"
+    ],
+    [
+     "Enfermedades cerebrovasculares",
+     "16",
+     "7",
+     "9",
+     "7,8"
+    ],
+    [
+     "Septicemia, excepto neonatal",
+     "11",
+     "3",
+     "8",
+     "5,4"
+    ],
+    [
+     "Enfermedad cardiopulmonar, enfermedades de la circulación pulmonar",
+     "9",
+     "4",
+     "5",
+     "4,4"
+    ],
+    [
+     "Enfermedad pulmonar intersticial",
+     "7",
+     "3",
+     "4",
+     "3,4"
+    ],
+    [
+     "Insuficiencia respiratoria",
+     "6",
+     "2",
+     "4",
+     "2,9"
+    ],
+    [
+     "Diabetes mellitus",
+     "6",
+     "2",
+     "4",
+     "2,9"
+    ],
+    [
+     "Insuficiencia renal, incluye, incluye la aguda, crónica y la no especificadas",
+     "6",
+     "1",
+     "5",
+     "2,9"
+    ],
+    [
+     "Las demás causas externas",
+     "5",
+     "1",
+     "4",
+     "2,5"
+    ],
+    [
+     "Neoplasia maligna de estómago",
+     "5",
+     "3",
+     "2",
+     "2,5"
+    ],
+    [
+     "Cirrosis y ciertas otras enfermedades crónicas del hígado",
+     "3",
+     "2",
+     "1",
+     "1,5"
+    ],
+    [
+     "Accidentes de transporte terrestre",
+     "3",
+     "1",
+     "2",
+     "1,5"
+    ],
+    [
+     "Neoplasia maligna de hígado y vías biliares",
+     "3",
+     "1",
+     "2",
+     "1,5"
+    ],
+    [
+     "Resto de enfermedades",
+     "50",
+     "25",
+     "25",
+     "24,5"
+    ],
+    [
+     "Total",
+     "204",
+     "92",
+     "112",
+     "100"
+    ]
+   ],
+   "seccion": "mortalidad",
+   "nota": "El cuadro registra 204 defunciones; el Cuadro 1 (ORE Cajamarca) reporta 200. El texto que acompaña al cuadro menciona 12 % para infecciones respiratorias y 86,5 % para “resto de enfermedades”; el cuadro muestra 12,3 % y 24,5 %. Se muestran las cifras del cuadro.",
+   "origen": "DOC"
+  },
+  {
+   "id": "mort_nino",
+   "ref": "Cuadro 40",
+   "titulo": "Mortalidad en el curso de vida niño, provincia de San Miguel, según lista 10/110, 2025",
+   "pag": 65,
+   "fuente": "Sistema Informático Nacional de Defunciones (SINADEF), filtrado a la provincia San Miguel",
+   "elaborado": "Oficina de Epidemiología – Red de Salud San Miguel",
+   "cols": [
+    "Grupo de enfermedad",
+    "N°",
+    "%"
+   ],
+   "rows": [
+    [
+     "Otras ciertas afecciones originadas en el periodo perinatal",
+     "1",
+     "14,3"
+    ],
+    [
+     "Signos, síntomas y afecciones mal definidas",
+     "1",
+     "14,3"
+    ],
+    [
+     "Infecciones específicas del periodo perinatal",
+     "1",
+     "14,3"
+    ],
+    [
+     "Defectos de la coagulación en órganos hematopoyéticos y trastornos que afectan al mecanismo de la inmunidad",
+     "1",
+     "14,3"
+    ],
+    [
+     "Trastornos respiratorios específicos del periodo perinatal",
+     "1",
+     "14,3"
+    ],
+    [
+     "Epilepsia y estado de mal epiléptico",
+     "1",
+     "14,3"
+    ],
+    [
+     "Malformaciones congénitas, deformidades y anomalías cromosómicas",
+     "1",
+     "14,3"
+    ],
+    [
+     "Total",
+     "7",
+     "100"
+    ]
+   ],
+   "seccion": "mortalidad",
+   "nota": "Versión pública: no se desagrega por sexo porque el grupo tiene menos de 10 defunciones.",
+   "origen": "DOC",
+   "curso": "Niño (0-11 años)"
+  },
+  {
+   "id": "mort_adolescente",
+   "ref": "Cuadro 41",
+   "titulo": "Mortalidad en el curso de vida adolescente, provincia de San Miguel, según lista 10/110, 2025",
+   "pag": 66,
+   "fuente": "Sistema Informático Nacional de Defunciones (SINADEF), filtrado a la provincia San Miguel",
+   "elaborado": "Oficina de Epidemiología – Red de Salud San Miguel",
+   "cols": [
+    "Grupo de enfermedad",
+    "N°",
+    "%"
+   ],
+   "rows": [
+    [
+     "Enfermedad cardiopulmonar, enfermedades de la circulación pulmonar",
+     "1",
+     "100,0"
+    ],
+    [
+     "Total",
+     "1",
+     "100"
+    ]
+   ],
+   "seccion": "mortalidad",
+   "nota": "Versión pública: no se desagrega por sexo porque el grupo tiene menos de 10 defunciones.",
+   "origen": "DOC",
+   "curso": "Adolescente (12-17 años)"
+  },
+  {
+   "id": "mort_joven",
+   "ref": "Cuadro 42",
+   "titulo": "Mortalidad en el curso de vida joven, provincia de San Miguel, según lista 10/110, 2025",
+   "pag": 66,
+   "fuente": "Sistema Informático Nacional de Defunciones (SINADEF), filtrado a la provincia San Miguel",
+   "elaborado": "Oficina de Epidemiología – Red de Salud San Miguel",
+   "cols": [
+    "Grupo de enfermedad",
+    "N°",
+    "%"
+   ],
+   "rows": [
+    [
+     "Las demás causas externas",
+     "2",
+     "50,0"
+    ],
+    [
+     "Accidentes de transporte terrestre",
+     "2",
+     "50,0"
+    ],
+    [
+     "Total",
+     "4",
+     "100"
+    ]
+   ],
+   "seccion": "mortalidad",
+   "nota": "Versión pública: no se desagrega por sexo porque el grupo tiene menos de 10 defunciones.",
+   "origen": "DOC",
+   "curso": "Joven (18-29 años)"
+  },
+  {
+   "id": "mort_adulto",
+   "ref": "Cuadro 43",
+   "titulo": "Mortalidad en el curso de vida adulto, provincia de San Miguel, según lista 10/110, 2025",
+   "pag": 67,
+   "fuente": "Sistema Informático Nacional de Defunciones (SINADEF), filtrado a la provincia San Miguel",
+   "elaborado": "Oficina de Epidemiología – Red de Salud San Miguel",
+   "cols": [
+    "Grupo de enfermedad",
+    "N°",
+    "Femenino",
+    "Masculino",
+    "%"
+   ],
+   "rows": [
+    [
+     "Enfermedades cerebrovasculares",
+     "3",
+     "0",
+     "3",
+     "18,8"
+    ],
+    [
+     "Las demás causas externas",
+     "2",
+     "1",
+     "1",
+     "12,5"
+    ],
+    [
+     "Septicemia, excepto neonatal",
+     "1",
+     "1",
+     "0",
+     "6,2"
+    ],
+    [
+     "Infecciones respiratorias agudas bajas",
+     "1",
+     "1",
+     "0",
+     "6,2"
+    ],
+    [
+     "Neoplasia maligna del cuello del útero",
+     "1",
+     "1",
+     "0",
+     "6,2"
+    ],
+    [
+     "Enfermedades hipertensivas",
+     "1",
+     "1",
+     "0",
+     "6,2"
+    ],
+    [
+     "Insuficiencia respiratoria",
+     "1",
+     "0",
+     "1",
+     "6,2"
+    ],
+    [
+     "Diabetes mellitus",
+     "1",
+     "0",
+     "1",
+     "6,2"
+    ],
+    [
+     "Enfermedades del sistema urinario",
+     "1",
+     "1",
+     "0",
+     "6,2"
+    ],
+    [
+     "Insuficiencia cardiaca",
+     "1",
+     "0",
+     "1",
+     "6,2"
+    ],
+    [
+     "Neoplasia maligna de estómago",
+     "1",
+     "1",
+     "0",
+     "6,2"
+    ],
+    [
+     "Neoplasia maligna de la mama",
+     "1",
+     "1",
+     "0",
+     "6,2"
+    ],
+    [
+     "Encefalitis, mielitis y encefalomielitis",
+     "1",
+     "0",
+     "1",
+     "6,2"
+    ],
+    [
+     "Total",
+     "16",
+     "8",
+     "8",
+     "100"
+    ]
+   ],
+   "seccion": "mortalidad",
+   "nota": null,
+   "origen": "DOC",
+   "curso": "Adulto (30-59 años)"
+  },
+  {
+   "id": "mort_adulto_mayor",
+   "ref": "Cuadro 44",
+   "titulo": "Mortalidad en el curso de vida adulto mayor, provincia de San Miguel, según lista 10/110, 2025",
+   "pag": 68,
+   "fuente": "Sistema Informático Nacional de Defunciones (SINADEF), filtrado a la provincia San Miguel",
+   "elaborado": "Oficina de Epidemiología – Red de Salud San Miguel",
+   "cols": [
+    "Grupo de enfermedad",
+    "N°",
+    "Femenino",
+    "Masculino",
+    "%"
+   ],
+   "rows": [
+    [
+     "Enfermedades isquémicas del corazón",
+     "26",
+     "10",
+     "16",
+     "14,8"
+    ],
+    [
+     "Infecciones respiratorias agudas bajas",
+     "24",
+     "14",
+     "10",
+     "13,6"
+    ],
+    [
+     "Enfermedades hipertensivas",
+     "22",
+     "11",
+     "11",
+     "12,5"
+    ],
+    [
+     "Enfermedades cerebrovasculares",
+     "13",
+     "7",
+     "6",
+     "7,4"
+    ],
+    [
+     "Septicemia, excepto neonatal",
+     "10",
+     "2",
+     "8",
+     "5,7"
+    ],
+    [
+     "Enfermedad cardiopulmonar, enfermedades de la circulación pulmonar",
+     "8",
+     "3",
+     "5",
+     "4,5"
+    ],
+    [
+     "Enfermedad pulmonar intersticial",
+     "7",
+     "3",
+     "4",
+     "4,0"
+    ],
+    [
+     "Insuficiencia renal, incluye, incluye la aguda, crónica y la no especificadas",
+     "6",
+     "1",
+     "5",
+     "3,4"
+    ],
+    [
+     "Insuficiencia respiratoria",
+     "5",
+     "2",
+     "3",
+     "2,8"
+    ],
+    [
+     "Diabetes mellitus",
+     "5",
+     "2",
+     "3",
+     "2,8"
+    ],
+    [
+     "Neoplasia maligna de estómago",
+     "4",
+     "2",
+     "2",
+     "2,3"
+    ],
+    [
+     "Cirrosis y ciertas otras enfermedades crónicas del hígado",
+     "3",
+     "2",
+     "1",
+     "1,7"
+    ],
+    [
+     "Neoplasia maligna de hígado y vías biliares",
+     "3",
+     "1",
+     "2",
+     "1,7"
+    ],
+    [
+     "Enfermedad de Parkinson",
+     "3",
+     "0",
+     "3",
+     "1,7"
+    ],
+    [
+     "Neoplasia maligna del tejido linfático, de otros órganos hematopoyéticos",
+     "2",
+     "1",
+     "1",
+     "1,1"
+    ],
+    [
+     "Embolia, trombosis arteriales y otros trastornos arteriales o arteriolares",
+     "2",
+     "1",
+     "1",
+     "1,1"
+    ],
+    [
+     "Neoplasia maligna de la próstata",
+     "2",
+     "0",
+     "2",
+     "1,1"
+    ],
+    [
+     "Neoplasia maligna secundaria (metástasis)",
+     "2",
+     "1",
+     "1",
+     "1,1"
+    ],
+    [
+     "Otras enfermedades infecciosas y parasitarias",
+     "2",
+     "2",
+     "0",
+     "1,1"
+    ],
+    [
+     "Neoplasia maligna de la tráquea, los bronquios y el pulmón",
+     "2",
+     "1",
+     "1",
+     "1,1"
+    ],
+    [
+     "Resto de enfermedades",
+     "25",
+     "12",
+     "13",
+     "14,2"
+    ],
+    [
+     "Total",
+     "176",
+     "78",
+     "98",
+     "100"
+    ]
+   ],
+   "seccion": "mortalidad",
+   "nota": null,
+   "origen": "DOC",
+   "curso": "Adulto mayor (60 años a más)"
+  },
+  {
+   "id": "c45",
+   "ref": "Cuadro 45",
+   "titulo": "Mortalidad general por distritos, por sexo, según lista 10/110, 2025 (defunciones)",
+   "pag": 69,
+   "fuente": "Estadística e Informática – DIRESA Cajamarca, 2025",
+   "elaborado": "Oficina de Epidemiología – Red de Salud San Miguel",
+   "cols": [
+    "Distrito",
+    "N°",
+    "Femenino",
+    "Masculino",
+    "%"
+   ],
+   "rows": [
+    [
+     "San Miguel",
+     "44",
+     "20",
+     "24",
+     "21,6"
+    ],
+    [
+     "Llapa",
+     "40",
+     "17",
+     "23",
+     "19,6"
+    ],
+    [
+     "San Silvestre de Cochán",
+     "28",
+     "11",
+     "17",
+     "13,7"
+    ],
+    [
+     "El Prado",
+     "15",
+     "7",
+     "8",
+     "7,4"
+    ],
+    [
+     "La Florida",
+     "13",
+     "5",
+     "8",
+     "6,4"
+    ],
+    [
+     "San Gregorio",
+     "13",
+     "6",
+     "7",
+     "6,4"
+    ],
+    [
+     "Unión Agua Blanca",
+     "11",
+     "9",
+     "2",
+     "5,4"
+    ],
+    [
+     "Niepos",
+     "11",
+     "4",
+     "7",
+     "5,4"
+    ],
+    [
+     "Bolívar",
+     "10",
+     "9",
+     "1",
+     "4,9"
+    ],
+    [
+     "Calquis",
+     "5",
+     "2",
+     "3",
+     "2,5"
+    ],
+    [
+     "Catilluc",
+     "5",
+     "0",
+     "5",
+     "2,5"
+    ],
+    [
+     "Nanchoc",
+     "5",
+     "1",
+     "4",
+     "2,5"
+    ],
+    [
+     "Tongod",
+     "4",
+     "1",
+     "3",
+     "2,0"
+    ],
+    [
+     "Total",
+     "204",
+     "92",
+     "112",
+     "100"
+    ]
+   ],
+   "seccion": "mortalidad",
+   "nota": null,
+   "origen": "DOC"
+  },
+  {
+   "id": "c46",
+   "ref": "Cuadro 46",
+   "titulo": "Mortalidad materna y perinatal, provincia de San Miguel, 2023-2025",
+   "pag": 71,
+   "fuente": "Cuantificador de Desigualdades en Salud – DGE, MINSA / SINADEF, 2023-2025",
+   "elaborado": "Oficina de Epidemiología – Red de Salud San Miguel",
+   "cols": [
+    "Indicador",
+    "2023",
+    "2024",
+    "2025"
+   ],
+   "rows": [
+    [
+     "N° de muertes maternas",
+     "0",
+     "1",
+     "0"
+    ],
+    [
+     "N° de muertes perinatales",
+     "1",
+     "3",
+     "6"
+    ],
+    [
+     "N° de nacidos vivos (base poblacional)",
+     "660",
+     "740",
+     "795"
+    ]
+   ],
+   "seccion": "mortalidad",
+   "nota": "Los nacidos vivos de este cuadro (660, 740, 795) provienen de una fuente distinta a los nacimientos del Cuadro 1 (326, 314, 307).",
+   "origen": "DOC"
+  },
+  {
+   "id": "c46b",
+   "ref": "Cuadro 46 (vinculación)",
+   "titulo": "Vinculación de los problemas de salud priorizados con los instrumentos de gestión regional y nacional",
+   "pag": 74,
+   "fuente": "Matriz de vinculación de instrumentos de gestión, Red de Salud San Miguel, 2025",
+   "elaborado": "Oficina de Epidemiología – Red de Salud San Miguel",
+   "cols": [
+    "Objetivo estratégico",
+    "Problema priorizado",
+    "Indicador",
+    "Determinantes para vinculación",
+    "Fuente"
+   ],
+   "rows": [
+    [
+     "AER 03.04 Reducir la prevalencia de anemia y desnutrición crónica en niños y niñas menores de 5 años",
+     "Malnutrición y anemia por déficit en el binomio-madre niño durante el embarazo y hasta los 36 meses",
+     "Proporción de menores de 5 años con desnutrición crónica infantil (DCI)",
+     "Pobreza; Desempleo; Acceso a agua potable; Acceso a desagüe",
+     "ENDES, INEI"
+    ],
+    [
+     "AER 03.04 Reducir la prevalencia de anemia y desnutrición crónica en niños y niñas menores de 5 años",
+     "Malnutrición y anemia por déficit en el binomio-madre niño durante el embarazo y hasta los 36 meses",
+     "Proporción de niños de 6 a 35 meses de edad con anemia",
+     "Pobreza; Desempleo; Acceso a agua potable; Acceso a desagüe",
+     "ENDES, INEI"
+    ],
+    [
+     "AER 03.03 Reducir la mortalidad materna e infantil en el departamento de Cajamarca",
+     "Complicaciones, morbilidad y mortalidad materna, fetal y neonatal",
+     "Razón de mortalidad materna",
+     "Pobreza; Educación; Dependencia económica",
+     "ENDES, INEI"
+    ],
+    [
+     "AER 03.03 Reducir la mortalidad materna e infantil en el departamento de Cajamarca",
+     "Complicaciones, morbilidad y mortalidad materna, fetal y neonatal",
+     "Tasa de Mortalidad Neonatal",
+     "Pobreza; Educación; Densidad del estado",
+     "SINADEF"
+    ],
+    [
+     "AEI. 03.04 Atención integral a los niños, niñas y adolescentes en estado de riesgo y desprotección familiar",
+     "Inadecuada salud sexual y reproductiva con énfasis en el embarazo durante la adolescencia",
+     "% de embarazo en adolescente",
+     "Educación; Densidad del estado; Dependencia económica",
+     "HIS MINSA"
+    ],
+    [
+     "AER 03.05 Mejorar los servicios de detección y control oportuno de las enfermedades transmisibles, causantes de la morbilidad",
+     "Incremento de casos de tuberculosis",
+     "% de Prevalencia de TBC",
+     "Pobreza; Hacinamiento; Desempleo; Hogares que cocinan con leña",
+     "INEI, SIGTB, SIEPITB"
+    ],
+    [
+     "AEI.01.07 Atención de enfermedades transmisibles de manera oportuna por curso de vida a la población del departamento de Cajamarca",
+     "Enfermedad de transmisión sexual y VIH/SIDA",
+     "Prevalencia de VIH",
+     "Pobreza; Nivel educativo; Migración",
+     "ES-ITS/VIH"
+    ],
+    [
+     "AEI.01.07 Atención de enfermedades transmisibles de manera oportuna por curso de vida a la población del departamento de Cajamarca",
+     "Enfermedades metaxénicas y zoonóticas con énfasis leishmaniasis",
+     "Incidencia de Leishmaniasis",
+     "Densidad del Estado; Migración; Educación",
+     "NOTIWEB, SALUD AMBIENTAL, HIS MINSA"
+    ],
+    [
+     "AER 03.06 Mejorar servicios de detección y control oportuno y disminución de las enfermedades no transmisibles causantes de la morbilidad",
+     "Neoplasias malignas",
+     "Prevalencia de cáncer",
+     "Nivel educativo; Pobreza; Ocupación",
+     "ES-CANCER, HIS MINSA, LAB."
+    ],
+    [
+     "AEI.01.03 Atención de enfermedades no transmisibles de manera oportuna por curso de vida a la población de Cajamarca",
+     "Enfermedades cardiovasculares y metabólicas, con énfasis en hipertensión arterial, diabetes mellitus.",
+     "Incidencia de diabetes mellitus",
+     "Bajo nivel educativo; Ingresos; Pobreza",
+     "ES-DNT, HIS MINSA"
+    ],
+    [
+     "AEI.01.03 Atención de enfermedades no transmisibles de manera oportuna por curso de vida a la población de Cajamarca",
+     "Enfermedades cardiovasculares y metabólicas, con énfasis en hipertensión arterial, diabetes mellitus.",
+     "Incidencia de hipertensión arterial",
+     "Bajo nivel educativo; Ingresos; Pobreza",
+     "ES-DNT, HIS MINSA"
+    ],
+    [
+     "AER 12.02 Fortalecer intervenciones de lucha frente a la violencia contra la mujer y el grupo familiar",
+     "Enfermedades mentales del sistema nervioso con énfasis en: degeneración cerebral, depresión unipolar, estrés postraumático por desastres y violencia, alcoholismo y drogadicción y en el centro laboral.",
+     "% de personas tamizadas en problemas de salud mental, ansiedad, depresión y abuso de alcohol",
+     "Educación; Dependencia económica",
+     "ES-SALUD MENTAL, NOTIWEB-VIF"
+    ],
+    [
+     "AEI.01.04 Atención de salud mental integral a la población por curso de vida",
+     "Escasa sensibilidad de la población por los problemas de salud mental",
+     "% de personas atendidas con problema asociados a violencia familiar",
+     "Educación; Dependencia económica",
+     "ES-SALUD MENTAL, NOTIWEB-VIF"
+    ],
+    [
+     "OEI.04 Promover el acceso a los servicios básicos de agua y calidad, saneamiento y vivienda a la población del departamento de Cajamarca",
+     "Deficiente acceso al agua segura y saneamiento básico",
+     "% de población rural con abastecimiento de servicios de agua potable por red pública",
+     "Pobreza; Desempleo; Acceso a agua potable; Acceso a desagüe",
+     "Salud ambiental"
+    ],
+    [
+     "OEI.04 Promover el acceso a los servicios básicos de agua y calidad, saneamiento y vivienda a la población del departamento de Cajamarca",
+     "Deficiente acceso al agua segura y saneamiento básico",
+     "% de población urbana con abastecimiento de servicios de agua potable por red pública",
+     "Pobreza; Desempleo; Acceso a agua potable; Acceso a desagüe",
+     "Salud ambiental"
+    ],
+    [
+     "AEI. 04.06 Vigilancia de calidad de agua para consumo humano de la población del departamento de Cajamarca",
+     "Deficiente acceso al agua segura y saneamiento básico",
+     "% de centros poblados vigilados con sistema de agua para consumo humano",
+     "Pobreza; Desempleo; Acceso a agua potable; Acceso a desagüe",
+     "Salud ambiental"
+    ]
+   ],
+   "seccion": "gestion",
+   "nota": "En el documento este cuadro también está numerado como “Cuadro 46” (numeración repetida).",
+   "origen": "DOC"
+  },
+  {
+   "id": "c48",
+   "ref": "Cuadro 48",
+   "titulo": "Líneas de acción priorizadas según los determinantes identificados en el análisis de desigualdades (capítulo VIII)",
+   "pag": 92,
+   "fuente": "Oficina de Epidemiología – Red de Salud San Miguel, 2026, a partir del análisis de determinantes y desigualdades (capítulo VIII) y la matriz de priorización",
+   "elaborado": "Oficina de Epidemiología – Red de Salud San Miguel",
+   "cols": [
+    "Problema de salud priorizado",
+    "Determinante principal identificado",
+    "Línea de acción propuesta",
+    "Indicador de seguimiento"
+   ],
+   "rows": [
+    [
+     "Desnutrición crónica infantil y anemia",
+     "Pobreza monetaria (determinante estructural principal); acceso a agua y desagüe (determinante intermedio)",
+     "Fortalecer la suplementación con hierro y multimicronutrientes y la consejería nutricional con énfasis en las IPRESS de los distritos de mayor pobreza (Llapa, Catilluc, Calquis, Tongod); articular con programas sociales (JUNTOS, Qali Warma) para el grupo social de mayor riesgo.",
+     "% de DCI y anemia en menores de 5 años por IPRESS"
+    ],
+    [
+     "Tuberculosis",
+     "Hacinamiento y hogares que cocinan con leña (determinantes intermedios)",
+     "Priorizar la búsqueda activa de sintomáticos respiratorios y la visita domiciliaria en distritos con mayor hacinamiento; promover cocinas mejoradas en coordinación con la municipalidad provincial.",
+     "Tasa de incidencia de TBC; % de sintomáticos respiratorios identificados; % de contactos censados y evaluados"
+    ],
+    [
+     "VIH y enfermedades de transmisión sexual",
+     "Migración y movilidad poblacional (determinante intermedio)",
+     "Focalizar el tamizaje y la consejería en VIH/ITS en los ejes viales de mayor tránsito poblacional y en población migrante, en lugar de basarse únicamente en criterios de pobreza monetaria.",
+     "Número de personas tamizadas para VIH; % de positivos vinculados a tratamiento"
+    ],
+    [
+     "Leishmaniasis cutánea y dengue",
+     "Migración y exposición ocupacional agrícola (determinantes intermedios)",
+     "Mantener la vigilancia entomológica activa pese a la ausencia de casos autóctonos de dengue en 2025; fortalecer el control vectorial y la protección personal en distritos de mayor incidencia de leishmaniasis cutánea.",
+     "Número de casos autóctonos e importados de dengue; tasa de incidencia de leishmaniasis cutánea"
+    ],
+    [
+     "Mortalidad materna y perinatal; embarazo adolescente",
+     "Dependencia económica y nivel educativo (determinantes estructurales)",
+     "Sostener el seguimiento de gestantes de alto riesgo y la referencia oportuna a establecimientos FONB/FONE; fortalecer la educación sexual integral en instituciones educativas en los distritos con mayor embarazo adolescente.",
+     "RMM; incidencia de muertes perinatales; % de embarazo adolescente"
+    ],
+    [
+     "Cáncer, diabetes e hipertensión",
+     "Pobreza monetaria y nivel educativo (barreras de acceso a tamizaje y diagnóstico oportuno)",
+     "Ampliar las campañas de tamizaje de cáncer (piel, mama, cuello uterino, colon y recto y próstata) y de factores de riesgo cardiometabólico en los distritos de mayor pobreza y analfabetismo, donde se concentra la mayor prevalencia.",
+     "% de personas tamizadas para cáncer; % de hipertensos y diabéticos con tratamiento controlado"
+    ],
+    [
+     "Salud mental (ansiedad, depresión, conducta suicida)",
+     "Nivel educativo y dependencia económica (determinantes estructurales)",
+     "Priorizar el tamizaje de salud mental en las IPRESS de los distritos con mayor precariedad educativa y económica; fortalecer la capacidad resolutiva del primer nivel de atención en consejería y derivación oportuna.",
+     "% de personas tamizadas en salud mental; número de personas atendidas por primera vez"
+    ],
+    [
+     "Acceso a agua potable y saneamiento básico",
+     "Pobreza monetaria (determinante estructural subyacente)",
+     "Gestionar ante el Gobierno Regional y la municipalidad provincial la priorización de proyectos de inversión en agua y saneamiento en los distritos con mayor brecha (Tongod, Catilluc, […]",
+     "% de viviendas con acceso a agua potable y desagüe, por distrito"
+    ]
+   ],
+   "seccion": "gestion",
+   "nota": "Transcrito de la imagen del cuadro original. La última celda aparece cortada en el documento; se marca con […] en lugar de completarla.",
+   "origen": "PDF (imagen)"
+  }
+ ],
+ "gradientes": [
+  {
+   "id": "dci",
+   "nombre": "Desnutrición crónica infantil (DCI) en menores de 5 años",
+   "determinante": "Pobreza monetaria",
+   "unidad": "%",
+   "ref": "Gráfico 4",
+   "pag": 76,
+   "fuente": "SIEN, procesado con el Cuantificador de Desigualdades en Salud (DGE)",
+   "valores": {
+    "2023": [
+     "25,94",
+     "31,82",
+     "25,91",
+     "31,99"
+    ],
+    "2024": [
+     "28,53",
+     "31,88",
+     "28,90",
+     "34,60"
+    ],
+    "2025": [
+     "27,17",
+     "32,32",
+     "25,88",
+     "32,17"
+    ]
+   },
+   "lectura": "Brecha entre grupos extremos: 5,00 puntos en 2025; 6,05 y 6,07 en 2023 y 2024. Asociación moderada y sostenida."
+  },
+  {
+   "id": "anemia",
+   "nombre": "Anemia en menores de 5 años",
+   "determinante": "Desempleo",
+   "unidad": "%",
+   "ref": "Gráfico 5",
+   "pag": 78,
+   "fuente": "SIEN, procesado con el Cuantificador de Desigualdades en Salud (DGE)",
+   "valores": {
+    "2023": [
+     "28,00",
+     "29,02",
+     "33,59",
+     "21,92"
+    ],
+    "2024": [
+     "27,72",
+     "27,07",
+     "27,64",
+     "22,06"
+    ],
+    "2025": [
+     "11,69",
+     "18,55",
+     "18,47",
+     "15,68"
+    ]
+   },
+   "lectura": "Brecha entre grupos extremos: 3,99 puntos en 2025; entre el valor más bajo y el más alto, 6,86 puntos."
+  },
+  {
+   "id": "vih",
+   "nombre": "Virus de la inmunodeficiencia humana (VIH)",
+   "determinante": "Migración",
+   "unidad": "unidad no indicada en el documento",
+   "ref": "Gráfico 6",
+   "pag": 79,
+   "fuente": "NotiWeb, procesado con el Cuantificador de Desigualdades en Salud (DGE)",
+   "valores": {
+    "2023": [
+     "1,80",
+     "3,42",
+     "2,25",
+     "22,50"
+    ],
+    "2024": [
+     "2,43",
+     "2,06",
+     "3,57",
+     "25,88"
+    ],
+    "2025": [
+     "2,76",
+     "1,15",
+     "3,37",
+     "45,37"
+    ]
+   },
+   "lectura": "El texto indica que la asociación más clara aparece con la migración y que requeriría un análisis estadístico específico para confirmarse."
+  },
+  {
+   "id": "tbc",
+   "nombre": "Tuberculosis (TBC)",
+   "determinante": "Desempleo",
+   "unidad": "tasa por 100 000 hab.",
+   "ref": "Gráfico 7",
+   "pag": 81,
+   "fuente": "SIGTB, procesado con el Cuantificador de Desigualdades en Salud (DGE)",
+   "valores": {
+    "2023": [
+     "0,00",
+     "12,48",
+     "4,24",
+     "60,03"
+    ],
+    "2024": [
+     "0,00",
+     "0,00",
+     "16,97",
+     "57,67"
+    ],
+    "2025": [
+     "0,00",
+     "26,63",
+     "4,02",
+     "34,87"
+    ]
+   },
+   "lectura": "Cuatro casos en 2025: el documento pide leerlo como señal de alerta, no como estimación precisa de riesgo."
+  },
+  {
+   "id": "leish",
+   "nombre": "Leishmaniasis cutánea",
+   "determinante": "Migración (emigrantes)",
+   "unidad": "tasa por 10 000 hab.",
+   "ref": "Gráfico 8",
+   "pag": 82,
+   "fuente": "NotiWeb, procesado con el Cuantificador de Desigualdades en Salud (DGE)",
+   "valores": {
+    "2023": [
+     "0,00",
+     "2,36",
+     "5,18",
+     "25,23"
+    ],
+    "2024": [
+     "0,00",
+     "1,23",
+     "2,84",
+     "10,36"
+    ],
+    "2025": [
+     "0,00",
+     "2,52",
+     "3,55",
+     "30,88"
+    ]
+   },
+   "lectura": "22 casos en 2025. Brecha entre grupos extremos: 30,88 puntos."
+  },
+  {
+   "id": "embarazo",
+   "nombre": "Embarazo adolescente",
+   "determinante": "Analfabetismo",
+   "unidad": "%",
+   "ref": "Gráfico 9",
+   "pag": 85,
+   "fuente": "HIS MINSA, procesado con el Cuantificador de Desigualdades en Salud (DGE)",
+   "valores": {
+    "2023": [
+     "2,99",
+     "1,76",
+     "2,35",
+     "1,42"
+    ],
+    "2024": [
+     "2,06",
+     "1,42",
+     "0,88",
+     "0,71"
+    ],
+    "2025": [
+     "1,14",
+     "1,30",
+     "1,02",
+     "1,14"
+    ]
+   },
+   "lectura": "Relación territorial débil con el analfabetismo; el documento señala que otros factores tendrían mayor peso explicativo."
+  },
+  {
+   "id": "embarazo_dep",
+   "nombre": "Embarazo adolescente",
+   "determinante": "Dependencia económica",
+   "unidad": "%",
+   "ref": "Gráfico 10",
+   "pag": 85,
+   "fuente": "HIS MINSA",
+   "valores": {
+    "2025": [
+     "1,29",
+     "0,84",
+     "1,21",
+     "1,47"
+    ]
+   },
+   "lectura": "Los distritos de mayor dependencia económica concentran la mayor proporción de embarazo adolescente."
+  },
+  {
+   "id": "cancer",
+   "nombre": "Cáncer (piel, mama, cuello uterino y estómago)",
+   "determinante": "Analfabetismo",
+   "unidad": "tasa por 100 000 hab.",
+   "ref": "Gráfico 11",
+   "pag": 86,
+   "fuente": "HIS MINSA, procesado con el Cuantificador de Desigualdades en Salud (DGE)",
+   "valores": {
+    "2023": [
+     "0,00",
+     "68,30",
+     "0,00",
+     "30,88"
+    ],
+    "2024": [
+     "0,00",
+     "72,53",
+     "0,00",
+     "30,24"
+    ],
+    "2025": [
+     "0,00",
+     "76,97",
+     "0,00",
+     "29,83"
+    ]
+   },
+   "lectura": "11 casos en 2025: distribución indicativa, no concluyente."
+  },
+  {
+   "id": "diabetes",
+   "nombre": "Diabetes",
+   "determinante": "Analfabetismo",
+   "unidad": "unidad no indicada en el documento",
+   "ref": "Gráfico 12",
+   "pag": 88,
+   "fuente": "HIS MINSA, procesado con el Cuantificador de Desigualdades en Salud (DGE)",
+   "valores": {
+    "2025": [
+     "4,47",
+     "3,10",
+     "3,64",
+     "3,19"
+    ]
+   },
+   "lectura": "121 casos en 2025. Sin relación territorial clara con los determinantes evaluados."
+  },
+  {
+   "id": "hta",
+   "nombre": "Hipertensión arterial",
+   "determinante": "Pobreza monetaria",
+   "unidad": "tasa por 1 000 hab.",
+   "ref": "Gráfico 13",
+   "pag": 89,
+   "fuente": "HIS MINSA, procesado con el Cuantificador de Desigualdades en Salud (DGE)",
+   "valores": {
+    "2023": [
+     "7,80",
+     "11,51",
+     "24,15",
+     "14,57"
+    ],
+    "2024": [
+     "9,37",
+     "11,59",
+     "13,35",
+     "18,57"
+    ],
+    "2025": [
+     "8,12",
+     "14,57",
+     "12,24",
+     "14,58"
+    ]
+   },
+   "lectura": "498 casos en 2025. Brecha entre grupos extremos: 6,46 puntos. El título del gráfico original dice “vs analfabetismo”, pero el gráfico y el texto usan pobreza monetaria."
+  },
+  {
+   "id": "salud_mental",
+   "nombre": "Salud mental (ansiedad, depresión y suicidio)",
+   "determinante": "Dependencia económica",
+   "unidad": "tasa por 1 000 hab.",
+   "ref": "Gráfico 14",
+   "pag": 90,
+   "fuente": "HIS MINSA, procesado con el Cuantificador de Desigualdades en Salud (DGE)",
+   "valores": {
+    "2023": [
+     "4,27",
+     "10,85",
+     "1,48",
+     "0,00"
+    ],
+    "2024": [
+     "2,14",
+     "2,85",
+     "1,23",
+     "0,58"
+    ],
+    "2025": [
+     "2,73",
+     "4,09",
+     "4,48",
+     "4,31"
+    ]
+   },
+   "lectura": "155 casos tamizados en 2025. Brecha entre grupos extremos: 1,58 puntos."
+  }
+ ],
+ "texto": {
+  "conclusiones": [
+   "La provincia de San Miguel presenta un perfil epidemiológico mixto, con enfermedades transmisibles endémicas (Leishmaniasis cutánea, tuberculosis) y una carga creciente de enfermedades no transmisibles (hipertensión, diabetes, cáncer), en un contexto de pobreza monetaria elevada y brechas persistentes en el acceso a agua potable y saneamiento básico.",
+   "De acuerdo al análisis de los determinantes sociales se confirma que la pobreza monetaria y el saneamiento básico explican de manera consistente las desigualdades en desnutrición crónica infantil, anemia, diabetes e hipertensión, mientras que el VIH y las enfermedades metaxénicas responden principalmente a la movilidad poblacional, y la tuberculosis al hacinamiento.",
+   "La provincia de San Miguel no registró muertes maternas ni casos autóctonos de dengue en el año 2025, resultados favorables que deben seguir monitoreándose.",
+   "Persisten brechas territoriales claras: los distritos de Tongod, Catilluc, Calquis y Nanchoc concentran sistemáticamente las peores condiciones en saneamiento básico, desnutrición, anemia y enfermedades transmisibles, mientras que el distrito de San Miguel y su entorno inmediato muestran una mayor carga relativa de enfermedades no transmisibles, coherente con una transición epidemiológica en curso en la capital provincial."
+  ],
+  "recomendaciones": [
+   "Priorizar las intervenciones de las líneas de acción según el determinante social predominante de cada problema, focalizando recursos en los grupos sociales y distritos con mayor brecha relativa.",
+   "Fortalecer el registro y la calidad del dato a nivel distrital para los indicadores sanitarios y de impacto (VIH, TBC, cáncer, DCI, anemia y mortalidad perinatal).",
+   "Gestionar ante el Gobierno Regional de Cajamarca y la Municipalidad Provincial de San Miguel la priorización de inversión en agua potable y saneamiento básico en los distritos con mayor brecha, dado que este determinante intermedio explica una parte importante de las desigualdades identificadas en desnutrición crónica infantil y enfermedades transmisibles.",
+   "Institucionalizar el seguimiento semestral de los indicadores de las líneas de acción en el marco del Consejo Provincial de Salud San Miguel, e integrar el análisis de gradiente social (Estratificador de Equidad en Salud) como práctica habitual del proceso de programación y evaluación de las intervenciones en salud.",
+   "Mantener la vigilancia epidemiológica activa de las enfermedades sujetas a vigilancia en salud pública."
+  ],
+  "lineas_accion": [
+   "A partir de los resultados obtenidos, se plantean líneas de acción orientadas a reducir las desigualdades en salud identificadas entre los grupos de población. Las intervenciones deben priorizar los problemas que presentan mayores brechas, particularmente cáncer, tuberculosis, salud mental, hipertensión y VIH. Para ello, se requiere fortalecer la atención primaria de salud mediante acciones de promoción, prevención, tamizaje, diagnóstico temprano, tratamiento oportuno y seguimiento de los casos. Asimismo, resulta necesario intervenir sobre los determinantes sociales asociados con las desigualdades, como la pobreza monetaria, el hacinamiento, la dependencia económica y las limitaciones en el acceso a servicios básicos.",
+   "De manera complementaria, se deben fortalecer las acciones de prevención y control de enfermedades no transmisibles, especialmente diabetes e hipertensión, mediante promoción de estilos de vida saludables y detección temprana. En población adolescente se recomienda fortalecer la educación sexual integral y el acceso a servicios de salud sexual y reproductiva. Para la TBC y el VIH se requiere intensificar la búsqueda activa, el diagnóstico oportuno y la continuidad del tratamiento. Estas intervenciones deben desarrollarse con participación comunitaria y coordinación intersectorial con todas las instituciones públicas y privadas de la provincia, especialmente con los gobiernos; priorizando los territorios y grupos que presentan mayores condiciones de vulnerabilidad. Asimismo, se recomienda implementar un sistema de monitoreo periódico en conjunto con los consejos distritales de salud para evaluar si las intervenciones están logrando disminuir las desigualdades identificadas."
+  ],
+  "priorizados": [
+   "Desnutrición y anemia en niños",
+   "Complicaciones y morbilidad materna perinatal",
+   "Embarazo en adolescentes",
+   "Prevalencia de tuberculosis",
+   "ITS/VIH-SIDA",
+   "Enfermedades metaxénicas (leishmaniasis)",
+   "Neoplasias malignas",
+   "Enfermedades cardiovasculares y metabólicas (hipertensión y diabetes mellitus)",
+   "Enfermedades mentales (ansiedad y depresión)",
+   "Saneamiento básico (agua y desagüe)"
+  ],
+  "vigilancia": [
+   [
+    "Infecciones respiratorias agudas (IRA)",
+    "1 857 episodios",
+    "Mayor número de notificaciones; picos de junio a agosto; menores de 5 años y adultos mayores concentran más del 60 % de los casos."
+   ],
+   [
+    "Neumonías",
+    "232 casos",
+    "Notificadas desde niños mayores de 2 meses hasta adultos mayores; más frecuentes en adultos mayores."
+   ],
+   [
+    "Enfermedades diarreicas agudas (EDA)",
+    "Segunda más notificada",
+    "Picos al inicio de lluvias. También se reportaron enfermedades transmitidas por alimentos (ETA). El documento no indica el número de casos."
+   ],
+   [
+    "Exposición a metales pesados (arsénico)",
+    "Vigilancia activa",
+    "Arsénico encontrado en agua de consumo humano en comunidades del distrito de San Miguel."
+   ],
+   [
+    "Inmunoprevenibles (tos ferina, varicela, sarampión, otras)",
+    "0 casos",
+    "Notificación oportuna; sin casos en 2025."
+   ],
+   [
+    "Leishmaniasis cutánea",
+    "22 casos",
+    "Endémica en comunidades de Niepos, El Prado, Unión Agua Blanca, San Miguel, Bolívar y La Florida."
+   ],
+   [
+    "Dengue",
+    "0 casos autóctonos",
+    "34 casos en 2023 y 31 en 2024."
+   ],
+   [
+    "Tuberculosis",
+    "4 casos",
+    "Registrados en 2025."
+   ],
+   [
+    "Mortalidad materna",
+    "0 casos",
+    "Un caso en el periodo 2023-2025 (año 2024)."
+   ],
+   [
+    "Defunciones perinatales",
+    "6 casos",
+    "Tres fetales y tres neonatales."
+   ]
+  ]
+ },
+ "siglas": [
+  [
+   "ASIS",
+   "Análisis de Situación de Salud"
+  ],
+  [
+   "RIS",
+   "Red Integrada de Salud"
+  ],
+  [
+   "DIRESA",
+   "Dirección Regional de Salud"
+  ],
+  [
+   "MINSA",
+   "Ministerio de Salud"
+  ],
+  [
+   "HIS MINSA",
+   "Sistema de información de atenciones de consulta externa del MINSA (Health Information System)"
+  ],
+  [
+   "SINADEF",
+   "Sistema Informático Nacional de Defunciones"
+  ],
+  [
+   "SIS",
+   "Seguro Integral de Salud"
+  ],
+  [
+   "IPRESS",
+   "Instituciones Prestadoras de Servicios de Salud"
+  ],
+  [
+   "EE. SS.",
+   "Establecimientos de salud"
+  ],
+  [
+   "C.S. / P.S.",
+   "Centro de salud / Puesto de salud"
+  ],
+  [
+   "ORE",
+   "Oficina Regional de Estadística"
+  ],
+  [
+   "OITE",
+   "Oficina de Informática, Telecomunicaciones y Estadística"
+  ],
+  [
+   "SIEN",
+   "Sistema de Información del Estado Nutricional"
+  ],
+  [
+   "SIGTB",
+   "Sistema de Información Gerencial de Tuberculosis"
+  ],
+  [
+   "SISMED",
+   "Sistema Integrado de Suministro de Medicamentos e Insumos Médico-Quirúrgicos"
+  ],
+  [
+   "DGE",
+   "Centro Nacional de Epidemiología, Prevención y Control de Enfermedades (MINSA)"
+  ],
+  [
+   "FON-P / FON-B / FONE",
+   "Funciones obstétricas y neonatales primarias / básicas / esenciales"
+  ],
+  [
+   "DCI",
+   "Desnutrición crónica infantil"
+  ],
+  [
+   "IRA / EDA",
+   "Infecciones respiratorias agudas / Enfermedades diarreicas agudas"
+  ],
+  [
+   "TBC",
+   "Tuberculosis"
+  ],
+  [
+   "VIH / ITS",
+   "Virus de la inmunodeficiencia humana / Infecciones de transmisión sexual"
+  ],
+  [
+   "RMM",
+   "Razón de mortalidad materna"
+  ],
+  [
+   "IDE",
+   "Índice de densidad del Estado"
+  ],
+  [
+   "PEA",
+   "Población económicamente activa"
+  ],
+  [
+   "JASS",
+   "Juntas Administradoras de Servicios de Saneamiento"
+  ],
+  [
+   "SIHCE",
+   "Sistema de Información de Historia Clínica Electrónica"
+  ],
+  [
+   "CAS (DL 1057)",
+   "Contratación Administrativa de Servicios"
+  ],
+  [
+   "DL 276",
+   "Régimen de carrera administrativa (personal nombrado)"
+  ],
+  [
+   "SERUMS",
+   "Servicio Rural y Urbano Marginal de Salud"
+  ],
+  [
+   "EO-RS",
+   "Empresa operadora de residuos sólidos"
+  ],
+  [
+   "PDRC / PEI",
+   "Plan de Desarrollo Regional Concertado / Plan Estratégico Institucional"
+  ],
+  [
+   "MCI",
+   "Modelo de Cuidado Integral de Salud"
+  ]
+ ],
+ "limitaciones": [
+  "El propio documento advierte que el 24,5 % de las defunciones (Cuadro 39) y el 20,9 % de las atenciones (Cuadro 32) se agrupan en “resto de enfermedades”, lo que limita un análisis más preciso; recomienda fortalecer la calidad del registro epidemiológico.",
+  "La población INEI no coincide con la población afiliada al SIS: diferencias de 4 203 (2023), 12 392 (2024) y 13 019 personas (2025).",
+  "Con un único caso de muerte materna en tres años, cualquier razón o tendencia provincial tiene alta variabilidad estadística y debe interpretarse con cautela.",
+  "El aumento de muertes perinatales (1, 3 y 6 casos) debe verificarse contra SINADEF y la vigilancia materno-perinatal: un mejor registro puede explicar parte del incremento.",
+  "Tuberculosis (4 casos) y cáncer (11 casos) tienen pocos casos: el análisis territorial es indicativo, no concluyente.",
+  "Las asociaciones del capítulo VIII son territoriales y no permiten establecer causalidad.",
+  "La detección de diabetes depende del acceso desigual a pruebas diagnósticas entre distritos, lo que puede enmascarar su distribución real.",
+  "Los determinantes sociales provienen de datos de 2017 (Sistema de Información Distrital para la Gestión Pública y Censo 2017)."
+ ],
+ "edicion": "2025",
+ "excluido_por_privacidad": [
+  {
+   "ref": "Tabla 15",
+   "motivo": "Mortalidad perinatal por distrito con 1 o 2 casos por distrito: se publica solo el total provincial (3 fetales y 3 neonatales)."
+  },
+  {
+   "ref": "Cuadros 40 a 42",
+   "motivo": "Mortalidad en niños, adolescentes y jóvenes (7, 1 y 4 defunciones): se publica sin desagregar por sexo."
+  },
+  {
+   "ref": "Capítulo VI, pág. 70",
+   "motivo": "Descripción del caso de muerte materna de 2024 (localidad, establecimiento, edad e historia obstétrica): no se reproduce."
+  }
+ ]
+}

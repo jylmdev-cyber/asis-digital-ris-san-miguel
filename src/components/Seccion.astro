@@ -1,0 +1,22 @@
+---
+import Icono from './Icono.astro';
+interface Props { id: string; titulo: string; kicker?: string; intro?: string; ref?: string }
+const { id, titulo, kicker, intro, ref } = Astro.props;
+---
+<section id={id} class="aparecer mt-12 first:mt-4" aria-labelledby={`${id}-h`} data-buscar={`${titulo}|${kicker ?? ''}|${intro ?? ''}`}>
+  <header class="mb-5 flex flex-wrap items-end justify-between gap-3">
+    <div class="min-w-0 max-w-3xl">
+      {kicker && <p class="kicker">{kicker}</p>}
+      <h2 id={`${id}-h`} class="mt-1 text-[1.45rem] font-bold text-ink sm:text-[1.6rem]">{titulo}</h2>
+      {intro && <p class="mt-2 text-ink-2">{intro}</p>}
+      {ref && <p class="meta mt-1">{ref}</p>}
+    </div>
+    <div class="herramientas no-imprimir flex gap-2">
+      <button type="button" class="btn" data-copiar={id} aria-label={`Copiar enlace a la sección ${titulo}`}><Icono nombre="enlace" size={15} />Enlace</button>
+      <button type="button" class="btn" data-imprimir={id} aria-label={`Imprimir la sección ${titulo}`}><Icono nombre="imprimir" size={15} />Imprimir</button>
+    </div>
+  </header>
+  <div class="grid grid-cols-1 gap-5">
+    <slot />
+  </div>
+</section>

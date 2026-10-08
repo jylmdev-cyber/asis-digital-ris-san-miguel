@@ -1,0 +1,14 @@
+---
+import Base from '../layouts/Base.astro';
+import { edicionActual, MODULOS } from '../config/sitio';
+import { urlEd } from '../lib/rutas';
+const anio = edicionActual().anio;
+---
+<Base anio={anio} modulo="404" titulo="Página no encontrada">
+  <div class="tarjeta mx-auto mt-10 max-w-xl p-8 text-center">
+    <p class="kicker">Error 404</p>
+    <h1 class="mt-2 text-2xl font-bold text-ink">No encontramos esta página</h1>
+    <p class="mt-2 text-ink-2">Es posible que el enlace haya cambiado. Use el buscador (tecla «/») o vaya a un módulo:</p>
+    <ul class="mt-4 flex flex-wrap justify-center gap-2">{MODULOS.map(m => <li><a class="btn" href={urlEd(anio, m.ruta)}>{m.corto}</a></li>)}</ul>
+  </div>
+</Base>

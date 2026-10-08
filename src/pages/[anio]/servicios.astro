@@ -1,0 +1,124 @@
+---
+import Base from '../../layouts/Base.astro';
+import Seccion from '../../components/Seccion.astro';
+import Kpi from '../../components/Kpi.astro';
+import VizCard from '../../components/islas/VizCard.vue';
+import { edicion, num, mostrar, esTotal } from '../../lib/datos';
+import { rutasEdicion, filtroResaltar } from '../../lib/filtros';
+import { barrasColumna, barrasApiladas, variante, vista } from '../../lib/specs';
+import type { ChartSpec, Variante } from '../../lib/tipos';
+
+export const getStaticPaths = rutasEdicion;
+const { anio } = Astro.params as { anio: string };
+const ed = edicion(anio);
+const T = (id: string) => ed.tabla(id);
+const pg = (id: string) => `${T(id).ref} · pág. ${T(id).pag}`;
+
+const c05 = T('c05');
+const vC05 = variante(c05, barrasApiladas(c05, [1, 2, 3, 4], ['I-1', 'I-2', 'I-3', 'I-4'], { colores: ['o1', 'o2', 'o3', 'o4'], sufijoTotal: r => `${[1, 2, 3, 4].reduce((s, i) => s + (num(r[i]) ?? 0), 0)} EE. SS.` }), { unidad: 'establecimientos' });
+const c04 = T('c04');
+const vC04: Record<string, Variante> = {
+  san: variante(c04, barrasApiladas(c04, [2, 3], ['Con saneamiento físico legal', 'Sin saneamiento'], { totalCol: 1, sufijoTotal: r => `${r[2] || '0'} de ${r[1]}` }), { unidad: 'establecimientos' }),
+  tit: variante(c04, barrasApiladas(c04, [4, 5], ['Con título de propiedad', 'Sin título'], { totalCol: 1, sufijoTotal: r => `${r[4] || '0'} de ${r[1]}` }), { unidad: 'establecimientos' }),
+};
+const c28 = T('c28');
+const vC28 = variante(c28, barrasApiladas(c28, [2, 3], ['Buen estado', 'Mal estado'], { sufijoTotal: r => `${r[3] || '0'} de ${r[1]} en mal estado` }), { unidad: 'establecimientos' });
+
+// Cuadro 11: rutas de referencia (filtro por distrito de origen = establecimiento de origen)
+const c11 = T('c11');
+const rutaSpec = (filas: string[][]): ChartSpec => ({
+  tipo: 'barras', orientacion: 'h', categorias: filas.map(r => `${r[1]} → ${r[3]}`),
+  series: [{ nombre: 'Distancia (km)', color: 's1', valores: filas.map(r => num(r[5])), etiquetas: filas.map(r => `${r[5]} km · ${r[6]} h`) }], unidad: ' km',
+});
+const ordenadas = [...c11.rows].sort((a, b) => num(b[5])! - num(a[5])!);
+const vC11: Record<string, Variante> = Object.fromEntries([['', ordenadas], ...ed.distritos.map(d => [d.nombre, ordenadas.filter(r => r[0] === d.nombre)])].map(([k, f]) => [k, variante(c11, rutaSpec(f as string[][]), { tabla: vista(c11, f as string[][]), unidad: 'km y horas' })]));
+
+const c10 = T('c10');
+const vC10 = variante(c10, barrasColumna(c10, 1, { nombre: 'Ambulancias', referencia: false }), { unidad: 'unidades' });
+
+const c12 = T('c12'), c13 = T('c13'), c14 = T('c14');
+const reg = ['DL 276', 'DL 1057 (CAS)', 'Locación de servicios', 'Otro'];
+const vC12 = variante(c12, barrasApiladas(c12, [1, 2, 3, 4], reg, { colores: ['s1', 's2', 'o3', 'o4'], totalCol: 5 }), { unidad: 'trabajadores' });
+const vC13 = variante(c13, barrasApiladas(c13, [1, 2, 3, 4], reg, { colores: ['s1', 's2', 'o3', 'o4'], totalCol: 5 }), { unidad: 'trabajadores' });
+const vC14 = variante(c14, null, { unidad: 'trabajadores' });
+
+const eqr = T('equipos_res'), eq = T('equipos');
+const vEq = variante(eqr, barrasApiladas(eqr, [2, 3], ['Operativos', 'Inoperativos'], { sufijoTotal: r => `${r[1]} (${r[3]} inop.)` }), { unidad: 'equipos' });
+const vEqD: Record<string, Variante> = Object.fromEntries(ed.distritos.map(d => [d.nombre, variante(eq, null, { tabla: { cols: ['Equipo', 'Cantidad', 'Estado'], rows: eq.rows.filter(r => r[0] === d.nombre).map(r => r.slice(1)) }, subtitulo: `Equipamiento de los establecimientos del distrito de ${d.nombre}` })]));
+
+const g02 = T('g02');
+const vG02 = variante(g02, { ...barrasColumna(g02, 1, { unidad: ' %', referencia: { valor: 90, etiqueta: 'Meta regional: > 90 %' }, nombre: 'Disponibilidad' }), resaltar: ['Red de Salud San Miguel'] } as ChartSpec, { unidad: '%' });
+const c29 = T('c29');
+const vC29 = variante(c29, barrasApiladas(c29, [2, 3], ['Cumple', 'No cumple'], { sufijoTotal: r => `${r[2] || '0'} de ${r[1]} cumple` }), { unidad: 'establecimientos' });
+const c31 = T('c31'), c30 = T('c30');
+const vC31 = variante(c31, barrasApiladas(c31, [2, 3], ['Con internet', 'Sin internet'], { sufijoTotal: r => `${r[4]} %` }), { unidad: 'establecimientos' });
+const vC30 = variante(c30, barrasColumna(c30, 9, { nombre: 'Equipos de cómputo', referencia: false }), { unidad: 'equipos' });
+const c06 = T('c06');
+const indice = [{ id: 'resumen', t: 'Resumen' }, { id: 'establecimientos', t: 'Establecimientos y categorías' }, { id: 'capacidad', t: 'Capacidad resolutiva (FON)' }, { id: 'referencias', t: 'Referencias y ambulancias' }, { id: 'rrhh', t: 'Recursos humanos' }, { id: 'equipamiento', t: 'Equipamiento' }, { id: 'infraestructura', t: 'Infraestructura y saneamiento' }, { id: 'medicamentos', t: 'Medicamentos' }, { id: 'residuos', t: 'Residuos sólidos' }, { id: 'tic', t: 'Sistemas de información' }];
+---
+<Base anio={anio} modulo="servicios/" titulo="Oferta y respuesta de los servicios de salud" descripcion="Establecimientos, categorías, capacidad resolutiva FON, referencias, ambulancias, recursos humanos, equipamiento, infraestructura, medicamentos, residuos y sistemas de información." indice={indice}>
+  <p class="kicker">Módulo F · Numeral 5.4</p>
+  <h1 class="mt-1 text-[1.9rem] font-extrabold text-ink">Oferta y respuesta de los servicios de salud</h1>
+  <p class="mt-2 max-w-3xl text-ink-2">Los 48 establecimientos de la Red son del primer nivel de atención, enfocados en actividades preventivo-promocionales, atención básica y referencias (pág. 26).</p>
+
+  <Seccion id="resumen" kicker="Indicadores de cumplimiento" titulo="Resumen de la capacidad instalada">
+    <div class="grid grid-cols-[repeat(auto-fill,minmax(min(100%,200px),1fr))] gap-3">
+      <Kpi etiqueta="Con categoría vigente" valor="42" sufijo=" de 48" fuente="Texto, pág. 26" detalle="87,5 %; 6 sin personal profesional" icono="hospital" />
+      <Kpi etiqueta="Saneamiento físico legal" valor="18" sufijo=" de 48" fuente={pg('c04')} detalle="37,5 % saneados" icono="escudo" />
+      <Kpi etiqueta="Infraestructura en buen estado" valor="14" sufijo=" de 48" fuente={pg('c28')} detalle="29,2 %" icono="casa" />
+      <Kpi etiqueta="Aprobados en evaluación FON" valor="1" sufijo=" de 48" fuente={pg('c06')} detalle="C.S. Catilluc" icono="alerta" />
+      <Kpi etiqueta="Disponibilidad de medicamentos" valor="96,67" sufijo=" %" fuente={pg('g02')} detalle="Meta regional: > 90 %" icono="hospital" tono="acento" />
+      <Kpi etiqueta="Cumplen gestión de residuos" valor="6" sufijo=" de 48" fuente={pg('c29')} detalle="12,5 % (ficha 2)" icono="alerta" />
+      <Kpi etiqueta="Con acceso a internet" valor="31" sufijo=" de 48" fuente={pg('c31')} detalle="64,6 %" icono="enlace" />
+      <Kpi etiqueta="Con historia clínica electrónica" valor="7" sufijo=" de 48" fuente="Texto, pág. 52" detalle="Módulos SIHCE-MINSA activos (14,5 %)" icono="tabla" />
+    </div>
+  </Seccion>
+
+  <Seccion id="establecimientos" kicker="Cuadro 5" titulo="Establecimientos por categoría y distrito" intro="32 son de categoría I-1 (66,7 %), 10 de I-2 (20,8 %), 5 de I-3 (10,4 %) y 1 de I-4 (2,1 %), según el texto de la pág. 26.">
+    <VizCard client:visible id="c-c05" titulo="Establecimientos de salud por categoría" metodo="Número de IPRESS por categoría en cada distrito." variantes={{ default: vC05 }} claves="categoría IPRESS I-1 I-2 I-3 I-4 establecimientos" />
+  </Seccion>
+
+  <Seccion id="capacidad" kicker="Cuadro 6" titulo="Capacidad resolutiva: funciones obstétricas y neonatales" intro="El C.S. San Miguel es el único con funciones obstétricas y neonatales básicas (FON-B); los demás son FON-P. En la evaluación de 2025 solo el C.S. Catilluc obtuvo la condición de aprobado; los 47 restantes no aprobaron (pág. 27).">
+    <VizCard client:visible id="c-c06" titulo={c06.titulo} metodo="Número de establecimientos según el rango de cumplimiento alcanzado en la evaluación de funciones obstétricas y neonatales primarias (FON-P) y básicas (FON-B)." variantes={{ default: variante(c06, null, { unidad: 'establecimientos' }) }} claves="FON FONE FONB FONP obstétricas neonatales capacidad resolutiva" />
+  </Seccion>
+
+  <Seccion id="referencias" kicker="Cuadros 10 y 11" titulo="Referencias, distancias y ambulancias" intro="Los establecimientos de Catilluc, Tongod, Llapa, Cochán, Calquis, Unión Agua Blanca, San Miguel y El Prado refieren a hospitales de Cajamarca; los de Niepos, La Florida, Nanchoc, San Gregorio y Bolívar, a La Libertad y Chiclayo por accesibilidad (págs. 27-28).">
+    <VizCard client:visible id="c-c11" titulo="Distancia y tiempo hasta el establecimiento de referencia" metodo="Distancia en kilómetros y tiempo en horas desde el establecimiento de origen; el medio más usado es el carro. Filtre por distrito de origen para ver sus rutas." filtros={[{ id: 'd', label: 'Distrito de origen', tipo: 'select', opciones: [{ v: '', t: 'Todos' }, ...ed.distritos.map(d => ({ v: d.nombre, t: d.nombre }))] }]} variantes={vC11} largos={[1, 3]} claves="referencia distancia tiempo hospital Cajamarca Las Mercedes Chepén" />
+    <VizCard client:visible id="c-c10" titulo="Ambulancias por distrito" metodo="Número de ambulancias. Bolívar, Calquis y San Gregorio no cuentan con ninguna; la de Tongod está inoperativa desde 2024." variantes={{ default: vC10 }} claves="ambulancias traslado emergencia" />
+  </Seccion>
+
+  <Seccion id="rrhh" kicker="Cuadros 12 a 14" titulo="Recursos humanos" intro="La Red tiene 366 trabajadores. El documento señala una severa brecha de profesionales: un solo pediatra y un solo internista para toda la provincia y ningún gineco-obstetra, cuando en los últimos dos años se registraron 10 casos de morbilidad materna extrema (pág. 34).">
+    <div class="grid gap-5 2xl:grid-cols-2">
+      <VizCard client:visible id="c-c13" titulo="Personal asistencial por cargo y régimen laboral" metodo="Número de trabajadores asistenciales (342) por cargo y régimen: DL 276 (nombrados y SERUMS), DL 1057 (CAS), locación de servicios y otros." variantes={{ default: vC13 }} claves="médicos enfermeros obstetras psicólogos odontólogos técnicos" />
+      <VizCard client:visible id="c-c12" titulo="Trabajadores por grupo ocupacional y régimen laboral" metodo="Total de trabajadores de la Red (366) registrados en INFORHUS." variantes={{ default: vC12 }} claves="recursos humanos régimen laboral CAS 276" />
+    </div>
+    <VizCard client:visible id="c-c14" titulo="Personal administrativo por profesión" metodo="24 trabajadores administrativos; no hay abogado en ninguna modalidad de contratación." variantes={{ default: vC14 }} claves="administrativo abogado ingeniero chofer" />
+  </Seccion>
+
+  <Seccion id="equipamiento" kicker="Cuadros 15 a 27" titulo="Equipamiento médico" intro="Según el documento, ningún equipo de los establecimientos ha recibido mantenimiento.">
+    <VizCard client:visible id="c-equipos" titulo="Equipos médicos operativos e inoperativos por distrito" metodo="Total impreso en cada cuadro distrital; operativos e inoperativos se obtienen sumando las filas de cada cuadro." variantes={{ default: vEq }} claves="equipamiento equipos operativos inoperativos mantenimiento" />
+    <VizCard client:visible id="c-equipos-detalle" titulo="Detalle del equipamiento por distrito" metodo="Lista de equipos, cantidad y estado tal como figura en el cuadro de cada distrito." filtros={[{ id: 'd', label: 'Distrito', tipo: 'select', opciones: ed.distritos.map(d => ({ v: d.nombre, t: d.nombre })) }]} inicial={{ d: 'San Miguel' }} variantes={vEqD} claves="hemoglobinómetro tensiómetro refrigeradora vacunas ecógrafo glucómetro" />
+  </Seccion>
+
+  <Seccion id="infraestructura" kicker="Cuadros 4 y 28" titulo="Infraestructura y saneamiento legal" intro="La mayoría de los establecimientos tiene más de 20 años de construcción y se levantó en terrenos donados, sin documentos para el saneamiento físico legal (pág. 25).">
+    <div class="grid gap-5 2xl:grid-cols-2">
+      <VizCard client:visible id="c-c28" titulo="Estado de la infraestructura" metodo="Número de establecimientos según el estado aparente de su infraestructura: 14 en buen estado y 34 en mal estado." variantes={{ default: vC28 }} claves="infraestructura estado bueno malo" />
+      <VizCard client:visible id="c-c04" titulo="Saneamiento físico legal y título de propiedad" metodo="Número de establecimientos con y sin saneamiento físico legal o título de propiedad." filtros={[{ id: 'v', label: 'Indicador', tipo: 'seg', opciones: [{ v: 'san', t: 'Saneamiento' }, { v: 'tit', t: 'Título de propiedad' }] }]} variantes={vC04} claves="saneamiento físico legal título propiedad" />
+    </div>
+  </Seccion>
+
+  <Seccion id="medicamentos" kicker="Gráfico 2" titulo="Disponibilidad de medicamentos esenciales" intro="La microrred Nanchoc (Nanchoc, Bolívar y San Gregorio) obtuvo 97,23 % y la microrred La Florida (Niepos y La Florida) 94,81 % (pág. 49).">
+    <VizCard client:visible id="c-g02" titulo="Disponibilidad de medicamentos por distrito" metodo="Porcentaje promedio de disponibilidad en 2025. La línea punteada marca la meta regional (más de 90 %); la barra oscura es el promedio de la Red." variantes={{ default: vG02 }} claves="medicamentos SISMED disponibilidad meta" />
+  </Seccion>
+
+  <Seccion id="residuos" kicker="Cuadro 29" titulo="Gestión de residuos sólidos hospitalarios" intro="El 80 % de los establecimientos evaluados alcanzó una calificación aceptable en la ficha 1 (gestión administrativa); en la ficha 2 solo el 12,5 % (6) (pág. 50).">
+    <VizCard client:visible id="c-c29" titulo={T('c29').titulo} metodo="Número de establecimientos que cumplen la gestión del manejo de residuos (fichas 1 y 2)." variantes={{ default: vC29 }} largos={[4]} claves="residuos sólidos hospitalarios EO-RS" />
+  </Seccion>
+
+  <Seccion id="tic" kicker="Cuadros 30 y 31" titulo="Sistemas de información y conectividad" intro="El 97,9 % de las atenciones se registra en FUA manuales; solo el C.S. San Miguel (I-4) usa FUA electrónicas. El P.S. Quebrada Honda no tiene energía eléctrica (págs. 52-53).">
+    <div class="grid gap-5 2xl:grid-cols-2">
+      <VizCard client:visible id="c-c31" titulo="Establecimientos con acceso a internet" metodo="31 de 48 establecimientos (64,6 %) tienen internet, principalmente por señal 4G/LTE. Los 17 sin acceso son mayormente de categoría I-1." variantes={{ default: vC31 }} claves="internet conectividad 4G" />
+      <VizCard client:visible id="c-c30" titulo="Equipos de cómputo por distrito" metodo="Total de CPU, monitores e impresoras por distrito. El texto indica que gran parte tiene más de ocho años de antigüedad." variantes={{ default: vC30 }} claves="computadoras cómputo CPU impresoras monitores" />
+    </div>
+  </Seccion>
+</Base>

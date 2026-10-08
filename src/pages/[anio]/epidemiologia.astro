@@ -1,0 +1,100 @@
+---
+import Base from '../../layouts/Base.astro';
+import Seccion from '../../components/Seccion.astro';
+import TablaDatos from '../../components/TablaDatos.astro';
+import Kpi from '../../components/Kpi.astro';
+import VizCard from '../../components/islas/VizCard.vue';
+import { edicion, num, mostrar, esTotal } from '../../lib/datos';
+import { rutasEdicion, filtroResaltar } from '../../lib/filtros';
+import { barrasColumna, barrasApiladas, pareto, variante, vista } from '../../lib/specs';
+import type { ChartSpec, Tabla, Variante } from '../../lib/tipos';
+
+export const getStaticPaths = rutasEdicion;
+const { anio } = Astro.params as { anio: string };
+const ed = edicion(anio);
+const T = (id: string) => ed.tabla(id);
+
+const porSexo = (t: Tabla): ChartSpec => {
+  const tieneSexo = t.cols.includes('Femenino');
+  if (!tieneSexo) return barrasColumna(t, 1, { ordenar: false, referencia: false, nombre: 'Defunciones' });
+  const iF = t.cols.indexOf('Femenino'), iM = t.cols.indexOf('Masculino'), iP = t.cols.length - 1;
+  return barrasApiladas(t, [iF, iM], ['Femenino', 'Masculino'], { ordenarPor: null, sufijoTotal: r => `${mostrar(r[1])} (${r[iP]} %)` });
+};
+const curso = (prefijo: string, total: string) => [[total, 'Todos los cursos de vida'], ...['nino', 'adolescente', 'joven', 'adulto', 'adulto_mayor'].map(k => [`${prefijo}_${k}`, T(`${prefijo}_${k}`).curso!])] as [string, string][];
+const CM = curso('morb', 'c32'), CD = curso('mort', 'c39');
+const vMorb: Record<string, Variante> = Object.fromEntries(CM.map(([id]) => [id, variante(T(id), porSexo(T(id)), { unidad: 'atenciones' })]));
+const vMort: Record<string, Variante> = Object.fromEntries(CD.map(([id]) => [id, variante(T(id), porSexo(T(id)), { unidad: 'defunciones' })]));
+const c32 = T('c32');
+const vPareto = variante(c32, pareto(c32, 4), { unidad: '% de las atenciones', nota: 'El porcentaje acumulado se calcula sumando la columna % del Cuadro 32 (no incluye «Resto de enfermedades», 20,9 %). ' + (c32.nota ?? '') });
+const c38 = T('c38'), c45 = T('c45');
+const distSexo = (t: Tabla, u: string) => variante(t, barrasApiladas(t, [2, 3], ['Femenino', 'Masculino'], { sufijoTotal: r => `${mostrar(r[1])} (${r[4]} %)` }), { unidad: u });
+const c46 = T('c46');
+const ANIOS = ['2023', '2024', '2025'];
+const lin = (filas: number[], nombres: string[]): ChartSpec => ({ tipo: 'lineas', categorias: ANIOS, series: filas.map((f, i) => ({ nombre: nombres[i], color: (['s1', 's2'] as const)[i], valores: ANIOS.map(a => num(c46.rows[f][c46.cols.indexOf(a)])), etiquetas: ANIOS.map(a => c46.rows[f][c46.cols.indexOf(a)]) })) });
+const vC46: Record<string, Variante> = {
+  muertes: variante(c46, lin([0, 1], ['Muertes maternas', 'Muertes perinatales']), { tabla: vista(c46, [c46.rows[0], c46.rows[1]]), unidad: 'defunciones' }),
+  nacidos: variante(c46, lin([2], ['Nacidos vivos']), { tabla: vista(c46, [c46.rows[2]]), unidad: 'nacidos vivos' }),
+};
+const vig = ed.texto.vigilancia;
+const indice = [{ id: 'resumen', t: 'Resumen' }, { id: 'morbilidad', t: 'Morbilidad por causas' }, { id: 'pareto', t: 'Concentración (Pareto)' }, { id: 'morb-distritos', t: 'Morbilidad por distrito' }, { id: 'vigilancia', t: 'Vigilancia epidemiológica' }, { id: 'mortalidad', t: 'Mortalidad por causas' }, { id: 'mort-distritos', t: 'Mortalidad por distrito' }, { id: 'materna', t: 'Mortalidad materna y perinatal' }];
+---
+<Base anio={anio} modulo="epidemiologia/" titulo="Situación epidemiológica" descripcion="Morbilidad y mortalidad por causas, curso de vida, sexo y distrito, enfermedades sujetas a vigilancia y mortalidad materna y perinatal en la provincia de San Miguel, 2025." indice={indice}>
+  <p class="kicker">Módulo D · Capítulo VI</p>
+  <h1 class="mt-1 text-[1.9rem] font-extrabold text-ink">Situación epidemiológica</h1>
+  <p class="mt-2 max-w-3xl text-ink-2">Atenciones registradas en el HIS MINSA y defunciones registradas en el SINADEF durante 2025, agrupadas según las listas 12/110 (morbilidad) y 10/110 (mortalidad).</p>
+
+  <Seccion id="resumen" kicker="2025" titulo="Cifras principales">
+    <div class="grid grid-cols-[repeat(auto-fill,minmax(min(100%,200px),1fr))] gap-3">
+      <Kpi etiqueta="Atenciones por morbilidad" valor="137 266" fuente="Cuadro 32 · pág. 55" detalle="86 678 mujeres · 50 588 hombres" icono="pulso" tono="acento" />
+      <Kpi etiqueta="Infecciones respiratorias agudas" valor="38 627" fuente="Cuadro 32 · pág. 55" detalle="1.ª causa de atención (28,1 %)" icono="pulso" />
+      <Kpi etiqueta="Episodios de IRA notificados" valor="1 857" fuente="Vigilancia, pág. 63" detalle="Picos de junio a agosto" icono="alerta" />
+      <Kpi etiqueta="Defunciones (SINADEF)" valor="204" fuente="Cuadro 39 · pág. 64" detalle="92 mujeres · 112 hombres" icono="pulso" />
+      <Kpi etiqueta="1.ª causa de muerte" valor="26" fuente="Cuadro 39 · pág. 64" detalle="Enfermedades isquémicas del corazón (12,7 %)" icono="pulso" />
+      <Kpi etiqueta="Leishmaniasis cutánea" valor="22" sufijo=" casos" fuente="Vigilancia, pág. 63" detalle="Endémica en 6 distritos" icono="alerta" />
+      <Kpi etiqueta="Muertes maternas" valor="0" fuente="Cuadro 46 · pág. 71" detalle="1 caso en 2024" icono="escudo" />
+      <Kpi etiqueta="Muertes perinatales" valor="6" fuente="Cuadro 46 · pág. 71" detalle="3 fetales y 3 neonatales" icono="pulso" />
+    </div>
+  </Seccion>
+
+  <Seccion id="morbilidad" kicker="Cuadros 32 a 37" titulo="Principales causas de morbilidad por curso de vida">
+    <VizCard client:visible id="c-morb" titulo="Atenciones por grupo de enfermedad y sexo" metodo="Número de atenciones (no de personas) por grupo de enfermedad de la lista 12/110, con su distribución por sexo. Elija un curso de vida para ver su cuadro." periodo="2025"
+      filtros={[{ id: 'c', label: 'Curso de vida', tipo: 'select', opciones: CM.map(([v, t]) => ({ v, t: `${t} (${T(v).ref})` })) }]} variantes={vMorb}
+      claves="morbilidad causas infecciones respiratorias obesidad caries gastritis lumbago infección urinaria desnutrición anemia niño adolescente joven adulto adulto mayor" />
+  </Seccion>
+
+  <Seccion id="pareto" kicker="Gráfico 3" titulo="Concentración de las atenciones (principio de Pareto)" intro="Un grupo reducido de categorías concentra la mayor parte de las consultas por morbilidad (pág. 56).">
+    <VizCard client:visible id="c-pareto" titulo="Morbilidad general según Pareto" metodo="Porcentaje de cada grupo de enfermedad sobre el total de atenciones y porcentaje acumulado, en un solo eje." periodo="2025" variantes={{ default: vPareto }} claves="Pareto concentración acumulado" />
+  </Seccion>
+
+  <Seccion id="morb-distritos" kicker="Cuadro 38" titulo="Atenciones por distrito" intro="San Miguel concentró el mayor número de atenciones (21 947; 16,0 %) y Bolívar el menor (3 189; 2,3 %). En todos los distritos las mujeres registraron más atenciones (pág. 62).">
+    <VizCard client:visible id="c-c38" titulo="Atenciones por morbilidad por distrito y sexo" metodo="Número de atenciones por distrito y sexo; entre paréntesis, la proporción del total provincial." periodo="2025" filtros={[filtroResaltar(ed)]} variantes={{ default: distSexo(c38, 'atenciones') }} claves="morbilidad distrito atenciones" />
+  </Seccion>
+
+  <Seccion id="vigilancia" kicker="Numeral 6.1.2" titulo="Enfermedades sujetas a vigilancia en salud pública" intro="Resumen del texto del documento (pág. 63) y del capítulo VIII. El ASIS no presenta un cuadro para estos eventos.">
+    <figure class="tarjeta m-0 p-4 sm:p-5" id="c-vigilancia" data-buscar="Enfermedades sujetas a vigilancia|Numeral 6.1.2|IRA EDA neumonía dengue leishmaniasis arsénico inmunoprevenibles tuberculosis">
+      <TablaDatos titulo="Eventos sujetos a vigilancia, 2025" cols={['Evento', '2025', 'Detalle según el documento']} rows={vig} largos={[2]} maxAlto={false} />
+      <figcaption class="mt-3 border-t border-line pt-2.5 text-[0.78rem] text-ink-2"><strong>Fuente: ASIS RIS San Miguel 2025</strong>, numeral 6.1.2 (pág. 63) y capítulo VIII (págs. 80-90).</figcaption>
+    </figure>
+  </Seccion>
+
+  <Seccion id="mortalidad" kicker="Cuadros 39 a 44" titulo="Principales causas de mortalidad por curso de vida">
+    <VizCard client:visible id="c-mort" titulo="Defunciones por grupo de causas" metodo="Número de defunciones por grupo de la lista 10/110. Los cursos de vida niño, adolescente y joven (7, 1 y 4 defunciones) se muestran sin desagregar por sexo para proteger la confidencialidad." periodo="2025"
+      filtros={[{ id: 'c', label: 'Curso de vida', tipo: 'select', opciones: CD.map(([v, t]) => ({ v, t: `${t} (${T(v).ref})` })) }]} variantes={vMort}
+      claves="mortalidad causas defunciones isquémicas hipertensivas cerebrovasculares septicemia neoplasia" />
+  </Seccion>
+
+  <Seccion id="mort-distritos" kicker="Cuadro 45" titulo="Defunciones por distrito" intro="San Miguel registró el mayor número de defunciones (44; 21,6 %), seguido de Llapa (40; 19,6 %) y San Silvestre de Cochán (28; 13,7 %); Tongod el menor (4; 2,0 %) (pág. 69).">
+    <VizCard client:visible id="c-c45" titulo="Defunciones por distrito y sexo" metodo="Número de defunciones por distrito y sexo; entre paréntesis, la proporción del total provincial." periodo="2025" filtros={[filtroResaltar(ed)]} variantes={{ default: distSexo(c45, 'defunciones') }} claves="mortalidad distrito defunciones" />
+  </Seccion>
+
+  <Seccion id="materna" kicker="Cuadro 46 · Tabla 15" titulo="Mortalidad materna y perinatal" intro="Con un único caso de muerte materna en tres años, cualquier razón o tendencia provincial tiene alta variabilidad estadística. El aumento de muertes perinatales debe verificarse con SINADEF, porque un mejor registro puede explicar parte del incremento (pág. 71).">
+    <VizCard client:visible id="c-c46" titulo="Muertes maternas, perinatales y nacidos vivos" metodo="Número de eventos por año. Los nacidos vivos de este cuadro provienen de una fuente distinta a los nacimientos del Cuadro 1." periodo="2023-2025" filtros={[{ id: 'v', label: 'Vista', tipo: 'seg', opciones: [{ v: 'muertes', t: 'Muertes maternas y perinatales' }, { v: 'nacidos', t: 'Nacidos vivos' }] }]} variantes={vC46} claves="mortalidad materna perinatal RMM nacidos vivos" />
+    <div class="tarjeta flex gap-3 p-4" role="note">
+      <span class="h-fit rounded-lg bg-accent-soft p-2 text-accent"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 3 4.5 6v5.5c0 4.5 3.2 8.3 7.5 9.5 4.3-1.2 7.5-5 7.5-9.5V6L12 3Z"/></svg></span>
+      <div>
+        <h3 class="font-semibold text-ink">Mortalidad perinatal por distrito (Tabla 15)</h3>
+        <p class="mt-1 text-[0.92rem] text-ink-2">En 2025 la provincia registró 6 defunciones perinatales: 3 fetales y 3 neonatales. La desagregación por distrito y la descripción del caso de muerte materna de 2024 no se publican en esta plataforma porque, con 1 o 2 casos por distrito, podrían permitir identificar a las familias.</p>
+      </div>
+    </div>
+  </Seccion>
+</Base>

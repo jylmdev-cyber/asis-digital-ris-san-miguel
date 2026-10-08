@@ -1,0 +1,85 @@
+---
+import Base from '../../layouts/Base.astro';
+import Seccion from '../../components/Seccion.astro';
+import VizCard from '../../components/islas/VizCard.vue';
+import { edicion, num, mostrar } from '../../lib/datos';
+import { rutasEdicion, filtroResaltar, filtroAnios } from '../../lib/filtros';
+import { barrasColumna, barrasApiladas, variante, vista } from '../../lib/specs';
+import type { ChartSpec, Variante } from '../../lib/tipos';
+
+export const getStaticPaths = rutasEdicion;
+const { anio } = Astro.params as { anio: string };
+const ed = edicion(anio);
+const c01 = ed.tabla('c01'), c02 = ed.tabla('c02'), c03 = ed.tabla('c03'), g01 = ed.tabla('g01'), t02 = ed.tabla('t02');
+const ANIOS = ['2023', '2024', '2025'];
+
+// Cuadro 1: tres vistas de la dinámica poblacional (cada una con su propia unidad; nunca doble eje)
+const ln = (filas: number[], nombres: string[], colores: any[]): ChartSpec => ({
+  tipo: 'lineas', categorias: ANIOS,
+  series: filas.map((f, i) => ({ nombre: nombres[i], color: colores[i], valores: ANIOS.map(a => num(c01.rows[f][c01.cols.indexOf(a)])), etiquetas: ANIOS.map(a => mostrar(c01.rows[f][c01.cols.indexOf(a)])) })),
+});
+const vC01: Record<string, Variante> = {
+  conteos: variante(c01, ln([0, 2], ['Nacimientos', 'Defunciones'], ['s1', 's2']), { tabla: vista(c01, [c01.rows[0], c01.rows[2]]), unidad: 'número de eventos' }),
+  tasas: variante(c01, ln([1, 3], ['Tasa de natalidad', 'Tasa de mortalidad'], ['s1', 's2']), { tabla: vista(c01, [c01.rows[1], c01.rows[3]]), unidad: 'por 1 000 habitantes' }),
+  ev: variante(c01, ln([4], ['Esperanza de vida al nacer'], ['s1']), { tabla: vista(c01, [c01.rows[4]]), unidad: 'años' }),
+};
+
+// Gráfico 1: pirámide
+const vG01: Variante = variante(g01, {
+  tipo: 'piramide', grupos: [...g01.rows].reverse().map(r => r[0]),
+  femenino: [...g01.rows].reverse().map(r => num(r[1])!), masculino: [...g01.rows].reverse().map(r => num(r[2])!),
+  etFem: [...g01.rows].reverse().map(r => r[1]), etMasc: [...g01.rows].reverse().map(r => r[2]),
+}, { unidad: '% de la población de cada sexo' });
+
+// Cuadro 2
+const vC02 = variante(c02, barrasApiladas(c02, [2, 1], ['Femenino', 'Masculino'], { ordenarPor: null, sufijoTotal: r => `F ${mostrar(r[2])} · M ${mostrar(r[1])}` }), { unidad: 'habitantes' });
+
+// Cuadro 3: año × curso de vida
+const CURSOS = c03.cols.slice(2);
+const vC03: Record<string, Variante> = {};
+for (const a of ANIOS) for (const [k, c] of CURSOS.entries()) {
+  const filas = c03.rows.filter(r => r[1] === a);
+  vC03[`${a}|${k}`] = variante(c03, barrasColumna(c03, k + 2, { filas, nombre: c }), { tabla: vista(c03, filas), unidad: 'habitantes', subtitulo: `Cuadro 3. ${c} por distrito, ${a}` });
+}
+// Crecimiento poblacional por distrito (serie 2023-2025 del Cuadro 3)
+const vCrec: Record<string, Variante> = Object.fromEntries(['Provincia', ...ed.distritos.map(d => d.nombre)].map(d => {
+  const tot = (a: string) => d === 'Provincia' ? String(c03.rows.filter(r => r[1] === a).reduce((s, r) => s + (num(r[7]) ?? 0), 0)) : c03.rows.find(r => r[0] === d && r[1] === a)![7];
+  const filas = d === 'Provincia' ? ANIOS.map(a => ['Provincia (suma de distritos)', a, tot(a)]) : c03.rows.filter(r => r[0] === d).map(r => [r[0], r[1], r[7]]);
+  return [d, { spec: { tipo: 'lineas', categorias: ANIOS, series: [{ nombre: `Población total ${d === 'Provincia' ? 'provincial' : d}`, color: 's1', valores: ANIOS.map(a => num(tot(a))), etiquetas: ANIOS.map(a => mostrar(tot(a))) }] } as ChartSpec,
+    tabla: { cols: ['Ámbito', 'Año', 'Población total'], rows: filas }, ref: 'Cuadro 3', pag: c03.pag, fuente: c03.fuente, unidad: 'habitantes', subtitulo: `Cuadro 3. Población total ${d === 'Provincia' ? 'de la provincia' : 'del distrito de ' + d}, 2023-2025`, nota: null }];
+}));
+
+// Tabla 2: SIS por año
+const vT02: Record<string, Variante> = Object.fromEntries(ANIOS.map(a => [a, variante(t02, barrasColumna(t02, t02.cols.indexOf(a), { nombre: `Afiliados ${a}`, referencia: false }), { unidad: 'afiliados' })]));
+const fCursos = { id: 'curso', label: 'Curso de vida', tipo: 'select' as const, opciones: CURSOS.map((c, k) => ({ v: String(k), t: c })) };
+const indice = [{ id: 'dinamica', t: 'Dinámica poblacional' }, { id: 'estructura', t: 'Estructura por edad y sexo' }, { id: 'poblacion', t: 'Población por distrito' }, { id: 'crecimiento', t: 'Crecimiento poblacional' }, { id: 'sis', t: 'Afiliación al SIS' }];
+---
+<Base anio={anio} modulo="demografia/" titulo="Análisis demográfico" descripcion="Población total, por sexo, grupos de edad y distrito, pirámide poblacional, natalidad, mortalidad, esperanza de vida y afiliación al SIS de la provincia de San Miguel." indice={indice}>
+  <p class="kicker">Módulo C · Capítulo IV</p>
+  <h1 class="mt-1 text-[1.9rem] font-extrabold text-ink">Análisis demográfico</h1>
+  <p class="mt-2 max-w-3xl text-ink-2">La población de la provincia fue de 43 651 habitantes en 2025, menor que en 2023 (44 692) y 2024 (44 219). El documento asocia esta reducción a la migración juvenil y al descenso de la natalidad (pág. 10).</p>
+
+  <Seccion id="dinamica" kicker="Cuadro 1" titulo="Dinámica poblacional 2023-2025">
+    <VizCard client:visible id="c-c01" titulo="Nacimientos, defunciones, tasas y esperanza de vida" metodo="Cada vista tiene su propia unidad. El documento señala un aumento de defunciones de 42 (2024) a 200 (2025) y una reducción del 5,8 % de los nacimientos en dos años." periodo="2023-2025"
+      filtros={[{ id: 'v', label: 'Indicador', tipo: 'seg', opciones: [{ v: 'conteos', t: 'Nacimientos y defunciones' }, { v: 'tasas', t: 'Tasas por 1 000' }, { v: 'ev', t: 'Esperanza de vida' }] }]} variantes={vC01} claves="natalidad mortalidad esperanza de vida nacimientos defunciones" />
+  </Seccion>
+
+  <Seccion id="estructura" kicker="Gráfico 1 · Cuadro 2" titulo="Estructura por edad y sexo" intro="El documento describe una pirámide estacionaria, con mayor peso de los grupos de 15 a 39 años (pág. 11).">
+    <div class="grid gap-5 2xl:grid-cols-2">
+      <VizCard client:visible id="c-g01" titulo="Pirámide poblacional 2025" metodo="Porcentaje de cada grupo quinquenal respecto del total de su sexo. Cifras transcritas de las etiquetas del gráfico original." periodo="2025" variantes={{ default: vG01 }} claves="pirámide edad sexo quinquenal" />
+      <VizCard client:visible id="c-c02" titulo="Población por curso de vida y sexo" metodo="Número de habitantes por curso de vida. Total: 21 846 hombres (50,1 %) y 21 805 mujeres (49,9 %)." periodo="2025" variantes={{ default: vC02 }} claves="curso de vida niños adolescentes jóvenes adultos adultos mayores sexo" />
+    </div>
+  </Seccion>
+
+  <Seccion id="poblacion" kicker="Cuadro 3" titulo="Población por distrito y curso de vida">
+    <VizCard client:visible id="c-c03" titulo="Población por distrito" metodo="Habitantes por distrito según año y curso de vida (fuente: OITE). La suma de los 13 distritos coincide con el total provincial de cada año." filtros={[filtroAnios(ANIOS), fCursos, filtroResaltar(ed)]} inicial={{ anio: '2025', curso: String(CURSOS.length - 1) }} variantes={vC03} claves="población distrito curso de vida habitantes" />
+  </Seccion>
+
+  <Seccion id="crecimiento" kicker="Cuadro 3" titulo="Crecimiento poblacional 2023-2025" intro="Evolución de la población total de la provincia o de cada distrito, calculada con las cifras del Cuadro 3.">
+    <VizCard client:visible id="c-crecimiento" titulo="Evolución de la población total" metodo="Población total por año. Para la provincia se usa la suma de los 13 distritos, que coincide con los totales del documento." periodo="2023-2025" filtros={[{ id: 'd', label: 'Ámbito', tipo: 'select', opciones: [{ v: 'Provincia', t: 'Provincia de San Miguel' }, ...ed.distritos.map(d => ({ v: d.nombre, t: d.nombre }))] }]} variantes={vCrec} claves="crecimiento tendencia evolución población" />
+  </Seccion>
+
+  <Seccion id="sis" kicker="Tabla 2" titulo="Población afiliada al SIS" intro="Entre 2023 y 2025 los afiliados aumentaron en 7 775. El documento advierte que la población afiliada supera a la estimada por el INEI: 4 203 personas más en 2023, 12 392 en 2024 y 13 019 en 2025 (pág. 13).">
+    <VizCard client:visible id="c-t02" titulo="Afiliados al Seguro Integral de Salud (SIS) por distrito" metodo="Número de afiliados según la Unidad de Seguros de la DIRESA Cajamarca. Total provincial: 48 895 (2023), 56 611 (2024) y 56 670 (2025)." filtros={[filtroAnios(ANIOS), filtroResaltar(ed)]} inicial={{ anio: '2025' }} variantes={vT02} claves="SIS seguro integral afiliados" />
+  </Seccion>
+</Base>

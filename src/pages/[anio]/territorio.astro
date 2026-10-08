@@ -1,0 +1,103 @@
+---
+import Base from '../../layouts/Base.astro';
+import Seccion from '../../components/Seccion.astro';
+import TablaDatos from '../../components/TablaDatos.astro';
+import Icono from '../../components/Icono.astro';
+import VizCard from '../../components/islas/VizCard.vue';
+import MapaTerritorial from '../../components/islas/MapaTerritorial.vue';
+import { edicion, filaDe } from '../../lib/datos';
+import { rutasEdicion } from '../../lib/filtros';
+import { indicadoresMapa, propsMapa } from '../../lib/distritos';
+import { barrasColumna, barrasApiladas, variante } from '../../lib/specs';
+import { urlEd } from '../../lib/rutas';
+import type { Tabla, Variante } from '../../lib/tipos';
+
+export const getStaticPaths = rutasEdicion;
+const { anio } = Astro.params as { anio: string };
+const ed = edicion(anio);
+const EE = ed.geoEstablecimientos.features.map((f: any) => f.properties);
+const FG = ed.geoEstablecimientos.fuente;
+const FD = ed.geoDistritos.fuente;
+
+// Distritos y microrredes (capa IGN) frente al número de EE. SS. del ASIS (Cuadro 4)
+const c04 = ed.tabla('c04');
+const filasDist = ed.distritos.map(d => {
+  const ee = EE.filter((e: any) => e.distrito === d.nombre && e.institucion === 'MINSA');
+  const mr = [...new Set(ee.map((e: any) => e.microrred))].sort().join(', ');
+  return [d.nombre, d.ubigeo, filaDe(c04, d.nombre)?.[1] ?? '', String(ee.length), mr];
+});
+const microrredes = [...new Set(EE.map((e: any) => e.microrred).filter(Boolean))].sort() as string[];
+const cats = ['I-1', 'I-2', 'I-3', 'I-4'];
+const tMicro: Tabla = {
+  id: 'microrredes', ref: 'Capa IGN', titulo: 'Establecimientos MINSA georreferenciados por microrred y categoría', pag: 0,
+  fuente: FG.nombre, elaborado: '', cols: ['Microrred', ...cats, 'Total', 'Distritos con establecimientos de la microrred'],
+  rows: microrredes.map(m => { const e = EE.filter((x: any) => x.microrred === m); return [m, ...cats.map(c => String(e.filter((x: any) => x.categoria === c).length)), String(e.length), [...new Set(e.map((x: any) => x.distrito))].join(', ')]; }),
+  seccion: 'territorio', nota: null, origen: 'IGN',
+};
+const vMicro: Variante = { spec: barrasApiladas(tMicro, [1, 2, 3, 4], cats, { colores: ['o1', 'o2', 'o3', 'o4'], totalCol: 5, sufijoTotal: r => `${r[5]} EE. SS.` }), tabla: { cols: tMicro.cols, rows: tMicro.rows }, ref: 'Capa SALUD (IGN)', pag: undefined, fuente: FG.nombre, subtitulo: 'Fuente adicional al ASIS: capa de establecimientos del IGN (IDEP)', nota: FG.nota };
+
+// Lista de establecimientos con filtro por microrred
+const colsE = ['Establecimiento', 'Categoría', 'Institución', 'Microrred', 'Distrito', 'Código RENIPRESS', 'Verificación de coordenadas'];
+const filaE = (e: any) => [e.nombre, e.categoria, e.institucion, e.microrred ?? '–', e.distrito, e.codigo, e.verificacion];
+const vEE: Record<string, Variante> = Object.fromEntries([['', 'Todas'], ...microrredes.map(m => [m, m])].map(([v]) => [v, {
+  spec: null, tabla: { cols: colsE, rows: EE.filter((e: any) => !v || e.microrred === v).map(filaE) }, ref: 'Capa SALUD (IGN)', fuente: FG.nombre,
+  subtitulo: v ? `Microrred ${v}` : 'Todos los establecimientos de la provincia en la capa del IGN', nota: null,
+}]));
+const revisar = EE.filter((e: any) => e.verificacion.startsWith('revisar'));
+
+const t01 = ed.tabla('t01');
+const indice = [{ id: 'ubicacion', t: 'Ubicación y geografía' }, { id: 'mapa', t: 'Mapa interactivo' }, { id: 'microrredes', t: 'Distritos y microrredes' }, { id: 'establecimientos', t: 'Establecimientos de salud' }, { id: 'altitud', t: 'Altitud por distrito' }];
+---
+<Base anio={anio} modulo="territorio/" titulo="Caracterización territorial" descripcion="Ubicación, límites, clima, cuencas, distritos, microrredes y establecimientos de salud de la provincia de San Miguel, con mapa interactivo." indice={indice}>
+  <p class="kicker">Módulo B · Capítulo III</p>
+  <h1 class="mt-1 text-[1.9rem] font-extrabold text-ink">Caracterización territorial</h1>
+  <p class="mt-2 max-w-3xl text-ink-2">Geografía de la provincia según el capítulo III del ASIS y distribución territorial de los establecimientos de salud. Los límites y las coordenadas provienen del Instituto Geográfico Nacional (IGN), una fuente adicional al documento.</p>
+
+  <Seccion id="ubicacion" kicker="Capítulo III" titulo="Ubicación y geografía" intro="Datos textuales del capítulo III (págs. 5-9).">
+    <div class="grid gap-3 sm:grid-cols-2 xl:grid-cols-3">
+      {[
+        ['mapa', 'Ubicación', 'Sur oeste del departamento de Cajamarca, en la sierra norte del país; a 140 km de la provincia de Cajamarca y a 56 km del distrito de Chilete. 13 distritos que conforman 5 microrredes con 48 IPRESS.', 'pág. 5'],
+        ['pin', 'Límites', 'Norte: provincia de Santa Cruz. Sur: provincia de Contumazá. Este: provincias de Hualgayoc y San Pablo. Oeste: provincia de Chepén (región La Libertad).', 'pág. 5'],
+        ['casa', 'Superficie', '2 541,88 km², el 7,5 % del área departamental, íntegramente en la vertiente del Pacífico. San Miguel, Calquis y Nanchoc ocupan cerca del 50 % del territorio; La Florida y El Prado son los menos extensos.', 'pág. 6'],
+        ['sol', 'Clima', 'Desde la costa o chala (Nanchoc, cálido y seco) y la yunga marítima (cálido a templado) hasta la quechua (templado a frío) y la jalca, muy fría y lluviosa, con heladas y granizadas.', 'pág. 6'],
+        ['pulso', 'Pisos altitudinales', 'La capital está a 2 650 m s. n. m. La topografía es muy accidentada: desniveles de más de 3 500 m s. n. m. en las zonas altas y 400 m s. n. m. en Nanchoc.', 'pág. 7'],
+        ['mapa', 'Cuencas hidrográficas', 'Cuatro cuencas: Chancay, Zaña (Niepos, Bolívar y Nanchoc), Jequetepeque o Chilete (San Gregorio, Unión Agua Blanca, El Prado, San Miguel, Calquis, Llapa y Cochán) y Chamán.', 'págs. 8-9'],
+      ].map(([ic, t, d, p]) => (
+        <article class="tarjeta p-4">
+          <div class="flex items-center gap-2"><span class="rounded-lg bg-accent-soft p-1.5 text-accent"><Icono nombre={ic} size={18} /></span><h3 class="font-semibold text-ink">{t}</h3></div>
+          <p class="mt-2 text-[0.92rem] text-ink-2">{d}</p>
+          <p class="meta mt-2">ASIS RIS San Miguel 2025, {p}</p>
+        </article>
+      ))}
+    </div>
+  </Seccion>
+
+  <Seccion id="mapa" kicker="Mapa interactivo" titulo="Distritos, establecimientos e indicadores" intro="Elija un indicador del ASIS para colorear los distritos; filtre los establecimientos por microrred y categoría; toque un distrito para ver su valor y abrir su ficha.">
+    <div class="tarjeta p-4 sm:p-5" data-buscar="Mapa interactivo de la provincia|mapa distritos establecimientos microrred coropleta|">
+      <MapaTerritorial client:visible {...propsMapa(ed, urlEd(anio, 'datos/'))} indicadores={indicadoresMapa(ed)} inicial="pob2025" urlFicha={urlEd(anio, 'distritos/')} alto={560} />
+    </div>
+  </Seccion>
+
+  <Seccion id="microrredes" kicker="Organización de la red" titulo="Distritos y microrredes" intro="La Red de Salud San Miguel se organiza en 5 microrredes. La asignación de cada establecimiento a una microrred proviene de la capa del IGN; el ASIS no publica indicadores por microrred.">
+    <VizCard client:visible id="c-microrredes" titulo="Establecimientos por microrred y categoría" metodo="Número de establecimientos del MINSA de la capa del IGN, por microrred y categoría. Una microrred puede abarcar establecimientos de varios distritos." unidad="establecimientos" fuenteCorta="Capa SALUD del IGN (IDEP), fuente adicional al ASIS" variantes={{ default: vMicro }} largos={[6]} claves="microrred Nanchoc Catilluc La Florida Llapa San Miguel" />
+    <figure class="tarjeta m-0 p-4 sm:p-5" id="c-distritos-eess" data-buscar="Establecimientos por distrito: ASIS frente a capa IGN|Cuadro 4|">
+      <h3 class="font-semibold text-ink">Establecimientos por distrito: ASIS frente a la capa del IGN</h3>
+      <p class="meta mt-0.5">Cuadro 4 (pág. 25) y capa SALUD del IGN</p>
+      <p class="metodo mt-3"><strong>Nota metodológica:</strong> el ASIS reporta 48 establecimientos; la capa del IGN tiene 46 del MINSA georreferenciados en la provincia (y 1 de EsSalud). No figuran el P.S. Gordillos (Calquis) ni el P.S. Chucllapampa (Tongod), que el ASIS menciona en los Cuadros 16 y 26.</p>
+      <div class="mt-3"><TablaDatos titulo="Establecimientos por distrito" cols={['Distrito', 'UBIGEO', 'EE. SS. según ASIS (Cuadro 4)', 'EE. SS. MINSA en capa IGN', 'Microrred(es) según IGN']} rows={filasDist} largos={[4]} /></div>
+      <figcaption class="mt-3 border-t border-line pt-2.5 text-[0.78rem] text-ink-2"><strong>Fuente:</strong> ASIS RIS San Miguel 2025, Cuadro 4 (pág. 25); {FG.nombre}, descargado el {FG.fecha_descarga}.</figcaption>
+    </figure>
+  </Seccion>
+
+  <Seccion id="establecimientos" kicker="Oferta" titulo="Establecimientos de salud georreferenciados" intro="Lista de la capa del IGN con su categoría, microrred y código RENIPRESS. Cada coordenada se verificó contra el límite de su distrito.">
+    <VizCard client:visible id="c-lista-eess" titulo="Establecimientos de salud de la provincia" metodo="Se comprobó si cada punto cae dentro del distrito que indica la capa. Las coordenadas marcadas «revisar» deben validarse con la Oficina de Estadística antes de usarse para rutas o distancias." filtros={[{ id: 'mr', label: 'Microrred', tipo: 'select', opciones: [{ v: '', t: 'Todas' }, ...microrredes.map(m => ({ v: m, t: m }))] }]} variantes={vEE} fuenteCorta="Capa SALUD del IGN (IDEP), fuente adicional al ASIS" largos={[0, 6]} claves={EE.map((e: any) => e.nombre).join(' ') + ' RENIPRESS puesto centro de salud'} />
+    {revisar.length > 0 && (
+      <div class="nota" role="note"><strong>Coordenadas a revisar ({revisar.length}):</strong> {revisar.map((e: any) => `${e.nombre} (${e.distrito}): ${e.verificacion.replace('revisar: ', '')}`).join('; ')}. Se muestran en el mapa con borde punteado.</div>
+    )}
+  </Seccion>
+
+  <Seccion id="altitud" kicker="Tabla 1" titulo="Altitud de las capitales distritales">
+    <VizCard client:visible id="c-t01" titulo={t01.titulo} metodo="Altitud de la capital de cada distrito, en metros sobre el nivel del mar. El texto del documento indica 2 650 m s. n. m. para San Miguel; la tabla, 2665." unidad="m s. n. m." variantes={{ default: variante(t01, barrasColumna(t01, 1, { nombre: 'Altitud' })) }} claves="altitud msnm geografía" />
+  </Seccion>
+  <p class="meta mt-6">Límites distritales: {FD.nombre}. {FD.nota}</p>
+</Base>

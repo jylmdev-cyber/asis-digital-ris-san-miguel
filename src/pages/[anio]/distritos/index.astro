@@ -1,0 +1,39 @@
+---
+import Base from '../../../layouts/Base.astro';
+import Seccion from '../../../components/Seccion.astro';
+import MapaTerritorial from '../../../components/islas/MapaTerritorial.vue';
+import { edicion, mostrar } from '../../../lib/datos';
+import { rutasEdicion } from '../../../lib/filtros';
+import { indicadoresDistritales, indicadoresMapa, propsMapa } from '../../../lib/distritos';
+import { urlEd } from '../../../lib/rutas';
+
+export const getStaticPaths = rutasEdicion;
+const { anio } = Astro.params as { anio: string };
+const ed = edicion(anio);
+const IND = Object.fromEntries(indicadoresDistritales(ed).map(i => [i.id, i]));
+const v = (id: string, d: string) => mostrar(IND[id]?.valores[d]);
+---
+<Base anio={anio} modulo="distritos/" titulo="Fichas distritales" descripcion="Ficha de cada uno de los 13 distritos de la provincia de San Miguel con todos sus indicadores del ASIS 2025.">
+  <p class="kicker">Fichas distritales</p>
+  <h1 class="mt-1 text-[1.9rem] font-extrabold text-ink">Los 13 distritos de la provincia</h1>
+  <p class="mt-2 max-w-3xl text-ink-2">Cada ficha reúne todos los indicadores que el ASIS presenta por distrito, junto al valor provincial, la posición del distrito entre los 13 y la fuente de cada cifra.</p>
+
+  <Seccion id="lista" titulo="Elija un distrito">
+    <div class="grid grid-cols-[repeat(auto-fill,minmax(min(100%,260px),1fr))] gap-3">
+      {ed.distritos.map(d => (
+        <a href={urlEd(anio, `distritos/${d.slug}/`)} class="tarjeta group block p-4 no-underline hover:shadow-lg" data-buscar={`Ficha del distrito ${d.nombre}|Fichas distritales|${d.ubigeo}`}>
+          <div class="flex items-baseline justify-between gap-2"><b class="text-[1.05rem] text-ink group-hover:text-accent">{d.nombre}</b><span class="text-[0.72rem] text-muted">UBIGEO {d.ubigeo}</span></div>
+          <dl class="mt-3 grid grid-cols-2 gap-x-3 gap-y-2 text-[0.82rem]">
+            <div><dt class="text-ink-2">Población 2025</dt><dd class="font-semibold text-ink">{v('pob2025', d.nombre)}</dd></div>
+            <div><dt class="text-ink-2">Pobreza monetaria</dt><dd class="font-semibold text-ink">{v('t03', d.nombre)} %</dd></div>
+            <div><dt class="text-ink-2">Agua potable</dt><dd class="font-semibold text-ink">{v('t09', d.nombre)} %</dd></div>
+            <div><dt class="text-ink-2">Establecimientos</dt><dd class="font-semibold text-ink">{v('eess', d.nombre)}</dd></div>
+          </dl>
+        </a>
+      ))}
+    </div>
+  </Seccion>
+  <Seccion id="mapa" titulo="Ubicación de los distritos">
+    <div class="tarjeta p-4 sm:p-5"><MapaTerritorial client:visible {...propsMapa(ed, urlEd(anio, 'datos/'))} indicadores={indicadoresMapa(ed)} inicial="pob2025" urlFicha={urlEd(anio, 'distritos/')} mostrarEESS={false} alto={480} /></div>
+  </Seccion>
+</Base>

@@ -1,0 +1,214 @@
+---
+import '../styles/global.css';
+import Icono from '../components/Icono.astro';
+import Buscador from '../components/islas/Buscador.vue';
+import { SITIO, EDICIONES, MODULOS } from '../config/sitio';
+import { url, urlEd } from '../lib/rutas';
+
+interface Props {
+  anio: string;
+  modulo: string;          // ruta del módulo ('' = inicio)
+  titulo: string;
+  descripcion?: string;
+  indice?: { id: string; t: string }[];
+}
+const { anio, modulo, titulo, descripcion = SITIO.descripcion, indice = [] } = Astro.props;
+const tituloCompleto = modulo === '' ? `${SITIO.nombre} ${anio} | ${SITIO.entidad}` : `${titulo} · ${SITIO.nombre} ${anio} | ${SITIO.entidad}`;
+const canonical = new URL(Astro.url.pathname, Astro.site).href;
+const og = new URL(url(`og-asis-${anio}.png`), Astro.site).href;
+const fecha = new Date().toISOString().slice(0, 10);
+---
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>{tituloCompleto}</title>
+  <meta name="description" content={descripcion} />
+  <link rel="canonical" href={canonical} />
+  <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline'; style-src 'self' 'unsafe-inline'; img-src 'self' data: blob: https://*.tile.openstreetmap.org; connect-src 'self'; font-src 'self'; object-src 'none'; base-uri 'self'; form-action 'none';" />
+  <meta name="referrer" content="strict-origin-when-cross-origin" />
+  <meta name="theme-color" content="#0b3c5d" />
+  <meta property="og:type" content="website" />
+  <meta property="og:locale" content="es_PE" />
+  <meta property="og:site_name" content={SITIO.nombreCompleto} />
+  <meta property="og:title" content={tituloCompleto} />
+  <meta property="og:description" content={descripcion} />
+  <meta property="og:url" content={canonical} />
+  <meta property="og:image" content={og} />
+  <meta property="og:image:width" content="1200" />
+  <meta property="og:image:height" content="630" />
+  <meta property="og:image:alt" content={`${SITIO.nombreCompleto} – Análisis de Situación de Salud ${anio}`} />
+  <meta name="twitter:card" content="summary_large_image" />
+  <link rel="icon" href={url('favicon.svg')} type="image/svg+xml" />
+  <link rel="sitemap" href={url('sitemap-index.xml')} />
+  <script is:inline>
+    (function () {
+      var t = null; try { t = localStorage.getItem('tema'); } catch (e) {}
+      if (t !== 'light' && t !== 'dark') t = matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
+      document.documentElement.setAttribute('data-theme', t);
+      document.documentElement.classList.add('js');
+    })();
+  </script>
+</head>
+<body class="min-h-screen">
+  <a href="#contenido" class="sr-only focus:not-sr-only focus:fixed focus:left-3 focus:top-3 focus:z-[100] focus:rounded-lg focus:bg-surface focus:px-3 focus:py-2">Saltar al contenido</a>
+
+  <header class="barra sticky top-0 z-40 bg-brand text-white shadow-md">
+    <div class="mx-auto flex max-w-[1440px] items-center gap-3 px-4 py-2.5 lg:px-6">
+      <button id="btnMenu" class="no-imprimir -ml-1 rounded-lg p-2 hover:bg-white/10 lg:hidden" aria-controls="lateral" aria-expanded="false" aria-label="Abrir menú de secciones">
+        <Icono nombre="menu" size={22} />
+      </button>
+      <a href={urlEd(anio)} class="flex min-w-0 items-center gap-2.5 text-white no-underline">
+        <span class="grid size-9 shrink-0 place-items-center rounded-lg bg-white/12 ring-1 ring-white/25" aria-hidden="true">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none"><path d="M12 3v18M3 12h18" stroke="#7fe0d4" stroke-width="3.2" stroke-linecap="round"/><path d="M5 17l3.5-4 3 2.5L18 8" stroke="#fff" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </span>
+        <span class="min-w-0 leading-tight">
+          <b class="block truncate text-[0.98rem] tracking-wide">ASIS DIGITAL {anio}</b>
+          <span class="block truncate text-[0.74rem] text-white/80">RIS San Miguel · DIRESA Cajamarca</span>
+        </span>
+      </a>
+      <div class="ml-auto flex min-w-0 items-center gap-2">
+        {EDICIONES.length > 1 && (
+          <label class="no-imprimir hidden items-center gap-1 text-xs sm:flex">
+            <span class="sr-only">Edición</span>
+            <select class="rounded-md border border-white/30 bg-white/10 px-2 py-1 text-white" onchange="location.href=this.value">
+              {EDICIONES.map(e => <option value={urlEd(e.anio)} selected={e.anio === anio}>{e.anio}</option>)}
+            </select>
+          </label>
+        )}
+        <Buscador client:idle indice={urlEd(anio, 'buscar.json')} />
+        <button id="btnTema" class="no-imprimir rounded-lg p-2 hover:bg-white/10" aria-label="Cambiar entre modo claro y oscuro" title="Modo claro / oscuro">
+          <span class="tema-claro"><Icono nombre="luna" /></span>
+          <span class="tema-oscuro hidden"><Icono nombre="sol" /></span>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <div class="mx-auto flex max-w-[1440px]">
+    <aside id="lateral" class="lateral no-imprimir fixed inset-y-0 left-0 z-50 w-[280px] -translate-x-full overflow-y-auto border-r border-line bg-surface px-3 pb-8 pt-4 transition-transform lg:sticky lg:top-[60px] lg:z-0 lg:h-[calc(100vh-60px)] lg:translate-x-0 lg:bg-transparent" aria-label="Módulos">
+      <div class="mb-3 flex items-center justify-between px-2 lg:hidden">
+        <b>Módulos</b>
+        <button id="btnCerrar" class="rounded-lg p-2 hover:bg-surface-2" aria-label="Cerrar menú"><Icono nombre="cerrar" /></button>
+      </div>
+      <nav>
+        <ul class="space-y-0.5">
+          {MODULOS.map(m => {
+            const activo = m.ruta === modulo;
+            return (
+              <li>
+                <a href={urlEd(anio, m.ruta)} aria-current={activo ? 'page' : undefined}
+                   class:list={['group flex items-start gap-3 rounded-xl px-3 py-2 text-[0.92rem] no-underline transition-colors',
+                     activo ? 'bg-accent-soft font-semibold text-ink ring-1 ring-accent/30' : 'text-ink-2 hover:bg-surface-2 hover:text-ink']}>
+                  <span class:list={['mt-0.5 shrink-0', activo ? 'text-accent' : 'text-muted group-hover:text-accent']}><Icono nombre={m.icono} size={19} /></span>
+                  <span>{m.corto}</span>
+                </a>
+              </li>
+            );
+          })}
+        </ul>
+      </nav>
+      {indice.length > 0 && (
+        <div class="mt-6 border-t border-line px-2 pt-4">
+          <p class="kicker mb-2">En esta página</p>
+          <ul class="space-y-1 text-[0.85rem]" id="indice">
+            {indice.map(i => <li><a href={`#${i.id}`} data-ind={i.id} class="block rounded-md px-2 py-1 text-ink-2 no-underline hover:bg-surface-2 hover:text-ink">{i.t}</a></li>)}
+          </ul>
+        </div>
+      )}
+      <p class="mt-6 px-3 text-[0.72rem] leading-snug text-muted">Visualización del documento oficial. No es un sistema de registro ni sustituye al HIS MINSA.</p>
+    </aside>
+    <div id="velo" class="fixed inset-0 z-40 hidden bg-black/40 lg:hidden"></div>
+
+    <main id="contenido" tabindex="-1" class="min-w-0 flex-1 px-4 pb-16 pt-5 sm:px-6 lg:px-8">
+      <slot />
+      <footer class="mt-16 border-t border-line pt-6 text-[0.82rem] text-ink-2">
+        <div class="grid gap-4 md:grid-cols-[2fr_1fr]">
+          <p><b class="text-ink">{SITIO.nombreCompleto}</b> · Visualización del <i>{EDICIONES.find(e => e.anio === anio)?.titulo}</i>, elaborado por la Oficina de Epidemiología de la Red de Salud San Miguel con la DIRESA Cajamarca. No es un sistema de registro, no reemplaza al HIS MINSA ni a otros sistemas oficiales y no contiene datos de personas. Ante cualquier diferencia, prevalece el documento oficial.</p>
+          <p class="md:text-right">Generado el {fecha}<br /><a href={urlEd(anio, 'biblioteca/')}>Fuentes, metodología y descarga de datos</a></p>
+        </div>
+      </footer>
+    </main>
+  </div>
+  <div id="aviso" role="status" aria-live="polite" class="pointer-events-none fixed bottom-5 left-1/2 z-[90] -translate-x-1/2 rounded-lg bg-ink px-3 py-2 text-sm text-surface opacity-0 transition-opacity"></div>
+
+  <script>
+    // ---- tema claro / oscuro
+    const raiz = document.documentElement;
+    const pintarIcono = () => {
+      const osc = raiz.getAttribute('data-theme') === 'dark';
+      document.querySelectorAll('.tema-claro').forEach(e => e.classList.toggle('hidden', osc));
+      document.querySelectorAll('.tema-oscuro').forEach(e => e.classList.toggle('hidden', !osc));
+    };
+    pintarIcono();
+    document.getElementById('btnTema')?.addEventListener('click', () => {
+      const t = raiz.getAttribute('data-theme') === 'dark' ? 'light' : 'dark';
+      raiz.setAttribute('data-theme', t);
+      try { localStorage.setItem('tema', t); } catch (e) {}
+      pintarIcono();
+      window.dispatchEvent(new CustomEvent('tema', { detail: t }));
+    });
+
+    // ---- menú lateral en móvil
+    const lat = document.getElementById('lateral')!, velo = document.getElementById('velo')!, btn = document.getElementById('btnMenu')!;
+    const abrir = (o: boolean) => { lat.classList.toggle('-translate-x-full', !o); velo.classList.toggle('hidden', !o); btn.setAttribute('aria-expanded', String(o)); if (o) (lat.querySelector('a') as HTMLElement)?.focus(); };
+    btn.addEventListener('click', () => abrir(true));
+    document.getElementById('btnCerrar')?.addEventListener('click', () => abrir(false));
+    velo.addEventListener('click', () => abrir(false));
+    lat.querySelectorAll('a').forEach(a => a.addEventListener('click', () => { if (innerWidth < 1024) abrir(false); }));
+    document.addEventListener('keydown', e => { if (e.key === 'Escape') abrir(false); });
+
+    // ---- aviso breve
+    const aviso = (msg: string) => { const a = document.getElementById('aviso')!; a.textContent = msg; a.style.opacity = '1'; setTimeout(() => (a.style.opacity = '0'), 1600); };
+    (window as any).avisar = aviso;
+
+    // ---- copiar enlace e imprimir sección (delegado)
+    document.addEventListener('click', e => {
+      const t = (e.target as HTMLElement).closest('[data-copiar],[data-imprimir]') as HTMLElement | null;
+      if (!t) return;
+      if (t.dataset.copiar) {
+        const u = location.href.split('#')[0] + '#' + t.dataset.copiar;
+        if (navigator.clipboard && isSecureContext) navigator.clipboard.writeText(u).then(() => aviso('Enlace copiado'));
+        else prompt('Copie el enlace:', u);
+      } else if (t.dataset.imprimir) {
+        const sec = document.getElementById(t.dataset.imprimir);
+        if (!sec) return;
+        document.body.classList.add('imprimir-seccion'); sec.classList.add('imprimir-esta');
+        const fin = () => { document.body.classList.remove('imprimir-seccion'); sec.classList.remove('imprimir-esta'); removeEventListener('afterprint', fin); };
+        addEventListener('afterprint', fin); print();
+      }
+    });
+
+    // ---- contadores animados (respetan "reducir movimiento"; terminan en la cifra textual exacta)
+    const reducido = matchMedia('(prefers-reduced-motion: reduce)').matches;
+    const contar = (el: HTMLElement) => {
+      const final = el.dataset.final || el.textContent || '';
+      const n = Number((el.dataset.valor || '').replace(',', '.'));
+      if (reducido || !isFinite(n) || n === 0) { el.textContent = final; return; }
+      const dec = (el.dataset.valor || '').includes(',') ? (el.dataset.valor!.split(',')[1].length) : 0;
+      const t0 = performance.now(), dur = 900;
+      const paso = (t: number) => {
+        const p = Math.min(1, (t - t0) / dur), v = n * (1 - Math.pow(1 - p, 3));
+        el.textContent = p < 1 ? v.toFixed(dec).replace('.', ',').replace(/\B(?=(\d{3})+(?!\d))/g, ' ') + (el.dataset.sufijo || '') : final;
+        if (p < 1) requestAnimationFrame(paso);
+      };
+      requestAnimationFrame(paso);
+    };
+    // ---- aparición suave y resaltado del índice
+    const io = new IntersectionObserver(es => es.forEach(en => {
+      if (!en.isIntersecting) return;
+      const el = en.target as HTMLElement;
+      el.classList.add('visible');
+      el.querySelectorAll<HTMLElement>('[data-valor]').forEach(c => { if (!c.dataset.hecho) { c.dataset.hecho = '1'; contar(c); } });
+      io.unobserve(el);
+    }), { rootMargin: '0px 0px -8% 0px' });
+    document.querySelectorAll('.aparecer').forEach(e => io.observe(e));
+    const links = document.querySelectorAll<HTMLAnchorElement>('#indice a');
+    if (links.length) {
+      const io2 = new IntersectionObserver(es => es.forEach(en => { if (en.isIntersecting) links.forEach(a => a.classList.toggle('!text-accent', a.dataset.ind === en.target.id)); }), { rootMargin: '-25% 0px -70% 0px' });
+      links.forEach(a => { const s = document.getElementById(a.dataset.ind!); if (s) io2.observe(s); });
+    }
+  </script>
+</body>
+</html>
