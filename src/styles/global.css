@@ -3,46 +3,55 @@
 /* El tema se fija en <html data-theme="light|dark"> con un script en <head> (sin parpadeo). */
 @custom-variant dark (&:where([data-theme=dark], [data-theme=dark] *));
 
+/* Paleta institucional tomada del emblema de la DIRESA Cajamarca:
+   azul #0087C6 · azul marino #3C5395 · rojo #C43438 · verde #00A859 · amarillo #E0E332.
+   Las combinaciones de gráficos se validaron (contraste y daltonismo) en modo claro y oscuro. */
 :root {
   color-scheme: light;
+  --inst-azul: #0087c6; --inst-marino: #3c5395; --inst-rojo: #c43438; --inst-verde: #00a859; --inst-amarillo: #e0e332;
   /* superficies y tinta */
-  --page: #f4f6f7; --surface: #ffffff; --surface-2: #eef2f3; --surface-3: #e3e9eb;
-  --ink: #0d1b24; --ink-2: #44535c; --muted: #66747c;
-  --grid: #e1e5e6; --axis: #c3cbce; --border: rgba(13, 27, 36, .12);
-  /* institucional: azul petróleo del sector salud */
-  --brand: #0b3c5d; --brand-2: #0f5c7a; --brand-ink: #ffffff;
-  --accent: #0d7c72; --accent-soft: #e2f3f1; --link: #0b6a8a; --focus: #2a78d6;
-  /* series validadas (dataviz: categórica slots 1-2 y rampa ordinal azul) */
-  --s1: #2a78d6; --s2: #eb6834; --s1-strong: #104281;
-  --o1: #86b6ef; --o2: #3987e5; --o3: #1c5cab; --o4: #0d366b;
-  --notice-bg: #fff6e0; --notice-ink: #5a4300; --notice-border: #ecd28c;
-  --warn-bg: #fdecec; --warn-ink: #7a1f1f;
-  --shadow: 0 1px 2px rgba(13,27,36,.06), 0 4px 16px rgba(13,27,36,.05);
+  --page: #f3f6fa; --surface: #ffffff; --surface-2: #eef2f8; --surface-3: #e2e8f2;
+  --ink: #141c33; --ink-2: #47506a; --muted: #687189;
+  --grid: #e2e7ef; --axis: #c5cddb; --border: rgba(20, 28, 51, .12);
+  /* institucional */
+  --brand: #3c5395; --brand-2: #0087c6; --brand-ink: #ffffff;
+  --accent: #006fa3; --accent-soft: #e3f1fa; --link: #006fa3; --focus: #0087c6;
+  --verde: #00a859;
+  /* series de gráficos */
+  --s1: #0087c6; --s2: #c43438; --s1-strong: #3c5395;
+  --o1: #a5b4df; --o2: #6f84c4; --o3: #3c5395; --o4: #24346a;
+  --notice-bg: #fbfbe2; --notice-ink: #4a4a00; --notice-border: #e0e332;
+  --warn-bg: #fbeaea; --warn-ink: #7f1d21;
+  --shadow: 0 1px 2px rgba(20,28,51,.06), 0 4px 16px rgba(20,28,51,.05);
 }
 :root[data-theme="dark"] {
   color-scheme: dark;
-  --page: #0c1215; --surface: #141c20; --surface-2: #1b252a; --surface-3: #243137;
-  --ink: #f2f6f7; --ink-2: #bcc8cc; --muted: #93a2a8;
-  --grid: #26323a; --axis: #36444b; --border: rgba(255,255,255,.10);
-  --brand: #08263a; --brand-2: #0d4660;
-  --accent: #3cc2b4; --accent-soft: #10302d; --link: #7cc7e6; --focus: #5598e7;
-  --s1: #3987e5; --s2: #d95926; --s1-strong: #9ec5f4;
-  --o1: #184f95; --o2: #256abf; --o3: #5598e7; --o4: #9ec5f4;
-  --notice-bg: #2e2611; --notice-ink: #f3dc9b; --notice-border: #5c4a1a;
-  --warn-bg: #3a1717; --warn-ink: #f5c1c1;
+  --page: #0b1220; --surface: #121b2b; --surface-2: #1a2538; --surface-3: #22304a;
+  --ink: #f1f5fb; --ink-2: #b9c4d6; --muted: #8f9bb1;
+  --grid: #233047; --axis: #33425d; --border: rgba(255,255,255,.10);
+  --brand: #22336a; --brand-2: #0b5f8c;
+  --accent: #4fb8e8; --accent-soft: #0e2a3d; --link: #5cc0f0; --focus: #4fb8e8;
+  --verde: #19c26f;
+  --s1: #2a9fd6; --s2: #e0575c; --s1-strong: #a9b9ea;
+  --o1: #3a4f94; --o2: #4d66b0; --o3: #7189d1; --o4: #a9b9ea;
+  --notice-bg: #26260f; --notice-ink: #ecee9c; --notice-border: #6b6c1b;
+  --warn-bg: #3a1719; --warn-ink: #f5c1c3;
   --shadow: 0 1px 2px rgba(0,0,0,.4);
 }
 /* sin JavaScript: respetar la preferencia del sistema */
 @media (prefers-color-scheme: dark) {
   :root:not([data-theme]) {
     color-scheme: dark;
-    --page: #0c1215; --surface: #141c20; --surface-2: #1b252a; --surface-3: #243137;
-    --ink: #f2f6f7; --ink-2: #bcc8cc; --muted: #93a2a8; --grid: #26323a; --axis: #36444b; --border: rgba(255,255,255,.10);
-    --brand: #08263a; --brand-2: #0d4660; --accent: #3cc2b4; --accent-soft: #10302d; --link: #7cc7e6;
-    --s1: #3987e5; --s2: #d95926; --s1-strong: #9ec5f4; --o1: #184f95; --o2: #256abf; --o3: #5598e7; --o4: #9ec5f4;
-    --notice-bg: #2e2611; --notice-ink: #f3dc9b; --notice-border: #5c4a1a;
+    --page: #0b1220; --surface: #121b2b; --surface-2: #1a2538; --surface-3: #22304a;
+    --ink: #f1f5fb; --ink-2: #b9c4d6; --muted: #8f9bb1; --grid: #233047; --axis: #33425d; --border: rgba(255,255,255,.10);
+    --brand: #22336a; --brand-2: #0b5f8c; --accent: #4fb8e8; --accent-soft: #0e2a3d; --link: #5cc0f0; --verde: #19c26f;
+    --s1: #2a9fd6; --s2: #e0575c; --s1-strong: #a9b9ea; --o1: #3a4f94; --o2: #4d66b0; --o3: #7189d1; --o4: #a9b9ea;
+    --notice-bg: #26260f; --notice-ink: #ecee9c; --notice-border: #6b6c1b;
   }
 }
+
+/* Franja institucional con los cuatro colores del emblema */
+.franja { height: 4px; background: linear-gradient(90deg, var(--inst-amarillo) 0 25%, var(--inst-rojo) 25% 50%, var(--inst-verde) 50% 75%, var(--inst-azul) 75% 100%); }
 
 @theme {
   --font-sans: system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;

@@ -28,7 +28,7 @@ const fecha = new Date().toISOString().slice(0, 10);
   <link rel="canonical" href={canonical} />
   <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline'; style-src 'self' 'unsafe-inline'; img-src 'self' data: blob: https://*.tile.openstreetmap.org; connect-src 'self'; font-src 'self'; object-src 'none'; base-uri 'self'; form-action 'none';" />
   <meta name="referrer" content="strict-origin-when-cross-origin" />
-  <meta name="theme-color" content="#0b3c5d" />
+  <meta name="theme-color" content="#3c5395" />
   <meta property="og:type" content="website" />
   <meta property="og:locale" content="es_PE" />
   <meta property="og:site_name" content={SITIO.nombreCompleto} />
@@ -61,7 +61,7 @@ const fecha = new Date().toISOString().slice(0, 10);
       </button>
       <a href={urlEd(anio)} class="flex min-w-0 items-center gap-2.5 text-white no-underline">
         <span class="grid size-9 shrink-0 place-items-center rounded-lg bg-white/12 ring-1 ring-white/25" aria-hidden="true">
-          <svg width="22" height="22" viewBox="0 0 24 24" fill="none"><path d="M12 3v18M3 12h18" stroke="#7fe0d4" stroke-width="3.2" stroke-linecap="round"/><path d="M5 17l3.5-4 3 2.5L18 8" stroke="#fff" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none"><path d="M12 3v18M3 12h18" stroke="#e0e332" stroke-width="3.2" stroke-linecap="round"/><path d="M5 17l3.5-4 3 2.5L18 8" stroke="#fff" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
         </span>
         <span class="min-w-0 leading-tight">
           <b class="block truncate text-[0.98rem] tracking-wide">ASIS DIGITAL {anio}</b>
@@ -84,10 +84,11 @@ const fecha = new Date().toISOString().slice(0, 10);
         </button>
       </div>
     </div>
+    <div class="franja" aria-hidden="true"></div>
   </header>
 
   <div class="mx-auto flex max-w-[1440px]">
-    <aside id="lateral" class="lateral no-imprimir fixed inset-y-0 left-0 z-50 w-[280px] -translate-x-full overflow-y-auto border-r border-line bg-surface px-3 pb-8 pt-4 transition-transform lg:sticky lg:top-[60px] lg:z-0 lg:h-[calc(100vh-60px)] lg:translate-x-0 lg:bg-transparent" aria-label="Módulos">
+    <aside id="lateral" class="lateral no-imprimir fixed inset-y-0 left-0 z-50 w-[280px] -translate-x-full overflow-y-auto border-r border-line bg-surface px-3 pb-8 pt-4 transition-transform lg:sticky lg:top-[64px] lg:z-0 lg:h-[calc(100vh-64px)] lg:translate-x-0 lg:bg-transparent" aria-label="Módulos">
       <div class="mb-3 flex items-center justify-between px-2 lg:hidden">
         <b>Módulos</b>
         <button id="btnCerrar" class="rounded-lg p-2 hover:bg-surface-2" aria-label="Cerrar menú"><Icono nombre="cerrar" /></button>

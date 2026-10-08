@@ -106,7 +106,7 @@ export function opciones(spec: ChartSpec, ancho: number, animar: boolean): any {
       grid: { left: 12, right: 12, top: 30, bottom: 8, containLabel: true },
       tooltip: { ...base.tooltip, trigger: 'axis', axisPointer: { type: 'shadow' },
         formatter: (ps: any[]) => `<b>${esc(ps[0].name)} años</b><br>` + ps.map(p => `${p.marker} <b>${esc((p.seriesIndex === 0 ? spec.etFem : spec.etMasc)[p.dataIndex])} %</b> ${esc(p.seriesName)}`).join('<br>') },
-      xAxis: { type: 'value', min: -mx, max: mx, splitLine: { lineStyle: { color: grid } }, axisLabel: { color: tinta2, formatter: (v: number) => fmtNum(Math.abs(v)) + ' %' } },
+      xAxis: { type: 'value', min: -mx, max: mx, splitLine: { lineStyle: { color: grid } }, axisLabel: { color: tinta2, showMinLabel: false, showMaxLabel: false, formatter: (v: number) => fmtNum(Math.abs(v)) + ' %' } },
       yAxis: { type: 'category', data: spec.grupos, axisTick: { show: false }, axisLine: { lineStyle: { color: eje } }, axisLabel: { color: tinta, fontSize: 11 } },
       series: [mk('Femenino', spec.femenino, spec.etFem, colorDe('s1'), -1), mk('Masculino', spec.masculino, spec.etMasc, colorDe('s2'), 1)],
     };

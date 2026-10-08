@@ -26,9 +26,9 @@ const vC01: Record<string, Variante> = {
 
 // Gráfico 1: pirámide
 const vG01: Variante = variante(g01, {
-  tipo: 'piramide', grupos: [...g01.rows].reverse().map(r => r[0]),
-  femenino: [...g01.rows].reverse().map(r => num(r[1])!), masculino: [...g01.rows].reverse().map(r => num(r[2])!),
-  etFem: [...g01.rows].reverse().map(r => r[1]), etMasc: [...g01.rows].reverse().map(r => r[2]),
+  tipo: 'piramide', grupos: g01.rows.map(r => r[0]),
+  femenino: g01.rows.map(r => num(r[1])!), masculino: g01.rows.map(r => num(r[2])!),
+  etFem: g01.rows.map(r => r[1]), etMasc: g01.rows.map(r => r[2]),
 }, { unidad: '% de la población de cada sexo' });
 
 // Cuadro 2

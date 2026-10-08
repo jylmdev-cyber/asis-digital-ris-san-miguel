@@ -86,7 +86,7 @@ function pintar() {
       if (props.soloDistrito && p.distrito !== props.soloDistrito) continue;
       const [x, y] = f.geometry.coordinates;
       const m = L.circleMarker([y, x], {
-        radius: radio(p.categoria), weight: 2, color: '#ffffff', fillColor: p.institucion === 'EsSalud' ? '#6b7a80' : css('--accent'), fillOpacity: 1,
+        radius: radio(p.categoria), weight: 2, color: '#ffffff', fillColor: p.institucion === 'EsSalud' ? '#6b7a80' : css('--verde'), fillOpacity: 1,
         dashArray: p.verificacion.startsWith('revisar') ? '2 2' : undefined,
       });
       m.bindPopup(popupEESS(f)); m.bindTooltip(p.nombre, { direction: 'top', offset: [0, -6] });
@@ -181,9 +181,9 @@ const unidadTxt = computed(() => ind.value.unidad === '%' ? '%' : ind.value.unid
       <div v-if="verEESS" class="mt-4 border-t border-line pt-3">
         <p class="font-semibold text-ink">Establecimientos</p>
         <ul class="mt-1.5 space-y-1">
-          <li v-for="c in ['I-1','I-2','I-3','I-4']" :key="c" class="flex items-center gap-2"><svg width="22" height="22" aria-hidden="true"><circle cx="11" cy="11" :r="radio(c)" fill="var(--accent)" stroke="#fff" stroke-width="2"/></svg>Categoría {{ c }} (MINSA)</li>
+          <li v-for="c in ['I-1','I-2','I-3','I-4']" :key="c" class="flex items-center gap-2"><svg width="22" height="22" aria-hidden="true"><circle cx="11" cy="11" :r="radio(c)" fill="var(--verde)" stroke="#fff" stroke-width="2"/></svg>Categoría {{ c }} (MINSA)</li>
           <li class="flex items-center gap-2"><svg width="22" height="22" aria-hidden="true"><circle cx="11" cy="11" r="6" fill="#6b7a80" stroke="#fff" stroke-width="2"/></svg>EsSalud</li>
-          <li class="flex items-center gap-2"><svg width="22" height="22" aria-hidden="true"><circle cx="11" cy="11" r="6" fill="var(--accent)" stroke="var(--ink)" stroke-width="1.5" stroke-dasharray="2 2"/></svg>Coordenada a revisar</li>
+          <li class="flex items-center gap-2"><svg width="22" height="22" aria-hidden="true"><circle cx="11" cy="11" r="6" fill="var(--verde)" stroke="var(--ink)" stroke-width="1.5" stroke-dasharray="2 2"/></svg>Coordenada a revisar</li>
         </ul>
       </div>
       <p class="meta mt-4">Límites referenciales del IGN (fuente INEI) y ubicación de establecimientos de la capa del IGN, publicados en la Infraestructura de Datos Espaciales del Perú. No constituyen demarcación oficial.</p>
