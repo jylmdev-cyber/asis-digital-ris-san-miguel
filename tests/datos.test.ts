@@ -105,6 +105,32 @@ for (const anio of EDICIONES) {
     });
   });
 
+  describe(`edición ${anio}: problemas priorizados y clasificaciones`, () => {
+    const nombres = d.distritos.map((x: any) => x.nombre);
+    it('las clasificaciones usan distritos válidos y cada distrito está en una sola categoría', () => {
+      for (const c of d.clasificaciones ?? []) {
+        const todos = c.categorias.flatMap((k: any) => k.distritos);
+        for (const x of todos) expect(nombres, c.id).toContain(x);
+        expect(new Set(todos).size, c.id).toBe(todos.length);
+      }
+    });
+    it('cada problema priorizado tiene datos, imágenes existentes y línea de acción válida', () => {
+      expect((d.problemas ?? []).length).toBe(d.texto.priorizados.length);
+      const lineas = T.c48.rows.length;
+      for (const p of d.problemas ?? []) {
+        for (const g of p.gradientes ?? []) expect(d.gradientes.some((x: any) => x.id === g), `${p.n}: ${g}`).toBe(true);
+        for (const t of [...(p.tablasDistrito ?? []), ...(p.tabla ? [p.tabla] : [])]) expect(T[t], `${p.n}: ${t}`).toBeTruthy();
+        for (const m of p.mapas) expect(fs.existsSync(path.resolve(__dirname, '../public/img/asis', m.img + '.webp')), m.img).toBe(true);
+        expect(p.linea).toBeGreaterThanOrEqual(1); expect(p.linea).toBeLessThanOrEqual(lineas);
+        expect(p.gradientes?.length || p.tabla || p.tablasDistrito?.length, `problema ${p.n} sin gráfico`).toBeTruthy();
+      }
+    });
+    it('no se publican mapas distritales excluidos por privacidad (VIH, TBC, cáncer, perinatal)', () => {
+      const imgs = fs.existsSync(path.resolve(__dirname, '../public/img/asis')) ? fs.readdirSync(path.resolve(__dirname, '../public/img/asis')) : [];
+      for (const f of imgs) expect(f).not.toMatch(/vih|tbc|tuberc|cancer|perinatal/i);
+    });
+  });
+
   describe(`edición ${anio}: geodatos`, () => {
     const dist = leer(anio, 'geo/distritos.json'), ee = leer(anio, 'geo/establecimientos.json');
     it('13 polígonos con UBIGEO coincidente con los datos', () => {

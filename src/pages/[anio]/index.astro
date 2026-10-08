@@ -8,7 +8,7 @@ import { edicion, mostrar } from '../../lib/datos';
 import { rutasEdicion } from '../../lib/filtros';
 import { indicadoresMapa, propsMapa } from '../../lib/distritos';
 import { EDICIONES, MODULOS } from '../../config/sitio';
-import { urlEd } from '../../lib/rutas';
+import { url, urlEd } from '../../lib/rutas';
 
 export const getStaticPaths = rutasEdicion;
 const { anio } = Astro.params as { anio: string };
@@ -67,9 +67,9 @@ const nEESS = ed.geoEstablecimientos?.features.filter((f: any) => f.properties.i
     </div>
   </Seccion>
 
-  <Seccion id="mapa" kicker="Territorio" titulo="Mapa de la provincia de San Miguel" intro={`Elija un indicador del ASIS para colorear los distritos. Los puntos son los ${nEESS} establecimientos del MINSA georreferenciados por el IGN.`}>
+  <Seccion id="mapa" kicker="Territorio" titulo="Mapa de la provincia de San Miguel" intro={`Se muestra la anemia en menores de 5 años según la clasificación del texto del ASIS; elija otro indicador para colorear los distritos. Los puntos son los ${nEESS} establecimientos del MINSA georreferenciados por el IGN.`}>
     <div class="tarjeta p-4 sm:p-5">
-      <MapaTerritorial client:visible {...propsMapa(ed, urlEd(anio, 'datos/'))} indicadores={indicadoresMapa(ed)} inicial="t03" urlFicha={urlEd(anio, 'distritos/')} alto={440} />
+      <MapaTerritorial client:visible {...propsMapa(ed, urlEd(anio, 'datos/'))} indicadores={indicadoresMapa(ed)} inicial="anemia_texto" urlFicha={urlEd(anio, 'distritos/')} alto={440} />
     </div>
   </Seccion>
 
@@ -84,9 +84,24 @@ const nEESS = ed.geoEstablecimientos?.features.filter((f: any) => f.properties.i
     </ol>
   </Seccion>
 
-  <Seccion id="problemas" kicker="Capítulo VII" titulo="Principales problemas sanitarios priorizados" intro="Según la matriz de priorización del Consejo Provincial de Salud (pág. 72). El documento indica «once problemas» y enumera los siguientes.">
-    <ul class="grid gap-2 sm:grid-cols-2 lg:grid-cols-3">
-      {ed.texto.priorizados.map(p => <li class="tarjeta flex items-center gap-3 px-4 py-3 text-[0.93rem]"><span class="text-accent"><Icono nombre="bandera" size={18} /></span>{p}</li>)}
+  <Seccion id="problemas" kicker="Capítulo VII" titulo="Principales problemas sanitarios priorizados" intro="Según la matriz de priorización del Consejo Provincial de Salud (pág. 72). El documento indica «once problemas» y enumera los siguientes. Toque cada uno para ver su gráfico y su mapa.">
+    <ul class="grid grid-cols-[repeat(auto-fill,minmax(min(100%,250px),1fr))] gap-3">
+      {(ed.problemas ?? []).map(pr => (
+        <li>
+          <a href={urlEd(anio, `priorizacion/#problema-${pr.n}`)} class="tarjeta group flex h-full flex-col overflow-hidden no-underline hover:shadow-lg">
+            <span class="relative grid aspect-[16/9] place-items-center overflow-hidden border-b border-line bg-white">
+              {pr.mapas[0]
+                ? <img src={url(`img/asis/${pr.mapas[0].img}.webp`)} alt="" loading="lazy" decoding="async" class="h-full w-full object-contain p-1.5" />
+                : <span class="flex flex-col items-center gap-1 px-4 text-center text-[0.78rem] text-[#47506a]"><span class="text-[#006fa3]"><Icono nombre={pr.privacidad ? 'escudo' : 'pulso'} size={26} /></span>{pr.gradientes?.length ? 'Gráfico por grupo social' : pr.tabla ? 'Tendencia 2023-2025 (Cuadro 46)' : 'Gráfico por distrito'}{pr.privacidad ? ' · mapa distrital no publicado' : ''}</span>}
+              <span class="absolute left-2 top-2 grid size-7 place-items-center rounded-full bg-brand text-[0.78rem] font-bold text-white">{pr.n}</span>
+            </span>
+            <span class="flex flex-1 flex-col p-3.5">
+              <span class="text-[0.93rem] font-semibold leading-snug text-ink group-hover:text-accent">{pr.titulo}</span>
+              <span class="mt-auto pt-2 text-[0.78rem] text-ink-2">{pr.mapas.length ? `Gráfico y mapa · ${pr.mapas.map(m => m.ref).join(', ')}` : 'Ver gráfico'} →</span>
+            </span>
+          </a>
+        </li>
+      ))}
     </ul>
     <p><a href={urlEd(anio, 'priorizacion/')} class="font-semibold">Ver vinculación con los instrumentos de gestión y líneas de acción →</a></p>
   </Seccion>

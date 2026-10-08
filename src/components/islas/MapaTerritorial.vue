@@ -5,7 +5,7 @@ import 'leaflet/dist/leaflet.css';
 import { computed, onBeforeUnmount, onMounted, ref, watch } from 'vue';
 
 interface Valor { v: number | null; t: string }
-interface Indicador { id: string; grupo: string; nombre: string; unidad: string; ref: string; pag: number; fuente: string; provincial: string | null; valores: Record<string, Valor> }
+interface Indicador { id: string; grupo: string; nombre: string; unidad: string; ref: string; pag: number; fuente: string; provincial: string | null; valores: Record<string, Valor>; categorias?: string[] | null; nota?: string | null }
 interface DistritoLista { distrito: string; slug: string; ubigeo: string }
 // La geometría se descarga una sola vez (archivo estático en caché) en lugar de incrustarse en cada página.
 const props = withDefaults(defineProps<{
@@ -30,7 +30,8 @@ const el = ref<HTMLDivElement | null>(null);
 const grupos = computed(() => [...new Set(props.indicadores.map(i => i.grupo))]);
 
 // Cuartiles sobre los distritos con dato (4 clases, rampa ordinal validada).
-const clases = computed(() => {
+const clases = computed<{ min: number; max: number; etiqueta?: string }[]>(() => {
+  if (ind.value.categorias) return ind.value.categorias.map((e, i) => ({ min: i, max: i, etiqueta: e }));
   const vals = Object.values(ind.value.valores).map(x => x.v).filter((v): v is number => v != null).sort((a, b) => a - b);
   if (!vals.length) return [];
   const q = (p: number) => vals[Math.min(vals.length - 1, Math.floor(p * (vals.length - 1) + 0.5))];
@@ -39,9 +40,11 @@ const clases = computed(() => {
   for (let i = 0; i < 4; i++) { const min = cortes[i], max = cortes[i + 1]; if (!out.length || max > out[out.length - 1].max) out.push({ min: out.length ? Math.max(min, out[out.length - 1].max) : min, max }); }
   return out;
 });
-const claseDe = (v: number | null) => { if (v == null) return -1; const c = clases.value; for (let i = 0; i < c.length; i++) if (v <= c[i].max) return i; return c.length - 1; };
+const claseDe = (v: number | null) => { if (v == null) return -1; if (ind.value.categorias) return v; const c = clases.value; for (let i = 0; i < c.length; i++) if (v <= c[i].max) return i; return c.length - 1; };
 const css = (v: string) => getComputedStyle(document.documentElement).getPropertyValue(v).trim();
-const rampa = () => { const r = ['--o1', '--o2', '--o3', '--o4'].map(css); return clases.value.length === 4 ? r : r.slice(4 - clases.value.length); };
+// Paso de la rampa ordinal para la clase i de n (con 2 categorías se usan pasos separados para que se distingan bien).
+const paso = (i: number, n: number) => (n === 2 ? [1, 3][i] : n === 3 ? i + 1 : n === 1 ? 3 : i);
+const rampa = () => { const r = ['--o1', '--o2', '--o3', '--o4'].map(css); return clases.value.map((_, i) => r[paso(i, clases.value.length)]); };
 const fmt = (n: number) => { const r = Number.isInteger(n) ? String(n) : String(Math.round(n * 100) / 100); const [e, d] = r.split('.'); return e.replace(/\B(?=(\d{3})+(?!\d))/g, ' ') + (d ? ',' + d : ''); };
 
 let L: any = null, mapa: any = null, capaD: any = null, capaE: any = null, capaF: any = null, capaN: any = null;
@@ -54,7 +57,7 @@ function popupDistrito(f: any) {
   const p = f.properties, v = ind.value.valores[p.ubigeo];
   const d = document.createElement('div'); d.className = 'text-[13px] leading-snug';
   const b = document.createElement('b'); b.textContent = p.distrito; d.append(b);
-  const r = document.createElement('div'); r.textContent = `${ind.value.nombre}: ${v && v.t !== '–' ? v.t : 'sin dato'} ${ind.value.unidad === '%' ? '%' : ind.value.unidad}`; d.append(r);
+  const r = document.createElement('div'); r.textContent = ind.value.categorias ? `${ind.value.nombre}: ${v?.t ?? 'sin dato'}` : `${ind.value.nombre}: ${v && v.t !== '–' ? v.t : 'sin dato'} ${ind.value.unidad === '%' ? '%' : ind.value.unidad}`; d.append(r);
   if (ind.value.provincial) { const pr = document.createElement('div'); pr.style.color = 'var(--ink-2)'; pr.textContent = `Provincia: ${ind.value.provincial}`; d.append(pr); }
   const s = document.createElement('div'); s.style.color = 'var(--ink-2)'; s.style.fontSize = '11px'; s.textContent = `${ind.value.ref}, pág. ${ind.value.pag}`; d.append(s);
   const a = document.createElement('a'); a.href = props.urlFicha + p.slug + '/'; a.textContent = 'Ver ficha del distrito →'; a.style.display = 'inline-block'; a.style.marginTop = '4px'; d.append(a);
@@ -100,6 +103,8 @@ function pintar() {
 }
 
 onMounted(async () => {
+  const q = new URLSearchParams(location.search).get('ind');
+  if (q && props.indicadores.some(i => i.id === q)) indId.value = q;
   try {
     const [mod, d, e] = await Promise.all([import('leaflet'), traer(props.urlDistritos), traer(props.urlEstablecimientos)]);
     L = mod.default; geoD = d; if (e) geoE = e;
@@ -171,12 +176,15 @@ const unidadTxt = computed(() => ind.value.unidad === '%' ? '%' : ind.value.unid
       <p class="meta">{{ ind.ref }}, pág. {{ ind.pag }} · {{ unidadTxt }}</p>
       <ul class="mt-3 space-y-1.5">
         <li v-for="(c, i) in clases" :key="i" class="flex items-center gap-2">
-          <span class="inline-block h-3.5 w-6 rounded" :style="{ background: `var(--o${4 - clases.length + i + 1})` }"></span>
-          <span class="tabular-nums">{{ fmt(c.min) }} – {{ fmt(c.max) }}</span>
+          <span class="inline-block h-3.5 w-6 shrink-0 rounded" :style="{ background: `var(--o${paso(i, clases.length) + 1})` }"></span>
+          <span v-if="c.etiqueta">{{ c.etiqueta }}</span>
+          <span v-else class="tabular-nums">{{ fmt(c.min) }} – {{ fmt(c.max) }}</span>
         </li>
         <li class="flex items-center gap-2"><span class="inline-block h-3.5 w-6 rounded border border-dashed border-[var(--axis)] bg-surface-3"></span>Sin dato en el documento</li>
       </ul>
-      <p class="meta mt-2">Clases por cuartiles entre los 13 distritos. Las cifras exactas están en la tabla y en las ventanas de cada distrito.</p>
+      <p v-if="ind.categorias" class="meta mt-2">Categorías asignadas por el texto del documento; no hay cifra por distrito.</p>
+      <p v-else class="meta mt-2">Clases por cuartiles entre los 13 distritos. Las cifras exactas están en la tabla y en las ventanas de cada distrito.</p>
+      <p v-if="ind.nota" class="nota mt-2 !text-[0.78rem]">{{ ind.nota }}</p>
       <p v-if="ind.provincial" class="mt-2">Valor provincial: <b>{{ ind.provincial }}</b></p>
       <div v-if="verEESS" class="mt-4 border-t border-line pt-3">
         <p class="font-semibold text-ink">Establecimientos</p>

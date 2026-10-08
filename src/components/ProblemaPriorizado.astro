@@ -1,0 +1,89 @@
+---
+// Ficha de un problema de salud priorizado: gráfico interactivo del ASIS, mapa original (cuando es publicable),
+// enlace al mapa interactivo y línea de acción del Cuadro 48.
+import VizCard from './islas/VizCard.vue';
+import Icono from './Icono.astro';
+import type { Ed } from '../lib/datos';
+import { num, mostrar } from '../lib/datos';
+import { vizGradientes } from '../lib/gradientes';
+import { barrasColumna, variante, vista } from '../lib/specs';
+import { url, urlEd } from '../lib/rutas';
+import type { ChartSpec, Filtro, Problema, Variante } from '../lib/tipos';
+
+interface Props { ed: Ed; anio: string; p: Problema }
+const { ed, anio, p } = Astro.props;
+
+// dimensiones de las imágenes de mapas (public/img/asis/*.webp)
+const DIM: Record<string, [number, number]> = {
+  'mapa-dci-pobreza': [1058, 619], 'mapa-agua-potable': [662, 358], 'mapa-leishmaniasis-emigrantes': [699, 389],
+  'grafico-embarazo-dependencia': [1100, 332], 'grafico-diabetes-analfabetismo': [1100, 357],
+  'mapa-hipertension-pobreza': [671, 365], 'mapa-salud-mental-dependencia': [749, 384],
+};
+
+let filtros: Filtro[] = [], variantes: Record<string, Variante> = {}, inicial: Record<string, string> = {}, metodo = '', titulo = '';
+if (p.gradientes?.length) {
+  const v = vizGradientes(ed, p.gradientes);
+  ({ filtros, variantes, inicial } = v);
+  titulo = 'Gradiente por grupo social';
+  metodo = 'Valor del indicador en cada grupo social (1 a 4), formado por distritos según su nivel en el determinante indicado. Cifras de las etiquetas de los gráficos del capítulo VIII.';
+} else if (p.tabla === 'c46') {
+  const t = ed.tabla('c46'), A = ['2023', '2024', '2025'];
+  const spec: ChartSpec = { tipo: 'lineas', categorias: A, series: [0, 1].map(f => ({ nombre: t.rows[f][0].replace('N° de ', '').replace(/^m/, 'M'), color: (['s1', 's2'] as const)[f], valores: A.map(a => num(t.rows[f][t.cols.indexOf(a)])), etiquetas: A.map(a => t.rows[f][t.cols.indexOf(a)]) })) };
+  variantes = { default: variante(t, spec, { tabla: vista(t), unidad: 'defunciones' }) };
+  titulo = 'Muertes maternas y perinatales 2023-2025';
+  metodo = 'Número de muertes por año y nacidos vivos como base poblacional. Con un único caso materno en tres años, cualquier razón o tendencia tiene alta variabilidad estadística.';
+} else if (p.tablasDistrito?.length) {
+  const TS = p.tablasDistrito.map(id => ed.tabla(id));
+  variantes = Object.fromEntries(TS.map(t => [t.id, variante(t, barrasColumna(t, 1, { unidad: ' %', nombre: t.indicador }), { unidad: '%' })]));
+  filtros = [{ id: 't', label: 'Indicador', tipo: 'seg', opciones: TS.map(t => ({ v: t.id, t: t.indicador!.replace(' (%)', '') })) }];
+  titulo = 'Cobertura por distrito';
+  metodo = 'Porcentaje de viviendas por distrito; la línea punteada marca el valor provincial. Datos de 2017.';
+}
+const lineas = ed.tabla('c48').rows;
+const linea = lineas[p.linea - 1];
+const slugP = `problema-${p.n}`;
+const urlMapa = p.mapaInteractivo ? urlEd(anio, `territorio/?ind=${p.mapaInteractivo}#mapa`) : null;
+---
+<article id={slugP} class="tarjeta aparecer overflow-hidden" data-buscar={`${p.titulo}|Problema priorizado ${p.n}|${(p.gradientes ?? []).join(' ')} mapa gráfico`}>
+  <header class="flex items-start gap-3 border-b border-line bg-surface-2 px-4 py-3.5 sm:px-5">
+    <span class="grid size-9 shrink-0 place-items-center rounded-full bg-brand text-sm font-bold text-white">{p.n}</span>
+    <div class="min-w-0">
+      <p class="kicker">Problema priorizado {p.n}</p>
+      <h3 class="text-[1.12rem] font-bold leading-snug text-ink">{p.titulo}</h3>
+    </div>
+  </header>
+  <div class="grid gap-4 p-4 sm:p-5 xl:grid-cols-[minmax(0,1.05fr)_minmax(0,1fr)]">
+    <div class="min-w-0">
+      {Object.keys(variantes).length > 0 && (
+        <VizCard client:visible id={`${slugP}-grafico`} titulo={titulo} metodo={metodo} filtros={filtros} inicial={inicial} variantes={variantes} />
+      )}
+    </div>
+    <div class="grid content-start gap-4">
+      {p.mapas.map(m => (
+        <figure class="m-0 rounded-xl border border-line bg-white p-3">
+          <a href={url(`img/asis/${m.img}.webp`)} target="_blank" rel="noopener" title="Abrir la imagen en tamaño completo">
+            <img src={url(`img/asis/${m.img}.webp`)} width={DIM[m.img]?.[0]} height={DIM[m.img]?.[1]} loading="lazy" decoding="async"
+                 alt={`${m.ref} del ASIS: ${m.titulo}. Imagen del documento original; ver la lectura del gradiente en el gráfico.`} class="h-auto w-full" />
+          </a>
+          <figcaption class="mt-2 text-[0.78rem] text-[#47506a]"><b class="text-[#141c33]">{m.ref}.</b> {m.titulo}. Reproducción de la imagen original del ASIS RIS San Miguel 2025 (pág. {m.pag}).</figcaption>
+        </figure>
+      ))}
+      {p.privacidad && (
+        <div class="flex gap-3 rounded-xl border border-line bg-surface-2 p-4 text-[0.9rem]" role="note">
+          <span class="text-accent"><Icono nombre="escudo" /></span>
+          <p><b>Mapa distrital no publicado.</b> {p.privacidad}</p>
+        </div>
+      )}
+      {p.nota && <p class="nota"><strong>Nota de lectura:</strong> {p.nota}</p>}
+      {urlMapa && <a class="btn w-fit" href={urlMapa}><Icono nombre="mapa" size={16} />Ver en el mapa interactivo</a>}
+      {linea && (
+        <div class="rounded-xl border border-line p-4 text-[0.9rem]">
+          <p class="kicker !text-ink-2">Línea de acción (Cuadro 48)</p>
+          <p class="mt-1">{linea[2]}</p>
+          <p class="mt-2 text-ink-2"><b class="text-ink">Indicador de seguimiento:</b> {linea[3]}</p>
+          <a class="mt-2 inline-block text-[0.85rem]" href={urlEd(anio, `priorizacion/#linea-${p.linea}`)}>Ver la línea de acción completa →</a>
+        </div>
+      )}
+    </div>
+  </div>
+</article>

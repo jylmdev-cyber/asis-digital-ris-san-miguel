@@ -7355,6 +7355,194 @@
   {
    "ref": "Capítulo VI, pág. 70",
    "motivo": "Descripción del caso de muerte materna de 2024 (localidad, establecimiento, edad e historia obstétrica): no se reproduce."
+  },
+  {
+   "ref": "Mapas distritales de los Gráficos 6, 7 y 11 y Mapa 6",
+   "motivo": "VIH, tuberculosis, cáncer y mortalidad perinatal tienen muy pocos casos por distrito: se publica solo el gradiente por grupo social o el total provincial."
+  }
+ ],
+ "clasificaciones": [
+  {
+   "id": "anemia_texto",
+   "nombre": "Anemia en menores de 5 años",
+   "unidad": "%",
+   "ref": "Gráfico 5",
+   "pag": 78,
+   "fuente": "SIEN, procesado con el Cuantificador de Desigualdades en Salud (DGE); clasificación tomada del texto del documento",
+   "categorias": [
+    {
+     "etiqueta": "Prevalencias más bajas (9,5 % a 11,7 %)",
+     "distritos": [
+      "Nanchoc",
+      "Niepos",
+      "Unión Agua Blanca",
+      "Catilluc",
+      "Tongod"
+     ]
+    },
+    {
+     "etiqueta": "Prevalencias más altas (23,9 % a 29,3 %)",
+     "distritos": [
+      "San Gregorio",
+      "San Miguel",
+      "Llapa",
+      "Calquis",
+      "Bolívar",
+      "San Silvestre de Cochán",
+      "La Florida"
+     ]
+    }
+   ],
+   "nota": "El documento no publica la cifra de anemia de cada distrito; agrupa a los distritos en dos rangos en el texto de la pág. 78. El Prado no figura en esa clasificación. El mapa original del Gráfico 5 no se reproduce porque sus rótulos corresponden a provincias de otra región y su leyenda (5,5-15,2 y 15,2-29,3) no coincide con los rangos del texto."
+  }
+ ],
+ "problemas": [
+  {
+   "n": 1,
+   "titulo": "Desnutrición y anemia en niños",
+   "gradientes": [
+    "dci",
+    "anemia"
+   ],
+   "linea": 1,
+   "mapaInteractivo": "anemia_texto",
+   "mapas": [
+    {
+     "img": "mapa-dci-pobreza",
+     "ref": "Gráfico 4",
+     "pag": 76,
+     "titulo": "Desnutrición crónica infantil (%) y pobreza monetaria por distrito, 2025"
+    }
+   ],
+   "nota": "El mapa de anemia del Gráfico 5 no se reproduce (sus rótulos corresponden a otra región); la clasificación distrital del texto está en el mapa interactivo."
+  },
+  {
+   "n": 2,
+   "titulo": "Complicaciones y morbilidad materna perinatal",
+   "tabla": "c46",
+   "linea": 5,
+   "mapas": [],
+   "privacidad": "El Mapa 6 (mortalidad perinatal por distrito, pág. 84) no se publica: con 1 o 2 casos por distrito podría permitir identificar a las familias."
+  },
+  {
+   "n": 3,
+   "titulo": "Embarazo en adolescentes",
+   "gradientes": [
+    "embarazo",
+    "embarazo_dep"
+   ],
+   "linea": 5,
+   "mapas": [
+    {
+     "img": "grafico-embarazo-dependencia",
+     "ref": "Gráfico 10",
+     "pag": 85,
+     "titulo": "Embarazo adolescente (%) y dependencia económica por distrito, 2025"
+    }
+   ]
+  },
+  {
+   "n": 4,
+   "titulo": "Prevalencia de tuberculosis",
+   "gradientes": [
+    "tbc"
+   ],
+   "linea": 2,
+   "mapas": [],
+   "privacidad": "El mapa distrital del Gráfico 7 (pág. 81) no se publica: la provincia registró 4 casos. Además, su leyenda tiene una sola clase y no distingue distritos."
+  },
+  {
+   "n": 5,
+   "titulo": "ITS/VIH-SIDA",
+   "gradientes": [
+    "vih"
+   ],
+   "linea": 3,
+   "mapas": [],
+   "privacidad": "El mapa distrital del Gráfico 6 (pág. 79) no se publica por tratarse de una condición sensible con pocos casos por distrito."
+  },
+  {
+   "n": 6,
+   "titulo": "Enfermedades metaxénicas (leishmaniasis)",
+   "gradientes": [
+    "leish"
+   ],
+   "linea": 4,
+   "mapas": [
+    {
+     "img": "mapa-leishmaniasis-emigrantes",
+     "ref": "Gráfico 8",
+     "pag": 83,
+     "titulo": "Incidencia de leishmaniasis cutánea y emigrantes por distrito"
+    }
+   ]
+  },
+  {
+   "n": 7,
+   "titulo": "Neoplasias malignas",
+   "gradientes": [
+    "cancer"
+   ],
+   "linea": 6,
+   "mapas": [],
+   "privacidad": "El mapa distrital del Gráfico 11 (pág. 87) no se publica: la provincia registró 11 casos de cáncer."
+  },
+  {
+   "n": 8,
+   "titulo": "Enfermedades cardiovasculares y metabólicas (hipertensión y diabetes mellitus)",
+   "gradientes": [
+    "hta",
+    "diabetes"
+   ],
+   "linea": 6,
+   "mapas": [
+    {
+     "img": "mapa-hipertension-pobreza",
+     "ref": "Gráfico 13",
+     "pag": 89,
+     "titulo": "Prevalencia de hipertensión y pobreza monetaria por distrito"
+    },
+    {
+     "img": "grafico-diabetes-analfabetismo",
+     "ref": "Gráfico 12",
+     "pag": 88,
+     "titulo": "Diabetes por grupo social y analfabetismo por distrito, 2025"
+    }
+   ]
+  },
+  {
+   "n": 9,
+   "titulo": "Enfermedades mentales (ansiedad y depresión)",
+   "gradientes": [
+    "salud_mental"
+   ],
+   "linea": 7,
+   "mapas": [
+    {
+     "img": "mapa-salud-mental-dependencia",
+     "ref": "Gráfico 14",
+     "pag": 90,
+     "titulo": "Prevalencia de salud mental y dependencia económica por distrito, 2025"
+    }
+   ]
+  },
+  {
+   "n": 10,
+   "titulo": "Saneamiento básico (agua y desagüe)",
+   "tablasDistrito": [
+    "t09",
+    "t10"
+   ],
+   "linea": 8,
+   "mapaInteractivo": "t09",
+   "mapas": [
+    {
+     "img": "mapa-agua-potable",
+     "ref": "Mapa 5",
+     "pag": 80,
+     "titulo": "Cobertura de agua potable y su gradiente social por distrito, 2025"
+    }
+   ]
   }
  ]
 }

@@ -13,8 +13,11 @@ export interface IndicadorDistrital {
   /** valores por nombre de distrito (texto del documento) */
   valores: Record<string, string>;
   provincial: string | null;
-  /** true si un valor alto es una condición desfavorable (solo para describir el orden, no para juzgar) */
+  /** true si el indicador se ofrece en el mapa */
   mapa: boolean;
+  /** si existe, el indicador es por categorías (etiquetas en orden) y no tiene cifra por distrito */
+  categorias?: string[];
+  nota?: string;
 }
 
 export function indicadoresDistritales(ed: Ed): IndicadorDistrital[] {
@@ -53,11 +56,18 @@ export function indicadoresDistritales(ed: Ed): IndicadorDistrital[] {
   add('atenciones_pct', 'Salud', 'Proporción de las atenciones de la provincia', '%', 'c38', col('c38', 4), '100', false);
   add('defunciones', 'Salud', 'Defunciones 2025 (SINADEF)', 'defunciones', 'c45', col('c45', 1), tot('c45', 1));
   add('defunciones_pct', 'Salud', 'Proporción de las defunciones de la provincia', '%', 'c45', col('c45', 4), '100', false);
+  // Clasificaciones textuales (p. ej. anemia): categoría del distrito según el texto del documento
+  for (const c of ed.clasificaciones ?? []) {
+    const etiquetas = c.categorias.map(k => k.etiqueta);
+    out.push({ id: c.id, grupo: 'Salud', nombre: `${c.nombre} (clasificación del texto)`, unidad: c.unidad, ref: c.ref, pag: c.pag, fuente: c.fuente,
+      valores: Object.fromEntries(D.map(d => [d, c.categorias.find(k => k.distritos.includes(d))?.etiqueta ?? ''])), provincial: null, mapa: true, categorias: etiquetas, nota: c.nota });
+  }
   return out;
 }
 
 /** Posición del distrito (1 = valor más alto) entre los distritos con dato. */
 export function posicion(ind: IndicadorDistrital, distrito: string): { pos: number; de: number } | null {
+  if (ind.categorias) return null;
   const v = num(ind.valores[distrito]);
   if (v == null) return null;
   const vals = Object.values(ind.valores).map(num).filter((x): x is number => x != null);
@@ -69,8 +79,10 @@ export function indicadoresMapa(ed: Ed) {
   const ub = Object.fromEntries(ed.distritos.map(d => [d.nombre, d.ubigeo]));
   return indicadoresDistritales(ed).filter(i => i.mapa).map(i => ({
     id: i.id, grupo: i.grupo, nombre: i.nombre, unidad: i.unidad, ref: i.ref, pag: i.pag, fuente: i.fuente,
-    provincial: i.provincial ? mostrar(i.provincial) : null,
-    valores: Object.fromEntries(Object.entries(i.valores).map(([d, v]) => [ub[d], { v: num(v), t: mostrar(v) }])),
+    provincial: i.provincial ? mostrar(i.provincial) : null, categorias: i.categorias ?? null, nota: i.nota ?? null,
+    valores: Object.fromEntries(Object.entries(i.valores).map(([d, v]) => [ub[d], i.categorias
+      ? { v: v ? i.categorias.indexOf(v) : null, t: v || 'Sin clasificación en el texto del documento' }
+      : { v: num(v), t: mostrar(v) }])),
   }));
 }
 

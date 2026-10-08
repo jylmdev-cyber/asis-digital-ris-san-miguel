@@ -49,6 +49,20 @@ export interface DatosEdicion {
   siglas: string[][];
   limitaciones: string[];
   excluido_por_privacidad: { ref: string; motivo: string }[];
+  clasificaciones?: Clasificacion[];
+  problemas?: Problema[];
+}
+
+/** Clasificación distrital por categorías tomada del texto del documento (sin cifra por distrito). */
+export interface Clasificacion {
+  id: string; nombre: string; unidad: string; ref: string; pag: number; fuente: string; nota: string;
+  categorias: { etiqueta: string; distritos: string[] }[];
+}
+export interface MapaOriginal { img: string; ref: string; pag: number; titulo: string }
+export interface Problema {
+  n: number; titulo: string; linea: number; mapas: MapaOriginal[];
+  gradientes?: string[]; tabla?: string; tablasDistrito?: string[]; mapaInteractivo?: string;
+  nota?: string; privacidad?: string;
 }
 
 /* ---------- especificaciones de gráficos (serializables: se calculan en el build) ---------- */

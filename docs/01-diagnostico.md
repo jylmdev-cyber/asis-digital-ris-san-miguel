@@ -70,6 +70,8 @@ Fuente única: los dos archivos de la carpeta del proyecto. Páginas citadas = n
 12. **Problemas priorizados:** el texto dice “once” y enumera diez.
 13. **Unidades:** los gráficos de VIH y diabetes no indican la unidad.
 14. **Datos desactualizados:** los determinantes son de 2017.
+15. **Mapa de anemia (Gráfico 5, pág. 78):** la geometría es de San Miguel, pero los rótulos son de provincias de Huancavelica (Tayacaja, Angaraes, Castrovirreyna…). Su leyenda (5,5-15,2 y 15,2-29,3) no coincide con los rangos del texto (9,5-11,7 % y 23,9-29,3 %), y el tamaño de los puntos contradice el texto (por ejemplo, en Calquis). La plataforma no reproduce esa imagen y usa la clasificación del texto; El Prado no figura en ella.
+16. **Mapa de TBC (Gráfico 7):** la leyenda tiene una sola clase (0-53,5), por lo que no distingue distritos.
 
 ### Datos geográficos (fuente adicional)
 
@@ -84,7 +86,8 @@ El ASIS trae solo datos agregados: no hay nombres, DNI, direcciones ni teléfono
 - **publica solo el total provincial** de la Tabla 15 (muertes perinatales por distrito, con 1 o 2 casos);
 - **no desagrega por sexo** los Cuadros 40 a 42 (7, 1 y 4 defunciones);
 - **no publica el PDF ni el DOC** hasta que exista una versión autorizada, porque incluyen el caso materno;
-- **descarta** los campos director y teléfono de la capa del IGN.
+- **descarta** los campos director y teléfono de la capa del IGN;
+- **no reproduce** los mapas distritales de VIH (Gráfico 6), tuberculosis (Gráfico 7), cáncer (Gráfico 11) ni mortalidad perinatal (Mapa 6): son condiciones sensibles con muy pocos casos por distrito. De ellos se publica solo el gradiente por grupo social.
 
 El build se detiene si encuentra estos datos (`scripts/verificar-build.mjs`).
 

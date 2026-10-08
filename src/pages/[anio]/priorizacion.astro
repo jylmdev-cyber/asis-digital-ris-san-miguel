@@ -3,6 +3,7 @@ import Base from '../../layouts/Base.astro';
 import Seccion from '../../components/Seccion.astro';
 import Icono from '../../components/Icono.astro';
 import VizCard from '../../components/islas/VizCard.vue';
+import ProblemaPriorizado from '../../components/ProblemaPriorizado.astro';
 import { edicion } from '../../lib/datos';
 import { rutasEdicion } from '../../lib/filtros';
 import { variante, vista } from '../../lib/specs';
@@ -22,10 +23,13 @@ const indice = [{ id: 'problemas', t: 'Problemas priorizados' }, { id: 'lineas',
   <h1 class="mt-1 text-[1.9rem] font-extrabold text-ink">Priorización de problemas y líneas de acción</h1>
   <p class="mt-2 max-w-3xl text-ink-2">El ASIS se articula con el Plan de Desarrollo Regional Concertado de Cajamarca al 2033 (PDRC), el Plan Estratégico Institucional 2023-2027 (PEI) del Gobierno Regional y las Prioridades Nacionales de Investigación e Intervención Sanitaria 2024-2030 del MINSA (pág. 72).</p>
 
-  <Seccion id="problemas" kicker="Capítulo VII" titulo="Problemas de salud priorizados" intro="Priorizados por el Consejo Provincial de Salud San Miguel con la matriz de priorización. El documento indica «once problemas» y enumera los siguientes.">
-    <ol class="grid gap-2 sm:grid-cols-2 lg:grid-cols-3">
-      {ed.texto.priorizados.map((p, i) => <li class="tarjeta flex items-center gap-3 px-4 py-3"><span class="grid size-8 shrink-0 place-items-center rounded-full bg-accent-soft text-sm font-bold text-accent">{i + 1}</span><span class="text-[0.93rem]">{p}</span></li>)}
-    </ol>
+  <Seccion id="problemas" kicker="Capítulo VII" titulo="Problemas de salud priorizados" intro="Priorizados por el Consejo Provincial de Salud San Miguel con la matriz de priorización. El documento indica «once problemas» y enumera los siguientes. Cada uno se muestra con su gráfico del capítulo VIII y, cuando es publicable, el mapa original del ASIS.">
+    <nav aria-label="Ir a un problema priorizado" class="no-imprimir">
+      <ol class="grid gap-2 sm:grid-cols-2 lg:grid-cols-3">
+        {ed.texto.priorizados.map((t, i) => <li><a href={`#problema-${i + 1}`} class="tarjeta flex items-center gap-3 px-4 py-3 no-underline hover:shadow-lg"><span class="grid size-8 shrink-0 place-items-center rounded-full bg-accent-soft text-sm font-bold text-accent">{i + 1}</span><span class="text-[0.93rem] text-ink">{t}</span></a></li>)}
+      </ol>
+    </nav>
+    {(ed.problemas ?? []).map(pr => <ProblemaPriorizado ed={ed} anio={anio} p={pr} />)}
   </Seccion>
 
   <Seccion id="lineas" kicker="Cuadro 48 · Capítulo IX" titulo="Líneas de acción priorizadas" intro="Según el determinante identificado en el análisis de desigualdades (págs. 91-92).">
