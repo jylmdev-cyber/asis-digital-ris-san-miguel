@@ -55,5 +55,6 @@ datos-fuente/                 (NO versionado) datos completos con tablas de uso 
 
 - **Contenido:** ASIS RIS San Miguel 2025, Oficina de Epidemiología de la Red de Salud San Miguel y DIRESA Cajamarca. La autoría del análisis es de la institución.
 - **Límites y establecimientos:** Instituto Geográfico Nacional (IGN), vía la Infraestructura de Datos Espaciales del Perú (IDEP). Son límites referenciales.
+- **Emblema del encabezado:** logotipo de la Dirección Regional de Salud Cajamarca (`public/img/`), de propiedad de la institución.
 - **Mapa base opcional:** © colaboradores de OpenStreetMap.
 - **Código de la plataforma:** licencia MIT.

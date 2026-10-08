@@ -60,9 +60,12 @@ const fecha = new Date().toISOString().slice(0, 10);
         <Icono nombre="menu" size={22} />
       </button>
       <a href={urlEd(anio)} class="flex min-w-0 items-center gap-2.5 text-white no-underline">
-        <span class="grid size-9 shrink-0 place-items-center rounded-lg bg-white/12 ring-1 ring-white/25" aria-hidden="true">
-          <svg width="22" height="22" viewBox="0 0 24 24" fill="none"><path d="M12 3v18M3 12h18" stroke="#e0e332" stroke-width="3.2" stroke-linecap="round"/><path d="M5 17l3.5-4 3 2.5L18 8" stroke="#fff" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
-        </span>
+        <picture class="shrink-0">
+          <source type="image/webp" srcset={`${url('img/logo-diresa-cajamarca-96.webp')} 1x, ${url('img/logo-diresa-cajamarca-192.webp')} 2x`} />
+          <img src={url('img/logo-diresa-cajamarca-96.png')} srcset={`${url('img/logo-diresa-cajamarca-192.png')} 2x`} width="44" height="44"
+               alt="Dirección Regional de Salud Cajamarca" class="size-10 rounded-full bg-white shadow-sm ring-2 ring-white/70 sm:size-11" decoding="async" fetchpriority="high" />
+        </picture>
+        <span class="hidden h-8 w-px shrink-0 bg-white/30 sm:block" aria-hidden="true"></span>
         <span class="min-w-0 leading-tight">
           <b class="block truncate text-[0.98rem] tracking-wide">ASIS DIGITAL {anio}</b>
           <span class="block truncate text-[0.74rem] text-white/80">RIS San Miguel · DIRESA Cajamarca</span>
@@ -88,7 +91,7 @@ const fecha = new Date().toISOString().slice(0, 10);
   </header>
 
   <div class="mx-auto flex max-w-[1440px]">
-    <aside id="lateral" class="lateral no-imprimir fixed inset-y-0 left-0 z-50 w-[280px] -translate-x-full overflow-y-auto border-r border-line bg-surface px-3 pb-8 pt-4 transition-transform lg:sticky lg:top-[64px] lg:z-0 lg:h-[calc(100vh-64px)] lg:translate-x-0 lg:bg-transparent" aria-label="Módulos">
+    <aside id="lateral" class="lateral no-imprimir fixed inset-y-0 left-0 z-50 w-[280px] -translate-x-full overflow-y-auto border-r border-line bg-surface px-3 pb-8 pt-4 transition-transform lg:sticky lg:top-[68px] lg:z-0 lg:h-[calc(100vh-68px)] lg:translate-x-0 lg:bg-transparent" aria-label="Módulos">
       <div class="mb-3 flex items-center justify-between px-2 lg:hidden">
         <b>Módulos</b>
         <button id="btnCerrar" class="rounded-lg p-2 hover:bg-surface-2" aria-label="Cerrar menú"><Icono nombre="cerrar" /></button>
