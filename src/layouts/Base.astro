@@ -157,12 +157,32 @@ const fecha = new Date().toISOString().slice(0, 10);
 
     // ---- menú lateral en móvil
     const lat = document.getElementById('lateral')!, velo = document.getElementById('velo')!, btn = document.getElementById('btnMenu')!;
-    const abrir = (o: boolean) => { lat.classList.toggle('-translate-x-full', !o); velo.classList.toggle('hidden', !o); btn.setAttribute('aria-expanded', String(o)); if (o) (lat.querySelector('a') as HTMLElement)?.focus(); };
+    // en pantallas angostas el menú cerrado queda fuera de pantalla: se marca «inert» para que el teclado y los lectores de pantalla no entren en él
+    const angosto = matchMedia('(max-width: 1023.98px)');
+    let menuAbierto = false;
+    const sincronizar = () => { lat.toggleAttribute('inert', angosto.matches && !menuAbierto); };
+    const abrir = (o: boolean) => {
+      const estaba = menuAbierto; menuAbierto = o;
+      lat.classList.toggle('-translate-x-full', !o); velo.classList.toggle('hidden', !o); btn.setAttribute('aria-expanded', String(o)); sincronizar();
+      if (o) (lat.querySelector('a') as HTMLElement)?.focus();
+      else if (estaba) btn.focus();
+    };
+    sincronizar(); angosto.addEventListener('change', sincronizar);
     btn.addEventListener('click', () => abrir(true));
     document.getElementById('btnCerrar')?.addEventListener('click', () => abrir(false));
     velo.addEventListener('click', () => abrir(false));
-    lat.querySelectorAll('a').forEach(a => a.addEventListener('click', () => { if (innerWidth < 1024) abrir(false); }));
-    document.addEventListener('keydown', e => { if (e.key === 'Escape') abrir(false); });
+    lat.querySelectorAll('a').forEach(a => a.addEventListener('click', () => { if (angosto.matches) abrir(false); }));
+    document.addEventListener('keydown', e => {
+      if (!menuAbierto || !angosto.matches) return;
+      if (e.key === 'Escape') abrir(false);
+      // el foco no sale del menú abierto
+      if (e.key === 'Tab') {
+        const f = [...lat.querySelectorAll<HTMLElement>('a[href],button')].filter(el => el.offsetParent !== null);
+        if (!f.length) return;
+        if (e.shiftKey && document.activeElement === f[0]) { e.preventDefault(); f[f.length - 1].focus(); }
+        else if (!e.shiftKey && document.activeElement === f[f.length - 1]) { e.preventDefault(); f[0].focus(); }
+      }
+    });
 
     // ---- aviso breve
     const aviso = (msg: string) => { const a = document.getElementById('aviso')!; a.textContent = msg; a.style.opacity = '1'; setTimeout(() => (a.style.opacity = '0'), 1600); };

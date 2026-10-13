@@ -79,6 +79,8 @@
   @media (prefers-reduced-motion: no-preference) { html { scroll-behavior: smooth; } }
   body { background: var(--page); color: var(--ink); font-family: var(--font-sans); line-height: 1.6; overflow-x: hidden; font-kerning: normal; }
   a { color: var(--link); }
+  /* enlaces dentro de un texto: subrayados, para no depender solo del color */
+  :where(p, li, dd, td, figcaption, blockquote) a:not(.btn):not(.no-underline):not(.tarjeta) { text-decoration: underline; text-decoration-thickness: 1px; text-underline-offset: .18em; }
   :focus-visible { outline: 2px solid var(--focus); outline-offset: 2px; border-radius: 4px; }
   h1, h2, h3, h4 { line-height: 1.25; text-wrap: balance; overflow-wrap: break-word; }
   /* párrafos sin palabras huérfanas y sin desbordes por palabras o enlaces largos */

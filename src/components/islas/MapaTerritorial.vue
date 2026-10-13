@@ -197,7 +197,7 @@ const unidadTxt = computed(() => ind.value.unidad === '%' ? '%' : ind.value.unid
       </div>
     </div>
 
-    <aside class="tarjeta p-4 text-[0.88rem]" aria-live="polite">
+    <div class="tarjeta p-4 text-[0.88rem]" role="group" aria-label="Leyenda del mapa" aria-live="polite">
       <p class="kicker">Leyenda</p>
       <p class="mt-1 font-semibold leading-snug text-ink">{{ ind.nombre }}</p>
       <p class="meta">{{ ind.ref }}, pág. {{ ind.pag }} · {{ unidadTxt }}</p>
@@ -222,7 +222,7 @@ const unidadTxt = computed(() => ind.value.unidad === '%' ? '%' : ind.value.unid
         </ul>
       </div>
       <p class="meta mt-4">Límites referenciales del IGN (fuente INEI) y ubicación de establecimientos de la capa del IGN, publicados en la Infraestructura de Datos Espaciales del Perú. No constituyen demarcación oficial.</p>
-    </aside>
+    </div>
 
     <details :class="soloDistrito ? '' : 'xl:col-span-2'">
       <summary class="btn w-fit cursor-pointer list-none no-imprimir">Ver valores por distrito</summary>
