@@ -58,7 +58,9 @@ export interface Clasificacion {
   id: string; nombre: string; unidad: string; ref: string; pag: number; fuente: string; nota: string;
   categorias: { etiqueta: string; distritos: string[] }[];
 }
-export interface MapaOriginal { img: string; ref: string; pag: number; titulo: string }
+// leyenda transcrita del mapa original: tamaño de los puntos y color de los distritos (colores tomados de la imagen)
+export interface LeyendaMapa { puntos?: { titulo: string; clases: string[] }; colores?: { titulo: string; clases: [string, string][] } }
+export interface MapaOriginal { img: string; ref: string; pag: number; titulo: string; leyenda?: LeyendaMapa }
 export interface Problema {
   n: number; titulo: string; linea: number; mapas: MapaOriginal[];
   gradientes?: string[]; tabla?: string; tablasDistrito?: string[]; mapaInteractivo?: string;

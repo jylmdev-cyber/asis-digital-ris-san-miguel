@@ -7407,13 +7407,73 @@
      "img": "mapa-dci-pobreza",
      "ref": "Gráfico 4",
      "pag": 76,
-     "titulo": "Desnutrición crónica infantil (%) y pobreza monetaria por distrito, 2025"
+     "titulo": "Desnutrición crónica infantil (%) y pobreza monetaria por distrito, 2025",
+     "leyenda": {
+      "puntos": {
+       "titulo": "DCI (%)",
+       "clases": [
+        "10,5 – 17,4",
+        "26,4 – 40,6"
+       ]
+      },
+      "colores": {
+       "titulo": "Pobreza monetaria (%)",
+       "clases": [
+        [
+         "39,5 – 45,0",
+         "#c9bdc0"
+        ],
+        [
+         "45,0 – 55,9",
+         "#f5c9c6"
+        ],
+        [
+         "55,9 – 60,1",
+         "#f0473b"
+        ],
+        [
+         "60,1 – 70,1",
+         "#fe0000"
+        ]
+       ]
+      }
+     }
     },
     {
      "img": "mapa-anemia-desempleo",
      "ref": "Gráfico 5",
      "pag": 78,
-     "titulo": "Anemia en menores de 5 años y desempleo a nivel distrital, 2025"
+     "titulo": "Anemia en menores de 5 años y desempleo a nivel distrital, 2025",
+     "leyenda": {
+      "puntos": {
+       "titulo": "Incidencia anemia",
+       "clases": [
+        "5,5 – 15,2",
+        "15,2 – 29,3"
+       ]
+      },
+      "colores": {
+       "titulo": "Desempleo",
+       "clases": [
+        [
+         "0,4 – 1,2",
+         "#d4c8c8"
+        ],
+        [
+         "1,2 – 2",
+         "#f59e9e"
+        ],
+        [
+         "2 – 3,7",
+         "#f56367"
+        ],
+        [
+         "3,7 – 10,1",
+         "#f60810"
+        ]
+       ]
+      }
+     }
     }
    ],
    "nota": "Los rótulos del mapa del Gráfico 5 corresponden a provincias de otra región (error del documento original); la clasificación distrital de anemia descrita en el texto está en el mapa interactivo."
@@ -7428,7 +7488,34 @@
      "img": "mapa-mortalidad-perinatal",
      "ref": "Mapa 6",
      "pag": 84,
-     "titulo": "Mortalidad perinatal a nivel distrital, provincia de San Miguel, 2025"
+     "titulo": "Mortalidad perinatal a nivel distrital, provincia de San Miguel, 2025",
+     "leyenda": {
+      "puntos": {
+       "titulo": "Mortalidad perinatal",
+       "clases": [
+        "0,0 – 5,5",
+        "15,6 – 15,6",
+        "31,2 – 35,7"
+       ]
+      },
+      "colores": {
+       "titulo": "Analfabetismo (%)",
+       "clases": [
+        [
+         "6,6 – 10,7",
+         "#c9bdc0"
+        ],
+        [
+         "10,7 – 13,7",
+         "#f0473b"
+        ],
+        [
+         "13,7 – 18,2",
+         "#ff0000"
+        ]
+       ]
+      }
+     }
     }
    ],
    "nota": "El mapa combina la mortalidad perinatal (puntos) con el analfabetismo (color). En 2025 la provincia registró 6 defunciones perinatales, por lo que las tasas distritales se basan en muy pocos casos."
@@ -7446,7 +7533,34 @@
      "img": "grafico-embarazo-dependencia",
      "ref": "Gráfico 10",
      "pag": 85,
-     "titulo": "Embarazo adolescente (%) y dependencia económica por distrito, 2025"
+     "titulo": "Embarazo adolescente (%) y dependencia económica por distrito, 2025",
+     "leyenda": {
+      "puntos": {
+       "titulo": "Embarazo adolescente (%)",
+       "clases": [
+        "0,2 – 0,6",
+        "0,9 – 1,4",
+        "1,6 – 2,2"
+       ]
+      },
+      "colores": {
+       "titulo": "Dependencia económica (%)",
+       "clases": [
+        [
+         "58,4 – 64,8",
+         "#c9bdc0"
+        ],
+        [
+         "64,8 – 65,8",
+         "#f0473b"
+        ],
+        [
+         "65,8 – 80,5",
+         "#ff0000"
+        ]
+       ]
+      }
+     }
     }
    ]
   },
@@ -7462,7 +7576,36 @@
      "img": "mapa-tbc-desempleo",
      "ref": "Gráfico 7",
      "pag": 81,
-     "titulo": "Tuberculosis (TBC) y desempleo a nivel distrital"
+     "titulo": "Tuberculosis (TBC) y desempleo a nivel distrital",
+     "leyenda": {
+      "puntos": {
+       "titulo": "Incidencia TBC",
+       "clases": [
+        "0 – 53,5"
+       ]
+      },
+      "colores": {
+       "titulo": "Desempleo",
+       "clases": [
+        [
+         "0,4 – 1,2",
+         "#d4c8c8"
+        ],
+        [
+         "1,2 – 2",
+         "#f59e9e"
+        ],
+        [
+         "2 – 3,7",
+         "#f56367"
+        ],
+        [
+         "3,7 – 10,1",
+         "#f60810"
+        ]
+       ]
+      }
+     }
     }
    ],
    "nota": "La leyenda de tuberculosis del mapa tiene una sola clase (0 - 53,5), por lo que no permite distinguir distritos; la provincia registró 4 casos."
@@ -7479,7 +7622,33 @@
      "img": "mapa-vih-migracion",
      "ref": "Gráfico 6",
      "pag": 79,
-     "titulo": "VIH y migración a nivel distrital"
+     "titulo": "VIH y migración a nivel distrital",
+     "leyenda": {
+      "puntos": {
+       "titulo": "Incidencia VIH",
+       "clases": [
+        "0,0 – 0,0",
+        "6,4 – 6,4"
+       ]
+      },
+      "colores": {
+       "titulo": "Migración (%)",
+       "clases": [
+        [
+         "0,2 – 0,5",
+         "#c9bdc0"
+        ],
+        [
+         "0,5 – 0,9",
+         "#f0473b"
+        ],
+        [
+         "0,9 – 1,6",
+         "#ff0000"
+        ]
+       ]
+      }
+     }
     }
    ]
   },
@@ -7495,7 +7664,37 @@
      "img": "mapa-leishmaniasis-emigrantes",
      "ref": "Gráfico 8",
      "pag": 83,
-     "titulo": "Incidencia de leishmaniasis cutánea y emigrantes por distrito"
+     "titulo": "Incidencia de leishmaniasis cutánea y emigrantes por distrito",
+     "leyenda": {
+      "puntos": {
+       "titulo": "Incidencia leishmaniasis",
+       "clases": [
+        "0,0 – 15,0",
+        "36,3 – 61,7"
+       ]
+      },
+      "colores": {
+       "titulo": "Emigrantes (%, proxy migración)",
+       "clases": [
+        [
+         "0,2 – 0,4",
+         "#c9bdc0"
+        ],
+        [
+         "0,4 – 0,7",
+         "#f5c9c6"
+        ],
+        [
+         "0,7 – 1,2",
+         "#f0473b"
+        ],
+        [
+         "1,2 – 1,6",
+         "#fe0000"
+        ]
+       ]
+      }
+     }
     }
    ]
   },
@@ -7511,7 +7710,37 @@
      "img": "mapa-cancer-pobreza",
      "ref": "Gráfico 11",
      "pag": 87,
-     "titulo": "Cáncer y pobreza monetaria a nivel distrital"
+     "titulo": "Cáncer y pobreza monetaria a nivel distrital",
+     "leyenda": {
+      "puntos": {
+       "titulo": "Prevalencia cáncer",
+       "clases": [
+        "0,0 – 53,5",
+        "112,6 – 154,3"
+       ]
+      },
+      "colores": {
+       "titulo": "Pobreza monetaria (%)",
+       "clases": [
+        [
+         "39,5 – 45,0",
+         "#c9bdc0"
+        ],
+        [
+         "45,0 – 55,9",
+         "#f5c9c6"
+        ],
+        [
+         "55,9 – 60,1",
+         "#f0473b"
+        ],
+        [
+         "60,1 – 70,1",
+         "#fe0000"
+        ]
+       ]
+      }
+     }
     }
    ],
    "nota": "El mapa del documento usa la pobreza monetaria como capa de color, aunque el título del Gráfico 11 indica analfabetismo; la provincia registró 11 casos."
@@ -7529,13 +7758,67 @@
      "img": "mapa-hipertension-pobreza",
      "ref": "Gráfico 13",
      "pag": 89,
-     "titulo": "Prevalencia de hipertensión y pobreza monetaria por distrito"
+     "titulo": "Prevalencia de hipertensión y pobreza monetaria por distrito",
+     "leyenda": {
+      "puntos": {
+       "titulo": "Prevalencia hipertensión",
+       "clases": [
+        "5,5 – 8,3",
+        "15,0 – 25,4",
+        "98,8 – 98,8"
+       ]
+      },
+      "colores": {
+       "titulo": "Pobreza monetaria (%)",
+       "clases": [
+        [
+         "39,5 – 47,9",
+         "#c9bdc0"
+        ],
+        [
+         "47,9 – 59,5",
+         "#f0473b"
+        ],
+        [
+         "59,5 – 70,1",
+         "#ff0000"
+        ]
+       ]
+      }
+     }
     },
     {
      "img": "grafico-diabetes-analfabetismo",
      "ref": "Gráfico 12",
      "pag": 88,
-     "titulo": "Diabetes por grupo social y analfabetismo por distrito, 2025"
+     "titulo": "Diabetes por grupo social y analfabetismo por distrito, 2025",
+     "leyenda": {
+      "puntos": {
+       "titulo": "Prevalencia diabetes",
+       "clases": [
+        "0,0 – 2,3",
+        "3,2 – 5,6",
+        "12,3 – 12,3"
+       ]
+      },
+      "colores": {
+       "titulo": "Analfabetismo (%)",
+       "clases": [
+        [
+         "6,6 – 10,7",
+         "#c9bdc0"
+        ],
+        [
+         "10,7 – 13,7",
+         "#f0473b"
+        ],
+        [
+         "13,7 – 18,2",
+         "#ff0000"
+        ]
+       ]
+      }
+     }
     }
    ]
   },
@@ -7551,7 +7834,37 @@
      "img": "mapa-salud-mental-dependencia",
      "ref": "Gráfico 14",
      "pag": 90,
-     "titulo": "Prevalencia de salud mental y dependencia económica por distrito, 2025"
+     "titulo": "Prevalencia de salud mental y dependencia económica por distrito, 2025",
+     "leyenda": {
+      "puntos": {
+       "titulo": "Prevalencia SM (salud mental)",
+       "clases": [
+        "0 – 5,9",
+        "5,9 – 20,9"
+       ]
+      },
+      "colores": {
+       "titulo": "Dependencia económica",
+       "clases": [
+        [
+         "58,4 – 62,5",
+         "#ddccd0"
+        ],
+        [
+         "62,5 – 65,3",
+         "#f3a19f"
+        ],
+        [
+         "65,3 – 65,9",
+         "#f45b5f"
+        ],
+        [
+         "65,9 – 80,5",
+         "#fd0a08"
+        ]
+       ]
+      }
+     }
     }
    ]
   },
@@ -7569,7 +7882,34 @@
      "img": "mapa-agua-potable",
      "ref": "Mapa 5",
      "pag": 80,
-     "titulo": "Cobertura de agua potable y su gradiente social por distrito, 2025"
+     "titulo": "Cobertura de agua potable y su gradiente social por distrito, 2025",
+     "leyenda": {
+      "puntos": {
+       "titulo": "Agua potable (%)",
+       "clases": [
+        "0,2 – 0,2",
+        "0,3 – 0,5",
+        "0,5 – 0,7"
+       ]
+      },
+      "colores": {
+       "titulo": "Agua potable (%)",
+       "clases": [
+        [
+         "0,1 – 0,4",
+         "#c9bdc0"
+        ],
+        [
+         "0,4 – 0,6",
+         "#f0473b"
+        ],
+        [
+         "0,6 – 0,7",
+         "#ff0000"
+        ]
+       ]
+      }
+     }
     }
    ]
   }
