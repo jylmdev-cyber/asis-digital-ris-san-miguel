@@ -54,7 +54,7 @@ const urlMapa = p.mapaInteractivo ? urlEd(anio, `territorio/?ind=${p.mapaInterac
       <h3 class="text-[1.12rem] font-bold leading-snug text-ink">{p.titulo}</h3>
     </div>
   </header>
-  <div class="grid gap-4 p-4 sm:p-5 xl:grid-cols-[minmax(0,1.05fr)_minmax(0,1fr)]">
+  <div class="grid gap-4 p-2.5 sm:p-5 xl:grid-cols-[minmax(0,1.05fr)_minmax(0,1fr)]">
     <div class="min-w-0">
       {Object.keys(variantes).length > 0 && (
         <VizCard client:visible id={`${slugP}-grafico`} titulo={titulo} metodo={metodo} filtros={filtros} inicial={inicial} variantes={variantes} />

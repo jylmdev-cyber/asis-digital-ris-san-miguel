@@ -18,7 +18,7 @@ const css = (v: string) => getComputedStyle(document.documentElement).getPropert
 export const colorDe = (c: Color) => css(c === 'muted' ? '--muted' : `--${c}`);
 
 export function alturaDe(spec: ChartSpec, ancho: number): number {
-  if (spec.tipo === 'barras' && spec.orientacion === 'h') return Math.max(140, spec.categorias.length * (ancho < 520 ? 34 : 30) + 70);
+  if (spec.tipo === 'barras' && spec.orientacion === 'h') return Math.max(140, spec.categorias.length * (ancho < 520 ? 34 : 30) + 70 + (spec.referencia ? 20 : 0));
   if (spec.tipo === 'piramide') return spec.grupos.length * 22 + 70;
   if (spec.tipo === 'pareto') return spec.categorias.length * 30 + 90;
   return ancho < 520 ? 260 : 320;
@@ -40,10 +40,10 @@ export function opciones(spec: ChartSpec, ancho: number, animar: boolean): any {
   };
   const ejeCat = (cats: string[]) => ({
     type: 'category', data: cats, inverse: true, axisTick: { show: false }, axisLine: { lineStyle: { color: eje } },
-    axisLabel: { color: tinta, fontSize: movil ? 11 : 12, width: movil ? 108 : 190, overflow: 'break', lineHeight: 14 },
+    axisLabel: { color: tinta, fontSize: movil ? 11 : 12, width: movil ? Math.min(108, Math.round(ancho * 0.3)) : 190, overflow: 'break', lineHeight: 14 },
   });
   const ejeVal = (unidad?: string, max?: number) => ({
-    type: 'value', max, splitLine: { lineStyle: { color: grid } }, axisLabel: { color: tinta2, fontSize: 11, formatter: (v: number) => fmtNum(v) + (unidad === ' %' ? ' %' : '') },
+    type: 'value', max, splitNumber: movil ? 3 : undefined, splitLine: { lineStyle: { color: grid } }, axisLabel: { color: tinta2, fontSize: 11, hideOverlap: true, formatter: (v: number) => fmtNum(v) + (unidad === ' %' ? ' %' : '') },
   });
 
   if (spec.tipo === 'barras') {
@@ -54,13 +54,13 @@ export function opciones(spec: ChartSpec, ancho: number, animar: boolean): any {
       return {
         type: 'bar', name: s.nombre, stack: spec.apilado ? 'total' : undefined, barMaxWidth: 18, barGap: '20%',
         itemStyle: { color: colorDe(s.color), borderRadius: (ultima || !spec.apilado) ? (h ? [0, 4, 4, 0] : [4, 4, 0, 0]) : 0, borderColor: sup, borderWidth: spec.apilado ? 1 : 0 },
-        data: s.valores.map((v, k) => ({ value: v, itemStyle: resaltar.has(spec.categorias[k]) ? { color: css('--s1-strong') } : s.coloresPorPunto ? { color: colorDe(s.coloresPorPunto[k]) } : undefined })),
+        data: s.valores.map((v, k) => ({ value: v ?? (spec.apilado && ultima && spec.etiquetaTotal ? 0 : v), itemStyle: resaltar.has(spec.categorias[k]) ? { color: css('--s1-strong') } : s.coloresPorPunto ? { color: colorDe(s.coloresPorPunto[k]) } : undefined })),
         label: spec.apilado
           ? (ultima && spec.etiquetaTotal ? { show: true, position: h ? 'right' : 'top', color: tinta, fontSize: 11, fontWeight: 600, formatter: (p: any) => spec.etiquetaTotal![p.dataIndex] } : { show: false })
           : { show: true, position: h ? 'right' : 'top', color: tinta, fontSize: 11, fontWeight: 600, formatter: (p: any) => s.etiquetas[p.dataIndex] },
         markLine: i === 0 && spec.referencia ? {
           silent: true, symbol: 'none', lineStyle: { color: tinta2, type: 'dashed', width: 1.5 },
-          label: { formatter: spec.referencia.etiqueta, color: tinta2, fontSize: 11, position: 'end', backgroundColor: sup, padding: [2, 4] },
+          label: { formatter: spec.referencia.etiqueta, color: tinta2, fontSize: 11, position: h ? 'start' : 'end', backgroundColor: sup, padding: [2, 4] },
           data: [h ? { xAxis: spec.referencia.valor } : { yAxis: spec.referencia.valor }],
         } : undefined,
       };
@@ -68,7 +68,7 @@ export function opciones(spec: ChartSpec, ancho: number, animar: boolean): any {
     return {
       ...base,
       legend: spec.series.length > 1 ? { top: 0, left: 0, icon: 'roundRect', itemWidth: 12, itemHeight: 12, textStyle: { color: tinta2 } } : undefined,
-      grid: { left: 4, right: movil ? 64 : 92, top: spec.series.length > 1 ? 34 : 12, bottom: 8, containLabel: true },
+      grid: { left: 4, right: movil ? 48 : 92, top: (spec.series.length > 1 ? 34 : 12) + (h && spec.referencia ? 20 : 0), bottom: 8, containLabel: true },
       tooltip: { ...base.tooltip, trigger: 'axis', axisPointer: { type: 'shadow' },
         formatter: (ps: any[]) => `<b>${esc(ps[0].name)}</b><br>` + ps.map(p => `${p.marker} <b>${esc(spec.series[p.seriesIndex].etiquetas[p.dataIndex])}</b> ${spec.series.length > 1 ? esc(p.seriesName) : ''}`).join('<br>') },
       xAxis: h ? ejeVal(spec.unidad, spec.max) : { ...ejeCat(spec.categorias), inverse: false, axisLabel: { color: tinta, fontSize: 11, interval: 0, rotate: movil ? 35 : 0 } },
@@ -81,9 +81,9 @@ export function opciones(spec: ChartSpec, ancho: number, animar: boolean): any {
     return {
       ...base,
       legend: spec.series.length > 1 ? { top: 0, left: 0, textStyle: { color: tinta2 } } : undefined,
-      grid: { left: 8, right: 48, top: spec.series.length > 1 ? 36 : 16, bottom: 8, containLabel: true },
+      grid: { left: 8, right: movil ? 16 : 48, top: spec.series.length > 1 ? 36 : 16, bottom: 8, containLabel: true },
       tooltip: { ...base.tooltip, trigger: 'axis', formatter: (ps: any[]) => `<b>${esc(ps[0].name)}</b><br>` + ps.map(p => `${p.marker} <b>${esc(spec.series[p.seriesIndex].etiquetas[p.dataIndex])}</b> ${esc(p.seriesName)}`).join('<br>') },
-      xAxis: { type: 'category', data: spec.categorias, boundaryGap: false, axisLine: { lineStyle: { color: eje } }, axisLabel: { color: tinta } },
+      xAxis: { type: 'category', data: spec.categorias, boundaryGap: movil, axisLine: { lineStyle: { color: eje } }, axisLabel: { color: tinta } },
       yAxis: { type: 'value', scale: true, splitLine: { lineStyle: { color: grid } }, axisLabel: { color: tinta2, formatter: (v: number) => fmtNum(v) } },
       series: spec.series.map(s => ({
         type: 'line', name: s.nombre, data: s.valores, symbol: 'circle', symbolSize: 9, lineStyle: { width: 2, color: colorDe(s.color) },

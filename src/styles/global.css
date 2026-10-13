@@ -94,7 +94,7 @@
   .campo select { font: inherit; font-size: .92rem; font-weight: 500; color: var(--ink); background: var(--surface); border: 1px solid var(--axis);
                   border-radius: 9px; padding: .45rem 2rem .45rem .65rem; max-width: 100%; }
   .seg { display: inline-flex; flex-wrap: wrap; border: 1px solid var(--axis); border-radius: 9px; overflow: hidden; }
-  .seg button { font: inherit; font-size: .88rem; font-weight: 500; padding: .42rem .8rem; background: var(--surface); color: var(--ink); border: 0; border-right: 1px solid var(--axis); cursor: pointer; }
+  .seg button { flex: 1 1 auto; text-align: center; font: inherit; font-size: .88rem; font-weight: 500; padding: .42rem .8rem; background: var(--surface); color: var(--ink); border: 0; border-right: 1px solid var(--axis); cursor: pointer; }
   .seg button:last-child { border-right: 0; }
   .seg button[aria-pressed="true"] { background: var(--brand); color: #fff; font-weight: 650; }
   .nota { font-size: .84rem; color: var(--notice-ink); background: var(--notice-bg); border: 1px solid var(--notice-border); border-radius: 9px; padding: .5rem .75rem; }
@@ -112,7 +112,7 @@
   .tabla tr.tot td { font-weight: 650; background: var(--surface-2); }
   .tabla tr.hl td { background: color-mix(in srgb, var(--s1) 13%, var(--surface)); }
   .tabla td.largo { min-width: 220px; }
-  @media (max-width: 640px) { .tabla td.largo { min-width: 160px; } .tabla th, .tabla td { padding: .4rem .5rem; } }
+  @media (max-width: 640px) { .tabla td.largo { min-width: 160px; } .tabla th, .tabla td { padding: .4rem .5rem; } .tabla th:first-child, .tabla td:first-child { min-width: 7.5rem; } }
 
   .skeleton { background: linear-gradient(90deg, var(--surface-2), var(--surface-3), var(--surface-2)); background-size: 200% 100%; border-radius: 10px; }
   @media (prefers-reduced-motion: no-preference) { .skeleton { animation: shimmer 1.4s ease-in-out infinite; } }

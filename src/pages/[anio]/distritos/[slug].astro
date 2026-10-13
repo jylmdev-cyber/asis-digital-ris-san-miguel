@@ -25,7 +25,7 @@ const I = Object.fromEntries(IND.map(x => [x.id, x]));
 const val = (id: string) => I[id]?.valores[nombre] ?? '';
 const u = (x: typeof IND[number]) => x.unidad === '%' ? ' %' : '';
 
-const filas = IND.map(x => { const p = posicion(x, nombre); return [x.grupo, x.nombre, mostrar(x.valores[nombre]) + (x.valores[nombre] ? u(x) : ''), x.provincial ? mostrar(x.provincial) + u(x) : '–', p ? `${p.pos} de ${p.de}` : '–', `${x.ref}, pág. ${x.pag}`]; });
+const filas = IND.map(x => { const p = posicion(x, nombre); return [x.nombre, mostrar(x.valores[nombre]) + (x.valores[nombre] ? u(x) : ''), x.provincial ? mostrar(x.provincial) + u(x) : '–', p ? `${p.pos} de ${p.de}` : '–', x.grupo, `${x.ref}, pág. ${x.pag}`]; });
 const EE = ed.geoEstablecimientos.features.map((f: any) => f.properties).filter((e: any) => e.distrito === nombre);
 const refs = ed.tabla('c11').rows.filter(r => r[0] === nombre);
 const eq = ed.tabla('equipos').rows.filter(r => r[0] === nombre).map(r => r.slice(1));
@@ -75,7 +75,7 @@ const vPob: Variante = {
 
   <Seccion id="indicadores" titulo="Todos los indicadores del distrito" intro="«Posición» indica el lugar del distrito al ordenar los 13 de mayor a menor valor (1 = el valor más alto). No implica un juicio: en algunos indicadores un valor alto es favorable (agua, desagüe) y en otros, desfavorable (pobreza).">
     <figure class="tarjeta m-0 p-4 sm:p-5" id="c-ficha">
-      <TablaDatos titulo={`Indicadores del distrito de ${nombre}`} cols={['Tema', 'Indicador', nombre, 'Provincia', 'Posición', 'Fuente']} rows={filas} largos={[1]} maxAlto={false} />
+      <TablaDatos titulo={`Indicadores del distrito de ${nombre}`} cols={['Indicador', nombre, 'Provincia', 'Posición', 'Tema', 'Fuente']} rows={filas} largos={[0]} maxAlto={false} />
       <figcaption class="mt-3 border-t border-line pt-2.5 text-[0.78rem] text-ink-2"><strong>Fuente: ASIS RIS San Miguel {anio}</strong>, cuadros indicados en cada fila. Los determinantes sociales son datos de 2017. Posición calculada para esta visualización.</figcaption>
     </figure>
   </Seccion>

@@ -4,6 +4,8 @@ import { mostrar, num, esTotal } from '../lib/datos';
 interface Props { cols: string[]; rows: string[][]; titulo: string; largos?: number[]; resaltar?: string; maxAlto?: boolean }
 const { cols, rows, titulo, largos = [], resaltar, maxAlto = true } = Astro.props;
 const esN = (x: string, i: number) => i > 0 && num(x) != null;
+// cifra con unidad (p. ej. «70,1 %»): se alinea como número y se muestra sin cambios
+const conUnidad = (x: string, i: number) => i > 0 && /^\d[\d\s.,]*\s?%$/.test(x ?? '');
 ---
 <div class="tabla-wrap" style={maxAlto ? undefined : 'max-height:none'} tabindex="0" role="region" aria-label={`Tabla: ${titulo}`}>
   <table class="tabla">
@@ -12,7 +14,7 @@ const esN = (x: string, i: number) => i > 0 && num(x) != null;
     <tbody>
       {rows.map(r => (
         <tr class:list={[esTotal(r) && 'tot', resaltar && r[0] === resaltar && 'hl']}>
-          {r.map((x, i) => <td class:list={[esN(x, i) && 'n', largos.includes(i) && 'largo']}>{esN(x, i) ? mostrar(x) : (x || '–')}</td>)}
+          {r.map((x, i) => <td class:list={[(esN(x, i) || conUnidad(x, i)) && 'n', largos.includes(i) && 'largo']}>{esN(x, i) ? mostrar(x) : (x || '–')}</td>)}
         </tr>
       ))}
     </tbody>

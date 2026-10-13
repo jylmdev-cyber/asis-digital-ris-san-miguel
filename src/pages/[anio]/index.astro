@@ -91,7 +91,7 @@ const nEESS = ed.geoEstablecimientos?.features.filter((f: any) => f.properties.i
           <a href={urlEd(anio, `priorizacion/#problema-${pr.n}`)} class="tarjeta group flex h-full flex-col overflow-hidden no-underline hover:shadow-lg">
             <span class="relative grid aspect-[16/9] place-items-center overflow-hidden border-b border-line bg-white">
               {pr.mapas[0]
-                ? <img src={url(`img/asis/${pr.mapas[0].img}.webp`)} alt="" loading="lazy" decoding="async" class="h-full w-full object-contain p-1.5" />
+                ? <img src={url(`img/asis/${pr.mapas[0].img}.webp`)} alt="" loading="lazy" decoding="async" class="absolute inset-0 h-full w-full object-contain p-1.5" />
                 : <span class="flex flex-col items-center gap-1 px-4 text-center text-[0.78rem] text-[#47506a]"><span class="text-[#006fa3]"><Icono nombre={pr.privacidad ? 'escudo' : 'pulso'} size={26} /></span>{pr.gradientes?.length ? 'Gráfico por grupo social' : pr.tabla ? 'Tendencia 2023-2025 (Cuadro 46)' : 'Gráfico por distrito'}{pr.privacidad ? ' · mapa distrital no publicado' : ''}</span>}
               <span class="absolute left-2 top-2 grid size-7 place-items-center rounded-full bg-brand text-[0.78rem] font-bold text-white">{pr.n}</span>
             </span>

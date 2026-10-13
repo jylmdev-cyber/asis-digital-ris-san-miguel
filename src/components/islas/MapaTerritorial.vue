@@ -166,7 +166,7 @@ const unidadTxt = computed(() => ind.value.unidad === '%' ? '%' : ind.value.unid
       <div class="relative overflow-hidden rounded-xl border border-line bg-surface-2">
         <div v-if="cargando" class="skeleton absolute inset-0 z-[500]" aria-hidden="true"></div>
         <p v-if="error" class="nota m-3">No se pudo cargar el mapa. Los valores siguen disponibles en la tabla.</p>
-        <div ref="el" :style="{ height: alto + 'px' }" class="mapa w-full" role="region" :aria-label="`Mapa de la provincia de San Miguel coloreado por ${ind.nombre}. La tabla debajo contiene los mismos valores.`"></div>
+        <div ref="el" :style="{ height: `min(${alto}px, max(300px, 92vw))` }" class="mapa w-full" role="region" :aria-label="`Mapa de la provincia de San Miguel coloreado por ${ind.nombre}. La tabla debajo contiene los mismos valores.`"></div>
       </div>
     </div>
 
@@ -216,6 +216,7 @@ const unidadTxt = computed(() => ind.value.unidad === '%' ? '%' : ind.value.unid
 .leaflet-tooltip-top:before { border-top-color: var(--ink); }
 .leaflet-tooltip.et-dist { background: transparent; box-shadow: none; color: var(--ink); font-size: 10.5px; font-weight: 650; padding: 0; text-shadow: 0 0 3px var(--surface), 0 0 3px var(--surface), 0 0 2px var(--surface); white-space: nowrap; }
 .leaflet-tooltip.et-dist:before { display: none; }
+@media (max-width: 520px) { .leaflet-tooltip.et-dist { font-size: 9.5px; } }
 .leaflet-control-attribution { font-size: 10px; background: color-mix(in srgb, var(--surface) 85%, transparent) !important; color: var(--ink-2); }
 .leaflet-control-attribution a { color: var(--link); }
 .leaflet-bar a { background: var(--surface); color: var(--ink); border-color: var(--grid); }

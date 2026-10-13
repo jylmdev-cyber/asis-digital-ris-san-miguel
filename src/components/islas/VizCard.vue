@@ -74,7 +74,7 @@ const numCols = computed(() => {
 function descargarCSV() {
   const v = actual.value; if (!v) return;
   const e = (x: unknown) => { const s = String(x ?? ''); return /[;"\n]/.test(s) ? `"${s.replace(/"/g, '""')}"` : s; };
-  const lineas = [[props.titulo], [v.subtitulo ?? ''], [`Fuente: ${props.fuenteCorta}, ${v.ref} (pág. ${v.pag}). Fuente original: ${v.fuente}`], v.tabla.cols, ...v.tabla.rows];
+  const lineas = [[props.titulo], [v.subtitulo ?? ''], [`Fuente: ${props.fuenteCorta}, ${v.ref}${v.pag ? ` (pág. ${v.pag})` : ''}. Fuente original: ${v.fuente}`], v.tabla.cols, ...v.tabla.rows];
   bajar(new Blob(['﻿' + lineas.map(r => r.map(e).join(';')).join('\r\n')], { type: 'text/csv;charset=utf-8' }), `asis-2025_${props.id}_${clave.value.replace(/[^a-z0-9]+/gi, '-')}.csv`);
 }
 function descargarPNG() {
@@ -86,7 +86,7 @@ function bajar(b: Blob, nombre: string) { const a = document.createElement('a');
 </script>
 
 <template>
-  <figure :id="id" class="tarjeta aparecer visible m-0 min-w-0 p-4 sm:p-5" :aria-labelledby="id + '-t'" :data-buscar="[titulo, Object.values(variantes).map(v => v.ref).filter((x, i, a) => x && a.indexOf(x) === i).join(', '), claves ?? ''].join('|')">
+  <figure :id="id" class="tarjeta aparecer visible m-0 min-w-0 p-3.5 sm:p-5" :aria-labelledby="id + '-t'" :data-buscar="[titulo, Object.values(variantes).map(v => v.ref).filter((x, i, a) => x && a.indexOf(x) === i).join(', '), claves ?? ''].join('|')">
     <header class="flex flex-wrap items-start justify-between gap-2">
       <div class="min-w-0">
         <h3 :id="id + '-t'" class="text-[1.05rem] font-semibold text-ink">{{ titulo }}</h3>
@@ -146,7 +146,7 @@ function bajar(b: Blob, nombre: string) { const a = document.createElement('a');
       <button type="button" class="btn" :data-imprimir="id">Imprimir</button>
     </div>
     <figcaption class="mt-3 border-t border-line pt-2.5 text-[0.78rem] text-ink-2">
-      <strong>Fuente: {{ fuenteCorta }}</strong><template v-if="ref_">, {{ ref_ }} (pág. {{ actual?.pag }})</template>. Dato original: {{ actual?.fuente }}.
+      <strong>Fuente: {{ fuenteCorta }}</strong><template v-if="ref_">, {{ ref_ }}<template v-if="actual?.pag"> (pág. {{ actual.pag }})</template></template>. Dato original: {{ actual?.fuente }}.
     </figcaption>
   </figure>
 </template>

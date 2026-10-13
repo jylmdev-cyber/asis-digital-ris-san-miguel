@@ -7389,7 +7389,7 @@
      ]
     }
    ],
-   "nota": "El documento no publica la cifra de anemia de cada distrito; agrupa a los distritos en dos rangos en el texto de la pág. 78. El Prado no figura en esa clasificación. El mapa original del Gráfico 5 no se reproduce porque sus rótulos corresponden a provincias de otra región y su leyenda (5,5-15,2 y 15,2-29,3) no coincide con los rangos del texto."
+   "nota": "El documento no publica la cifra de anemia de cada distrito; agrupa a los distritos en dos rangos en el texto de la pág. 78. El Prado no figura en esa clasificación. El mapa original del Gráfico 5 (en Problemas priorizados) tiene rótulos de provincias de otra región y su leyenda (5,5-15,2 y 15,2-29,3) no coincide con los rangos del texto."
   }
  ],
  "problemas": [
@@ -7403,6 +7403,12 @@
    "linea": 1,
    "mapaInteractivo": "anemia_texto",
    "mapas": [
+    {
+     "img": "mapa-dci-pobreza",
+     "ref": "Gráfico 4",
+     "pag": 76,
+     "titulo": "Desnutrición crónica infantil (%) y pobreza monetaria por distrito, 2025"
+    },
     {
      "img": "mapa-anemia-desempleo",
      "ref": "Gráfico 5",
