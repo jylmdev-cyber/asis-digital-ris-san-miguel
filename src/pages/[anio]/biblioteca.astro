@@ -22,7 +22,7 @@ const indice = [{ id: 'documento', t: 'Documento oficial' }, { id: 'compartir', 
 ---
 <Base anio={anio} modulo="biblioteca/" titulo="Biblioteca documental" descripcion="Documento oficial, ficha técnica, metodología, fuentes, notas de calidad, limitaciones, glosario de siglas y descarga de datos del ASIS RIS San Miguel 2025." indice={indice}>
   <p class="kicker">Módulo H</p>
-  <h1 class="mt-1 text-[1.9rem] font-extrabold text-ink">Biblioteca documental</h1>
+  <h1 class="mt-1 titulo-pagina">Biblioteca documental</h1>
 
   <Seccion id="documento" titulo="Documento oficial">
     <div class="tarjeta flex flex-col gap-4 p-5 sm:flex-row sm:items-center">
@@ -32,7 +32,7 @@ const indice = [{ id: 'documento', t: 'Documento oficial' }, { id: 'compartir', 
         <p class="meta mt-0.5">{F.entidad} · {F.direccion_regional} · {F.paginas} páginas</p>
         {E.documentoOficialUrl
           ? <a class="btn mt-3" href={E.documentoOficialUrl} rel="noopener"><Icono nombre="descargar" size={16} />Descargar el documento oficial (PDF)</a>
-          : <p class="nota mt-3"><strong>Descarga no habilitada.</strong> El PDF y el DOC completos incluyen, en la pág. 70, la descripción de un caso de muerte materna con datos que permiten identificar a la persona. Se enlazarán aquí cuando la Red de Salud San Miguel publique una versión autorizada para difusión (configurable en <code>src/config/sitio.ts</code>). Mientras tanto, todas las tablas están disponibles en la sección «Descarga de datos».</p>}
+          : <p class="nota mt-3"><strong>Descarga no habilitada.</strong> El PDF y el DOC completos incluyen, en la pág. 70, la descripción de un caso de muerte materna con datos que permiten identificar a la persona. Se enlazarán aquí cuando la Red de Salud San Miguel publique una versión autorizada para difusión. Mientras tanto, todas las tablas están disponibles en la sección «Descarga de datos».</p>}
       </div>
     </div>
   </Seccion>
@@ -64,7 +64,7 @@ const indice = [{ id: 'documento', t: 'Documento oficial' }, { id: 'compartir', 
   </Seccion>
 
   <Seccion id="metodologia" titulo="Metodología de esta plataforma">
-    <div class="prosa tarjeta p-5 text-[0.95rem]">
+    <div class="prosa tarjeta p-5 sm:p-6">
       <p><b>Extracción.</b> Se compararon los dos archivos entregados: el PDF de 97 páginas y el archivo de Word (formato .doc, no .docx), que tienen el mismo contenido. Las 57 tablas del documento se extrajeron del archivo de Word convertido a formato abierto, sin transcripción manual. Las cifras que en el documento solo existen como imagen (pirámide, Cuadros 3, 11 y 48, Gráfico 2 y Gráficos 4 a 14) se transcribieron de sus etiquetas y se identifican como «PDF (imagen)» o «PDF (texto)».</p>
       <p><b>Integridad.</b> Las cifras se guardan como texto, tal como figuran en el documento; solo se normaliza el separador decimal (coma). Las pruebas automáticas verifican, entre otras cosas, que la suma distrital de la población coincida con los totales provinciales y que las sumas de los cuadros de morbilidad y mortalidad coincidan con sus totales.</p>
       <p><b>Cálculos propios.</b> Algunos elementos se calculan solo para la visualización y se señalan como tales: porcentaje acumulado del Pareto, operativos e inoperativos por distrito (suma de filas), posición del distrito entre los 13 y cuartiles de color en mapas y mapa de calor.</p>
@@ -91,7 +91,7 @@ const indice = [{ id: 'documento', t: 'Documento oficial' }, { id: 'compartir', 
   </Seccion>
 
   <Seccion id="limitaciones" titulo="Limitaciones que declara el documento">
-    <ol class="tarjeta list-decimal space-y-2 p-5 pl-10 text-[0.93rem]">{ed.limitaciones.map(l => <li>{l}</li>)}</ol>
+    <ol class="tarjeta lectura list-decimal space-y-2.5 p-5 pl-10 sm:p-6 sm:pl-11 max-w-[54rem]">{ed.limitaciones.map(l => <li>{l}</li>)}</ol>
   </Seccion>
 
   <Seccion id="privacidad" titulo="Privacidad y datos excluidos" intro="El ASIS contiene solo datos agregados: no hay nombres de pacientes, códigos personales, direcciones ni teléfonos. Aun así, los datos con muy pocos casos se publican de forma más agregada.">
@@ -121,7 +121,7 @@ const indice = [{ id: 'documento', t: 'Documento oficial' }, { id: 'compartir', 
   </Seccion>
 
   <Seccion id="creditos" titulo="Créditos y aviso">
-    <div class="prosa tarjeta p-5 text-[0.95rem]">
+    <div class="prosa tarjeta p-5 sm:p-6">
       <p><b>Autoría del análisis y de los datos:</b> {F.entidad}, con el apoyo de la {F.apoyo_regional}. Redacción y análisis: {F.redaccion.join(', ')}. Priorización: {F.priorizacion}.</p>
       <p>Esta plataforma reorganiza el contenido del documento oficial para facilitar su consulta. No agrega indicadores, metas, poblaciones ni fuentes al análisis, y no modifica sus conclusiones. No es un sistema de registro ni sustituye al HIS MINSA, al SINADEF ni a otros sistemas oficiales. No contiene datos de pacientes ni microdatos.</p>
       <p>Versión de datos {ed.version} · edición {anio}.</p>

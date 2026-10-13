@@ -20,8 +20,8 @@ const indice = [{ id: 'problemas', t: 'Problemas priorizados' }, { id: 'lineas',
 ---
 <Base anio={anio} modulo="priorizacion/" titulo="Priorización y líneas de acción" descripcion="Problemas de salud priorizados, vinculación con el PDRC 2033, el PEI 2023-2027 y las prioridades del MINSA, líneas de acción, conclusiones y recomendaciones del ASIS." indice={indice}>
   <p class="kicker">Capítulos VII, IX, X y XI</p>
-  <h1 class="mt-1 text-[1.9rem] font-extrabold text-ink">Priorización de problemas y líneas de acción</h1>
-  <p class="mt-2 max-w-3xl text-ink-2">El ASIS se articula con el Plan de Desarrollo Regional Concertado de Cajamarca al 2033 (PDRC), el Plan Estratégico Institucional 2023-2027 (PEI) del Gobierno Regional y las Prioridades Nacionales de Investigación e Intervención Sanitaria 2024-2030 del MINSA (pág. 72).</p>
+  <h1 class="mt-1 titulo-pagina">Priorización de problemas y líneas de acción</h1>
+  <p class="entradilla mt-2">El ASIS se articula con el Plan de Desarrollo Regional Concertado de Cajamarca al 2033 (PDRC), el Plan Estratégico Institucional 2023-2027 (PEI) del Gobierno Regional y las Prioridades Nacionales de Investigación e Intervención Sanitaria 2024-2030 del MINSA (pág. 72).</p>
 
   <Seccion id="problemas" kicker="Capítulo VII" titulo="Problemas de salud priorizados" intro="Priorizados por el Consejo Provincial de Salud San Miguel con la matriz de priorización. El documento indica «once problemas» y enumera los siguientes. Cada uno se muestra con su gráfico del capítulo VIII y el mapa original del ASIS.">
     <nav aria-label="Ir a un problema priorizado" class="no-imprimir">
@@ -33,7 +33,7 @@ const indice = [{ id: 'problemas', t: 'Problemas priorizados' }, { id: 'lineas',
   </Seccion>
 
   <Seccion id="lineas" kicker="Cuadro 48 · Capítulo IX" titulo="Líneas de acción priorizadas" intro="Según el determinante identificado en el análisis de desigualdades (págs. 91-92).">
-    <div class="prosa tarjeta p-4 sm:p-5 text-[0.95rem]">{ed.texto.lineas_accion.map(p => <p>{p}</p>)}</div>
+    <div class="prosa tarjeta p-4 sm:p-6">{ed.texto.lineas_accion.map(p => <p>{p}</p>)}</div>
     <div class="grid gap-4 lg:grid-cols-2">
       {c48.rows.map((r, i) => (
         <article id={`linea-${i + 1}`} class="tarjeta flex flex-col p-5" data-buscar={`${r[0]}|Cuadro 48 · Línea de acción|${r[1]} ${r[3]}`}>
@@ -58,14 +58,14 @@ const indice = [{ id: 'problemas', t: 'Problemas priorizados' }, { id: 'lineas',
   </Seccion>
 
   <Seccion id="conclusiones" kicker="Capítulo X" titulo="Conclusiones" intro="Texto literal (pág. 93).">
-    <div class="grid gap-3">
-      {ed.texto.conclusiones.map(c => <blockquote class="tarjeta border-l-4 !border-l-[var(--accent)] p-4 text-[0.97rem]">{c}</blockquote>)}
+    <div class="grid gap-3 lg:grid-cols-2">
+      {ed.texto.conclusiones.map(c => <blockquote class="tarjeta lectura m-0 border-l-4 !border-l-[var(--accent)] p-4 sm:p-5">{c}</blockquote>)}
     </div>
   </Seccion>
 
   <Seccion id="recomendaciones" kicker="Capítulo XI" titulo="Recomendaciones estratégicas" intro="Texto literal (págs. 93-94).">
-    <ol class="grid gap-3">
-      {ed.texto.recomendaciones.map((c, i) => <li class="tarjeta flex gap-3 p-4"><span class="grid size-8 shrink-0 place-items-center rounded-full bg-brand text-sm font-bold text-white">{i + 1}</span><p class="text-[0.97rem]">{c}</p></li>)}
+    <ol class="grid gap-3 lg:grid-cols-2">
+      {ed.texto.recomendaciones.map((c, i) => <li class="tarjeta flex gap-3 p-4 sm:p-5"><span class="grid size-8 shrink-0 place-items-center rounded-full bg-brand text-sm font-bold text-white">{i + 1}</span><p class="lectura">{c}</p></li>)}
     </ol>
     <p><a href={urlEd(anio, 'desigualdades/')} class="font-semibold">Ver las brechas que sustentan estas recomendaciones →</a></p>
   </Seccion>
