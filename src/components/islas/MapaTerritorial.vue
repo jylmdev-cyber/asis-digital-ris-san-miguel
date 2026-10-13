@@ -110,6 +110,23 @@ function pintar() {
   if (!fondo.value && capaF) { mapa.removeLayer(capaF); capaF = null; }
 }
 
+function encuadrar() {
+  const b = props.soloDistrito ? capaD.getLayers().find((l: any) => l.feature.properties.distrito === props.soloDistrito)?.getBounds() : capaD.getBounds();
+  mapa.fitBounds(b ?? capaD.getBounds(), { padding: [12, 12], animate: false });
+}
+// Impresión: Leaflet no detecta el cambio de ancho de la hoja; se fija un ancho de A4 y se vuelve a encuadrar.
+function antesDeImprimir() {
+  if (!mapa || !el.value) return;
+  el.value.style.width = Math.min(el.value.clientWidth, 640) + 'px';
+  el.value.style.height = '380px';
+  mapa.invalidateSize({ animate: false }); encuadrar();
+}
+function despuesDeImprimir() {
+  if (!mapa || !el.value) return;
+  el.value.style.width = ''; el.value.style.height = `min(${props.alto}px, max(300px, 92vw))`;
+  mapa.invalidateSize({ animate: false }); encuadrar();
+}
+
 onMounted(async () => {
   const q = new URLSearchParams(location.search).get('ind');
   if (q && props.indicadores.some(i => i.id === q)) indId.value = q;
@@ -131,16 +148,17 @@ onMounted(async () => {
     }).addTo(mapa);
     capaE = L.layerGroup().addTo(mapa);
     capaN = L.layerGroup().addTo(mapa);
-    const b = props.soloDistrito ? capaD.getLayers().find((l: any) => l.feature.properties.distrito === props.soloDistrito)?.getBounds() : capaD.getBounds();
-    mapa.fitBounds(b ?? capaD.getBounds(), { padding: [12, 12] });
+    encuadrar();
     pintar();
     mapa.on('focus', () => mapa.scrollWheelZoom.enable());
     mapa.on('blur', () => mapa.scrollWheelZoom.disable());
     window.addEventListener('tema', pintar);
+    window.addEventListener('beforeprint', antesDeImprimir);
+    window.addEventListener('afterprint', despuesDeImprimir);
     cargando.value = false;
   } catch (e) { console.error(e); error.value = true; cargando.value = false; }
 });
-onBeforeUnmount(() => { window.removeEventListener('tema', pintar); mapa?.remove(); });
+onBeforeUnmount(() => { window.removeEventListener('tema', pintar); window.removeEventListener('beforeprint', antesDeImprimir); window.removeEventListener('afterprint', despuesDeImprimir); mapa?.remove(); });
 watch([indId, verEESS, fondo, nombres, microrred, categorias, sel], pintar, { deep: true });
 
 const filas = computed(() => props.lista.map(f => ({ d: f.distrito, slug: f.slug, ub: f.ubigeo, v: ind.value.valores[f.ubigeo] }))
@@ -149,7 +167,8 @@ const unidadTxt = computed(() => ind.value.unidad === '%' ? '%' : ind.value.unid
 </script>
 
 <template>
-  <div class="grid gap-4 xl:grid-cols-[minmax(0,1fr)_300px]">
+  <!-- en la ficha distrital el mapa va en una tarjeta angosta: la leyenda pasa debajo -->
+  <div :class="['grid gap-4', soloDistrito ? '' : 'xl:grid-cols-[minmax(0,1fr)_300px]']">
     <div class="min-w-0">
       <div class="mb-3 flex flex-wrap items-end gap-x-4 gap-y-3 no-imprimir">
         <label class="campo min-w-[220px] flex-1">Indicador del ASIS (color de los distritos)
@@ -205,7 +224,7 @@ const unidadTxt = computed(() => ind.value.unidad === '%' ? '%' : ind.value.unid
       <p class="meta mt-4">Límites referenciales del IGN (fuente INEI) y ubicación de establecimientos de la capa del IGN, publicados en la Infraestructura de Datos Espaciales del Perú. No constituyen demarcación oficial.</p>
     </aside>
 
-    <details class="xl:col-span-2">
+    <details :class="soloDistrito ? '' : 'xl:col-span-2'">
       <summary class="btn w-fit cursor-pointer list-none no-imprimir">Ver valores por distrito</summary>
       <div class="tabla-wrap mt-2">
         <table class="tabla">

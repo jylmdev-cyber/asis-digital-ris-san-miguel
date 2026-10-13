@@ -146,14 +146,48 @@
   }
 }
 
-/* impresión */
+/* impresión: siempre en modo claro, sin controles de pantalla y con saltos de página cuidados */
+.solo-impresion { display: none; }
 @media print {
-  header.barra, aside.lateral, .no-imprimir, .herramientas { display: none !important; }
-  body { background: #fff; }
-  .tarjeta { box-shadow: none; break-inside: avoid; border-color: #bbb; }
-  .tabla-wrap { max-height: none; overflow: visible; }
-  main { margin: 0 !important; }
-  body.imprimir-seccion main > * { display: none; }
-  body.imprimir-seccion main > .imprimir-esta, body.imprimir-seccion main .imprimir-esta { display: block !important; }
+  @page { size: A4; margin: 14mm 12mm; }
+  :root, :root[data-theme="dark"] {
+    color-scheme: light;
+    --page: #ffffff; --surface: #ffffff; --surface-2: #f1f4f9; --surface-3: #e2e8f2;
+    --ink: #141c33; --ink-2: #3d4660; --muted: #5b6479;
+    --grid: #dfe4ec; --axis: #c5cddb; --border: #c9d0dc;
+    --brand: #3c5395; --brand-2: #0087c6; --accent: #006fa3; --accent-soft: #e3f1fa; --link: #006fa3;
+    --verde: #00a859; --s1: #0087c6; --s2: #c43438; --s1-strong: #3c5395;
+    --o1: #a5b4df; --o2: #6f84c4; --o3: #3c5395; --o4: #24346a;
+    --o1-t: #141c33; --o2-t: #141c33; --o3-t: #ffffff; --o4-t: #ffffff;
+    --notice-bg: #fbfbe2; --notice-ink: #4a4a00; --notice-border: #c9cb2c;
+    --shadow: none;
+  }
+  html { font-size: 12.5px; }
+  body { background: #fff; -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+  header.barra, aside.lateral, #velo, #aviso, .no-imprimir, .herramientas,
+  .btn, .leaflet-control-container, summary, [role="search"] { display: none !important; }
+  .solo-impresion { display: block; margin: 0 0 4mm; padding-bottom: 2mm; border-bottom: 1px solid #c9d0dc; font-size: .85rem; color: #3d4660; }
+  main { margin: 0 !important; padding: 0 !important; }
+  section { margin-top: 7mm !important; }
+  .tarjeta { box-shadow: none; border-color: #c9d0dc; }
+  /* los títulos no quedan solos al final de una hoja; las piezas pequeñas no se parten */
+  h1, h2, h3, h4, .kicker, section > header { break-after: avoid; page-break-after: avoid; }
+  p, li, blockquote { orphans: 3; widows: 3; }
+  figure, .fig-original, .nota, .metodo, tr, img, canvas, dl > div, li.tarjeta, blockquote { break-inside: avoid; page-break-inside: avoid; }
+  .tabla-wrap { max-height: none !important; overflow: visible !important; border: 0; }
+  .tabla thead { display: table-header-group; }
+  .tabla thead th, .tabla tbody td:first-child { position: static; }
+  /* imágenes originales del ASIS a un tamaño legible sin ocupar una hoja entera */
+  .fig-original img { max-height: 95mm; width: auto; max-width: 100%; margin: 0 auto; display: block; filter: none !important; }
+  .fig-original { background: #fff !important; }
+  .mapa { break-inside: avoid; margin: 0 auto; }
+  /* los gráficos se redibujan al ancho de la hoja antes de imprimir (VizCard); esto solo evita que se salgan del margen */
+  [_echarts_instance_] canvas { max-width: 100% !important; height: auto !important; }
+  [_echarts_instance_] > div:not(:first-child) { display: none !important; }
+  a { color: inherit; text-decoration: none; }
   .js .aparecer { opacity: 1 !important; transform: none !important; }
+  /* imprimir una sola sección o gráfico: solo se muestra ese elemento (y la línea de identificación) */
+  body.imprimir-seccion main > *:not(.imprimir-ruta):not(.imprimir-esta):not(.solo-impresion),
+  body.imprimir-seccion .imprimir-ruta > *:not(.imprimir-ruta):not(.imprimir-esta) { display: none !important; }
+  body.imprimir-seccion main > footer { display: none !important; }
 }

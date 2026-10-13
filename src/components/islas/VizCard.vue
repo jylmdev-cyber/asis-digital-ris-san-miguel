@@ -57,9 +57,34 @@ onMounted(() => {
   ro = new ResizeObserver(() => { const nw = lienzo.value?.clientWidth ?? 0; if (Math.abs(nw - w) > 24) { w = nw; dibujar(false); } else chart?.resize(); });
   if (lienzo.value) ro.observe(lienzo.value);
   window.addEventListener('tema', onTema);
+  window.addEventListener('beforeprint', antesDeImprimir);
+  window.addEventListener('afterprint', despuesDeImprimir);
 });
-const onTema = () => dibujar(false);
-onBeforeUnmount(() => { ro?.disconnect(); chart?.dispose(); window.removeEventListener('tema', onTema); });
+// Redibujo inmediato con los módulos ya cargados: al imprimir, el navegador toma la página justo después del evento.
+function dibujarYa() {
+  const v = actual.value;
+  if (!chart || !mod || !v?.spec || !lienzo.value) return false;
+  const spec = v.spec.tipo === 'barras' && resaltar.value ? { ...v.spec, resaltar: [resaltar.value] } : v.spec;
+  chart.setOption(mod.opciones(spec, lienzo.value.clientWidth || 600, false), true);
+  chart.getZr?.().flush?.();
+  return true;
+}
+const onTema = () => { if (!dibujarYa()) dibujar(false); };
+
+// Impresión: el gráfico se redibuja al ancho útil de una hoja A4 (≈ 660 px) con su altura propia; al terminar vuelve al de pantalla.
+const ANCHO_HOJA = 660;
+function antesDeImprimir() {
+  const v = actual.value;
+  if (!chart || !mod || !v?.spec || !lienzo.value) return;
+  const w = Math.min(lienzo.value.clientWidth || ANCHO_HOJA, ANCHO_HOJA), h = mod.alturaDe(v.spec, w);
+  lienzo.value.style.height = h + 'px';
+  chart.resize({ width: w, height: h });
+  const spec = v.spec.tipo === 'barras' && resaltar.value ? { ...v.spec, resaltar: [resaltar.value] } : v.spec;
+  chart.setOption(mod.opciones(spec, w, false), true);
+  chart.getZr?.().flush?.();
+}
+function despuesDeImprimir() { chart?.resize({ width: 'auto', height: 'auto' }); dibujar(false); }
+onBeforeUnmount(() => { ro?.disconnect(); chart?.dispose(); window.removeEventListener('tema', onTema); window.removeEventListener('beforeprint', antesDeImprimir); window.removeEventListener('afterprint', despuesDeImprimir); });
 watch(clave, async () => { await nextTick(); dibujar(); });
 watch(resaltar, () => dibujar(false));
 

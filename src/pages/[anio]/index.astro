@@ -34,7 +34,7 @@ const nEESS = ed.geoEstablecimientos?.features.filter((f: any) => f.properties.i
         <div><dt class="text-[0.72rem] uppercase tracking-wider text-white/65">Periodo de los datos</dt><dd class="mt-0.5">2023-2025 (determinantes: 2017)</dd></div>
         <div><dt class="text-[0.72rem] uppercase tracking-wider text-white/65">Documento fuente</dt><dd class="mt-0.5">{F.paginas} páginas · Oficina de Epidemiología</dd></div>
       </dl>
-      <div class="mt-6 flex flex-wrap gap-2">
+      <div class="no-imprimir mt-6 flex flex-wrap gap-2">
         <a href={urlEd(anio, 'territorio/')} class="inline-flex items-center gap-2 rounded-xl bg-white px-4 py-2.5 text-sm font-semibold text-brand no-underline hover:bg-white/90">Explorar el mapa <Icono nombre="flecha" size={16} /></a>
         <a href={urlEd(anio, 'distritos/')} class="inline-flex items-center gap-2 rounded-xl border border-white/40 px-4 py-2.5 text-sm font-semibold text-white no-underline hover:bg-white/10">Fichas por distrito</a>
         <a href={urlEd(anio, 'priorizacion/')} class="inline-flex items-center gap-2 rounded-xl border border-white/40 px-4 py-2.5 text-sm font-semibold text-white no-underline hover:bg-white/10">Líneas de acción</a>

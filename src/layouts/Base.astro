@@ -126,6 +126,7 @@ const fecha = new Date().toISOString().slice(0, 10);
     <div id="velo" class="fixed inset-0 z-40 hidden bg-black/40 lg:hidden"></div>
 
     <main id="contenido" tabindex="-1" class="min-w-0 flex-1 px-4 pb-16 pt-5 sm:px-6 lg:px-8">
+      <p class="solo-impresion"><b>{SITIO.nombreCompleto}</b> · {titulo} · {new URL(Astro.url.pathname, Astro.site).href}</p>
       <slot />
       <footer class="mt-16 border-t border-line pt-6 text-[0.82rem] text-ink-2">
         <div class="grid gap-4 md:grid-cols-[2fr_1fr]">
@@ -178,10 +179,27 @@ const fecha = new Date().toISOString().slice(0, 10);
       } else if (t.dataset.imprimir) {
         const sec = document.getElementById(t.dataset.imprimir);
         if (!sec) return;
+        // se marca el elemento y sus ancestros; el resto del contenido se oculta al imprimir
+        const ruta: HTMLElement[] = [];
+        for (let e = sec.parentElement; e && e.id !== 'contenido'; e = e.parentElement) { e.classList.add('imprimir-ruta'); ruta.push(e); }
         document.body.classList.add('imprimir-seccion'); sec.classList.add('imprimir-esta');
-        const fin = () => { document.body.classList.remove('imprimir-seccion'); sec.classList.remove('imprimir-esta'); removeEventListener('afterprint', fin); };
+        const fin = () => { document.body.classList.remove('imprimir-seccion'); sec.classList.remove('imprimir-esta'); ruta.forEach(e => e.classList.remove('imprimir-ruta')); removeEventListener('afterprint', fin); };
         addEventListener('afterprint', fin); print();
       }
+    });
+
+    // ---- impresión: siempre en modo claro (también con Ctrl+P); al terminar se restaura el tema elegido
+    let temaAntesDeImprimir: string | null = null;
+    addEventListener('beforeprint', () => {
+      if (raiz.getAttribute('data-theme') !== 'dark') return;
+      temaAntesDeImprimir = 'dark';
+      raiz.setAttribute('data-theme', 'light');
+      window.dispatchEvent(new CustomEvent('tema', { detail: 'light' }));
+    });
+    addEventListener('afterprint', () => {
+      if (!temaAntesDeImprimir) return;
+      raiz.setAttribute('data-theme', temaAntesDeImprimir); temaAntesDeImprimir = null;
+      window.dispatchEvent(new CustomEvent('tema', { detail: 'dark' }));
     });
 
     // ---- contadores animados (respetan "reducir movimiento"; terminan en la cifra textual exacta)
