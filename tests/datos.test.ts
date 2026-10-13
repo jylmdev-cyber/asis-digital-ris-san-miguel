@@ -125,9 +125,8 @@ for (const anio of EDICIONES) {
         expect(p.gradientes?.length || p.tabla || p.tablasDistrito?.length, `problema ${p.n} sin gráfico`).toBeTruthy();
       }
     });
-    it('no se publican mapas distritales excluidos por privacidad (VIH, TBC, cáncer, perinatal)', () => {
-      const imgs = fs.existsSync(path.resolve(__dirname, '../public/img/asis')) ? fs.readdirSync(path.resolve(__dirname, '../public/img/asis')) : [];
-      for (const f of imgs) expect(f).not.toMatch(/vih|tbc|tuberc|cancer|perinatal/i);
+    it('cada problema priorizado reproduce al menos un mapa o gráfico original del ASIS', () => {
+      for (const p of d.problemas ?? []) expect(p.mapas.length, `problema ${p.n}`).toBeGreaterThan(0);
     });
   });
 

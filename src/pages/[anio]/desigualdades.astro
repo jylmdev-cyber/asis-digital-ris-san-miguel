@@ -4,6 +4,7 @@ import Seccion from '../../components/Seccion.astro';
 import VizCard from '../../components/islas/VizCard.vue';
 import { edicion, num } from '../../lib/datos';
 import { rutasEdicion } from '../../lib/filtros';
+import { urlEd } from '../../lib/rutas';
 import type { ChartSpec, Color, Variante } from '../../lib/tipos';
 
 export const getStaticPaths = rutasEdicion;
@@ -40,7 +41,7 @@ const indice = [{ id: 'metodo', t: 'Cómo leer los gradientes' }, { id: 'gradien
     <div class="grid gap-3 md:grid-cols-3">
       <div class="tarjeta p-4"><h3 class="font-semibold text-ink">Grupos sociales 1 a 4</h3><p class="mt-1 text-[0.9rem] text-ink-2">Agrupan a los distritos según su nivel en el determinante indicado, tal como los presenta el documento. El ASIS no detalla los puntos de corte de cada grupo.</p></div>
       <div class="tarjeta p-4"><h3 class="font-semibold text-ink">Asociación, no causalidad</h3><p class="mt-1 text-[0.9rem] text-ink-2">El documento advierte que las asociaciones son territoriales y no permiten establecer causalidad. Con pocos casos (TBC: 4; cáncer: 11), la lectura es indicativa.</p></div>
-      <div class="tarjeta p-4"><h3 class="font-semibold text-ink">Indicadores sin gráfico</h3><p class="mt-1 text-[0.9rem] text-ink-2">La razón de mortalidad materna (0 casos en 2025) y el dengue (0 casos autóctonos) no tienen gradiente. Los mapas distritales del capítulo son imágenes sin tabla y no se reproducen.</p></div>
+      <div class="tarjeta p-4"><h3 class="font-semibold text-ink">Indicadores sin gráfico</h3><p class="mt-1 text-[0.9rem] text-ink-2">La razón de mortalidad materna (0 casos en 2025) y el dengue (0 casos autóctonos) no tienen gradiente. Los mapas distritales del capítulo no traen tabla de datos: se reproducen como imagen original en la ficha de cada <a href={urlEd(anio, 'priorizacion/#problemas')}>problema priorizado</a>.</p></div>
     </div>
   </Seccion>
 

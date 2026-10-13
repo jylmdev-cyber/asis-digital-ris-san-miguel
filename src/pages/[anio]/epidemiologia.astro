@@ -6,6 +6,7 @@ import Kpi from '../../components/Kpi.astro';
 import VizCard from '../../components/islas/VizCard.vue';
 import { edicion, num, mostrar, esTotal } from '../../lib/datos';
 import { rutasEdicion, filtroResaltar } from '../../lib/filtros';
+import { urlEd } from '../../lib/rutas';
 import { barrasColumna, barrasApiladas, pareto, variante, vista } from '../../lib/specs';
 import type { ChartSpec, Tabla, Variante } from '../../lib/tipos';
 
@@ -93,7 +94,7 @@ const indice = [{ id: 'resumen', t: 'Resumen' }, { id: 'morbilidad', t: 'Morbili
       <span class="h-fit rounded-lg bg-accent-soft p-2 text-accent"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 3 4.5 6v5.5c0 4.5 3.2 8.3 7.5 9.5 4.3-1.2 7.5-5 7.5-9.5V6L12 3Z"/></svg></span>
       <div>
         <h3 class="font-semibold text-ink">Mortalidad perinatal por distrito (Tabla 15)</h3>
-        <p class="mt-1 text-[0.92rem] text-ink-2">En 2025 la provincia registró 6 defunciones perinatales: 3 fetales y 3 neonatales. La desagregación por distrito y la descripción del caso de muerte materna de 2024 no se publican en esta plataforma porque, con 1 o 2 casos por distrito, podrían permitir identificar a las familias.</p>
+        <p class="mt-1 text-[0.92rem] text-ink-2">En 2025 la provincia registró 6 defunciones perinatales: 3 fetales y 3 neonatales. El número de casos por distrito de la Tabla 15 y la descripción del caso de muerte materna de 2024 no se publican en esta plataforma porque, con 1 o 2 casos por distrito, podrían permitir identificar a las familias. El Mapa 6 del ASIS se reproduce en <a href={urlEd(anio, 'priorizacion/#problema-2')}>problemas priorizados</a>.</p>
       </div>
     </div>
   </Seccion>

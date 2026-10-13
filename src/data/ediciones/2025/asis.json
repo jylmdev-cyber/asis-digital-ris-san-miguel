@@ -7355,10 +7355,6 @@
   {
    "ref": "Capítulo VI, pág. 70",
    "motivo": "Descripción del caso de muerte materna de 2024 (localidad, establecimiento, edad e historia obstétrica): no se reproduce."
-  },
-  {
-   "ref": "Mapas distritales de los Gráficos 6, 7 y 11 y Mapa 6",
-   "motivo": "VIH, tuberculosis, cáncer y mortalidad perinatal tienen muy pocos casos por distrito: se publica solo el gradiente por grupo social o el total provincial."
   }
  ],
  "clasificaciones": [
@@ -7408,21 +7404,28 @@
    "mapaInteractivo": "anemia_texto",
    "mapas": [
     {
-     "img": "mapa-dci-pobreza",
-     "ref": "Gráfico 4",
-     "pag": 76,
-     "titulo": "Desnutrición crónica infantil (%) y pobreza monetaria por distrito, 2025"
+     "img": "mapa-anemia-desempleo",
+     "ref": "Gráfico 5",
+     "pag": 78,
+     "titulo": "Anemia en menores de 5 años y desempleo a nivel distrital, 2025"
     }
    ],
-   "nota": "El mapa de anemia del Gráfico 5 no se reproduce (sus rótulos corresponden a otra región); la clasificación distrital del texto está en el mapa interactivo."
+   "nota": "Los rótulos del mapa del Gráfico 5 corresponden a provincias de otra región (error del documento original); la clasificación distrital de anemia descrita en el texto está en el mapa interactivo."
   },
   {
    "n": 2,
    "titulo": "Complicaciones y morbilidad materna perinatal",
    "tabla": "c46",
    "linea": 5,
-   "mapas": [],
-   "privacidad": "El Mapa 6 (mortalidad perinatal por distrito, pág. 84) no se publica: con 1 o 2 casos por distrito podría permitir identificar a las familias."
+   "mapas": [
+    {
+     "img": "mapa-mortalidad-perinatal",
+     "ref": "Mapa 6",
+     "pag": 84,
+     "titulo": "Mortalidad perinatal a nivel distrital, provincia de San Miguel, 2025"
+    }
+   ],
+   "nota": "El mapa combina la mortalidad perinatal (puntos) con el analfabetismo (color). En 2025 la provincia registró 6 defunciones perinatales, por lo que las tasas distritales se basan en muy pocos casos."
   },
   {
    "n": 3,
@@ -7448,8 +7451,15 @@
     "tbc"
    ],
    "linea": 2,
-   "mapas": [],
-   "privacidad": "El mapa distrital del Gráfico 7 (pág. 81) no se publica: la provincia registró 4 casos. Además, su leyenda tiene una sola clase y no distingue distritos."
+   "mapas": [
+    {
+     "img": "mapa-tbc-desempleo",
+     "ref": "Gráfico 7",
+     "pag": 81,
+     "titulo": "Tuberculosis (TBC) y desempleo a nivel distrital"
+    }
+   ],
+   "nota": "La leyenda de tuberculosis del mapa tiene una sola clase (0 - 53,5), por lo que no permite distinguir distritos; la provincia registró 4 casos."
   },
   {
    "n": 5,
@@ -7458,8 +7468,14 @@
     "vih"
    ],
    "linea": 3,
-   "mapas": [],
-   "privacidad": "El mapa distrital del Gráfico 6 (pág. 79) no se publica por tratarse de una condición sensible con pocos casos por distrito."
+   "mapas": [
+    {
+     "img": "mapa-vih-migracion",
+     "ref": "Gráfico 6",
+     "pag": 79,
+     "titulo": "VIH y migración a nivel distrital"
+    }
+   ]
   },
   {
    "n": 6,
@@ -7484,8 +7500,15 @@
     "cancer"
    ],
    "linea": 6,
-   "mapas": [],
-   "privacidad": "El mapa distrital del Gráfico 11 (pág. 87) no se publica: la provincia registró 11 casos de cáncer."
+   "mapas": [
+    {
+     "img": "mapa-cancer-pobreza",
+     "ref": "Gráfico 11",
+     "pag": 87,
+     "titulo": "Cáncer y pobreza monetaria a nivel distrital"
+    }
+   ],
+   "nota": "El mapa del documento usa la pobreza monetaria como capa de color, aunque el título del Gráfico 11 indica analfabetismo; la provincia registró 11 casos."
   },
   {
    "n": 8,
