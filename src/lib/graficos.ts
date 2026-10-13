@@ -27,6 +27,15 @@ export function alturaDe(spec: ChartSpec, ancho: number): number {
 export const fmtNum = (n: number) => { const r = Number.isInteger(n) ? String(n) : String(Math.round(n * 100) / 100); const [e, d] = r.split('.'); return e.replace(/\B(?=(\d{3})+(?!\d))/g, ' ') + (d ? ',' + d : ''); };
 const esc = (s: string) => s.replace(/[&<>"]/g, c => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;' }[c]!));
 
+// Posición de la etiqueta de un punto de línea: 'bottom' cuando hay otra serie con un valor cercano mayor (o igual y anterior).
+function posEtiqueta(series: { valores: (number | null)[] }[], i: number, k: number): 'top' | 'bottom' {
+  const v = series[i].valores[k]; if (v == null) return 'top';
+  const todos = series.flatMap(s => s.valores).filter((x): x is number => x != null);
+  const umbral = (Math.max(...todos) - Math.min(...todos)) * 0.06;
+  const vecino = series.some((s, j) => { const w = s.valores[k]; return j !== i && w != null && Math.abs(w - v) <= umbral && (w > v || (w === v && j < i)); });
+  return vecino ? 'bottom' : 'top';
+}
+
 export function opciones(spec: ChartSpec, ancho: number, animar: boolean): any {
   const tinta = css('--ink'), tinta2 = css('--ink-2'), grid = css('--grid'), eje = css('--axis'), sup = css('--surface');
   const movil = ancho < 520;
@@ -81,13 +90,15 @@ export function opciones(spec: ChartSpec, ancho: number, animar: boolean): any {
     return {
       ...base,
       legend: spec.series.length > 1 ? { top: 0, left: 0, textStyle: { color: tinta2 } } : undefined,
-      grid: { left: 8, right: movil ? 16 : 48, top: spec.series.length > 1 ? 36 : 16, bottom: 8, containLabel: true },
+      grid: { left: 8, right: 16, top: spec.series.length > 1 ? 36 : 16, bottom: 8, containLabel: true },
       tooltip: { ...base.tooltip, trigger: 'axis', formatter: (ps: any[]) => `<b>${esc(ps[0].name)}</b><br>` + ps.map(p => `${p.marker} <b>${esc(spec.series[p.seriesIndex].etiquetas[p.dataIndex])}</b> ${esc(p.seriesName)}`).join('<br>') },
-      xAxis: { type: 'category', data: spec.categorias, boundaryGap: movil, axisLine: { lineStyle: { color: eje } }, axisLabel: { color: tinta } },
+      xAxis: { type: 'category', data: spec.categorias, boundaryGap: true, axisLine: { lineStyle: { color: eje } }, axisLabel: { color: tinta } },
       yAxis: { type: 'value', scale: true, splitLine: { lineStyle: { color: grid } }, axisLabel: { color: tinta2, formatter: (v: number) => fmtNum(v) } },
-      series: spec.series.map(s => ({
-        type: 'line', name: s.nombre, data: s.valores, symbol: 'circle', symbolSize: 9, lineStyle: { width: 2, color: colorDe(s.color) },
+      series: spec.series.map((s, i) => ({
+        type: 'line', name: s.nombre, symbol: 'circle', symbolSize: 9, lineStyle: { width: 2, color: colorDe(s.color) },
         itemStyle: { color: colorDe(s.color), borderColor: sup, borderWidth: 2 },
+        // si otra serie tiene un valor cercano en el mismo año, la etiqueta del menor va debajo del punto
+        data: s.valores.map((v, k) => ({ value: v, label: { position: posEtiqueta(spec.series, i, k) } })),
         label: { show: true, position: 'top', color: tinta, fontWeight: 600, fontSize: 11, formatter: (p: any) => s.etiquetas[p.dataIndex] },
       })),
     };

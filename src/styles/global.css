@@ -11,7 +11,7 @@
   --inst-azul: #0087c6; --inst-marino: #3c5395; --inst-rojo: #c43438; --inst-verde: #00a859; --inst-amarillo: #e0e332;
   /* superficies y tinta */
   --page: #f3f6fa; --surface: #ffffff; --surface-2: #eef2f8; --surface-3: #e2e8f2;
-  --ink: #141c33; --ink-2: #47506a; --muted: #687189;
+  --ink: #141c33; --ink-2: #47506a; --muted: #5b6479;
   --grid: #e2e7ef; --axis: #c5cddb; --border: rgba(20, 28, 51, .12);
   /* institucional */
   --brand: #3c5395; --brand-2: #0087c6; --brand-ink: #ffffff;
@@ -20,6 +20,8 @@
   /* series de gráficos */
   --s1: #0087c6; --s2: #c43438; --s1-strong: #3c5395;
   --o1: #a5b4df; --o2: #6f84c4; --o3: #3c5395; --o4: #24346a;
+  /* texto legible sobre cada tono ordinal (mapa de calor) */
+  --o1-t: #141c33; --o2-t: #141c33; --o3-t: #ffffff; --o4-t: #ffffff;
   --notice-bg: #fbfbe2; --notice-ink: #4a4a00; --notice-border: #e0e332;
   --warn-bg: #fbeaea; --warn-ink: #7f1d21;
   --shadow: 0 1px 2px rgba(20,28,51,.06), 0 4px 16px rgba(20,28,51,.05);
@@ -33,7 +35,8 @@
   --accent: #4fb8e8; --accent-soft: #0e2a3d; --link: #5cc0f0; --focus: #4fb8e8;
   --verde: #19c26f;
   --s1: #2a9fd6; --s2: #e0575c; --s1-strong: #a9b9ea;
-  --o1: #3a4f94; --o2: #4d66b0; --o3: #7189d1; --o4: #a9b9ea;
+  --o1: #4d66b0; --o2: #6a82c8; --o3: #8ea3dd; --o4: #b9c7f0;
+  --o1-t: #ffffff; --o2-t: #0b1220; --o3-t: #0b1220; --o4-t: #0b1220;
   --notice-bg: #26260f; --notice-ink: #ecee9c; --notice-border: #6b6c1b;
   --warn-bg: #3a1719; --warn-ink: #f5c1c3;
   --shadow: 0 1px 2px rgba(0,0,0,.4);
@@ -45,7 +48,8 @@
     --page: #0b1220; --surface: #121b2b; --surface-2: #1a2538; --surface-3: #22304a;
     --ink: #f1f5fb; --ink-2: #b9c4d6; --muted: #8f9bb1; --grid: #233047; --axis: #33425d; --border: rgba(255,255,255,.10);
     --brand: #22336a; --brand-2: #0b5f8c; --accent: #4fb8e8; --accent-soft: #0e2a3d; --link: #5cc0f0; --verde: #19c26f;
-    --s1: #2a9fd6; --s2: #e0575c; --s1-strong: #a9b9ea; --o1: #3a4f94; --o2: #4d66b0; --o3: #7189d1; --o4: #a9b9ea;
+    --s1: #2a9fd6; --s2: #e0575c; --s1-strong: #a9b9ea; --o1: #4d66b0; --o2: #6a82c8; --o3: #8ea3dd; --o4: #b9c7f0;
+    --o1-t: #ffffff; --o2-t: #0b1220; --o3-t: #0b1220; --o4-t: #0b1220;
     --notice-bg: #26260f; --notice-ink: #ecee9c; --notice-border: #6b6c1b;
   }
 }
@@ -125,6 +129,11 @@
   .tabla tr.hl td { background: color-mix(in srgb, var(--s1) 13%, var(--surface)); }
   .tabla td.largo { min-width: 220px; }
   @media (max-width: 640px) { .tabla td.largo { min-width: 160px; } .tabla th, .tabla td { padding: .4rem .5rem; } .tabla th:first-child, .tabla td:first-child { min-width: 7.5rem; } }
+
+  /* imágenes originales del ASIS (fondo blanco): en modo oscuro se atenúa el brillo para no deslumbrar */
+  [data-theme=dark] .fig-original { background: #e7ebf2; }
+  [data-theme=dark] .fig-original img { filter: brightness(.93); }
+  @media (prefers-color-scheme: dark) { :root:not([data-theme]) .fig-original { background: #e7ebf2; } :root:not([data-theme]) .fig-original img { filter: brightness(.93); } }
 
   .skeleton { background: linear-gradient(90deg, var(--surface-2), var(--surface-3), var(--surface-2)); background-size: 200% 100%; border-radius: 10px; }
   @media (prefers-reduced-motion: no-preference) { .skeleton { animation: shimmer 1.4s ease-in-out infinite; } }

@@ -62,7 +62,7 @@ const urlMapa = p.mapaInteractivo ? urlEd(anio, `territorio/?ind=${p.mapaInterac
     </div>
     <div class="grid content-start gap-4">
       {p.mapas.map(m => (
-        <figure class="m-0 rounded-xl border border-line bg-white p-3">
+        <figure class="fig-original m-0 rounded-xl border border-line bg-white p-3">
           <a href={url(`img/asis/${m.img}.webp`)} target="_blank" rel="noopener" title="Abrir la imagen en tamaño completo">
             <img src={url(`img/asis/${m.img}.webp`)} width={DIM[m.img]?.[0]} height={DIM[m.img]?.[1]} loading="lazy" decoding="async"
                  alt={`${m.ref} del ASIS: ${m.titulo}. Imagen del documento original; ver la lectura del gradiente en el gráfico.`} class="h-auto w-full" />

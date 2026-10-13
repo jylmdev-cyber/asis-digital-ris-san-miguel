@@ -56,12 +56,12 @@ const indice = [{ id: 'ranking', t: 'Ranking por indicador' }, { id: 'calor', t:
     <figure class="tarjeta m-0 p-4 sm:p-5" id="c-calor" data-buscar="Mapa de calor de determinantes|Tablas 3 a 14|comparación distritos">
       <div class="tabla-wrap" style="max-height:none" tabindex="0" role="region" aria-label="Mapa de calor de determinantes por distrito">
         <table class="tabla text-[0.8rem]">
-          <thead><tr><th scope="col">Distrito</th>{matriz.map(m => <th scope="col" class="n" style="min-width:86px"><span class="block leading-tight">{m.t.indicador!.replace(' (%)', '')}</span><span class="font-normal text-muted">{m.t.ref}</span></th>)}</tr></thead>
+          <thead><tr><th scope="col" class="whitespace-nowrap">Distrito</th>{matriz.map(m => <th scope="col" class="n !whitespace-normal" style="min-width:84px;max-width:118px"><span class="block leading-tight">{m.t.indicador!.replace(' (%)', '')}</span><span class="font-normal text-muted">{m.t.ref}</span></th>)}</tr></thead>
           <tbody>
             {D.map((d, i) => (
               <tr>
-                <td><a href={urlEd(anio, `distritos/${ed.distritos[i].slug}/`)}>{d}</a></td>
-                {matriz.map(m => <td class="n" style={`background:var(--o${m.q[i] + 1});color:${m.q[i] >= 2 ? '#fff' : 'var(--ink)'}`} title={`${d} · ${m.t.indicador}: ${mostrar(filaDe(m.t, d)?.[1])}`}>{mostrar(filaDe(m.t, d)?.[1])}</td>)}
+                <td class="whitespace-nowrap"><a href={urlEd(anio, `distritos/${ed.distritos[i].slug}/`)}>{d}</a></td>
+                {matriz.map(m => <td class="n" style={`background:var(--o${m.q[i] + 1});color:var(--o${m.q[i] + 1}-t)`} title={`${d} · ${m.t.indicador}: ${mostrar(filaDe(m.t, d)?.[1])}`}>{mostrar(filaDe(m.t, d)?.[1])}</td>)}
               </tr>
             ))}
             <tr class="tot"><td>Provincial</td>{matriz.map(m => <td class="n">{mostrar(m.prov)}</td>)}</tr>

@@ -21,6 +21,14 @@ const ind = computed(() => props.indicadores.find(i => i.id === indId.value) ?? 
 const verEESS = ref(props.mostrarEESS);
 const fondo = ref(false);
 const nombres = ref(true);
+// rótulo del distrito: los nombres de más de 12 caracteres se parten en dos líneas equilibradas
+function rotulo(n: string) {
+  if (n.length <= 12 || !n.includes(' ')) return n;
+  const p = n.split(' ');
+  let mejor = 1, dif = Infinity;
+  for (let i = 1; i < p.length; i++) { const d = Math.abs(p.slice(0, i).join(' ').length - p.slice(i).join(' ').length); if (d < dif) { dif = d; mejor = i; } }
+  return `${p.slice(0, mejor).join(' ')}<br>${p.slice(mejor).join(' ')}`;
+}
 const microrred = ref('');
 const categorias = ref<string[]>(['I-1', 'I-2', 'I-3', 'I-4']);
 const sel = ref<string | null>(props.soloDistrito ? props.lista.find(d => d.distrito === props.soloDistrito)?.ubigeo ?? null : null);
@@ -97,7 +105,7 @@ function pintar() {
     }
   }
   capaN?.clearLayers();
-  if (nombres.value && !props.soloDistrito) capaD?.eachLayer((l: any) => capaN.addLayer(L.tooltip({ permanent: true, direction: 'center', className: 'et-dist', interactive: false }).setLatLng(l.getCenter()).setContent(l.feature.properties.distrito)));
+  if (nombres.value && !props.soloDistrito) capaD?.eachLayer((l: any) => capaN.addLayer(L.tooltip({ permanent: true, direction: 'center', className: 'et-dist', interactive: false }).setLatLng(l.getCenter()).setContent(rotulo(l.feature.properties.distrito))));
   if (fondo.value && !capaF) capaF = L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', { maxZoom: 16, attribution: '© colaboradores de OpenStreetMap' }).addTo(mapa).bringToBack();
   if (!fondo.value && capaF) { mapa.removeLayer(capaF); capaF = null; }
 }
@@ -214,7 +222,7 @@ const unidadTxt = computed(() => ind.value.unidad === '%' ? '%' : ind.value.unid
 .leaflet-popup-content-wrapper, .leaflet-popup-tip { background: var(--surface); color: var(--ink); }
 .leaflet-tooltip { background: var(--ink); color: var(--surface); border: 0; font-size: 12px; }
 .leaflet-tooltip-top:before { border-top-color: var(--ink); }
-.leaflet-tooltip.et-dist { background: transparent; box-shadow: none; color: var(--ink); font-size: 10.5px; font-weight: 650; padding: 0; text-shadow: 0 0 3px var(--surface), 0 0 3px var(--surface), 0 0 2px var(--surface); white-space: nowrap; }
+.leaflet-tooltip.et-dist { background: transparent; box-shadow: none; color: var(--ink); font-size: 10.5px; font-weight: 650; padding: 0; text-shadow: 0 0 3px var(--surface), 0 0 3px var(--surface), 0 0 2px var(--surface); white-space: nowrap; text-align: center; line-height: 1.15; }
 .leaflet-tooltip.et-dist:before { display: none; }
 @media (max-width: 520px) { .leaflet-tooltip.et-dist { font-size: 9.5px; } }
 .leaflet-control-attribution { font-size: 10px; background: color-mix(in srgb, var(--surface) 85%, transparent) !important; color: var(--ink-2); }
